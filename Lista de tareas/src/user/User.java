@@ -15,7 +15,7 @@ import user.exceptions.InvalidPasswordException;
 
 /**
  *
- * @author Vanina Pintos y Sofia Brocardo
+ * @author Vanina Pintos
  */
 public class User  implements Serializable {
     private String email;
