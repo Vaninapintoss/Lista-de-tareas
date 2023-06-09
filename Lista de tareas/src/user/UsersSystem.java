@@ -44,7 +44,18 @@ public class UsersSystem
         users = new LinkedHashMap<String, User>();
     }
     
-    // AGREGAR USUARIO 
+    /**
+     * <h1>Agregar nuevo usuario</h1>
+     * Agrega un usuario a el LinkedHashMap
+     * 
+     * @param user | User a agregar
+     * 
+     * @return boolean | true si lo agrego correctamente a el LinkedHashMap
+     * 
+     * @throws UserAlreadyExistException | si el usuario ya existe en el LinkedHashMap
+     * 
+     * @author Sofia Brocardo
+     */
     private boolean newUser(User user) throws UserAlreadyExistException{
         
         boolean flag = false;
@@ -53,14 +64,28 @@ public class UsersSystem
             flag = true;
             users.put(user.getEmail(), user); //no utlizo los valores retornados porque no me interesa colocarlo sin antes verificar 
         }else{
-            throw new UserAlreadyExistException("Error : El email ingresado ya esta registrado.");
+            throw new UserAlreadyExistException("El email ingresado ya esta registrado.");
         }
         
-        return flag;
-        
-    } //TRUE si pudo insertarse - ERROR si ya existia anteriormente
+        return flag; 
+    } 
     
-    //BORRAR USUARIO 
+    
+    /**
+     * <h1>Borrar Usuario</h1>
+     * Elimina un usuario del LinkedHashMap
+     * 
+     * @param user | usuario a borrar
+     * @param password | contraseña para verificar que el mismo usurio se elimina del Map
+     * 
+     * @return boolean |true si existia, pudo borrarse y la contraseña coincide |false si no se pudo borrar
+     * 
+     * @throws IncorrectPasswordException | si la contraseña es invalida
+     * 
+     * @see User#verifyPassword(java.lang.String) 
+     * 
+     * @author Vanina Pintos
+     */
     public boolean deleteUser(User user, String password) throws IncorrectPasswordException
     {
         boolean deleted = false;
@@ -70,15 +95,25 @@ public class UsersSystem
         }
         else
         {
-            throw new IncorrectPasswordException("Error: contraseña invalida");
+            throw new IncorrectPasswordException("Contraseña invalida");
         }
             
         return deleted;
-
-    }//TRUE si existia, pudo borrarse y la contraseña coincide, FALSE si no se pudo borrar
-    //ERROR si la contraseña es invalida
+    }
     
-    //BUSCAR USUARIO
+    /**
+     * <h1>Buscar usuario</h1>
+     * <b>Funcion privada</b>
+     * Busca si un email existe entre los usuarios registrados
+     * 
+     * @param email | email a verificar su existencia dentro del LinkedHashMap
+     * 
+     * @return User | retorna el usuario si lo encuentra
+     * 
+     * @throws UserNotFoundException | si no encuentra a un usuario registrado con el mail del parametro
+     * 
+     * @author Vanina Pintos
+     */
     private User searchUser(String email) throws UserNotFoundException{
         User user = null;
         
@@ -88,21 +123,27 @@ public class UsersSystem
             throw new UserNotFoundException("Error : Usuario no registrado.");
         
         return user;
-    }//Devuelve el usuario si esta registrado, ERROR si no esta registrado
-    
-    //funcion de prueba de carga de usuarios
-    public String viewUsers(){
-        String aux = "";
-        Iterator it = users.entrySet().iterator();
-        while(it.hasNext()){
-            Map.Entry me = (Map.Entry) it.next();
-            aux += me.getKey() + "-" + me.getValue();
-            aux += "\n";
-        }
-        return aux;
     }
     
-    //CAMBIAR CONTRASENIA 
+     
+    /**
+     * <h1>Cambiar contraseña</h1>
+     * Cambia la contraseña de un usuario a una nueva
+     * 
+     * @param user | usuario a cambiar contraseña
+     * @param oldPassword | contraseña actual para verificar por seguridad
+     * @param newPassword | contraseña nueva
+     * 
+     * @return boolean | true si se cambio correctamente
+     * 
+     * @throws IncorrectPasswordException | si la oldPassword no coincide con la contraseña actual
+     * @throws EmptyPasswordException | si la contraseña nueva contiene un String vacio ""
+     * @throws InvalidPasswordException | si la contraseña nueva es invalida
+     * 
+     * @see User#setPassword(java.lang.String, java.lang.String) 
+     * 
+     * @author Sofia Brocardo
+     */
     public boolean changePassword(User user, String oldPassword, String newPassword) throws IncorrectPasswordException, EmptyPasswordException, InvalidPasswordException
     {
         boolean changed = user.setPassword(oldPassword, newPassword);
@@ -110,7 +151,24 @@ public class UsersSystem
         return changed;
     }
     
-    
+    /**
+     * <h1>Login</h1>
+     * Busca si existe en el sistema un usuario con ese email, para luego verificar la contraseña.
+     * Si no hay ningun error devuelve el usuario
+     * 
+     * @param email | email del usuario a loguear
+     * @param password | contraseña del usuario a loguear
+     * 
+     * @return User | devuelve el usuario si esta registrado y la contraseña coincide
+     * 
+     * @throws UserNotFoundException | si no encuentra a ningun usuario registrado con ese email
+     * @throws IncorrectPasswordException | si la contraseña que se paso no coincide con la contraseña del usuario
+     * 
+     * @see UsersSystem#searchUser(java.lang.String) 
+     * @see User#verifyPassword(java.lang.String) 
+     * 
+     * @author Sofia Brocardo
+     */
     public User login(String email, String password) throws UserNotFoundException, IncorrectPasswordException
     {    
         User user = null; 
@@ -125,6 +183,26 @@ public class UsersSystem
         return user;
     }  
     
+    /**
+     * <h1>Signup</h1>
+     * Ingresar un nuevo usuario al sistema
+     * 
+     * @param user | usuario a ingresar 
+     * 
+     * @return boolean | true si se ingreso al usuario en el sistema sin problemas
+     * 
+     * @throws UserAlreadyExistException | si el usuario ya existe en el sistema
+     * @throws InvalidEmailException | si el email del usuario es invalido
+     * @throws EmptyEmailException | si el email contiene un String vacio ""
+     * @throws EmptyPasswordException | si la contraseña contiene un String vacio ""
+     * @throws InvalidPasswordException | si la contraseña es invalida
+     * 
+     * @see User#validThisEmail() 
+     * @see User#validThisPassword() 
+     * @see UsersSystem#newUser(user.User) 
+     * 
+     * @author Sofia Brocardo
+     */
     public boolean signup(User user) throws UserAlreadyExistException, InvalidEmailException, EmptyEmailException,
                                             EmptyPasswordException, InvalidPasswordException
     {
@@ -138,6 +216,7 @@ public class UsersSystem
         
         return success;
     }
+    
     
     public String saveUsersInFile()
     {

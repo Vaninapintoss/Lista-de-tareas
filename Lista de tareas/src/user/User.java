@@ -20,6 +20,7 @@ import user.exceptions.InvalidPasswordException;
  * 
  * <b>Note:</b>
  * su contraseña y localizacion pueden ser modificados
+ * 
  * @author Vanina Pintos & Sofia Brocardo
  */
 public class User  implements Serializable {
@@ -36,6 +37,7 @@ public class User  implements Serializable {
      *  
      * @param email - validar antes de pasar por parametro
      * @param password - validar antes de pasar por parametro
+     * 
      * @see User#validEmail() 
      * @see User#validPassword()
      * 
@@ -61,6 +63,7 @@ public class User  implements Serializable {
      * @param email | validar antes de pasar por parametro
      * @param password | validar antes de pasar por parametro
      * @param location | localizacion actual del usuario
+     * 
      * @see User#validEmail() 
      * @see User#validPassword()
      * 
@@ -79,6 +82,7 @@ public class User  implements Serializable {
      * (debe contener al menos 8 caracteres, 1 letra y 1 numero)
      * 
      * @return boolean | true si la contraseña es valida 
+     * 
      * @throws EmptyPasswordException | si la contraseña se envia en un String vacio ""
      * @throws InvalidPasswordException | si la contraseña es invalida
      * 
@@ -95,7 +99,9 @@ public class User  implements Serializable {
      * es una contraseña valida (debe contener al menos 8 caracteres, 1 letra y 1 numero)
      * 
      * @param password | contraseña a validar
+     * 
      * @return boolean | true si la contraseña es valida 
+     * 
      * @throws EmptyPasswordException | si la contraseña se envia en un String vacio ""
      * @throws InvalidPasswordException | si la contraseña es invalida
      * 
@@ -126,6 +132,7 @@ public class User  implements Serializable {
      * (debe contener un @ y un .)
      * 
      * @return boolean | true si es valido
+     * 
      * @throws InvalidEmailException | si el email se envia en un String vacio ""
      * @throws EmptyEmailException | si el email es invalido
      * 
@@ -142,7 +149,9 @@ public class User  implements Serializable {
      * es un email valido (debe contener un @ y un .)
      * 
      * @param email | email a validar
+     * 
      * @return boolean | true si es valido
+     * 
      * @throws InvalidEmailException | si el email se envia en un String vacio ""
      * @throws EmptyEmailException | si el email es invalido
      * 
@@ -192,7 +201,9 @@ public class User  implements Serializable {
      * 
      * @param oldPassword | contraseña actual 
      * @param newPassword | contraseña nueva
+     * 
      * @return boolean | true si la nueva contraseña es valida, se verifica y es posible cambiar
+     * 
      * @throws EmptyPasswordException | si la nueva contraseña contiene un String vacio ""
      * @throws InvalidPasswordException | si la contraseña actual no coincide o la nueva contraseña es invalida
      * 
@@ -243,6 +254,7 @@ public class User  implements Serializable {
 
     /**
      * Funcion util para implementar un LinkedHashMap en UsersSystem
+     * 
      * @return int
      */
     @Override
@@ -260,6 +272,7 @@ public class User  implements Serializable {
      * Verifica que la contraseña pasada por parametro coincida con la contraseña actual
      * 
      * @param password | contraseña actual
+     * 
      * @return bolean | true si coinciden | false si no coinciden
      * 
      * @author Vanina Pintos
@@ -278,6 +291,7 @@ public class User  implements Serializable {
      * Verifica que el objeto sea igual
      * 
      * @param obj
+     * 
      * @return boolean | true si son iguales |false si no son iguales
      * 
      * @author Vanina Pintos
