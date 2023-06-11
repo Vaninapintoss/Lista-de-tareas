@@ -45,47 +45,47 @@ public class FileController
      * @author Sofia Brocardo
      */
     public static <V extends Serializable, K> String saveInFile(String fileName, Map<K,V> map)
-{
-    String saved = "Se guardo correctamente";
-    FileOutputStream fileOutputStream = null;
-    ObjectOutputStream objectOutputStream = null;
-
-    try
     {
-        fileOutputStream = new FileOutputStream(fileName);
-        objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        String saved = "Se guardo correctamente";
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
 
-        Iterator it = map.entrySet().iterator();
-
-        while(it.hasNext())
-        {
-            Map.Entry entry = (Map.Entry) it.next();
-            User user = (User) entry.getValue();
-            objectOutputStream.writeObject(user);
-        }
-    }
-    catch(IOException ex)
-    {
-        saved = "ERROR EN EL ARCHIVO";
-    }
-    finally {
         try
         {
-            if (fileOutputStream != null)
-                fileOutputStream.close();
+            fileOutputStream = new FileOutputStream(fileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            if (objectOutputStream != null)
-                objectOutputStream.close();
-
+            Iterator it = map.entrySet().iterator();
+    
+            while(it.hasNext())
+            {
+                Map.Entry entry = (Map.Entry) it.next();
+                User user = (User) entry.getValue();
+                objectOutputStream.writeObject(user);
+            }
         }
-        catch (IOException exIO)
+        catch(IOException ex)
         {
-            saved = exIO.getMessage()+" Problemas al cerrar el archivo";
+            saved = "ERROR EN EL ARCHIVO";
         }
-    }
+        finally {
+            try
+            {
+                if (fileOutputStream != null)
+                    fileOutputStream.close();
 
-    return saved;
-}
+                if (objectOutputStream != null)
+                    objectOutputStream.close();
+    
+            }
+            catch (IOException exIO)
+            {
+                saved = exIO.getMessage()+" Problemas al cerrar el archivo";
+            }
+        }
+
+        return saved;
+    }
 
     /**
      * <h1>Guardar Set en un archivo</h1>
@@ -99,45 +99,45 @@ public class FileController
      * @author Sofia Brocardo
      */
     public static <V extends Serializable> String saveInFile(String fileName, Set<V> set)
-{
-    String saved = "Se guardo correctamente";
-    FileOutputStream fileOutputStream = null;
-    ObjectOutputStream objectOutputStream = null;
-
-    try
     {
-        fileOutputStream = new FileOutputStream(fileName);
-        objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        String saved = "Se guardo correctamente";
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
 
-        Iterator it = set.iterator();
-
-        while(it.hasNext())
-        {
-            objectOutputStream.writeObject(it.next());
-        }
-    }
-    catch(IOException ex)
-    {
-        saved = "ERROR EN EL ARCHIVO";
-    }
-    finally {
         try
         {
-            if (fileOutputStream != null)
-                fileOutputStream.close();
+            fileOutputStream = new FileOutputStream(fileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            if (objectOutputStream != null)
-                objectOutputStream.close();
+            Iterator it = set.iterator();
 
-        }
-        catch (IOException exIO)
+            while(it.hasNext())
+            {
+                objectOutputStream.writeObject(it.next());
+            }
+       }
+        catch(IOException ex)
         {
-            saved = exIO.getMessage()+" Problemas al cerrar el archivo";
+            saved = "ERROR EN EL ARCHIVO";
         }
-    }
+        finally {
+            try
+            {
+                if (fileOutputStream != null)
+                    fileOutputStream.close();
 
-    return saved;
-}
+                if (objectOutputStream != null)
+                    objectOutputStream.close();
+
+            }
+            catch (IOException exIO)
+            {
+                saved = exIO.getMessage()+" Problemas al cerrar el archivo";
+            }
+        }
+
+        return saved;
+    }
 
     /**
      * <h1>Guardar List en un archivo</h1>
@@ -151,43 +151,43 @@ public class FileController
      * @author Sofia Brocardo
      */
     public static <V extends Serializable> String saveInFile(String fileName, List<V> list)
-{
-    String saved = "Se guardo correctamente";
-    FileOutputStream fileOutputStream = null;
-    ObjectOutputStream objectOutputStream = null;
-
-    try
     {
-        fileOutputStream = new FileOutputStream(fileName);
-        objectOutputStream = new ObjectOutputStream(fileOutputStream);
+        String saved = "Se guardo correctamente";
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
 
-        for(V aux : list)
-        {
-            objectOutputStream.writeObject(aux);
-        }
-    }
-    catch(IOException ex)
-    {
-        saved = "ERROR EN EL ARCHIVO";
-    }
-    finally {
         try
         {
-            if (fileOutputStream != null)
-                fileOutputStream.close();
+            fileOutputStream = new FileOutputStream(fileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
 
-            if (objectOutputStream != null)
-                objectOutputStream.close();
-
+            for(V aux : list)
+            {
+                objectOutputStream.writeObject(aux);
+            }
         }
-        catch (IOException exIO)
+        catch(IOException ex)
         {
-            saved = exIO.getMessage()+" Problemas al cerrar el archivo";
+            saved = "ERROR EN EL ARCHIVO";
         }
-    }
+        finally {
+            try
+            {
+                if (fileOutputStream != null)
+                    fileOutputStream.close();
 
-    return saved;
-}
+                if (objectOutputStream != null)
+                    objectOutputStream.close();
+
+            }
+            catch (IOException exIO)
+            {
+                saved = exIO.getMessage()+" Problemas al cerrar el archivo";
+            }
+        }
+
+        return saved;
+    }
 
     /**
      * <h1>Leer Map de un archivo</h1>
@@ -201,54 +201,54 @@ public class FileController
      * @author Sofia Brocardo
      */
     public static String readUserFromFile(String fileName, Map<String,User> map)
-{
-    String readed = "Extraccion exitosa";
+    {
+        String readed = "Extraccion exitosa";
 
-    FileInputStream fileInputStream = null;
-    ObjectInputStream objectInputStream = null;
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
 
-    try
-    {
-        fileInputStream = new FileInputStream(fileName);
-        objectInputStream = new ObjectInputStream(fileInputStream);
-
-        while(true)
-        {
-            User user = (User)objectInputStream.readObject();
-            map.put(user.getEmail(), user);
-        }
-    }
-    catch (EOFException ex)
-    {
-        readed = "FIN de ARCHIVO";
-    }
-    catch (ClassNotFoundException ex)
-    {
-        readed = "ERROR" + ex.getMessage();
-    }
-    catch (IOException ex)
-    {
-        readed = "ERROR" + ex.getMessage();
-    }
-    finally
-    {
         try
         {
-            if (fileInputStream!=null)
-                fileInputStream.close();
+            fileInputStream = new FileInputStream(fileName);
+            objectInputStream = new ObjectInputStream(fileInputStream);
 
-            if (objectInputStream!=null)
-                objectInputStream.close();
-
+            while(true)
+            {
+                User user = (User)objectInputStream.readObject();
+                map.put(user.getEmail(), user);
+            }
         }
-        catch (IOException exIO)
+        catch (EOFException ex)
         {
-            readed = "ERROR" + exIO.getMessage();
+            readed = "FIN de ARCHIVO";
         }
+        catch (ClassNotFoundException ex)
+        {
+            readed = "ERROR" + ex.getMessage();
+        }
+        catch (IOException ex)
+        {
+            readed = "ERROR" + ex.getMessage();
+        }
+        finally
+        {
+            try
+            {
+                if (fileInputStream!=null)
+                    fileInputStream.close();
 
-    }
+                if (objectInputStream!=null)
+                    objectInputStream.close();
+
+            }
+            catch (IOException exIO)
+            {
+                readed = "ERROR" + exIO.getMessage();
+            }
+
+        }
         return readed;
-}
+    }
 
     /**
      * <h1>Leer Coleccion de un archivo</h1>
@@ -264,53 +264,53 @@ public class FileController
      * @author Sofia Brocardo
      */
     public static <V extends Serializable> String readCollectionFromFile(String fileName, Collection<V> colection)
-{
-    String readed = "Extraccion exitosa";
+    {
+        String readed = "Extraccion exitosa";
 
-    FileInputStream fileInputStream = null;
-    ObjectInputStream objectInputStream = null;
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
 
-    try
-    {
-        fileInputStream = new FileInputStream(fileName);
-        objectInputStream = new ObjectInputStream(fileInputStream);
-
-        while(true)
-        {
-            V value = (V)objectInputStream.readObject();
-            colection.add((V)value);
-        }
-    }
-    catch (EOFException ex)
-    {
-        readed = "FIN de ARCHIVO";
-    }
-    catch (ClassNotFoundException ex)
-    {
-        readed = "ERROR" + ex.getMessage();
-    }
-    catch (IOException ex)
-    {
-        readed = "ERROR" + ex.getMessage();
-    }
-    finally
-    {
         try
         {
-            if (fileInputStream!=null)
-                fileInputStream.close();
+            fileInputStream = new FileInputStream(fileName);
+            objectInputStream = new ObjectInputStream(fileInputStream);
 
-            if (objectInputStream!=null)
-                objectInputStream.close();
-
+            while(true)
+            {
+                V value = (V)objectInputStream.readObject();
+                colection.add((V)value);
+            }
         }
-        catch (IOException exIO)
+        catch (EOFException ex)
         {
-            readed = "ERROR" + exIO.getMessage();
+            readed = "FIN de ARCHIVO";
         }
+        catch (ClassNotFoundException ex)
+        {
+            readed = "ERROR" + ex.getMessage();
+        }
+        catch (IOException ex)
+        {
+            readed = "ERROR" + ex.getMessage();
+        }
+        finally
+        {
+            try
+            {
+                if (fileInputStream!=null)
+                    fileInputStream.close();
 
+                if (objectInputStream!=null)
+                    objectInputStream.close();
+
+            }
+            catch (IOException exIO)
+            {
+                readed = "ERROR" + exIO.getMessage();
+            }
+
+        }
+            return readed;
     }
-        return readed;
-}
     
 }
