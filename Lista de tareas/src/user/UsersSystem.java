@@ -221,7 +221,7 @@ public class UsersSystem
     
     public String readUsersInFile()
     {
-        return FileController.readFromFile("users.dat", users);
+        return FileController.readUserFromFile("users.dat", users);
     }
     
 }
