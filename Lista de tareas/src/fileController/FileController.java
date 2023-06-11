@@ -200,7 +200,7 @@ public class FileController
      *
      * @author Sofia Brocardo
      */
-    public static String readUserFromFile(String fileName, Map<String,User> map)
+    public static String readFromFile(String fileName, Map<String,User> map)
     {
         String readed = "Extraccion exitosa";
 
@@ -263,7 +263,7 @@ public class FileController
      *
      * @author Sofia Brocardo
      */
-    public static <V extends Serializable> String readCollectionFromFile(String fileName, Collection<V> colection)
+    public static <V extends Serializable> String readFromFile(String fileName, Collection<V> colection)
     {
         String readed = "Extraccion exitosa";
 
