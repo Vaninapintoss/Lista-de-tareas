@@ -19,6 +19,7 @@ import user.exceptions.InvalidEmailException;
 import user.exceptions.InvalidPasswordException;
 import user.exceptions.UserAlreadyExistException;
 import user.exceptions.UserNotFoundException;
+import fileController.FileController;
 
 /**
  * <h1>Clase UsersSystem</h1>
@@ -220,45 +221,7 @@ public class UsersSystem
     
     public String saveUsersInFile()
     {
-        String rta = "Se guardo correctamente";
-        FileOutputStream fileOutputStream = null;
-        ObjectOutputStream objectOutputStream = null;
-
-        try
-        {
-            fileOutputStream = new FileOutputStream("users.dat");
-            objectOutputStream = new ObjectOutputStream(fileOutputStream);
-            
-            Iterator it = users.entrySet().iterator();
-            
-           while(it.hasNext())
-            {
-                Map.Entry entry = (Map.Entry) it.next();
-                User user = (User) entry.getValue();
-                objectOutputStream.writeObject(user);
-            }
-
-        }
-        catch (IOException ex)
-        {
-            rta = "ERROR EN EL ARCHIVO";
-        }
-        finally {
-            try
-            {
-                if((fileOutputStream != null) && (objectOutputStream != null))
-                {
-                    fileOutputStream.close();
-                    objectOutputStream.close();
-                }
-
-            }
-            catch (IOException exIO)
-            {
-                rta = exIO.getMessage()+" Problemas al cerrar el archivo";
-            }
-        }
-        return rta;
+        return FileController.saveInFile("users.dat", users);
     }
     
     
