@@ -38,6 +38,7 @@ public class FileController
      *
      * @param fileName | nombre del archivo
      * @param map | Map, su valor debe implementar Serializable
+     * 
      * @return String | con informacion del proceso, si fue exitoso o si ocurrio algun error
      * 
      * @see Serializable
@@ -93,8 +94,10 @@ public class FileController
      *
      * @param fileName | nombre del archivo
      * @param set | Set, su valor debe implementar Serializable
+     * 
      * @return String | con informacion del proceso, si fue exitoso o si ocurrio algun error
      *
+     * @see Serializable
      *
      * @author Sofia Brocardo
      */
@@ -145,8 +148,10 @@ public class FileController
      *
      * @param fileName | nombre del archivo
      * @param list | List, su valor debe implementar Serializable
+     * 
      * @return String | con informacion del proceso, si fue exitoso o si ocurrio algun error
      *
+     * @see Serializable
      *
      * @author Sofia Brocardo
      */
