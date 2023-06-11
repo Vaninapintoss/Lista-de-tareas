@@ -4,14 +4,7 @@
  */
 package user;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Map;
 import user.exceptions.EmptyEmailException;
 import user.exceptions.EmptyPasswordException;
 import user.exceptions.IncorrectPasswordException;
@@ -20,6 +13,7 @@ import user.exceptions.InvalidPasswordException;
 import user.exceptions.UserAlreadyExistException;
 import user.exceptions.UserNotFoundException;
 import fileController.FileController;
+
 
 /**
  * <h1>Clase UsersSystem</h1>
@@ -225,47 +219,9 @@ public class UsersSystem
     }
     
     
-    public void readUsersInFile()
+    public String readUsersInFile()
     {
-        FileInputStream fileInputStream = null;
-        ObjectInputStream objectInputStream = null;
-
-        try
-        {
-            fileInputStream = new FileInputStream("users.dat");
-            objectInputStream = new ObjectInputStream(fileInputStream);
-
-            while(true)
-            {
-                User user = (User)objectInputStream.readObject();
-                users.put(user.getEmail(), user);
-            }
-        }
-        catch (IOException exception)
-        {
-
-        }
-        catch (ClassNotFoundException ex)
-        {
-
-        }
-        finally
-        {
-            try
-            {
-                if((fileInputStream != null) && (objectInputStream != null))
-                {
-                    fileInputStream.close();
-                    objectInputStream.close();
-                }
-
-            }
-            catch (IOException exIO)
-            {
-
-            }
-
-        }
+        return FileController.readFromFile("users.dat", users);
     }
     
 }
