@@ -10,6 +10,10 @@ package user.exceptions;
  */
 public class InvalidEmailException extends Exception{
 
+    /**
+     * <h1>Excepcion de Email invalido</h1>
+     * @param message 
+     */
     public InvalidEmailException(String message) {
         super(message);
     }
