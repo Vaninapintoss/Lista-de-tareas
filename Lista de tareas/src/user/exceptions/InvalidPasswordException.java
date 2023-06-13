@@ -10,6 +10,10 @@ package user.exceptions;
  */
 public class InvalidPasswordException extends Exception
 {
+    /**
+     * <h1>Excepcion de Contraseña invalida</h1>
+     * @param message 
+     */
     public InvalidPasswordException(String message) {
         super(message);
     }
