@@ -15,7 +15,7 @@ public class EmptyLocationException extends Exception{
      * @param message 
      */
     public EmptyLocationException(String message) {
-        super("Error de localizacion: " + message);
+        super("Error: " + message);
     }
     
 }

@@ -15,6 +15,6 @@ public class InvalidLocationException extends Exception{
      * @param message 
      */
     public InvalidLocationException (String message) {
-        super(message);
+        super("Error: " + message);
     }
 }

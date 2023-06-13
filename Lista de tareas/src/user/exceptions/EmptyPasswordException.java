@@ -15,7 +15,7 @@ public class EmptyPasswordException extends Exception{
      * @param message 
      */
     public EmptyPasswordException(String message) {
-        super(message);
+        super("Error: " + message);
     }
    
 }

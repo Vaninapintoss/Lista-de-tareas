@@ -15,7 +15,7 @@ public class EmptyEmailException extends Exception{
      * @param message 
      */
     public EmptyEmailException(String message) {
-        super(message);
+        super("Error: " + message);
     }
     
 }

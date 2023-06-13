@@ -15,6 +15,6 @@ public class InvalidEmailException extends Exception{
      * @param message 
      */
     public InvalidEmailException(String message) {
-        super(message);
+        super("Error: " + message);
     }
 }
