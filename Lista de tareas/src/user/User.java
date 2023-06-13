@@ -4,10 +4,13 @@
  */
 package user;
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import location.Exceptions.InvalidLocationException;
+import location.Location;
 import user.exceptions.EmptyEmailException;
 import user.exceptions.EmptyPasswordException;
 import user.exceptions.InvalidEmailException;
@@ -26,7 +29,7 @@ import user.exceptions.InvalidPasswordException;
 public class User  implements Serializable {
     private String email;//email debe contener un @, y un .
     private String password;//la contraseña debe tener al menos 8 letras, 1 numero y 1 letra
-    private String location;//ubicacion actual del usuario
+    private Location location;//ubicacion actual del usuario
     
     /**
      * <h1>Constructor de la clase User</h1>
@@ -47,7 +50,7 @@ public class User  implements Serializable {
     {
         this.email = email;
         this.password = password;
-        this.location = "";
+        this.location = new Location();
     }
     
     /**
@@ -69,7 +72,7 @@ public class User  implements Serializable {
      * 
      * @author Vanina Pintos
      */
-    public User(String email, String password, String location)
+    public User(String email, String password, Location location)
     {
         this.email = email;
         this.password = password;
@@ -232,24 +235,31 @@ public class User  implements Serializable {
     /**
      * <h1>Obtener Localizacion</h1>
      * 
-     * @return String | ultima localizacion guardada
-     *                  si retorna un String vacio ("") significa que nunca se seteo una localizacion
+     * @return Location | ultima localizacion guardada
+     *                    si retorna un String vacio ("") significa que nunca se seteo una localizacion
      * 
      * @author Vanina Pintos
      */
-    public String getLocation() {
+    public Location getLocation() {
         return location;
     }
 
     /**
      * <h1>Modificar Localizacion</h1>
      * 
-     * @param location | nueva localizacion
+     * @param city | ciudad, esta se puede especificar con un barrio separado por una coma, ej: barrio,ciudad
+     * @param state_province | estado o provincia
+     * @param country | pais
      * 
-     * @author Vanina Pintos
+     * @throws IOException
+     * @throws InvalidLocationException 
+     * 
+     * @see Location#updateLocation(java.lang.String, java.lang.String, java.lang.String) 
+     * 
+     * @author Sofia Brocardo
      */
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(String city, String state_province, String country) throws IOException, InvalidLocationException {
+        location.updateLocation(city, state_province, country);
     } 
 
     /**

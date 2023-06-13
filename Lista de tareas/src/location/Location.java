@@ -66,12 +66,11 @@ public class Location
      * @see APIController#getInfo(java.lang.String) 
      * 
      * @throws IOException | si algo sale mal con la API
-     * @throws MalformedURLException | si el URL es invalido
      * @throws InvalidLocationException | si no se encuentra ninguna localizacion con ese nombre
      * 
      * @author Sofia Brocardo
      */
-    public void updateLocation(String city, String state_province, String country) throws MalformedURLException, IOException, InvalidLocationException
+    public void updateLocation(String city, String state_province, String country) throws IOException, InvalidLocationException
     {
         city.replaceAll(" ","%20" );
         state_province.replaceAll(" ","%20" );
