@@ -10,6 +10,10 @@ package user.exceptions;
  */
 public class EmptyEmailException extends Exception{
 
+    /**
+     * <h1>Excepcion de Email vacio</h1>
+     * @param message 
+     */
     public EmptyEmailException(String message) {
         super(message);
     }
