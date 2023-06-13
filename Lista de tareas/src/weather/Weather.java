@@ -14,8 +14,11 @@ import APIController.APIController;
 import location.Location;
 
 /**
- *
- * @author sofia
+ * <h1>Clima</h1>
+ * La clase clima tiene los datos de descripcion, icono (para poder usar en interfaz grafica),
+ * temperatura, temperatura minima, temperatura maxima, humedad y ubicacion del usuario
+ * 
+ * @author Sofia Brocardo
  */
 public class Weather {
     private String description;
@@ -27,7 +30,10 @@ public class Weather {
     private Location location;
     
     /**
-     * Constructor de la clase Weather, inicializa todo en 0 o en ""
+     * <h1>Constructor vacio</h1>
+     * Inicializa todo en 0 o en ""
+     * 
+     * @author Sofia Brocardo
      */
     public Weather()
     {
@@ -40,7 +46,13 @@ public class Weather {
         location = new Location();
     }
     
-    
+    /**
+     * <h1>To String</h1>
+     * 
+     * @return String con los datos del clima
+     * 
+     * @author Sofia Brocardo
+     */
     public String toString()
     {
         return "Descripcion: .......... " + description + "\n" + 
@@ -53,11 +65,14 @@ public class Weather {
     }
     
     /**
-     * getIcon devuelve la ultima descripcion del clima guardada
-     * para alcualizar los valores llamar a la funcion updateWeather
+     * <h1>Obtener la ultima descripcion del clima guardada</h1>
+     * Para alcualizar los valores llamar a la funcion updateWeather
      * 
-     * @return description
+     * @return String | descripcion del clima
+     * 
      * @see void#updateWeather(String ciudad, String pais, String APIKey) updateWeather
+     * 
+     * @author Sofia Brocardo
      */
     public String getDescription()
     {
@@ -65,11 +80,14 @@ public class Weather {
     }
     
     /**
-     * getIcon devuelve el ultimo icono guardado
-     * para alcualizar los valores llamar a la funcion updateWeather
+     * <h1>Obtener el ultimo icono guardado</h1>
+     * Para alcualizar los valores llamar a la funcion updateWeather
      * 
-     * @return icon
+     * @return String | nombre del icono del clima
+     * 
      * @see void#updateWeather(String ciudad, String pais, String APIKey) updateWeather
+     * 
+     * @author Sofia Brocardo
      */
     public String getIcon()
     {
@@ -77,11 +95,14 @@ public class Weather {
     }
     
     /**
-     * getTemp devuelve el ultimo nivel de temperatura guardado
-     * para alcualizar los valores llamar a la funcion updateWeather
+     * <h1>Obtener el ultimo nivel de temperatura guardado</h1>
+     * Para alcualizar los valores llamar a la funcion updateWeather
      * 
-     * @return temp
+     * @return double | temperatura (Cº)
+     * 
      * @see void#updateWeather(String ciudad, String pais, String APIKey) updateWeather
+     * 
+     * @author Sofia Brocardo
      */
     public double getTemp()
     {
@@ -89,11 +110,14 @@ public class Weather {
     }
     
     /**
-     * getTemp_min devuelve el ultimo nivel de temperatura minima guardado
-     * para alcualizar los valores llamar a la funcion updateWeather
+     * <h1>Obtener el ultimo nivel de temperatura minima guardado</h1>
+     * Para alcualizar los valores llamar a la funcion updateWeather
      * 
-     * @return temp_min
+     * @return double | temperatura minima (Cº)
+     * 
      * @see void#updateWeather(String ciudad, String pais, String APIKey) updateWeather
+     * 
+     * @author Sofia Brocardo
      */
     public double getTemp_min()
     {
@@ -101,11 +125,14 @@ public class Weather {
     }
     
     /**
-     * getTemp_max devuelve el ultimo nivel de temperatura maxima guardado
-     * para alcualizar los valores llamar a la funcion updateWeather
+     * <h1>Obtener el ultimo nivel de temperatura maxima guardado</h1>
+     * Para alcualizar los valores llamar a la funcion updateWeather
      * 
-     * @return temp_max
+     * @return double | temperatura maxima (Cº)
+     * 
      * @see void#updateWeather(String ciudad, String pais, String APIKey) updateWeather
+     * 
+     * @author Sofia Brocardo
      */
     public double getTemp_max()
     {
@@ -113,11 +140,14 @@ public class Weather {
     }
     
     /**
-     * getHumidity devuelve el ultimo nivel de humedad guardado
-     * para alcualizar los valores llamar a la funcion updateWeather
+     * <h1>Obtener el ultimo nivel de humedad guardado</h1>
+     * Para alcualizar los valores llamar a la funcion updateWeather
      *
-     * @return humidity
+     * @return double | niveles de humedad
+     * 
      * @see void#updateWeather(String ciudad, String pais, String APIKey) updateWeather
+     * 
+     * @author Sofia Brocardo
      */
     public double getHumidity()
     {
@@ -125,11 +155,14 @@ public class Weather {
     }
             
     /**
-     * getCity devuelve la ultima ciudad guardada
-     * para alcualizar los valores llamar a la funcion updateWeather
+     * <h1>Obtener la ultima localizacion guardada</h1>
+     * Para alcualizar los valores llamar a la funcion updateWeather
      * 
-     * @return city
+     * @return String | localizacion
+     * 
      * @see void#updateWeather(String ciudad, String pais, String APIKey) updateWeather
+     * 
+     * @author Sofia Brocardo
      */
     public String getLocation()
     {
@@ -138,11 +171,21 @@ public class Weather {
     
     
     /**
-     * updateWeather actualiza los atributos de la clase clima con la API de OpenWeatherMap
-     * @param ciudad nombre de ciudad a obtener el clima
-     * @param pais nombre de pais donde se encuentra la ciudad
-     * @param APIKey incorporar una api key en la pagina de openweathermap
+     * <h1>Actualizar el clima</h1> 
+     * 
+     * Los atributos de la clase clima  se actualizan con la API de OpenWeatherMap
+     * 
+     * @param location | localizacion actual a obtener el clima
+     * @param APIKey | API key personal de la pagina de openweathermap
+     * 
      * @see <a href="https://openweathermap.org/current#one">Open Weather Map</a> 
+     * @see Weather#updateWithJSON(org.json.JSONObject) 
+     * 
+     * @throws JSONException | si hay problemas con el JSON
+     * @throws IOException | si hay problemas con la API
+     * @throws EmptyLocationException | si la localizacion esta vacia
+     * 
+     * @author Sofia Brocardo
      */
     public void updateWeather(Location location, String APIKey) throws JSONException, IOException, EmptyLocationException
     {    
@@ -157,12 +200,20 @@ public class Weather {
         }
         else
         {
-            throw new EmptyLocationException("actualizar ubicacion");
+            throw new EmptyLocationException("Actualizar ubicacion");
         }
-        
         
     }
     
+    /**
+     * <h1>Actualizar con JSON</h1>
+     * Metodo privado
+     * Se actualizan los atributos de la clase Weather con los datos del JSON
+     * 
+     * @param jsonObject 
+     * 
+     * @author Sofia Brocardo
+     */
     private void updateWithJSON(JSONObject jsonObject)
     {
         JSONArray jsonWeather = jsonObject.getJSONArray("weather");
