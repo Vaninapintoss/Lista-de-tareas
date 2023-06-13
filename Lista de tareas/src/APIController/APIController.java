@@ -11,11 +11,24 @@ import java.net.URL;
 import java.util.Scanner;
 
 /**
- *
- * @author sofia
+ * <h1>Controladora de APIs</h1>
+ * 
+ * @author Sofia Brocardo
  */
 public class APIController 
 {
+    /**
+     * <h1>Obtener Informacion</h1>
+     * 
+     * @param urlAPI | URL de la API 
+     * 
+     * @return String | con la informacion del JSON
+     * 
+     * @throws MalformedURLException | error con la URL enviada
+     * @throws IOException | error al extraer datos
+     * 
+     * @author Sofia Brocardo
+     */
     public static String getInfo(String urlAPI) throws MalformedURLException, IOException
     {
         String info = "";
