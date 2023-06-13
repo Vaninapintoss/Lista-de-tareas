@@ -10,6 +10,10 @@ package user.exceptions;
  */
 public class UserNotFoundException extends Exception{
 
+    /**
+     * <h1>Excepcion de Usuario no encontrado</h1>
+     * @param message 
+     */
     public UserNotFoundException(String message) {
         super(message);
     }
