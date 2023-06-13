@@ -10,6 +10,10 @@ package user.exceptions;
  */
 public class UserAlreadyExistException extends Exception{
 
+    /**
+     * <h1>Excepcion de Usuario ya existente</h1>
+     * @param message 
+     */
     public UserAlreadyExistException(String message) {
         super(message);
     }
