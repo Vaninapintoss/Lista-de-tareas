@@ -10,6 +10,10 @@ package user.exceptions;
  */
 public class EmptyPasswordException extends Exception{
 
+    /**
+     * <h1>Excepcion de Contraseña Vacia</h1>
+     * @param message 
+     */
     public EmptyPasswordException(String message) {
         super(message);
     }
