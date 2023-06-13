@@ -6,10 +6,14 @@ package location.Exceptions;
 
 /**
  *
- * @author sofia
+ * @author Sofia Brocardo
  */
 public class InvalidLocationException extends Exception{
 
+    /**
+     * <h1>Excepcion de Localizacion invalida</h1>
+     * @param message 
+     */
     public InvalidLocationException (String message) {
         super(message);
     }
