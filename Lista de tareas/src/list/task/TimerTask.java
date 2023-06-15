@@ -1,48 +1,46 @@
-package list.task;
-
-
-import java.util.Date;
-import java.util.Objects;
-import java.util.Timer;
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package list.task;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 /**
  *
- * @author soyva
+ * @author vanim
  */
-public class TimerTask extends Task{
-    Timer duration; //?
-    Date date;
+public class TimerTask extends Task{ 
+    private Duration duration;
+    private LocalDateTime startDateTime; 
 
-    public TimerTask(Timer duration, Date date, String name) {
+    public TimerTask(String name) {
         super(name);
-        this.duration = duration; //se inicia en 0
-        this.date = date; //recibe la local
+        this.duration = null;
+        this.startDateTime = null;
     }
-
-    public Timer getDuration() {
+      
+    public void startTimer(){
+        startDateTime = LocalDateTime.now();
+    }
+    
+    public void finishTimer(){
+        setDuration(Duration.between(startDateTime, LocalDateTime.now()));
+    }
+    
+    public Duration getDuration(){
         return duration;
     }
-
-    public void setDuration(Timer duration) {
-        this.duration = duration;
+    
+    public void setDuration(Duration duration){
+        this.duration = duration; 
     }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    
+    public LocalDateTime getStartDate(){
+        return startDateTime;
+    }    
 
     @Override
     public boolean equals(Object obj) {
@@ -59,12 +57,11 @@ public class TimerTask extends Task{
         if (!Objects.equals(this.duration, other.duration)) {
             return false;
         }
-        return Objects.equals(this.date, other.date);
+        return name.equals(other.name) && (startDateTime.compareTo(other.startDateTime)==0);
     }
 
     @Override
     public String toString() {
-        return super.getName() + duration + date; 
-        
+        return name + " - " + duration + " - " + startDateTime;
     }
 }

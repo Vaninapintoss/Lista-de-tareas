@@ -2,6 +2,7 @@ package list.task;
 
 
 import java.util.Objects;
+import list.task.exceptions.EmptyNameTaskException;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -21,9 +22,25 @@ public abstract class Task {
 
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) { //se puede setear el nombre?
-        this.name = name;
     } 
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    
+    public boolean validName(String name) throws EmptyNameTaskException{
+        boolean valid = false;
+        
+        if(name.isEmpty()){
+            throw new EmptyNameTaskException("ingrese un nombre"); 
+        }else{
+            valid = true;
+        }
+        
+        return valid;
+    }
+    
+    public boolean validThisName()throws EmptyNameTaskException{
+        return validName(name);
+    }
 }

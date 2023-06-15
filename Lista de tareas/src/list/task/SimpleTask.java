@@ -14,25 +14,22 @@ public class SimpleTask extends Task{
 
     public SimpleTask(String name) {
         super(name);
-        //la tarea se crea con el estado TODO por defecto
         this.status = Status.TODO;
     }
 
     public Status getStatus() {
         return status;
     }
-
+   
     public void setStatus(Status status) {
         this.status = status;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     } 
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -46,11 +43,11 @@ public class SimpleTask extends Task{
             return false;
         }
         final SimpleTask other = (SimpleTask) obj;
-        return this.status == other.status;
-    }   
-
+        return name.equals(other.name);
+    }
+    
     @Override
     public String toString() {
-        return super.getName() + status;
+        return name + " - " + status;
     }
 }
