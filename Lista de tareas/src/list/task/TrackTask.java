@@ -12,11 +12,11 @@ import java.util.Objects;
  *
  * @author vanim
  */
-public class TimerTask extends Task{ 
+public class TrackTask extends Task{ 
     private Duration duration;
     private LocalDateTime startDateTime; 
 
-    public TimerTask(String name) {
+    public TrackTask(String name) {
         super(name);
         this.duration = null;
         this.startDateTime = null;
@@ -53,7 +53,7 @@ public class TimerTask extends Task{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final TimerTask other = (TimerTask) obj;
+        final TrackTask other = (TrackTask) obj;
         if (!Objects.equals(this.duration, other.duration)) {
             return false;
         }
