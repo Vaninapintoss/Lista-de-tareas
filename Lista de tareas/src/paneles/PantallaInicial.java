@@ -27,21 +27,105 @@ public class PantallaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        FondoPantallaInicial = new javax.swing.JPanel();
+        contenedorLogin = new javax.swing.JPanel();
+        bottonLogin = new javax.swing.JButton();
+        bottonSignup = new javax.swing.JButton();
+        imagenBugGato = new javax.swing.JLabel();
+        imagenTitulo = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(700, 500));
+
+        FondoPantallaInicial.setBackground(new java.awt.Color(195, 225, 203));
+
+        contenedorLogin.setPreferredSize(new java.awt.Dimension(700, 307));
+
+        javax.swing.GroupLayout contenedorLoginLayout = new javax.swing.GroupLayout(contenedorLogin);
+        contenedorLogin.setLayout(contenedorLoginLayout);
+        contenedorLoginLayout.setHorizontalGroup(
+            contenedorLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 700, Short.MAX_VALUE)
+        );
+        contenedorLoginLayout.setVerticalGroup(
+            contenedorLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 307, Short.MAX_VALUE)
+        );
+
+        bottonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonLogin.png"))); // NOI18N
+        bottonLogin.setBorderPainted(false);
+        bottonLogin.setContentAreaFilled(false);
+        bottonLogin.setPreferredSize(new java.awt.Dimension(140, 30));
+        bottonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bottonLoginActionPerformed(evt);
+            }
+        });
+
+        bottonSignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonSignUp.png"))); // NOI18N
+        bottonSignup.setBorderPainted(false);
+        bottonSignup.setContentAreaFilled(false);
+        bottonSignup.setPreferredSize(new java.awt.Dimension(140, 30));
+        bottonSignup.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonSignUpMouseOver.png"))); // NOI18N
+
+        imagenBugGato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BugTheCat.png"))); // NOI18N
+        imagenBugGato.setPreferredSize(new java.awt.Dimension(82, 64));
+
+        imagenTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/TituloSignUp.png"))); // NOI18N
+        imagenTitulo.setPreferredSize(new java.awt.Dimension(244, 21));
+
+        javax.swing.GroupLayout FondoPantallaInicialLayout = new javax.swing.GroupLayout(FondoPantallaInicial);
+        FondoPantallaInicial.setLayout(FondoPantallaInicialLayout);
+        FondoPantallaInicialLayout.setHorizontalGroup(
+            FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
+                .addComponent(contenedorLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
+                .addGroup(FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(imagenTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
+                        .addComponent(bottonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(bottonSignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(imagenBugGato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
+        );
+        FondoPantallaInicialLayout.setVerticalGroup(
+            FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoPantallaInicialLayout.createSequentialGroup()
+                .addGroup(FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoPantallaInicialLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imagenBugGato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(imagenTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addGroup(FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(bottonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(bottonSignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(contenedorLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(FondoPantallaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(FondoPantallaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bottonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonLoginActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bottonLoginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +163,11 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel FondoPantallaInicial;
+    private javax.swing.JButton bottonLogin;
+    private javax.swing.JButton bottonSignup;
+    private javax.swing.JPanel contenedorLogin;
+    private javax.swing.JLabel imagenBugGato;
+    private javax.swing.JLabel imagenTitulo;
     // End of variables declaration//GEN-END:variables
 }
