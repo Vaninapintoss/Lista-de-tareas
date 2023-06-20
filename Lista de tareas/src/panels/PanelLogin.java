@@ -30,6 +30,7 @@ public class PanelLogin extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         BotonLogin = new javax.swing.JButton();
         BotonSignUp = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -38,28 +39,42 @@ public class PanelLogin extends javax.swing.JPanel {
         jPanel2.setBackground(new java.awt.Color(195, 225, 203));
         jPanel2.setPreferredSize(new java.awt.Dimension(700, 193));
 
-        BotonLogin.setText("jButton1");
+        BotonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonLogin.png"))); // NOI18N
+        BotonLogin.setBorderPainted(false);
+        BotonLogin.setContentAreaFilled(false);
         BotonLogin.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BotonLogin.setPreferredSize(new java.awt.Dimension(140, 30));
 
-        BotonSignUp.setText("jButton1");
+        BotonSignUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonSignUp.png"))); // NOI18N
+        BotonSignUp.setBorderPainted(false);
+        BotonSignUp.setContentAreaFilled(false);
+        BotonSignUp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         BotonSignUp.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BotonSignUp.setPreferredSize(new java.awt.Dimension(140, 30));
+        BotonSignUp.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonSignUpMouseOver.png"))); // NOI18N
+
+        Titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/TituloSignUp.png"))); // NOI18N
+        Titulo.setPreferredSize(new java.awt.Dimension(244, 21));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(BotonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(BotonSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(BotonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(BotonSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 420, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 163, Short.MAX_VALUE)
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addComponent(Titulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotonSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -83,6 +98,7 @@ public class PanelLogin extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonLogin;
     private javax.swing.JButton BotonSignUp;
+    private javax.swing.JLabel Titulo;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
