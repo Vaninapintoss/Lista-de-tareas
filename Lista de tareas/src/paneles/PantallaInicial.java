@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import user.UsersSystem;
 import visualElements.ButtonImage;
 import visualElements.VisualLoginSignupPage;
 
@@ -172,11 +173,18 @@ public class PantallaInicial extends javax.swing.JFrame {
     //botones de signUp y logIn
     public static VisualLoginSignupPage visualButtons;
     
+    //usuarios
+    public static UsersSystem sistemaUsuarios;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) 
     {
+        //creo y cargo el sistema de usuarios
+        sistemaUsuarios = new UsersSystem();
+        sistemaUsuarios.readUsersInFile();//leo los usuarios del archivo
+        
         //creo los paneles
         login = new LoginPanel();
         signup = new SignupPanel();

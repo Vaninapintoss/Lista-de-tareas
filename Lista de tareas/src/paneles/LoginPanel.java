@@ -4,6 +4,10 @@
  */
 package paneles;
 
+import static paneles.PantallaInicial.sistemaUsuarios;
+import user.exceptions.IncorrectPasswordException;
+import user.exceptions.UserNotFoundException;
+
 /**
  *
  * @author sofia
@@ -26,35 +30,36 @@ public class LoginPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        text_email = new javax.swing.JTextField();
+        text_password = new javax.swing.JPasswordField();
         infoUsuarioEmail = new javax.swing.JLabel();
         imagenFondoEmail = new javax.swing.JLabel();
         infoUsuarioPassword = new javax.swing.JLabel();
         imagenFondoContraseña = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ButtonLogin = new javax.swing.JButton();
+        errorText_login = new javax.swing.JLabel();
+        errorText_email = new javax.swing.JLabel();
+        errorText_password = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 128, 97));
         setMaximumSize(new java.awt.Dimension(700, 307));
         setMinimumSize(new java.awt.Dimension(700, 307));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setBackground(new java.awt.Color(195, 225, 203));
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setText("ejemplo@mail.com");
-        jTextField1.setBorder(null);
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        text_email.setBackground(new java.awt.Color(195, 225, 203));
+        text_email.setForeground(new java.awt.Color(102, 102, 102));
+        text_email.setBorder(null);
+        text_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                text_emailActionPerformed(evt);
             }
         });
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 350, 30));
+        add(text_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 350, 30));
 
-        jPasswordField1.setBackground(new java.awt.Color(195, 225, 203));
-        jPasswordField1.setForeground(new java.awt.Color(102, 102, 102));
-        jPasswordField1.setText("jPasswordField1");
-        jPasswordField1.setBorder(null);
-        add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 350, 30));
+        text_password.setBackground(new java.awt.Color(195, 225, 203));
+        text_password.setForeground(new java.awt.Color(102, 102, 102));
+        text_password.setBorder(null);
+        add(text_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 350, 30));
 
         infoUsuarioEmail.setBackground(new java.awt.Color(195, 225, 203));
         infoUsuarioEmail.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -77,28 +82,93 @@ public class LoginPanel extends javax.swing.JPanel {
         imagenFondoContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
         add(imagenFondoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/LogIn.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setMaximumSize(new java.awt.Dimension(110, 40));
-        jButton1.setMinimumSize(new java.awt.Dimension(110, 40));
-        jButton1.setPreferredSize(new java.awt.Dimension(110, 40));
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/LogInMouseOver.png"))); // NOI18N
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
+        ButtonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/LogIn.png"))); // NOI18N
+        ButtonLogin.setBorderPainted(false);
+        ButtonLogin.setContentAreaFilled(false);
+        ButtonLogin.setMaximumSize(new java.awt.Dimension(110, 40));
+        ButtonLogin.setMinimumSize(new java.awt.Dimension(110, 40));
+        ButtonLogin.setPreferredSize(new java.awt.Dimension(110, 40));
+        ButtonLogin.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/LogInMouseOver.png"))); // NOI18N
+        ButtonLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonLoginActionPerformed(evt);
+            }
+        });
+        add(ButtonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
+
+        errorText_login.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        errorText_login.setForeground(new java.awt.Color(255, 153, 153));
+        errorText_login.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        errorText_login.setAutoscrolls(true);
+        errorText_login.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        add(errorText_login, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 310, 20));
+
+        errorText_email.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        errorText_email.setForeground(new java.awt.Color(255, 153, 153));
+        errorText_email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        errorText_email.setAutoscrolls(true);
+        errorText_email.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        add(errorText_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 140, 20));
+
+        errorText_password.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        errorText_password.setForeground(new java.awt.Color(255, 153, 153));
+        errorText_password.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        errorText_password.setAutoscrolls(true);
+        errorText_password.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        add(errorText_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 140, 20));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void text_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_emailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        
+    }//GEN-LAST:event_text_emailActionPerformed
+
+    private void ButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLoginActionPerformed
+        // Se loguea un usuario
+        //verificar que el usuario existe
+        try
+        {
+            String email = text_email.getText();
+            String password = text_password.getText();
+            errorText_email.setText("");
+            errorText_password.setText("");
+            errorText_login.setText("");
+            
+            
+            if(email.isEmpty())
+            {
+                errorText_email.setText("Ingrese un email");                
+            }
+            else if(password.isEmpty())
+            {
+                errorText_password.setText("Ingrese una contraseña");  
+            }
+            else
+            {
+                sistemaUsuarios.login(email, password);
+            }
+        }
+        catch(UserNotFoundException ex)
+        {
+            errorText_login.setText(ex.getMessage());
+        }
+        catch(IncorrectPasswordException ex)
+        {
+            errorText_login.setText(ex.getMessage());
+        }
+    }//GEN-LAST:event_ButtonLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonLogin;
+    private javax.swing.JLabel errorText_email;
+    private javax.swing.JLabel errorText_login;
+    private javax.swing.JLabel errorText_password;
     private javax.swing.JLabel imagenFondoContraseña;
     private javax.swing.JLabel imagenFondoEmail;
     private javax.swing.JLabel infoUsuarioEmail;
     private javax.swing.JLabel infoUsuarioPassword;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField text_email;
+    private javax.swing.JPasswordField text_password;
     // End of variables declaration//GEN-END:variables
 }

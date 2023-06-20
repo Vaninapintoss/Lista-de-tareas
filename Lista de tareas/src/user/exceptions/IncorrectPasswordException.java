@@ -15,6 +15,6 @@ public class IncorrectPasswordException extends Exception{
      * @param message 
      */
     public IncorrectPasswordException(String message) {
-        super("Error: " + message);
+        super(message);
     }
 }
