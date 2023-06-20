@@ -10,18 +10,21 @@ import list.task.exceptions.EmptyNameTaskException;
 /**
  * <h1>Clase Task</h1>
  * 
- * Clase abstracta padre de los tipos de tareas como SimpleTask, DateTask y TrackTask
+ * Clase abstracta padre de los tipos de tareas como SimpleTask, DateTask y TrackTask. 
+ * Guarda la informacion del nombre de la tarea
  * 
  * @author Vanina Pintos
  */
-
 public abstract class Task {
     String name;
 
     /**
      * <h1>Constructor de la clase Task</h1>
-     *  
-     * @param name - nombre de la tarea
+     * 
+     * Unico constructor de la clase Task
+     * Debe recibir un nombre
+     * 
+     * @param name - validar antes de pasar por parametro
      * 
      * @see User#validName() 
      * @see User#validThisName()
@@ -31,17 +34,10 @@ public abstract class Task {
     public Task(String name) {
         this.name = name;
     }
-
-    public String getName() {
-        return name;
-    } 
-    
-    public void setName(String name){
-        this.name = name;
-    }
     
     /**
      * <h1>Validar nombre del objeto</h1>
+     * 
      * validThisName() valida el nombre actual del objeto Task
      * (debe no estar vacia)
      * 
@@ -51,13 +47,13 @@ public abstract class Task {
      * 
      * @author Vanina Pintos
      */
-    
     public boolean validThisName()throws EmptyNameTaskException{
         return validName(name);
     }
     
     /**
-     * <h1>Validar nombre</h1>
+     * <h1>Validar nombre</h1> 
+     * 
      * validName(String name) valida si el String pasado por parametro 
      * es un nombre valido (no debe estar vacio)
      * 
@@ -69,7 +65,6 @@ public abstract class Task {
      * 
      * @author Vanina Pintos
      */
-    
     public boolean validName(String name) throws EmptyNameTaskException{
         boolean valid = false;
         
@@ -81,4 +76,39 @@ public abstract class Task {
         
         return valid;
     }
+    
+    /**
+     * <h1>Obtener nombre</h1>
+     * 
+     * @return String | nombre actual del objeto
+     * 
+     * @author Vanina Pintos
+     */
+    public String getName() {
+        return name;
+    } 
+    
+    /**
+     * <h1>Cambiar nombre</h1>
+     * 
+     * setName(String name) recibe por parametros el nuevo nombre para asignarselo 
+     * 
+     * @param name | nombre nuevo 
+     * 
+     * @return boolean | true si el nuevo nombre es valido y es posible cambiarlo
+     * 
+     * @throws EmptyNameTaskException | si el nuevo nombre contiene un String vacio ""
+
+     * @author Vanina Pintos
+     */
+    public boolean setName(String name)throws EmptyNameTaskException{
+        boolean changed = false;
+        
+        if(validName(name)){
+            this.name = name;
+            changed = true;
+        }
+        
+        return changed;
+    }    
 }
