@@ -69,10 +69,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         bottonSignup.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonSignUpMouseOver.png"))); // NOI18N
 
         imagenBugGato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BugTheCat.png"))); // NOI18N
-        imagenBugGato.setPreferredSize(new java.awt.Dimension(82, 64));
 
         imagenTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/TituloSignUp.png"))); // NOI18N
-        imagenTitulo.setPreferredSize(new java.awt.Dimension(244, 21));
 
         javax.swing.GroupLayout FondoPantallaInicialLayout = new javax.swing.GroupLayout(FondoPantallaInicial);
         FondoPantallaInicial.setLayout(FondoPantallaInicialLayout);
@@ -83,13 +81,13 @@ public class PantallaInicial extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
                 .addGroup(FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(imagenTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(imagenTitulo)
                     .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
                         .addComponent(bottonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(bottonSignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imagenBugGato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(imagenBugGato)
                 .addGap(83, 83, 83))
         );
         FondoPantallaInicialLayout.setVerticalGroup(
@@ -98,10 +96,10 @@ public class PantallaInicial extends javax.swing.JFrame {
                 .addGroup(FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoPantallaInicialLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(imagenBugGato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(imagenBugGato))
                     .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
                         .addGap(69, 69, 69)
-                        .addComponent(imagenTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(imagenTitulo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                         .addGroup(FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(bottonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,7 +115,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FondoPantallaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
+            .addComponent(FondoPantallaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
