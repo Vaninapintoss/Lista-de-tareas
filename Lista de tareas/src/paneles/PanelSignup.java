@@ -8,12 +8,12 @@ package paneles;
  *
  * @author sofia
  */
-public class PanelLogin extends javax.swing.JPanel {
+public class PanelSignup extends javax.swing.JPanel {
 
     /**
-     * Creates new form panelLogin
+     * Creates new form panelSignup
      */
-    public PanelLogin() {
+    public PanelSignup() {
         initComponents();
     }
 
@@ -33,23 +33,23 @@ public class PanelLogin extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(700, 307));
         setPreferredSize(new java.awt.Dimension(700, 307));
 
-        jLabel1.setText("LOGIN");
+        jLabel1.setText("Signup");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(317, 317, 317)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(338, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addGap(323, 323, 323))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(128, 128, 128)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(148, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addGap(143, 143, 143))
         );
     }// </editor-fold>//GEN-END:initComponents
 

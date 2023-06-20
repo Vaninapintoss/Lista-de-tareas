@@ -1,5 +1,13 @@
 package paneles;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import visualElements.ButtonImage;
+import visualElements.VisualLoginSignupPage;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,7 +23,13 @@ public class PantallaInicial extends javax.swing.JFrame {
      * Creates new form PantallaInicial
      */
     public PantallaInicial() {
+   
         initComponents();
+        //cargo al principio la pantalla de LogIn
+        contentPantalla(login);
+        
+        loginOn = true;//esta el login en la pantalla
+        signupOn = false;//no esta el signup en la pantalla
     }
 
     /**
@@ -28,107 +42,154 @@ public class PantallaInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         FondoPantallaInicial = new javax.swing.JPanel();
-        contenedorLogin = new javax.swing.JPanel();
-        bottonLogin = new javax.swing.JButton();
-        bottonSignup = new javax.swing.JButton();
+        content = new javax.swing.JPanel();
+        buttonLogin = new javax.swing.JButton();
+        buttonSignup = new javax.swing.JButton();
         imagenBugGato = new javax.swing.JLabel();
         imagenTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(700, 500));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FondoPantallaInicial.setBackground(new java.awt.Color(195, 225, 203));
+        FondoPantallaInicial.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        contenedorLogin.setPreferredSize(new java.awt.Dimension(700, 307));
+        content.setPreferredSize(new java.awt.Dimension(700, 307));
 
-        javax.swing.GroupLayout contenedorLoginLayout = new javax.swing.GroupLayout(contenedorLogin);
-        contenedorLogin.setLayout(contenedorLoginLayout);
-        contenedorLoginLayout.setHorizontalGroup(
-            contenedorLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
+        content.setLayout(contentLayout);
+        contentLayout.setHorizontalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 700, Short.MAX_VALUE)
         );
-        contenedorLoginLayout.setVerticalGroup(
-            contenedorLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        contentLayout.setVerticalGroup(
+            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 307, Short.MAX_VALUE)
         );
 
-        bottonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonLogin.png"))); // NOI18N
-        bottonLogin.setBorderPainted(false);
-        bottonLogin.setContentAreaFilled(false);
-        bottonLogin.setPreferredSize(new java.awt.Dimension(140, 30));
-        bottonLogin.addActionListener(new java.awt.event.ActionListener() {
+        FondoPantallaInicial.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
+
+        buttonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonLogin.png"))); // NOI18N
+        buttonLogin.setBorderPainted(false);
+        buttonLogin.setContentAreaFilled(false);
+        buttonLogin.setPreferredSize(new java.awt.Dimension(140, 30));
+        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bottonLoginActionPerformed(evt);
+                buttonLoginActionPerformed(evt);
             }
         });
+        FondoPantallaInicial.add(buttonLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, -1, -1));
 
-        bottonSignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonSignUp.png"))); // NOI18N
-        bottonSignup.setBorderPainted(false);
-        bottonSignup.setContentAreaFilled(false);
-        bottonSignup.setPreferredSize(new java.awt.Dimension(140, 30));
-        bottonSignup.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonSignUpMouseOver.png"))); // NOI18N
+        buttonSignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonSignUpOf.png"))); // NOI18N
+        buttonSignup.setBorderPainted(false);
+        buttonSignup.setContentAreaFilled(false);
+        buttonSignup.setPreferredSize(new java.awt.Dimension(140, 30));
+        buttonSignup.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonSignUpMouseOver.png"))); // NOI18N
+        buttonSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSignupActionPerformed(evt);
+            }
+        });
+        FondoPantallaInicial.add(buttonSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, -1, -1));
 
         imagenBugGato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BugTheCat.png"))); // NOI18N
+        FondoPantallaInicial.add(imagenBugGato, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 126, -1, -1));
 
         imagenTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/TituloSignUp.png"))); // NOI18N
+        FondoPantallaInicial.add(imagenTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 69, -1, -1));
 
-        javax.swing.GroupLayout FondoPantallaInicialLayout = new javax.swing.GroupLayout(FondoPantallaInicial);
-        FondoPantallaInicial.setLayout(FondoPantallaInicialLayout);
-        FondoPantallaInicialLayout.setHorizontalGroup(
-            FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
-                .addComponent(contenedorLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
-                .addGroup(FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(imagenTitulo)
-                    .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
-                        .addComponent(bottonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(bottonSignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(imagenBugGato)
-                .addGap(83, 83, 83))
-        );
-        FondoPantallaInicialLayout.setVerticalGroup(
-            FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoPantallaInicialLayout.createSequentialGroup()
-                .addGroup(FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoPantallaInicialLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(imagenBugGato))
-                    .addGroup(FondoPantallaInicialLayout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(imagenTitulo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                        .addGroup(FondoPantallaInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bottonLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(bottonSignup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addComponent(contenedorLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FondoPantallaInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(FondoPantallaInicial, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(FondoPantallaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bottonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonLoginActionPerformed
+    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bottonLoginActionPerformed
+        if(signupOn)
+        {
+            //cambio el contenido por el login
+            contentPantalla(login);
+            
+            //cambio el boton de login
+            changeJButton(buttonSignup, visualButtons.getSignupOf());
+            
+            //cambio el boton de signup
+            changeJButton(buttonLogin, visualButtons.getLoginOn());
+        
+            loginOn = true;//esta el login en la pantalla
+            signupOn = false;//no esta el signup en la pantalla
+        }
+    }//GEN-LAST:event_buttonLoginActionPerformed
 
+    private void buttonSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignupActionPerformed
+        // TODO add your handling code here:
+        //si estamos en la pantalla de logIn se puede pasar a la de signup
+        if(loginOn)
+        {
+            //cambio el contenido por el signup
+            contentPantalla(signup);
+            
+            //cambio el boton de login
+            changeJButton(buttonSignup, visualButtons.getSignupOn());
+            
+            //cambio el boton de signup
+            changeJButton(buttonLogin, visualButtons.getLoginOf());
+            
+            loginOn = false;//esta el login en la pantalla
+            signupOn = true;//no esta el signup en la pantalla
+        }
+             
+    }//GEN-LAST:event_buttonSignupActionPerformed
+
+    private void changeJButton(JButton boton, ButtonImage imagenBoton)
+    {
+        String icon = imagenBoton.getIcon();
+        String pressedIcon = imagenBoton.getPressedIcon();
+        String rolloverIcon = imagenBoton.getRolloverIcon();
+        
+        //cambio las caracteristicas del boton enviado por parametro
+        boton.setIcon(new ImageIcon(getClass().getResource(icon)));
+        boton.setPressedIcon(new ImageIcon(getClass().getResource(pressedIcon)));
+        boton.setRolloverIcon(new ImageIcon(getClass().getResource(rolloverIcon)));
+    }
+    
+    private void contentPantalla(Component panel)
+    {
+        content.removeAll();
+        content.add(panel,BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }
+    
+    public static PanelLogin login;
+    public static PanelSignup signup;
+    //para saber cuando se activan los botones de login y signup
+    public static boolean loginOn;
+    public static boolean signupOn;
+    //botones de signUp y logIn
+    public static VisualLoginSignupPage visualButtons;
+    
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[]) 
+    {
+        //creo los paneles
+        login = new PanelLogin();
+        signup = new PanelSignup();
+        
+        //creo los elementos visuales de los botones
+        visualButtons = new VisualLoginSignupPage();
+        
+        //confirmo el tamaño del contenedor en los paneles
+        login.setSize(700, 307);
+        signup.setSize(700, 307);
+        
+        //posicion con respecto al contenedor
+        login.setLocation(0, 0);
+        signup.setLocation(0, 0);
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -151,7 +212,7 @@ public class PantallaInicial extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PantallaInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -162,9 +223,9 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoPantallaInicial;
-    private javax.swing.JButton bottonLogin;
-    private javax.swing.JButton bottonSignup;
-    private javax.swing.JPanel contenedorLogin;
+    private javax.swing.JButton buttonLogin;
+    private javax.swing.JButton buttonSignup;
+    private javax.swing.JPanel content;
     private javax.swing.JLabel imagenBugGato;
     private javax.swing.JLabel imagenTitulo;
     // End of variables declaration//GEN-END:variables
