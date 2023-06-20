@@ -162,7 +162,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         content.repaint();
     }
     
-    public static PanelLogin login;
+    public static LoginPanel login;
     public static PanelSignup signup;
     //para saber cuando se activan los botones de login y signup
     public static boolean loginOn;
@@ -176,7 +176,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     public static void main(String args[]) 
     {
         //creo los paneles
-        login = new PanelLogin();
+        login = new LoginPanel();
         signup = new PanelSignup();
         
         //creo los elementos visuales de los botones

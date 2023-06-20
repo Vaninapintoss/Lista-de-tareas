@@ -8,12 +8,12 @@ package paneles;
  *
  * @author sofia
  */
-public class PanelLogin extends javax.swing.JPanel {
+public class LoginPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form PanelLogin
+     * Creates new form LoginPanel
      */
-    public PanelLogin() {
+    public LoginPanel() {
         initComponents();
     }
 
@@ -31,25 +31,24 @@ public class PanelLogin extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 128, 97));
         setMaximumSize(new java.awt.Dimension(700, 307));
         setMinimumSize(new java.awt.Dimension(700, 307));
-        setVerifyInputWhenFocusTarget(false);
 
-        jLabel1.setText("Login");
+        jLabel1.setText("login");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(323, 323, 323)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(338, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addGap(335, 335, 335))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(141, 141, 141)
+                .addGap(137, 137, 137)
                 .addComponent(jLabel1)
-                .addContainerGap(150, Short.MAX_VALUE))
+                .addContainerGap(154, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
