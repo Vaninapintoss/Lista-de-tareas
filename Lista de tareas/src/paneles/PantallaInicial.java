@@ -49,6 +49,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         imagenTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -65,10 +67,10 @@ public class PantallaInicial extends javax.swing.JFrame {
         );
         contentLayout.setVerticalGroup(
             contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 307, Short.MAX_VALUE)
+            .addGap(0, 310, Short.MAX_VALUE)
         );
 
-        FondoPantallaInicial.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, -1));
+        FondoPantallaInicial.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, -1, 310));
 
         buttonLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/BotonLogin.png"))); // NOI18N
         buttonLogin.setBorderPainted(false);
@@ -163,7 +165,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
     
     public static LoginPanel login;
-    public static PanelSignup signup;
+    public static SignupPanel signup;
     //para saber cuando se activan los botones de login y signup
     public static boolean loginOn;
     public static boolean signupOn;
@@ -177,7 +179,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     {
         //creo los paneles
         login = new LoginPanel();
-        signup = new PanelSignup();
+        signup = new SignupPanel();
         
         //creo los elementos visuales de los botones
         visualButtons = new VisualLoginSignupPage();

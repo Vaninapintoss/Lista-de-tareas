@@ -8,12 +8,12 @@ package paneles;
  *
  * @author sofia
  */
-public class PanelSignup extends javax.swing.JPanel {
+public class SignupPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form panelSignup
      */
-    public PanelSignup() {
+    public SignupPanel() {
         initComponents();
     }
 
