@@ -5,6 +5,9 @@
 package list;
 
 import list.exceptions.ElementAlreadyExistException;
+import list.exceptions.NameTaskNotFoundException;
+import list.exceptions.TaskUntilNotCompletedException;
+import list.task.exceptions.EmptyNameTaskException;
 
 /**
  *
@@ -13,8 +16,8 @@ import list.exceptions.ElementAlreadyExistException;
 public interface IListActions <E>{
     boolean addElement(E e) throws ElementAlreadyExistException;
     String showElements();
-    boolean checkElement(String name);
-    boolean deleteElement(String name);
-    boolean editNameElement(String name,String newName);
+    boolean checkElement(String name) throws EmptyNameTaskException, NameTaskNotFoundException;
+    boolean deleteElement(String name) throws EmptyNameTaskException, NameTaskNotFoundException, TaskUntilNotCompletedException;
+    boolean editNameElement(String name,String newName) throws EmptyNameTaskException, NameTaskNotFoundException;
     E searchElement(String name);
 }

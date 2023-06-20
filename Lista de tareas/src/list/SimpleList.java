@@ -2,26 +2,55 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+
 package list;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import list.exceptions.ElementAlreadyExistException;
+import list.exceptions.NameTaskNotFoundException;
+import list.exceptions.TaskUntilNotCompletedException;
 import list.task.SimpleTask;
 import list.task.Status;
+import list.task.exceptions.EmptyNameTaskException;
 
 /**
- *
- * @author vanim
+ * <h1>Clase SimpleList</h1>
+ * 
+ * Guarda tareas de tipo Simple dentro un HashSet
+ * Se extiende de la clase List e implementa la interaz IListActions
+ * 
+ * @author Vanina Pintos 
  */
 public class SimpleList extends List implements IListActions<SimpleTask>{
     private HashSet <SimpleTask> simpleList;   
 
+    /**
+     * <h1>Constructor de la clase SimpleList</h1>
+     * 
+     * Unico constructor de la clase SimpleList
+     * Crea un HashSet para almacenar las tareas vacio
+     * 
+     * @author Vanina Pintos
+     */
     public SimpleList(String category) {
         super(category);
         simpleList = new HashSet<>();
     }  
 
+    /**
+     * <h1>Agregar una tarea</h1>
+     * 
+     * addElement(SimpleTask e) recibe una tarea y la agrega al HashSet
+     * 
+     * @param e | tarea a agregar
+     * 
+     * @return boolean | true si lo agrego correctamente a el HashSet
+     * 
+     * @throws ElementAlreadyExistException | si la tarea ya existe en el HashSet
+     * 
+     * @author Vanina Pintos
+     */
     @Override
     public boolean addElement(SimpleTask e) throws ElementAlreadyExistException{
         
@@ -37,6 +66,15 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
         return added;
     }
 
+    /**
+     * <h1>Mostrar tareas</h1>
+     * 
+     * String showElements() devuelve las tareas almacenadas en el HashSet en formato String
+     * 
+     * @return String | tareas almacenadas en el HashSet en formato String
+     * 
+     * @author Vanina Pintos
+     */
     @Override
     public String showElements() {
         String aux ="";
@@ -47,37 +85,107 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
         return aux;
     }
 
+    /**
+     * <h1>Marcar como completada una tarea</h1>
+     * 
+     * checkElement(String name) recibe el nombre de una tarea de cambia 
+     * su estado de TODO a COMPLETED. Primero verifica que el nombre que se haya
+     * enciado no sea un String vacio y luego verifica la existencia de la tarea
+     * 
+     * @param name | nombre de la tarea a marcar como completada
+     * 
+     * @return boolean | si la tarea pudo marcarse como completada con exito
+     * 
+     * @throws EmptyNameTaskException | si el nombre enviado es un String vacio
+     * @throws NameTaskNotFoundException | si la tarea no esta dentro del HashSet
+     * 
+     * @author Vanina Pintos
+     */
     @Override
-    public boolean checkElement(String name) { 
+    public boolean checkElement(String name) throws EmptyNameTaskException, NameTaskNotFoundException{ 
         
         boolean checked = false;
         
-        SimpleTask found = searchElement(name);
+        SimpleTask st = new SimpleTask(name);
         
-        if(found != null){
-            found.setStatus(Status.COMPLETED);
-            checked = true;
+        if(st.validThisName()){
+            SimpleTask found = searchElement(name);
+            
+            if(found != null){
+                found.setStatus(Status.COMPLETED);
+                checked = true;
+            }else{
+                throw new NameTaskNotFoundException("esa tarea no existe");
+            }
         }
         
+
         return checked;        
     }
 
+    /**
+     * <h1>Eliminar una tarea</h1>
+     * 
+     * deleteElement(String name) recibe el nombre de la tarea a eliminar
+     * verifica que el nombre no sea un string vacio, verifica su existencia
+     * dentro del HashSet y su estado. Solo se puede eliminar la tarea si su 
+     * estado es COMPLETED.
+     * 
+     * @param name | nombre de la tarea a eliminar
+     * 
+     * @return boolean | si la tarea pudo eliminarse con exito
+     * 
+     * @throws EmptyNameTaskException | si el nombre enviado es un String vacio
+     * @throws NameTaskNotFoundException | si la tarea no esta dentro del HashSet
+     * 
+     * @author Vanina Pintos
+     */
     @Override
-    public boolean deleteElement(String name) {
+    public boolean deleteElement(String name) throws EmptyNameTaskException, NameTaskNotFoundException, TaskUntilNotCompletedException{
         boolean deleted = false;
         
-        SimpleTask found = searchElement(name);
+        SimpleTask st = new SimpleTask(name);
         
-        if(found != null){
-            simpleList.remove(found);
-            deleted = true;
+        if(st.validThisName()){
+            
+            SimpleTask found = searchElement(name);
+
+            if(found != null){
+
+                if(found.getStatus()==Status.COMPLETED){
+                    
+                    simpleList.remove(found);
+                    deleted = true;
+                }else{
+                    throw new TaskUntilNotCompletedException("esa tarea no existe");
+                }
+            }else{
+                throw new NameTaskNotFoundException("esa tarea no existe");
+            }
         }
         
         return deleted; 
     }
 
+    /**
+     * <h1>Editar nombre de una tarea</h1>
+     * 
+     * editNameElement(String name,String newName) recibe el nombre de la tarea
+     * a modificar y el nombre nuevo que se le quiere asignar. 
+     * 
+     * @param name | nombre de la tarea a eliminar
+     * @param newName | nombre nuevo a asignar
+     * 
+     * @return boolean | si la tarea se pudo modificar con exito
+     * 
+     * @throws EmptyNameTaskException | si el nombre enviado es un String vacio
+     * @throws NameTaskNotFoundException | si la tarea no esta dentro del HashSet
+     * 
+     * @author Vanina Pintos
+     */
+
     @Override
-    public boolean editNameElement(String name,String newName) { 
+    public boolean editNameElement(String name,String newName) throws EmptyNameTaskException, NameTaskNotFoundException{ 
         boolean edited = false;
         
         SimpleTask found = searchElement(name);
@@ -85,6 +193,8 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
         if(found != null){
             found.setName(name); 
             edited = true;
+        }else{
+            throw new NameTaskNotFoundException("esa tarea no existe");
         }
         
         return edited;
