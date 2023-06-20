@@ -103,4 +103,14 @@ public class DateList extends List implements IListActions<DateTask>{
         
         return found;
     }
+
+    public boolean elementsWereChecked() {
+        for(DateTask st : dateList){
+            if(st.getStatus() == Status.TODO){
+                return false;
+            }
+        }
+        
+        return  true;
+    }
 }

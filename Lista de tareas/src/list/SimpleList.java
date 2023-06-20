@@ -105,4 +105,15 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
         
         return found;
     }
+
+    public boolean elementsWereChecked() {
+        
+        for(SimpleTask st : simpleList){
+            if(st.getStatus() == Status.TODO){
+                return false;
+            }
+        }
+        
+        return  true;
+    }
 }
