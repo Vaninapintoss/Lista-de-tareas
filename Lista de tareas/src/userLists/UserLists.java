@@ -7,7 +7,6 @@ package userLists;
 import java.util.HashMap;
 import java.util.Map;
 import list.DateList;
-import list.List;
 import list.SimpleList;
 import list.TrackList;
 import list.exceptions.EmptyCategoryListException;
@@ -38,9 +37,11 @@ public class UserLists{
         
         if(simpleLists.containsKey(sl.getCategory())){
             throw new CategoryListAlreadyExistException("categoria ya existente.");
+        }else{
+            simpleLists.put(category, sl);
+            added = true;
         }
         
-        simpleLists.put(category, sl);
         return added;
     }
     
@@ -70,20 +71,165 @@ public class UserLists{
         return deleted; 
     }
     
-    public boolean editCategorySimpleList(String category, String newCategory){
+    public boolean editCategorySimpleList(String category, String newCategory)throws EmptyCategoryListException, CategoryListAlreadyExistException{
         boolean edited = false;
         
-        if(simpleLists.containsKey(category)){
-            SimpleList sl = simpleLists.remove(category);
-            sl.setCategory(newCategory);
-            simpleLists.put(newCategory, sl); // Agregar elemento con nueva clave y valor actualizado
-            edited = true;
-        } 
+        SimpleList newsl = new SimpleList(newCategory);
+        
+        newsl.validThisCategory();
+        
+        if(simpleLists.containsKey(newCategory)){
+            
+            throw new CategoryListAlreadyExistException("categoria ya existente.");
+            
+        }else{
+            
+            if(simpleLists.containsKey(category)){
+                SimpleList sl = simpleLists.remove(category);
+                sl.setCategory(newCategory);
+                simpleLists.put(newCategory, sl); 
+                edited = true;
+            }
+        }
         
         return edited;
     }
     
     public SimpleList searchSimpleList(String category){
         return simpleLists.get(category);
+    }
+    
+    //---------------------------------------------------------------------
+    
+    public boolean addDateList(String category) throws EmptyCategoryListException, CategoryListAlreadyExistException{
+        
+        boolean added = false;
+        
+        DateList dl = new DateList(category);
+        
+        dl.validThisCategory();
+        
+        if(dateLists.containsKey(category)){
+            throw new CategoryListAlreadyExistException("categoria ya existente.");
+        }else{
+            dateLists.put(category, dl);
+            added = true;
+        }
+        
+        return added;
+    }
+    
+    public String showDateLists(){
+        String aux = "";
+        
+        for (Map.Entry<String, DateList> entry : dateLists.entrySet()) {
+            aux += entry.getKey();
+        }
+        
+        return aux;
+    }
+    
+    public boolean deleteDateList(String category) throws UnfinishedTasksException{
+        boolean deleted = false; 
+        
+        if (dateLists.containsKey(category)) {
+            
+            DateList dt = searchDateList(category);
+            
+            if(dt.elementsWereChecked()){
+               dateLists.remove(category);
+               deleted = true; 
+            }else{
+                throw new UnfinishedTasksException("la lista tiene tareas sin terminar.");
+            }        
+        } 
+        
+        return deleted; 
+    }
+    
+    public boolean editCategoryDateList(String category, String newCategory)throws EmptyCategoryListException, CategoryListAlreadyExistException{
+        boolean edited = false;
+        
+        DateList newdt = new DateList(newCategory);
+        
+        newdt.validThisCategory();
+        
+        if(dateLists.containsKey(newCategory)){
+            
+            throw new CategoryListAlreadyExistException("categoria ya existente.");
+            
+        }else{
+            
+            if(dateLists.containsKey(category)){
+                DateList dt = dateLists.remove(category);
+                dt.setCategory(newCategory);
+                dateLists.put(newCategory, dt); 
+                edited = true;
+            }
+        }
+        
+        return edited;
+    }
+    
+    public DateList searchDateList(String category){
+        return dateLists.get(category);
+    }
+    
+    //------------------------------------------------------------------------------------------------
+    
+    public boolean addTrackList(String category) throws EmptyCategoryListException, CategoryListAlreadyExistException{
+        
+        boolean added = false;
+        
+        TrackList tl = new TrackList(category);
+        
+        tl.validThisCategory();
+        
+        if(trackLists.containsKey(category)){
+            throw new CategoryListAlreadyExistException("categoria ya existente.");
+        }else{
+            trackLists.put(category, tl);
+            added = true;
+        }
+        
+        return added;
+    }
+    
+    public String showTrackLists(){
+        String aux = "";
+        
+        for (Map.Entry<String, TrackList> entry : trackLists.entrySet()) {
+            aux += entry.getKey();
+        }
+        
+        return aux;
+    }
+    
+    public boolean editCategoryTrackList(String category, String newCategory)throws EmptyCategoryListException, CategoryListAlreadyExistException{
+        boolean edited = false;
+        
+        TrackList newtl = new TrackList(newCategory);
+        
+        newtl.validThisCategory();
+        
+        if(trackLists.containsKey(newCategory)){
+            
+            throw new CategoryListAlreadyExistException("categoria ya existente.");
+            
+        }else{
+            
+            if(trackLists.containsKey(category)){
+                TrackList tl = trackLists.remove(category);
+                tl.setCategory(newCategory);
+                trackLists.put(newCategory, tl); 
+                edited = true;
+            }
+        }
+        
+        return edited;
+    }
+    
+    public TrackList searchTrackList(String category){
+        return trackLists.get(category);
     }
 }
