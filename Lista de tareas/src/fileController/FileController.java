@@ -46,7 +46,7 @@ public class FileController
      *
      * @author Sofia Brocardo
      */
-    public static <V extends Serializable, K> String saveInFile(String fileName, Map<K,V> map)
+    public static String saveUsersInFile(String fileName, Map<String, User> map)
     {
         String saved = "Se guardo correctamente";
         FileOutputStream fileOutputStream = null;

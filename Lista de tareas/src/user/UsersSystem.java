@@ -221,7 +221,7 @@ public class UsersSystem
      */
     public String saveUsersInFile()
     {
-        return FileController.saveInFile("users.dat", users);
+        return FileController.saveUsersInFile("users.dat", users);
     }
     
     /**
