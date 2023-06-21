@@ -26,35 +26,107 @@ public class SignupPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        text_password = new javax.swing.JPasswordField();
+        infoUsuarioEmail = new javax.swing.JLabel();
+        text_email = new javax.swing.JTextField();
+        imagenFondoEmail = new javax.swing.JLabel();
+        infoUsuarioPassword = new javax.swing.JLabel();
+        imagenFondoContraseña = new javax.swing.JLabel();
+        ButtonSignup = new javax.swing.JButton();
+        text_passwordConfirmed = new javax.swing.JPasswordField();
+        imagenFondoContraseña2 = new javax.swing.JLabel();
+        infoUsuarioPassword2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 128, 97));
         setMaximumSize(new java.awt.Dimension(700, 307));
         setMinimumSize(new java.awt.Dimension(700, 307));
         setPreferredSize(new java.awt.Dimension(700, 307));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Signup");
+        text_password.setBackground(new java.awt.Color(195, 225, 203));
+        text_password.setForeground(new java.awt.Color(102, 102, 102));
+        text_password.setBorder(null);
+        add(text_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 350, 30));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(338, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(323, 323, 323))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(143, 143, 143))
-        );
+        infoUsuarioEmail.setBackground(new java.awt.Color(195, 225, 203));
+        infoUsuarioEmail.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        infoUsuarioEmail.setForeground(new java.awt.Color(195, 225, 203));
+        infoUsuarioEmail.setText("Email");
+        add(infoUsuarioEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
+
+        text_email.setBackground(new java.awt.Color(195, 225, 203));
+        text_email.setForeground(new java.awt.Color(102, 102, 102));
+        text_email.setBorder(null);
+        text_email.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_emailActionPerformed(evt);
+            }
+        });
+        add(text_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 350, 30));
+
+        imagenFondoEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
+        add(imagenFondoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
+
+        infoUsuarioPassword.setBackground(new java.awt.Color(195, 225, 203));
+        infoUsuarioPassword.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        infoUsuarioPassword.setForeground(new java.awt.Color(195, 225, 203));
+        infoUsuarioPassword.setText("Contraseña");
+        add(infoUsuarioPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+
+        imagenFondoContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
+        add(imagenFondoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
+
+        ButtonSignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/Signup.png"))); // NOI18N
+        ButtonSignup.setBorderPainted(false);
+        ButtonSignup.setContentAreaFilled(false);
+        ButtonSignup.setMaximumSize(new java.awt.Dimension(110, 40));
+        ButtonSignup.setMinimumSize(new java.awt.Dimension(110, 40));
+        ButtonSignup.setPreferredSize(new java.awt.Dimension(110, 40));
+        ButtonSignup.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/SignupMouseOver.png"))); // NOI18N
+        ButtonSignup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonSignupActionPerformed(evt);
+            }
+        });
+        add(ButtonSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
+
+        text_passwordConfirmed.setBackground(new java.awt.Color(195, 225, 203));
+        text_passwordConfirmed.setForeground(new java.awt.Color(102, 102, 102));
+        text_passwordConfirmed.setBorder(null);
+        add(text_passwordConfirmed, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 350, 30));
+
+        imagenFondoContraseña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
+        add(imagenFondoContraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+
+        infoUsuarioPassword2.setBackground(new java.awt.Color(195, 225, 203));
+        infoUsuarioPassword2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        infoUsuarioPassword2.setForeground(new java.awt.Color(195, 225, 203));
+        infoUsuarioPassword2.setText("Confirme su contraseña");
+        add(infoUsuarioPassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSignupActionPerformed
+        // Se loguea un usuario
+        //verificar que el usuario existe
+        
+    }//GEN-LAST:event_ButtonSignupActionPerformed
+
+    private void text_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_emailActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_text_emailActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton ButtonSignup;
+    private javax.swing.JLabel imagenFondoContraseña;
+    private javax.swing.JLabel imagenFondoContraseña2;
+    private javax.swing.JLabel imagenFondoEmail;
+    private javax.swing.JLabel infoUsuarioEmail;
+    private javax.swing.JLabel infoUsuarioPassword;
+    private javax.swing.JLabel infoUsuarioPassword2;
+    private javax.swing.JTextField text_email;
+    private javax.swing.JPasswordField text_password;
+    private javax.swing.JPasswordField text_passwordConfirmed;
     // End of variables declaration//GEN-END:variables
 }

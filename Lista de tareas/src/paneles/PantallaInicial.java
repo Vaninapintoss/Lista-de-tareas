@@ -239,8 +239,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         visualButtons = new VisualLoginSignupPage();
         
         //confirmo el tamaño del contenedor en los paneles
-        login.setSize(700, 307);
-        signup.setSize(700, 307);
+        login.setSize(700, 310);
+        signup.setSize(700, 310);
         
         //posicion con respecto al contenedor
         login.setLocation(0, 0);
