@@ -17,6 +17,7 @@ public class AppUserLists extends javax.swing.JFrame {
      * Creates new form AppUserLists
      */
     public static User user;
+    
     public AppUserLists() {
         initComponents();
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
@@ -36,9 +37,10 @@ public class AppUserLists extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
+        barraArriba = new javax.swing.JPanel();
         botonCerrar = new javax.swing.JButton();
         botonMinimizar = new javax.swing.JButton();
-        barraArriba = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
 
         jToggleButton1.setText("jToggleButton1");
@@ -49,6 +51,9 @@ public class AppUserLists extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        barraArriba.setBackground(new java.awt.Color(195, 225, 203));
+        barraArriba.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonCerrar.png"))); // NOI18N
         botonCerrar.setBorderPainted(false);
@@ -62,7 +67,7 @@ public class AppUserLists extends javax.swing.JFrame {
                 botonCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, -1));
+        barraArriba.add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, -1));
 
         botonMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonMinimizar.png"))); // NOI18N
         botonMinimizar.setBorderPainted(false);
@@ -76,22 +81,16 @@ public class AppUserLists extends javax.swing.JFrame {
                 botonMinimizarActionPerformed(evt);
             }
         });
-        getContentPane().add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
+        barraArriba.add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
 
-        barraArriba.setBackground(new java.awt.Color(195, 225, 203));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/taskMasterProTitulo.png"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(180, 16));
+        jLabel1.setMinimumSize(new java.awt.Dimension(180, 16));
+        jLabel1.setPreferredSize(new java.awt.Dimension(180, 16));
+        barraArriba.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
-        javax.swing.GroupLayout barraArribaLayout = new javax.swing.GroupLayout(barraArriba);
-        barraArriba.setLayout(barraArribaLayout);
-        barraArribaLayout.setHorizontalGroup(
-            barraArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-        );
-        barraArribaLayout.setVerticalGroup(
-            barraArribaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 50, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(barraArriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 50));
+        getContentPane().add(barraArriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
 
         content.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -159,6 +158,7 @@ public class AppUserLists extends javax.swing.JFrame {
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonMinimizar;
     private javax.swing.JPanel content;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
