@@ -11,7 +11,7 @@ import java.util.Objects;
 
 /**
  * <h1>Clase TrackTask</h1>
- * Guarda la informacion de una tarea de tipo track: nombre, duracion y fecha 
+ * Guarda la informacion de una tarea de tipo track (nombre, duracion y fecha de inicio) 
  * Se extiende de la clase Task
  * 
  * <b>Note:</b>
@@ -32,8 +32,7 @@ public class TrackTask extends Task{
      *  
      * @param name - validar antes de pasar por parametro
      * 
-     * @see User#validName() 
-     * @see User#validThisName()
+     * @see Task#validName() 
      * 
      * @author Vanina Pintos
      */
@@ -59,7 +58,7 @@ public class TrackTask extends Task{
      * <h1>Terminar temporizador</h1>
      * 
      * finishTimer() captura la fecha y hora cuando se termina la tarea,
-     * saca la diferencia entre esta y la fecha y hora de inicio y la asigna
+     * saca la diferencia entre esta y la fechahora de inicio y la asigna
      * al atributo duracion
      * 
      * @author Vanina Pintos
@@ -82,10 +81,9 @@ public class TrackTask extends Task{
     /**
      * <h1>Cambiar duracion</h1>
      * 
-     * setDuration(Duration duration) recibe por parametros la nueva duracion
-     * de la tarea para actualizarla
+     * setDuration(Duration duration) actualiza la duracion de la tarea
      * 
-     * @param duration | actualizacio de duracion
+     * @param duration | actualizacion de duracion
      * 
      * @author Vanina Pintos
      */
@@ -96,7 +94,7 @@ public class TrackTask extends Task{
     /**
      * <h1>Obtener fecha y hora de comienzo</h1>
      * 
-     * @return LocalDateTime | fecha y comienzo de la tarea
+     * @return LocalDateTime | fecha y hora de comienzo de la tarea
      * 
      * @author Vanina Pintos
      */

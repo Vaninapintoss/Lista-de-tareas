@@ -8,7 +8,6 @@ package list;
 import java.util.HashSet;
 import java.util.Iterator;
 import list.exceptions.ElementAlreadyExistException;
-import list.exceptions.NameTaskNotFoundException;
 import list.exceptions.TaskUntilNotCompletedException;
 import list.task.SimpleTask;
 import list.task.Status;
@@ -29,7 +28,10 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
      * <h1>Constructor de la clase SimpleList</h1>
      * 
      * Unico constructor de la clase SimpleList
+     * Recibe una categoria por parametro
      * Crea un HashSet para almacenar las tareas vacio
+     * 
+     * @param category | verificar que no este repetida antes de enviar
      * 
      * @author Vanina Pintos
      */
@@ -41,9 +43,9 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
     /**
      * <h1>Agregar una tarea</h1>
      * 
-     * addElement(SimpleTask e) recibe una tarea y la agrega al HashSet
+     * addTask(SimpleTask task) recibe una tarea y la agrega al HashSet
      * 
-     * @param e | tarea a agregar
+     * @param task | tarea a agregar
      * 
      * @return boolean | true si lo agrego correctamente a el HashSet
      * 
@@ -52,15 +54,15 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
      * @author Vanina Pintos
      */
     @Override
-    public boolean addElement(SimpleTask e) throws ElementAlreadyExistException{
+    public boolean addTask(SimpleTask task) throws ElementAlreadyExistException{
         
         boolean added = false; 
         
-        if(simpleList.contains(e)){
+        if(simpleList.contains(task)){
             throw new ElementAlreadyExistException("tarea ya existente.");
         }else{
             added = true;
-            simpleList.add(e);
+            simpleList.add(task);
         }
         
         return added;
@@ -69,14 +71,14 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
     /**
      * <h1>Mostrar tareas</h1>
      * 
-     * String showElements() devuelve las tareas almacenadas en el HashSet en formato String
+     * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
      * 
      * @return String | tareas almacenadas en el HashSet en formato String
      * 
      * @author Vanina Pintos
      */
     @Override
-    public String showElements() {
+    public String showTasks() {
         String aux ="";
         for(SimpleTask e : simpleList){
             aux += e.toString();
@@ -88,37 +90,26 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
     /**
      * <h1>Marcar como completada una tarea</h1>
      * 
-     * checkElement(String name) recibe el nombre de una tarea de cambia 
-     * su estado de TODO a COMPLETED. Primero verifica que el nombre que se haya
-     * enciado no sea un String vacio y luego verifica la existencia de la tarea
+     * checkTask(String name) recibe el nombre de una tarea y cambia 
+     * su estado de TODO a COMPLETED. 
      * 
      * @param name | nombre de la tarea a marcar como completada
      * 
-     * @return boolean | si la tarea pudo marcarse como completada con exito
-     * 
-     * @throws EmptyNameTaskException | si el nombre enviado es un String vacio
-     * @throws NameTaskNotFoundException | si la tarea no esta dentro del HashSet
+     * @return boolean | true si la tarea pudo marcarse como completada con exito
      * 
      * @author Vanina Pintos
      */
-    @Override
-    public boolean checkElement(String name) throws EmptyNameTaskException, NameTaskNotFoundException{ 
+    public boolean checkTask(String name){ 
         
         boolean checked = false;
         
-        SimpleTask st = new SimpleTask(name);
-        
-        if(st.validThisName()){
-            SimpleTask found = searchElement(name);
+        SimpleTask found = searchTask(name);
+
+        if(found != null){
+            found.setStatus(Status.COMPLETED);
+            checked = true;
             
-            if(found != null){
-                found.setStatus(Status.COMPLETED);
-                checked = true;
-            }else{
-                throw new NameTaskNotFoundException("esa tarea no existe");
-            }
         }
-        
 
         return checked;        
     }
@@ -126,41 +117,30 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
     /**
      * <h1>Eliminar una tarea</h1>
      * 
-     * deleteElement(String name) recibe el nombre de la tarea a eliminar
-     * verifica que el nombre no sea un string vacio, verifica su existencia
-     * dentro del HashSet y su estado. Solo se puede eliminar la tarea si su 
-     * estado es COMPLETED.
+     * deleteElement(String name) recibe el nombre de la tarea a eliminar. 
+     * Para que una tarea pueda ser eliminada su estado tiene que ser COMPLETED
      * 
      * @param name | nombre de la tarea a eliminar
      * 
-     * @return boolean | si la tarea pudo eliminarse con exito
+     * @return boolean | true si la tarea pudo eliminarse con exito
      * 
-     * @throws EmptyNameTaskException | si el nombre enviado es un String vacio
-     * @throws NameTaskNotFoundException | si la tarea no esta dentro del HashSet
+     * @throws TaskUntilNotCompletedException | si el estado de la tarea no es COMPLETED
      * 
      * @author Vanina Pintos
      */
-    @Override
-    public boolean deleteElement(String name) throws EmptyNameTaskException, NameTaskNotFoundException, TaskUntilNotCompletedException{
+    public boolean deleteTask(String name) throws  TaskUntilNotCompletedException{
         boolean deleted = false;
-        
-        SimpleTask st = new SimpleTask(name);
-        
-        if(st.validThisName()){
-            
-            SimpleTask found = searchElement(name);
+          
+        SimpleTask found = searchTask(name);
 
-            if(found != null){
+        if(found != null){
 
-                if(found.getStatus()==Status.COMPLETED){
-                    
-                    simpleList.remove(found);
-                    deleted = true;
-                }else{
-                    throw new TaskUntilNotCompletedException("esa tarea no existe");
-                }
+            if(found.getStatus()==Status.COMPLETED){
+
+                simpleList.remove(found);
+                deleted = true;
             }else{
-                throw new NameTaskNotFoundException("esa tarea no existe");
+                throw new TaskUntilNotCompletedException("tarea sin terminar");
             }
         }
         
@@ -171,39 +151,47 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
      * <h1>Editar nombre de una tarea</h1>
      * 
      * editNameElement(String name,String newName) recibe el nombre de la tarea
-     * a modificar y el nombre nuevo que se le quiere asignar. 
+     * a modificar y el nuevo nombre que se le quiere asignar
      * 
      * @param name | nombre de la tarea a eliminar
-     * @param newName | nombre nuevo a asignar
+     * @param newName | nuevo nombre a asignar
      * 
-     * @return boolean | si la tarea se pudo modificar con exito
+     * @return boolean | true si la tarea se pudo modificar con exito
      * 
      * @throws EmptyNameTaskException | si el nombre enviado es un String vacio
-     * @throws NameTaskNotFoundException | si la tarea no esta dentro del HashSet
      * 
      * @author Vanina Pintos
      */
-
-    @Override
-    public boolean editNameElement(String name,String newName) throws EmptyNameTaskException, NameTaskNotFoundException{ 
+    public boolean editTaskName(String name,String newName) throws EmptyNameTaskException{ 
         boolean edited = false;
         
-        SimpleTask found = searchElement(name);
+        SimpleTask found = searchTask(name);
         
         if(found != null){
             found.setName(name); 
             edited = true;
-        }else{
-            throw new NameTaskNotFoundException("esa tarea no existe");
         }
         
         return edited;
     }
 
+    /**
+     * <h1>Buscar una tarea</h1>
+     * 
+     * searchTask(String name) recibe el nombre de la tarea
+     * a buscar y si se encuentra dentro del HashSet lo retorna
+     * 
+     * @param name | nombre de la tarea a buscar
+     * 
+     * @return SimpleTask | la tarea encontrada dentro del HashSet | null
+     * si no eixste dentro del HashSet
+     * 
+     * @author Vanina Pintos
+     */
     @Override
-    public SimpleTask searchElement(String name) {
+    public SimpleTask searchTask(String name){
         
-        SimpleTask found = null; 
+        SimpleTask found = null;
         
         Iterator iterator = simpleList.iterator();
         while (iterator.hasNext()) {
@@ -216,7 +204,17 @@ public class SimpleList extends List implements IListActions<SimpleTask>{
         return found;
     }
 
-    public boolean elementsWereChecked() {
+    /**
+     * <h1>Verificar si las tareas fueron completadas</h1>
+     * 
+     *  tasksWereChecked() verifica si todas las tareas existentes 
+     *  dentro de la lista fueron completadas
+     * 
+     * @return boolean | true si todas las tareas fueron completadas
+     * 
+     * @author Vanina Pintos
+     */
+    public boolean tasksWereChecked() {
         
         for(SimpleTask st : simpleList){
             if(st.getStatus() == Status.TODO){

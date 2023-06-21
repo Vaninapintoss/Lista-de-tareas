@@ -26,8 +26,7 @@ public abstract class Task {
      * 
      * @param name - validar antes de pasar por parametro
      * 
-     * @see User#validName() 
-     * @see User#validThisName()
+     * @see Task#validName() 
      * 
      * @author Vanina Pintos
      */
@@ -65,7 +64,7 @@ public abstract class Task {
      * 
      * @author Vanina Pintos
      */
-    public boolean validName(String name) throws EmptyNameTaskException{
+    public static boolean validName(String name) throws EmptyNameTaskException{
         boolean valid = false;
         
         if(name.isEmpty()){
@@ -91,11 +90,11 @@ public abstract class Task {
     /**
      * <h1>Cambiar nombre</h1>
      * 
-     * setName(String name) recibe por parametros el nuevo nombre para asignarselo 
+     * setName(String name) recibe por parametro el nuevo nombre 
      * 
-     * @param name | nombre nuevo 
+     * @param name | nuevo nombre 
      * 
-     * @return boolean | true si el nuevo nombre es valido y es posible cambiarlo
+     * @return boolean | true si el nombre es valido  y pudo realizarse la modificacion
      * 
      * @throws EmptyNameTaskException | si el nuevo nombre contiene un String vacio ""
 
