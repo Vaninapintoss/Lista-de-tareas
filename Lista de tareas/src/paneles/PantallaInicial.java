@@ -81,6 +81,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         FondoPantallaInicial.setBackground(new java.awt.Color(195, 225, 203));
         FondoPantallaInicial.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        content.setBackground(new java.awt.Color(255, 204, 204));
         content.setMaximumSize(new java.awt.Dimension(700, 307));
         content.setMinimumSize(new java.awt.Dimension(700, 307));
         content.setPreferredSize(new java.awt.Dimension(700, 307));
