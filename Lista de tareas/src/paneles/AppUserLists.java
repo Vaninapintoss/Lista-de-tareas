@@ -18,6 +18,7 @@ public class AppUserLists extends javax.swing.JFrame {
     public static User user;
     public AppUserLists() {
         initComponents();
+        setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
     }
 
     public void setUser(User userN)
@@ -36,6 +37,9 @@ public class AppUserLists extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(700, 500));
+        setMinimumSize(new java.awt.Dimension(700, 500));
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
 
