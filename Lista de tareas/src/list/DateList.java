@@ -144,9 +144,9 @@ public class DateList extends List implements IListActions<DateTask>{
     
     /**
      * <h1>Editar nombre de una tarea</h1>
- 
- editTaskName(String name,String newName) recibe el nombre de la tarea
- a modificar y el nuevo nombre que se le quiere asignar
+     * 
+     * editTaskName(String name,String newName) recibe el nombre de la tarea
+     * a modificar y el nuevo nombre que se le quiere asignar
      * 
      * @param name | nombre de la tarea a eliminar
      * @param newName | nuevo nombre a asignar
