@@ -3,6 +3,7 @@ package paneles;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Frame;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import user.UsersSystem;
@@ -23,9 +24,12 @@ public class PantallaInicial extends javax.swing.JFrame {
     /**
      * Creates new form PantallaInicial
      */
-    public PantallaInicial() {
-   
+    public PantallaInicial() 
+    {
+  
+        
         initComponents();
+        setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
         //cargo al principio la pantalla de LogIn
         contentPantalla(login);
         
@@ -48,16 +52,22 @@ public class PantallaInicial extends javax.swing.JFrame {
         buttonSignup = new javax.swing.JButton();
         imagenBugGato = new javax.swing.JLabel();
         imagenTitulo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        botonCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(700, 500));
         setMinimumSize(new java.awt.Dimension(700, 500));
+        setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(700, 500));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         FondoPantallaInicial.setBackground(new java.awt.Color(195, 225, 203));
         FondoPantallaInicial.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        content.setMaximumSize(new java.awt.Dimension(700, 307));
+        content.setMinimumSize(new java.awt.Dimension(700, 307));
         content.setPreferredSize(new java.awt.Dimension(700, 307));
 
         javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
@@ -102,6 +112,34 @@ public class PantallaInicial extends javax.swing.JFrame {
         imagenTitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/TituloSignUp.png"))); // NOI18N
         FondoPantallaInicial.add(imagenTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 69, -1, -1));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonMinimizar.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setMaximumSize(new java.awt.Dimension(16, 16));
+        jButton1.setMinimumSize(new java.awt.Dimension(16, 16));
+        jButton1.setPreferredSize(new java.awt.Dimension(16, 16));
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonMinimizarMouseOver.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        FondoPantallaInicial.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, -1));
+
+        botonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonCerrar.png"))); // NOI18N
+        botonCerrar.setBorderPainted(false);
+        botonCerrar.setContentAreaFilled(false);
+        botonCerrar.setMaximumSize(new java.awt.Dimension(16, 16));
+        botonCerrar.setMinimumSize(new java.awt.Dimension(16, 16));
+        botonCerrar.setPreferredSize(new java.awt.Dimension(16, 16));
+        botonCerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonCerrarMouseOver.png"))); // NOI18N
+        botonCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonCerrarActionPerformed(evt);
+            }
+        });
+        FondoPantallaInicial.add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, -1));
+
         getContentPane().add(FondoPantallaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
@@ -144,6 +182,14 @@ public class PantallaInicial extends javax.swing.JFrame {
         }
              
     }//GEN-LAST:event_buttonSignupActionPerformed
+
+    private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_botonCerrarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.setState(Frame.ICONIFIED);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void changeJButton(JButton boton, ButtonImage imagenBoton)
     {
@@ -233,10 +279,12 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FondoPantallaInicial;
+    private javax.swing.JButton botonCerrar;
     private javax.swing.JButton buttonLogin;
     private javax.swing.JButton buttonSignup;
     private javax.swing.JPanel content;
     private javax.swing.JLabel imagenBugGato;
     private javax.swing.JLabel imagenTitulo;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }
