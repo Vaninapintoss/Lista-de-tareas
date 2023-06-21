@@ -7,6 +7,7 @@ import java.awt.Frame;
 import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import user.User;
 import user.UsersSystem;
 import visualElements.ButtonImage;
 import visualElements.VisualLoginSignupPage;
@@ -39,7 +40,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         }
         catch(IOException ex)
         {
-            errorText.setText(ex.getMessage());
+            jLabel1.setText(ex.getMessage());
         }
         
         initComponents();
@@ -68,7 +69,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         imagenTitulo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         botonCerrar = new javax.swing.JButton();
-        errorText = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(700, 500));
@@ -154,15 +155,24 @@ public class PantallaInicial extends javax.swing.JFrame {
         });
         FondoPantallaInicial.add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, -1));
 
-        errorText.setForeground(new java.awt.Color(255, 51, 51));
-        errorText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        FondoPantallaInicial.add(errorText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 240, 20));
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FondoPantallaInicial.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 170, 240, -1));
 
         getContentPane().add(FondoPantallaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    public static void abrirApp(User user)
+    {
+        AppUserLists app = new AppUserLists();
+        app.setVisible(true);
+        app.setUser(user);
+        homeScreen.dispose();
+    }
+    
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         
         if(signupOn)
@@ -238,6 +248,8 @@ public class PantallaInicial extends javax.swing.JFrame {
     //botones de signUp y logIn
     public static VisualLoginSignupPage visualButtons;
     
+    public static PantallaInicial homeScreen;
+    
     //usuarios
     public static UsersSystem sistemaUsuarios;
     
@@ -288,7 +300,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaInicial().setVisible(true);
+                homeScreen = new PantallaInicial();
+                homeScreen.setVisible(true);
             }
         });
     }
@@ -299,9 +312,9 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JButton buttonLogin;
     private javax.swing.JButton buttonSignup;
     private javax.swing.JPanel content;
-    private javax.swing.JLabel errorText;
     private javax.swing.JLabel imagenBugGato;
     private javax.swing.JLabel imagenTitulo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

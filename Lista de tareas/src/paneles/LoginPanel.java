@@ -6,7 +6,9 @@ package paneles;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import static paneles.PantallaInicial.abrirApp;
 import static paneles.PantallaInicial.sistemaUsuarios;
+import user.User;
 import user.exceptions.IncorrectPasswordException;
 import user.exceptions.UserNotFoundException;
 import visualElements.ButtonImage;
@@ -174,7 +176,8 @@ public class LoginPanel extends javax.swing.JPanel {
             
             if(loginCorrect)
             {
-                sistemaUsuarios.login(email, password);
+                User user = sistemaUsuarios.login(email, password);
+                abrirApp(user);
             }
         }
         catch(UserNotFoundException ex)
