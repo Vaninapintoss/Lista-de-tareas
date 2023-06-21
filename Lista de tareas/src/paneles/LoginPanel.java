@@ -124,6 +124,7 @@ public class LoginPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_text_emailActionPerformed
 
     private void ButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLoginActionPerformed
+        boolean loginCorrect = true;
         // Se loguea un usuario
         //verificar que el usuario existe
         try
@@ -137,13 +138,17 @@ public class LoginPanel extends javax.swing.JPanel {
             
             if(email.isEmpty())
             {
+                loginCorrect = false;
                 errorText_email.setText("Ingrese un email");                
             }
-            else if(password.isEmpty())
+            
+            if(password.isEmpty())
             {
+                loginCorrect = false;
                 errorText_password.setText("Ingrese una contraseña");  
             }
-            else
+            
+            if(loginCorrect)
             {
                 sistemaUsuarios.login(email, password);
             }
