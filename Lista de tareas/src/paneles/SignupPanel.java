@@ -182,7 +182,7 @@ public class SignupPanel extends javax.swing.JPanel {
                     sistemaUsuarios.signup(user);
                     
                     //guardo la lista de usuarios en el archivo
-                    sistemaUsuarios.saveUsersInFile();
+                    System.out.println(sistemaUsuarios.saveUsersInFile());
                     
                     
                     //mensaje verde el usuario se guardo correctamente

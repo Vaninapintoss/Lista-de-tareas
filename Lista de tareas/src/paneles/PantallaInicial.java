@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Frame;
+import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import user.UsersSystem;
@@ -28,7 +29,16 @@ public class PantallaInicial extends javax.swing.JFrame {
     {
         //creo y cargo el sistema de usuarios
         sistemaUsuarios = new UsersSystem();
-        System.out.println(sistemaUsuarios.readUsersInFile());//leo los usuarios del archivo);
+        
+        //leo los usuarios del archivo);
+        try
+        {
+            sistemaUsuarios.readUsersInFile();
+        }
+        catch(IOException ex)
+        {
+            errorText.setText(ex.getMessage());
+        }
         
         initComponents();
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
@@ -56,6 +66,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         imagenTitulo = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         botonCerrar = new javax.swing.JButton();
+        errorText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(700, 500));
@@ -140,6 +151,10 @@ public class PantallaInicial extends javax.swing.JFrame {
             }
         });
         FondoPantallaInicial.add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 10, -1, -1));
+
+        errorText.setForeground(new java.awt.Color(255, 51, 51));
+        errorText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        FondoPantallaInicial.add(errorText, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 160, 240, 20));
 
         getContentPane().add(FondoPantallaInicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -281,6 +296,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JButton buttonLogin;
     private javax.swing.JButton buttonSignup;
     private javax.swing.JPanel content;
+    private javax.swing.JLabel errorText;
     private javax.swing.JLabel imagenBugGato;
     private javax.swing.JLabel imagenTitulo;
     private javax.swing.JButton jButton1;

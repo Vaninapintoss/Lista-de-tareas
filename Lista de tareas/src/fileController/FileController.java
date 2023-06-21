@@ -63,6 +63,7 @@ public class FileController
             {
                 Map.Entry entry = (Map.Entry) it.next();
                 User user = (User) entry.getValue();
+                System.out.println("hasta aca bien . "+ user.getEmail());
                 objectOutputStream.writeObject(user);
             }
         }

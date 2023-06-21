@@ -26,7 +26,7 @@ import user.exceptions.InvalidPasswordException;
  * 
  * @author Vanina Pintos & Sofia Brocardo
  */
-    public class User  implements Serializable {
+    public class User implements Serializable {
     private String email;//email debe contener un @, y un .
     private String password;//la contraseña debe tener al menos 8 letras, 1 numero y 1 letra
     private Location location;//ubicacion actual del usuario

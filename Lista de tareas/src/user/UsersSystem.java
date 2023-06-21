@@ -13,6 +13,7 @@ import user.exceptions.InvalidPasswordException;
 import user.exceptions.UserAlreadyExistException;
 import user.exceptions.UserNotFoundException;
 import fileController.FileController;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -214,18 +215,26 @@ public class UsersSystem
         return success;
     }
     
-    
+    /**
+     * <h1>Guadar Usuarios en Archivo</h1>
+     * @return String con error o correcto
+     */
     public String saveUsersInFile()
     {
         return FileController.saveInFile("users.dat", users);
     }
     
-    
-    public String readUsersInFile()
+    /**
+     * <h1>Leer Usuarios en Archivo</h1>
+     * @return String con error o correcto
+     * @throws IOException 
+     */
+    public String readUsersInFile() throws IOException
     {
         return FileController.readFromFile("users.dat", users);
     }
     
+    /*
     public String mostrarUsuarios()
     {
         String usuarios ="0";
@@ -240,5 +249,6 @@ public class UsersSystem
         
         return usuarios;
     }
+*/
     
 }
