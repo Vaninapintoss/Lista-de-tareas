@@ -4,10 +4,17 @@
  */
 package userLists;
 
+import user.User;
+
 /**
  *
  * @author vanim
  */
 public class UserLists{
+    private User user;
+    private SimpleLists simpleLists;
+    private DateLists dateLists;
+    private TrackLists trackLists;
+    
     
 }
