@@ -221,6 +221,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         boton.setRolloverIcon(new ImageIcon(getClass().getResource(rolloverIcon)));
     }
     
+    
     private void contentPantalla(Component panel)
     {
         content.removeAll();
