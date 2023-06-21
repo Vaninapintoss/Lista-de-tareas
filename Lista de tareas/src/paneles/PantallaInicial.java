@@ -33,7 +33,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         //leo los usuarios del archivo);
         try
         {
-            sistemaUsuarios.readUsersInFile();
+            String read = sistemaUsuarios.readUsersInFile();
+            
         }
         catch(IOException ex)
         {

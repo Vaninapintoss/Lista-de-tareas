@@ -63,7 +63,6 @@ public class FileController
             {
                 Map.Entry entry = (Map.Entry) it.next();
                 User user = (User) entry.getValue();
-                System.out.println("hasta aca bien . "+ user.getEmail());
                 objectOutputStream.writeObject(user);
             }
         }
@@ -238,11 +237,11 @@ public class FileController
         }
         catch (ClassNotFoundException ex)
         {
-            readed = "ERROR" + ex.getMessage();
+            readed = "ERROR " + ex.getMessage();
         }
         catch (IOException ex)
         {
-            readed = "ERROR" + ex.getMessage();
+            readed = "ERROR " + ex.getMessage();
         }
         finally
         {
@@ -257,7 +256,7 @@ public class FileController
             }
             catch (IOException exIO)
             {
-                readed = "ERROR" + exIO.getMessage();
+                readed = "ERROR " + exIO.getMessage();
             }
 
         }
@@ -308,11 +307,11 @@ public class FileController
         }
         catch (ClassNotFoundException ex)
         {
-            readed = "ERROR" + ex.getMessage();
+            readed = "ERROR " + ex.getMessage();
         }
         catch (IOException ex)
         {
-            readed = "ERROR" + ex.getMessage();
+            readed = "ERROR " + ex.getMessage();
         }
         finally
         {
@@ -327,7 +326,7 @@ public class FileController
             }
             catch (IOException exIO)
             {
-                readed = "ERROR" + exIO.getMessage();
+                readed = "ERROR " + exIO.getMessage();
             }
 
         }

@@ -175,6 +175,7 @@ public class SignupPanel extends javax.swing.JPanel {
                 //verifico antes que la segunda contraseña y la primera coincidan
                 if(text_password.getText().contentEquals(text_passwordConfirmed.getText()))
                 {
+                    String saved;
                     //creo un nuevo usuario
                     User user = new User(text_email.getText(),text_password.getText());
                     
@@ -182,11 +183,18 @@ public class SignupPanel extends javax.swing.JPanel {
                     sistemaUsuarios.signup(user);
                     
                     //guardo la lista de usuarios en el archivo
-                    System.out.println(sistemaUsuarios.saveUsersInFile());
+                    saved = sistemaUsuarios.saveUsersInFile();
                     
-                    
-                    //mensaje verde el usuario se guardo correctamente
-                    userSavedText.setText("Usuario registrado exitosamente");
+                    //si no se guardo correctamente informo el error al usuario
+                    if(saved.contains("ERROR"))
+                    {
+                        errorText_signup.setText(saved);
+                    }
+                    else
+                    {
+                        //mensaje verde el usuario se guardo correctamente
+                        userSavedText.setText("Usuario registrado exitosamente");
+                    }
                 }
                 else
                 {
