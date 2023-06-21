@@ -206,7 +206,7 @@ public class FileController
      *
      * @author Sofia Brocardo
      */
-    public static String readFromFile(String fileName, Map<String,User> map) throws IOException
+    public static String readUsersFromFile(String fileName, Map<String,User> map) throws IOException
     {
         String readed = "Extraccion exitosa";
 

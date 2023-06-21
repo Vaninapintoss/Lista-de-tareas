@@ -231,7 +231,7 @@ public class UsersSystem
      */
     public String readUsersInFile() throws IOException
     {
-        return FileController.readFromFile("users.dat", users);
+        return FileController.readUsersFromFile("users.dat", users);
     }
     
     /*
