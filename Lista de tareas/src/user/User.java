@@ -41,7 +41,7 @@ import user.exceptions.InvalidPasswordException;
      * @param email - validar antes de pasar por parametro
      * @param password - validar antes de pasar por parametro
      * 
-     * @see User#validEmail() 
+     * @see User#validEmail(String) 
      * @see User#validPassword()
      * 
      * @author Vanina Pintos

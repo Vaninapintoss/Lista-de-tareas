@@ -8,19 +8,19 @@ package list.task;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.Objects;
 import java.util.regex.Pattern;
 import list.task.exceptions.InvalidPatternDateException;
 
 /**
  * <h1>Clase DateTask</h1>
- * Guarda la informacion de una tarea de tipo date: nombre, fecha de caducidad y estado 
+ * Guarda la informacion de una tarea de tipo date (nombre, fecha de caducidad
+ * y estado) 
  * Se extiende de la clase Task
  * 
  * <b>Note:</b>
  * su nombre, fecha y estado pueden ser modificados
  * 
- * @author Vanina Pintos & Sofia Brocardo
+ * @author Vanina Pintos
  */
 public final class DateTask extends Task{
     private Status status;
@@ -30,52 +30,52 @@ public final class DateTask extends Task{
      * <h1>Constructor de la clase DateTask</h1>
      * 
      * Unico constructor de la clase DateTask. 
-     * Debe recibir un nombre
+     * Debe recibir un nombre una fecha de caducidad
      * El estado de la tarea por default comienza con el valor TODO
      *  
      * @param name - validar antes de pasar por parametro
+     * @param date - creada y valiadad antes de pasar por parametro con
+     * la funcion especificada abajo
      * 
-     * @see User#validName() 
-     * @see User#validThisName()
+     * @see Task#validName() 
+     * @see DateTask#createDate(String) 
      * 
      * @author Vanina Pintos
      */
-    public DateTask(String name) {
+    public DateTask(String name, LocalDate date) {
         super(name);
         this.status = status.TODO;
-        this.finalDate = null;
+        this.finalDate = date;
     }
     
     /**
-     * <h1>Asignar una fecha de caducidad a la tarea</h1>
-     * addDate(String date) recibe la fecha y si es valida la asigna a la tarea
+     * <h1>Crear una fecha</h1>
      * 
-     * @param date | fecha a validar y asignar
+     * createDate(String date) recibe una fecha en formato Sring para poder
+     * convertirlo a un formato valido para enviar por parametro cuando
+     * se quiera crear una dateTask.
      * 
-     * @return boolean | true si la fecha es valida 
+     * @param date | fecha en formato string
+     * 
+     * @return LocalDate | fecha en formato apto para el constructor de DateTask
      *
+     * @throws InvalidPatternDateException | si la fecha en formato de string 
+     * no esta en el formato especificado dd/MM/yyyy
      * 
-     * @throws InvalidPatternDateException | si el formato de String enviado 
-     * es distinto de dd/MM/yyyy 
-     * 
-     * @throws DateTimeParseException | si la fecha es invalida
+     * @throws DateTimeParseException | si la fecha indicada no es valida
      * 
      * @author Vanina Pintos
      */
-    public boolean addDate(String date)throws InvalidPatternDateException, DateTimeParseException{
+    public LocalDate createDate(String date)throws InvalidPatternDateException, DateTimeParseException{
         
-        boolean added = false;
-        
-        validPatternDate(date);      
-        
+        validPatternDate(date);
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        this.finalDate = LocalDate.parse(date, formatoFecha); 
-        
-        return added;
+        return LocalDate.parse(date, formatoFecha);
     }
     
     /**
      * <h1>Validar patron de fecha</h1>
+     * 
      * validPatternDate(String date) valida si la fecha recibida en formato
      * String cumple con el patron dd/MM/yyyy
      * 
@@ -116,8 +116,7 @@ public final class DateTask extends Task{
     /**
      * <h1>Cambiar status</h1>
      * 
-     * setStatus(Status status) recibe por parametros
-     * el nuevo status para modificar el antiguo.
+     * setStatus(Status status) recibe por parametros el nuevo status
      * 
      * @param status | nuevo status 
      * 
@@ -141,12 +140,10 @@ public final class DateTask extends Task{
     /**
      * <h1>Cambiar fecha de caducidad</h1>
      * 
-     * setFinalDate(String date) recibe por parametros
-     * la nueva fecha y si es valida la asigna
+     * setFinalDate(String date) recibe por parametros la nueva fecha en formato 
+     * String dd/MM/yyyy
      * 
      * @param date | nueva fecha
-     * 
-     * @return boolean | true si la fecha es valida y pudo modificarse
      * 
      * @throws InvalidPatternDateException | si el formato de String enviado 
      * es distinto de dd/MM/yyyy 
@@ -154,8 +151,8 @@ public final class DateTask extends Task{
      * 
      * @author Vanina Pintos
      */
-    public boolean setFinalDate(String date) throws InvalidPatternDateException, DateTimeParseException{
-        return addDate(date);
+    public void setFinalDate(String date) throws InvalidPatternDateException, DateTimeParseException{
+        this.finalDate = createDate(date);
     }
 
     /**

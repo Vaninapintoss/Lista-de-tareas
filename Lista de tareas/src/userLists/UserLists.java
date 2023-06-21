@@ -60,7 +60,7 @@ public class UserLists{
             
             SimpleList sl = searchSimpleList(category);
             
-            if(sl.elementsWereChecked()){
+            if(sl.tasksWereChecked()){
                simpleLists.remove(category);
                deleted = true; 
             }else{
@@ -136,7 +136,7 @@ public class UserLists{
             
             DateList dt = searchDateList(category);
             
-            if(dt.elementsWereChecked()){
+            if(dt.tasksWereChecked()){
                dateLists.remove(category);
                deleted = true; 
             }else{

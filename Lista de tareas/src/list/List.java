@@ -9,7 +9,8 @@ import list.exceptions.EmptyCategoryListException;
 
 /**
  * <h1>Clase List</h1>
- * Guarda la informacion de una lista general: su categoria 
+ * Clase abstracta padre de las clases SimpleList, DateList y TrackList
+ * Guarda la informacion de la categoria de la lista
  * 
  * <b>Note:</b>
  * su categoria puede ser modificada
@@ -26,8 +27,7 @@ public abstract class List{
      *  
      * @param category - validar antes de pasar por parametro
      * 
-     * @see List#validCategory(java.lang.String); 
-     * @see List#validThisCategory();
+     * @see List#validCategory(String); 
      * 
      * @author Vanina Pintos
      */
@@ -49,8 +49,7 @@ public abstract class List{
     /**
      * <h1>Cambiar categoria</h1>
      * 
-     * (String category) recibe la nueva categoria que se le quiere asignar, 
-     * si es valida entonces se realiza la modificacion
+     * (String category) recibe la nueva categoria
      * 
      * @param category | nueva categoria 
      * 
@@ -73,7 +72,7 @@ public abstract class List{
     }
     
     /**
-     * <h1>Cambiar categoria</h1>
+     * <h1>Validar categoria</h1>
      * 
      * validCategory(String category) recibe una categoria a validar
      * 
@@ -85,7 +84,7 @@ public abstract class List{
      * 
      * @author Vanina Pintos
      */
-    public boolean validCategory(String category) throws EmptyCategoryListException{
+    public static boolean validCategory(String category) throws EmptyCategoryListException{
         boolean valid = false;
         
         if(category.isEmpty()){
@@ -98,7 +97,8 @@ public abstract class List{
     }
     
     /**
-     * <h1>Validar cateforia del objeto</h1>
+     * <h1>Validar categoria del objeto</h1>
+     * 
      * validThisCategory() valida la contraseña actual del objeto List
      * 
      * @return boolean | true si la contraseña es valida 

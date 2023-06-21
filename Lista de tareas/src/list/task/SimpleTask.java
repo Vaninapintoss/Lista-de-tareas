@@ -7,7 +7,7 @@ package list.task;
 
 /**
  * <h1>Clase SimpleTask</h1>
- * Guarda la informacion de la tarea de tipo simple, nombre y estado 
+ * Guarda la informacion de la tarea de tipo simple (nombre y estado)
  * Se extiende de la clase Task
  * 
  * <b>Note:</b>
@@ -21,14 +21,13 @@ public class SimpleTask extends Task{
     /**
      * <h1>Constructor de la clase SimpleTask</h1>
      *  
-     * Unico constructor de la clase SimpleTask. 
+     * Unico constructor de la clase SimpleTask 
      * Debe recibir un nombre
      * El estado de la tarea por default comienza con el valor TODO
      * 
      * @param name - validar antes de pasar por parametro
      * 
-     * @see User#validName() 
-     * @see User#validThisName()
+     * @see Task#validName() 
      * 
      * @author Vanina Pintos
      */
@@ -51,7 +50,7 @@ public class SimpleTask extends Task{
     /**
      * <h1>Cambiar status</h1>
      * 
-     * setStatus(Status status) recibe por parametros el nuevo status para modificar el antiguo
+     * setStatus(Status status) recibe por parametros el nuevo status 
      * 
      * @param status | nuevo status 
      *  
@@ -66,7 +65,7 @@ public class SimpleTask extends Task{
      * 
      * @param obj
      * 
-     * @return boolean | true si son iguales |false si no son iguales (segun nombre)
+     * @return boolean | true si son iguales (segun nombre)
      * 
      * @author Vanina Pintos
      */
