@@ -4,6 +4,16 @@
  */
 package paneles;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static paneles.PantallaInicial.sistemaUsuarios;
+import user.User;
+import user.exceptions.EmptyEmailException;
+import user.exceptions.EmptyPasswordException;
+import user.exceptions.InvalidEmailException;
+import user.exceptions.InvalidPasswordException;
+import user.exceptions.UserAlreadyExistException;
+
 /**
  *
  * @author sofia
@@ -36,6 +46,10 @@ public class SignupPanel extends javax.swing.JPanel {
         text_passwordConfirmed = new javax.swing.JPasswordField();
         imagenFondoContraseña2 = new javax.swing.JLabel();
         infoUsuarioPassword2 = new javax.swing.JLabel();
+        errorText_email = new javax.swing.JLabel();
+        errorText_password = new javax.swing.JLabel();
+        errorText_password2 = new javax.swing.JLabel();
+        errorText_signup = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 128, 97));
         setMaximumSize(new java.awt.Dimension(700, 307));
@@ -46,13 +60,13 @@ public class SignupPanel extends javax.swing.JPanel {
         text_password.setBackground(new java.awt.Color(195, 225, 203));
         text_password.setForeground(new java.awt.Color(102, 102, 102));
         text_password.setBorder(null);
-        add(text_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 120, 350, 30));
+        add(text_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 110, 350, 30));
 
         infoUsuarioEmail.setBackground(new java.awt.Color(195, 225, 203));
         infoUsuarioEmail.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         infoUsuarioEmail.setForeground(new java.awt.Color(195, 225, 203));
         infoUsuarioEmail.setText("Email");
-        add(infoUsuarioEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, -1));
+        add(infoUsuarioEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 20, -1, -1));
 
         text_email.setBackground(new java.awt.Color(195, 225, 203));
         text_email.setForeground(new java.awt.Color(102, 102, 102));
@@ -62,19 +76,19 @@ public class SignupPanel extends javax.swing.JPanel {
                 text_emailActionPerformed(evt);
             }
         });
-        add(text_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 50, 350, 30));
+        add(text_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 350, 30));
 
         imagenFondoEmail.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
-        add(imagenFondoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 50, -1, -1));
+        add(imagenFondoEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, -1, -1));
 
         infoUsuarioPassword.setBackground(new java.awt.Color(195, 225, 203));
         infoUsuarioPassword.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         infoUsuarioPassword.setForeground(new java.awt.Color(195, 225, 203));
         infoUsuarioPassword.setText("Contraseña");
-        add(infoUsuarioPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+        add(infoUsuarioPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 90, -1, -1));
 
         imagenFondoContraseña.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
-        add(imagenFondoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, -1, -1));
+        add(imagenFondoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
 
         ButtonSignup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/Signup.png"))); // NOI18N
         ButtonSignup.setBorderPainted(false);
@@ -88,26 +102,107 @@ public class SignupPanel extends javax.swing.JPanel {
                 ButtonSignupActionPerformed(evt);
             }
         });
-        add(ButtonSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 250, -1, -1));
+        add(ButtonSignup, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, -1, -1));
 
         text_passwordConfirmed.setBackground(new java.awt.Color(195, 225, 203));
         text_passwordConfirmed.setForeground(new java.awt.Color(102, 102, 102));
         text_passwordConfirmed.setBorder(null);
-        add(text_passwordConfirmed, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 350, 30));
+        add(text_passwordConfirmed, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 180, 350, 30));
 
         imagenFondoContraseña2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
-        add(imagenFondoContraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, -1, -1));
+        add(imagenFondoContraseña2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, -1, -1));
 
         infoUsuarioPassword2.setBackground(new java.awt.Color(195, 225, 203));
         infoUsuarioPassword2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         infoUsuarioPassword2.setForeground(new java.awt.Color(195, 225, 203));
         infoUsuarioPassword2.setText("Confirme su contraseña");
-        add(infoUsuarioPassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
+        add(infoUsuarioPassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
+
+        errorText_email.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        errorText_email.setForeground(new java.awt.Color(255, 153, 153));
+        errorText_email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        errorText_email.setAutoscrolls(true);
+        errorText_email.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        add(errorText_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 140, 20));
+
+        errorText_password.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        errorText_password.setForeground(new java.awt.Color(255, 153, 153));
+        errorText_password.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        errorText_password.setAutoscrolls(true);
+        errorText_password.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        add(errorText_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 140, 20));
+
+        errorText_password2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        errorText_password2.setForeground(new java.awt.Color(255, 153, 153));
+        errorText_password2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        errorText_password2.setAutoscrolls(true);
+        errorText_password2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        add(errorText_password2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 140, 20));
+
+        errorText_signup.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        errorText_signup.setForeground(new java.awt.Color(255, 153, 153));
+        errorText_signup.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        errorText_signup.setAutoscrolls(true);
+        errorText_signup.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        add(errorText_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 250, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSignupActionPerformed
-        // Se loguea un usuario
-        //verificar que el usuario existe
+        //vacio los textos de error
+        errorText_email.setText("");
+        errorText_password.setText("");
+        errorText_password2.setText("");
+        errorText_signup.setText("");
+        
+        // Se inscribe un nuevo usuario
+        //verificar que el mail es valido
+        try
+        {
+            boolean validEmail = User.validEmail(text_email.getText());
+            boolean validPassword = User.validPassword(text_password.getText());
+            if(validEmail && validPassword)
+            {
+                //verifico antes que la segunda contraseña y la primera coincidan
+                if(text_password.getText().contentEquals(text_passwordConfirmed.getText()))
+                {
+                    //creo un nuevo usuario
+                    User user = new User(text_email.getText(),text_password.getText());
+                    
+                    //agrego el usuario a el sistema
+                    sistemaUsuarios.signup(user);
+                    
+                    //guardo la lista de usuarios en el archivo
+                    
+                    //mensaje verde el usuario se guardo correctamente
+                }
+                else
+                {
+                    errorText_password2.setText("Error: las contraseñas no coinciden");
+                }
+            }
+            
+        }
+        catch (InvalidEmailException ex) 
+        {
+            errorText_email.setText(ex.getMessage());
+        } 
+        catch (EmptyEmailException ex) 
+        {
+            errorText_email.setText(ex.getMessage());
+        } 
+        catch (EmptyPasswordException ex) 
+        {
+            errorText_password.setText(ex.getMessage());
+        } 
+        catch (InvalidPasswordException ex) 
+        {
+            errorText_password.setText(ex.getMessage());
+        } 
+        catch (UserAlreadyExistException ex) 
+        {
+            errorText_signup.setText(ex.getMessage());
+        }
+        
         
     }//GEN-LAST:event_ButtonSignupActionPerformed
 
@@ -119,6 +214,10 @@ public class SignupPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonSignup;
+    private javax.swing.JLabel errorText_email;
+    private javax.swing.JLabel errorText_password;
+    private javax.swing.JLabel errorText_password2;
+    private javax.swing.JLabel errorText_signup;
     private javax.swing.JLabel imagenFondoContraseña;
     private javax.swing.JLabel imagenFondoContraseña2;
     private javax.swing.JLabel imagenFondoEmail;
