@@ -5,6 +5,7 @@
 package fileController;
 
 import java.io.EOFException;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -205,12 +206,19 @@ public class FileController
      *
      * @author Sofia Brocardo
      */
-    public static String readFromFile(String fileName, Map<String,User> map)
+    public static String readFromFile(String fileName, Map<String,User> map) throws IOException
     {
         String readed = "Extraccion exitosa";
 
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
+        
+        File file = new File(fileName);//verifico que exista el archivo
+        if(!file.exists())
+        {
+            //si el archivo no existe lo creo
+            file.createNewFile();
+        }
 
         try
         {
@@ -268,12 +276,19 @@ public class FileController
      *
      * @author Sofia Brocardo
      */
-    public static <V extends Serializable> String readFromFile(String fileName, Collection<V> colection)
+    public static <V extends Serializable> String readFromFile(String fileName, Collection<V> colection)  throws IOException
     {
         String readed = "Extraccion exitosa";
 
         FileInputStream fileInputStream = null;
         ObjectInputStream objectInputStream = null;
+        
+        File file = new File(fileName); //verifico que exista el archivo
+        if(!file.exists())
+        {
+            //si el archivo no existe lo creo
+            file.createNewFile();
+        }
 
         try
         {

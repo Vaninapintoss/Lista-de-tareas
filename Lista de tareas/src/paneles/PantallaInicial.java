@@ -26,7 +26,9 @@ public class PantallaInicial extends javax.swing.JFrame {
      */
     public PantallaInicial() 
     {
-  
+        //creo y cargo el sistema de usuarios
+        sistemaUsuarios = new UsersSystem();
+        System.out.println(sistemaUsuarios.readUsersInFile());//leo los usuarios del archivo);
         
         initComponents();
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
@@ -146,7 +148,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
-        // TODO add your handling code here:
+        
         if(signupOn)
         {
             //cambio el contenido por el login
@@ -226,13 +228,10 @@ public class PantallaInicial extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) 
-    {
-        //creo y cargo el sistema de usuarios
-        sistemaUsuarios = new UsersSystem();
-        sistemaUsuarios.readUsersInFile();//leo los usuarios del archivo
-        
+    {      
         //creo los paneles
         login = new LoginPanel();
+ 
         signup = new SignupPanel();
         
         //creo los elementos visuales de los botones

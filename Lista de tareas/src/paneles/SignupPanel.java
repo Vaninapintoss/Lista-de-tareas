@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import static paneles.PantallaInicial.sistemaUsuarios;
 import user.User;
+import user.UsersSystem;
 import user.exceptions.EmptyEmailException;
 import user.exceptions.EmptyPasswordException;
 import user.exceptions.InvalidEmailException;
@@ -19,6 +20,7 @@ import user.exceptions.UserAlreadyExistException;
  * @author sofia
  */
 public class SignupPanel extends javax.swing.JPanel {
+    
 
     /**
      * Creates new form panelSignup
@@ -50,6 +52,7 @@ public class SignupPanel extends javax.swing.JPanel {
         errorText_password = new javax.swing.JLabel();
         errorText_password2 = new javax.swing.JLabel();
         errorText_signup = new javax.swing.JLabel();
+        userSavedText = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 128, 97));
         setMaximumSize(new java.awt.Dimension(700, 307));
@@ -123,28 +126,35 @@ public class SignupPanel extends javax.swing.JPanel {
         errorText_email.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         errorText_email.setAutoscrolls(true);
         errorText_email.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        add(errorText_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 140, 20));
+        add(errorText_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 370, 20));
 
         errorText_password.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         errorText_password.setForeground(new java.awt.Color(255, 153, 153));
         errorText_password.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         errorText_password.setAutoscrolls(true);
         errorText_password.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        add(errorText_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 140, 140, 20));
+        add(errorText_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 370, 20));
 
         errorText_password2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         errorText_password2.setForeground(new java.awt.Color(255, 153, 153));
         errorText_password2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         errorText_password2.setAutoscrolls(true);
         errorText_password2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        add(errorText_password2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 140, 20));
+        add(errorText_password2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 370, 20));
 
         errorText_signup.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         errorText_signup.setForeground(new java.awt.Color(255, 153, 153));
-        errorText_signup.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        errorText_signup.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         errorText_signup.setAutoscrolls(true);
         errorText_signup.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         add(errorText_signup, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 250, 20));
+
+        userSavedText.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        userSavedText.setForeground(new java.awt.Color(0, 204, 0));
+        userSavedText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        userSavedText.setAutoscrolls(true);
+        userSavedText.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        add(userSavedText, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 250, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSignupActionPerformed
@@ -172,8 +182,11 @@ public class SignupPanel extends javax.swing.JPanel {
                     sistemaUsuarios.signup(user);
                     
                     //guardo la lista de usuarios en el archivo
+                    sistemaUsuarios.saveUsersInFile();
+                    
                     
                     //mensaje verde el usuario se guardo correctamente
+                    userSavedText.setText("Usuario registrado exitosamente");
                 }
                 else
                 {
@@ -227,5 +240,6 @@ public class SignupPanel extends javax.swing.JPanel {
     private javax.swing.JTextField text_email;
     private javax.swing.JPasswordField text_password;
     private javax.swing.JPasswordField text_passwordConfirmed;
+    private javax.swing.JLabel userSavedText;
     // End of variables declaration//GEN-END:variables
 }

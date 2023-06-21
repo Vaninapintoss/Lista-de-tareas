@@ -13,6 +13,8 @@ import user.exceptions.InvalidPasswordException;
 import user.exceptions.UserAlreadyExistException;
 import user.exceptions.UserNotFoundException;
 import fileController.FileController;
+import java.util.Iterator;
+import java.util.Map;
 
 
 /**
@@ -222,6 +224,21 @@ public class UsersSystem
     public String readUsersInFile()
     {
         return FileController.readFromFile("users.dat", users);
+    }
+    
+    public String mostrarUsuarios()
+    {
+        String usuarios ="0";
+        
+        Iterator it = users.entrySet().iterator();
+        while(it.hasNext())
+        {
+            Map.Entry entry = (Map.Entry) it.next();
+            User user = (User) entry.getValue();
+            usuarios+=user.getEmail()+"\n";
+        }
+        
+        return usuarios;
     }
     
 }
