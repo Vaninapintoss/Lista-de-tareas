@@ -35,6 +35,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         {
             String read = sistemaUsuarios.readUsersInFile();
             
+            
         }
         catch(IOException ex)
         {

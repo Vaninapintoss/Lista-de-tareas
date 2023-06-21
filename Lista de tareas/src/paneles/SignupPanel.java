@@ -6,6 +6,11 @@ package paneles;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import static paneles.LoginPanel.seePassword;
+import static paneles.LoginPanel.seePasswordButton;
 import static paneles.PantallaInicial.sistemaUsuarios;
 import user.User;
 import user.UsersSystem;
@@ -14,6 +19,8 @@ import user.exceptions.EmptyPasswordException;
 import user.exceptions.InvalidEmailException;
 import user.exceptions.InvalidPasswordException;
 import user.exceptions.UserAlreadyExistException;
+import visualElements.ButtonImage;
+import visualElements.VisualSeePassword;
 
 /**
  *
@@ -25,7 +32,19 @@ public class SignupPanel extends javax.swing.JPanel {
     /**
      * Creates new form panelSignup
      */
-    public SignupPanel() {
+    public static boolean seePassword1;//booleando que determina si se va la contraseña
+    public static boolean seePassword2;
+    public static VisualSeePassword seePasswordButton1;
+    public static VisualSeePassword seePasswordButton2;
+    
+    public SignupPanel() 
+    {
+        seePasswordButton1 = new VisualSeePassword();
+        seePasswordButton2 = new VisualSeePassword();
+        
+        seePassword1 = false;
+        seePassword2 = false;
+        
         initComponents();
     }
 
@@ -53,6 +72,8 @@ public class SignupPanel extends javax.swing.JPanel {
         errorText_password2 = new javax.swing.JLabel();
         errorText_signup = new javax.swing.JLabel();
         userSavedText = new javax.swing.JLabel();
+        buttonSeePassword = new javax.swing.JButton();
+        buttonSeePassword2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 128, 97));
         setMaximumSize(new java.awt.Dimension(700, 307));
@@ -155,6 +176,36 @@ public class SignupPanel extends javax.swing.JPanel {
         userSavedText.setAutoscrolls(true);
         userSavedText.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         add(userSavedText, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 250, 20));
+
+        buttonSeePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButton.png"))); // NOI18N
+        buttonSeePassword.setBorderPainted(false);
+        buttonSeePassword.setContentAreaFilled(false);
+        buttonSeePassword.setMaximumSize(new java.awt.Dimension(30, 30));
+        buttonSeePassword.setMinimumSize(new java.awt.Dimension(30, 30));
+        buttonSeePassword.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonSeePassword.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButton.png"))); // NOI18N
+        buttonSeePassword.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButtonMouseOver.png"))); // NOI18N
+        buttonSeePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSeePasswordActionPerformed(evt);
+            }
+        });
+        add(buttonSeePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, -1, -1));
+
+        buttonSeePassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButton.png"))); // NOI18N
+        buttonSeePassword2.setBorderPainted(false);
+        buttonSeePassword2.setContentAreaFilled(false);
+        buttonSeePassword2.setMaximumSize(new java.awt.Dimension(30, 30));
+        buttonSeePassword2.setMinimumSize(new java.awt.Dimension(30, 30));
+        buttonSeePassword2.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonSeePassword2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButton.png"))); // NOI18N
+        buttonSeePassword2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButtonMouseOver.png"))); // NOI18N
+        buttonSeePassword2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSeePassword2ActionPerformed(evt);
+            }
+        });
+        add(buttonSeePassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSignupActionPerformed
@@ -232,9 +283,65 @@ public class SignupPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_text_emailActionPerformed
 
+    private void changeSeePassword(JPasswordField passwordField, boolean seePassword, JButton button)
+    {
+        if(seePassword)
+        {
+            //si esta configurado para ver la contraseña va a cambiar a no ver contraseña
+            passwordField.setEchoChar('•');
+            
+            changeJButton(button, seePasswordButton.getDontSeePassword());
+        }
+        else
+        {
+            //si esta configurado para no ver la contraseña va a cambiar a ver contraseña
+            passwordField.setEchoChar((char)0);
+            
+            changeJButton(button, seePasswordButton.getSeePassword());
+        }
+    }
+    
+    private void buttonSeePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeePasswordActionPerformed
+        if(seePassword1)
+        {
+            seePassword1 = false;
+        }
+        else
+        {
+            seePassword1 = true;
+        }
+        changeSeePassword(text_password, seePassword1,buttonSeePassword);
+    }//GEN-LAST:event_buttonSeePasswordActionPerformed
+
+    private void buttonSeePassword2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeePassword2ActionPerformed
+        // TODO add your handling code here:
+        if(seePassword2)
+        {
+            seePassword2 = false;
+        }
+        else
+        {
+            seePassword2 = true;
+        }
+        changeSeePassword(text_passwordConfirmed, seePassword2,buttonSeePassword2);
+    }//GEN-LAST:event_buttonSeePassword2ActionPerformed
+
+    private void changeJButton(JButton boton, ButtonImage imagenBoton)
+    {
+        String icon = imagenBoton.getIcon();
+        String pressedIcon = imagenBoton.getPressedIcon();
+        String rolloverIcon = imagenBoton.getRolloverIcon();
+        
+        //cambio las caracteristicas del boton enviado por parametro
+        boton.setIcon(new ImageIcon(getClass().getResource(icon)));
+        boton.setPressedIcon(new ImageIcon(getClass().getResource(pressedIcon)));
+        boton.setRolloverIcon(new ImageIcon(getClass().getResource(rolloverIcon)));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonSignup;
+    private javax.swing.JButton buttonSeePassword;
+    private javax.swing.JButton buttonSeePassword2;
     private javax.swing.JLabel errorText_email;
     private javax.swing.JLabel errorText_password;
     private javax.swing.JLabel errorText_password2;

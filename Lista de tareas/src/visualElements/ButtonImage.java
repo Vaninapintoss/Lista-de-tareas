@@ -4,6 +4,9 @@
  */
 package visualElements;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+
 /**
  *
  * @author sofia
