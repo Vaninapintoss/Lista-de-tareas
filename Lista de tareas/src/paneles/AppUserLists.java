@@ -8,8 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Frame;
 import javax.swing.JPanel;
-import paneles.menu.EmptyMenuPanel;
-import paneles.menu.MenuPanel;
+import paneles.options.SeeUserPanel;
 import user.User;
 
 /**
@@ -31,14 +30,6 @@ public class AppUserLists extends javax.swing.JFrame {
         //creo los paneles
         homescreenApp = new PantallaPrincipalApp(this.user);
         
-        //creo un panel Menu cerrado
-        closedMenu = new EmptyMenuPanel();
-        closedMenu.setSize(5, 5);
-        
-        //creo un panel menu
-        menu = new MenuPanel(); 
-        menu.setSize(203, 187);
-        
         //confirmo el tamaño del contenedor en los paneles
         homescreenApp.setSize(700, 450);
         
@@ -51,7 +42,7 @@ public class AppUserLists extends javax.swing.JFrame {
         //menu
         contentMenu.setVisible(false);
         contentMenu.setLocation(0, 0);
-        contentScreen(closedMenu,contentMenu);
+        //contentScreen(closedMenu,contentMenu);
     }
     
     public void contentScreen(Component panel, JPanel panelContent)
@@ -74,6 +65,7 @@ public class AppUserLists extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         ButtonMenu = new javax.swing.JButton();
         contentMenu = new javax.swing.JPanel();
+        buttonSeeUser = new javax.swing.JButton();
         barraArriba = new javax.swing.JPanel();
         botonCerrar = new javax.swing.JButton();
         botonMinimizar = new javax.swing.JButton();
@@ -107,15 +99,28 @@ public class AppUserLists extends javax.swing.JFrame {
         contentMenu.setMinimumSize(new java.awt.Dimension(5, 5));
         contentMenu.setPreferredSize(new java.awt.Dimension(203, 162));
 
+        buttonSeeUser.setText("jButton1");
+        buttonSeeUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSeeUserActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout contentMenuLayout = new javax.swing.GroupLayout(contentMenu);
         contentMenu.setLayout(contentMenuLayout);
         contentMenuLayout.setHorizontalGroup(
             contentMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 203, Short.MAX_VALUE)
+            .addGroup(contentMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonSeeUser)
+                .addContainerGap(140, Short.MAX_VALUE))
         );
         contentMenuLayout.setVerticalGroup(
             contentMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addGroup(contentMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(buttonSeeUser)
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         getContentPane().add(contentMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 32, -1, 160));
@@ -188,31 +193,39 @@ public class AppUserLists extends javax.swing.JFrame {
         if(menuOn)
         {
             //cierro el menu
-            contentScreen(closedMenu,contentMenu);
-            contentMenu.setVisible(false);
-            menuOn = false;//se cierra
+            seeMenu(false);
         }
         else
         {
             //abro el menu
-            contentMenu.setVisible(true);
-            contentMenu.setSize(203, 162);
-            contentScreen(menu,contentMenu);
-            menuOn = true;//se abre
+            seeMenu(true);
         }
     }//GEN-LAST:event_ButtonMenuActionPerformed
 
-    public static void menuContentScreenApp()
-    {
+    private void buttonSeeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeeUserActionPerformed
+        // TODO add your handling code here:
+        seeUser = new SeeUserPanel();
+        contentScreen(seeUser,contentScreenApp); 
         
+        //cierro el menu
+        seeMenu(false);
+    }//GEN-LAST:event_buttonSeeUserActionPerformed
+
+    private void seeMenu(boolean see)
+    {
+        contentMenu.setVisible(see);
+
+        menuOn = see;
     }
     
     public static User user;
     public static PantallaPrincipalApp homescreenApp;
     public static AppUserLists app;
     public static boolean menuOn;//si el menu esta abierto
-    public static EmptyMenuPanel closedMenu;
-    public static MenuPanel menu;
+    
+    //pabeles
+    public static SeeUserPanel seeUser;
+    
     /**
      * @param args the command line arguments
      */    
@@ -258,6 +271,7 @@ public class AppUserLists extends javax.swing.JFrame {
     private javax.swing.JPanel barraArriba;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonMinimizar;
+    private javax.swing.JButton buttonSeeUser;
     private javax.swing.JPanel contentMenu;
     private javax.swing.JPanel contentScreenApp;
     private javax.swing.JLabel jLabel1;
