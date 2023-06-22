@@ -5,6 +5,7 @@
 
 package list;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Iterator;
 import list.exceptions.ElementAlreadyExistException;
@@ -21,7 +22,7 @@ import list.task.exceptions.EmptyNameTaskException;
  * 
  * @author Vanina Pintos 
  */
-public class SimpleList extends List implements IListActions<SimpleTask>{
+public class SimpleList extends List implements IListActions<SimpleTask>, Serializable{
     private HashSet <SimpleTask> simpleList;   
 
     /**

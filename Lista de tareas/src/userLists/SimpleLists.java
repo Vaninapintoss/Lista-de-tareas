@@ -157,6 +157,4 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     public SimpleList searchList(String category) {
         return hashMapOfSL.get(category);
     }
-    
-    
 }

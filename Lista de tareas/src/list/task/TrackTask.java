@@ -5,6 +5,7 @@
 
 package list.task;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -19,7 +20,7 @@ import java.util.Objects;
  * 
  * @author Vanina Pintos & Sofia Brocardo
  */
-public class TrackTask extends Task{ 
+public class TrackTask extends Task implements Serializable{ 
     private Duration duration;
     private LocalDateTime startDateTime; 
 

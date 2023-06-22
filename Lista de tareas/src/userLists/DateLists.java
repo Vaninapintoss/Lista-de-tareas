@@ -154,6 +154,4 @@ public class DateLists implements IStorageActions<DateList>{
     public DateList searchList(String category) {
         return hashMapOfDL.get(category);
     }
-
-    
 }

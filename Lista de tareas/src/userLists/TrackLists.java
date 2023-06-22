@@ -27,7 +27,7 @@ public class TrackLists implements IStorageActions<TrackList>{
      * Crea un HashMap vacio
      * 
      */
-    public TrackLists(HashMap<String, TrackList> hashMapOfTL) {
+    public TrackLists() {
         hashMapOfTL = new HashMap<>();
     }
 
@@ -147,6 +147,4 @@ public class TrackLists implements IStorageActions<TrackList>{
     public TrackList searchList(String category) {
         return hashMapOfTL.get(category);
     }
-    
-    
 }

@@ -5,6 +5,7 @@
 
 package list.task;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -22,7 +23,7 @@ import list.task.exceptions.InvalidPatternDateException;
  * 
  * @author Vanina Pintos
  */
-public final class DateTask extends Task{
+public final class DateTask extends Task  implements Serializable{
     private Status status;
     private LocalDate finalDate;
 

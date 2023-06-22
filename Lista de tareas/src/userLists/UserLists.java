@@ -15,6 +15,4 @@ public class UserLists{
     private SimpleLists simpleLists;
     private DateLists dateLists;
     private TrackLists trackLists;
-    
-    
 }

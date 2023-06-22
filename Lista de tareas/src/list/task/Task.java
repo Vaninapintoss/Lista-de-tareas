@@ -5,6 +5,7 @@
 
 package list.task;
 
+import java.io.Serializable;
 import list.task.exceptions.EmptyNameTaskException;
 
 /**
@@ -15,7 +16,7 @@ import list.task.exceptions.EmptyNameTaskException;
  * 
  * @author Vanina Pintos
  */
-public abstract class Task {
+public abstract class Task implements Serializable{
     String name;
 
     /**

@@ -4,6 +4,7 @@
  */
 package list;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import list.task.TrackTask;
 
@@ -15,7 +16,7 @@ import list.task.TrackTask;
  * 
  * @author Vanina Pintos 
  */
-public class TrackList extends List implements IListActions<TrackTask>{
+public class TrackList extends List implements IListActions<TrackTask>, Serializable{
 
     private LinkedList <TrackTask> trackList;
 

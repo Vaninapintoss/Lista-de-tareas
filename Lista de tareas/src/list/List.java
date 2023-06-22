@@ -5,6 +5,7 @@
 
 package list;
 
+import java.io.Serializable;
 import list.exceptions.EmptyCategoryListException;
 
 /**
@@ -17,7 +18,7 @@ import list.exceptions.EmptyCategoryListException;
  *
  * @author Vanina Pintos
  */
-public abstract class List{
+public abstract class List  implements Serializable{
     private String category;
 
     /**

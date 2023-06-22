@@ -4,6 +4,7 @@
  */
 package list;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Iterator;
 import list.exceptions.ElementAlreadyExistException;
@@ -20,7 +21,7 @@ import list.task.exceptions.EmptyNameTaskException;
  * 
  * @author Vanina Pintos 
  */
-public class DateList extends List implements IListActions<DateTask>{
+public class DateList extends List implements IListActions<DateTask>, Serializable{
     private HashSet <DateTask> dateList;
 
     /**

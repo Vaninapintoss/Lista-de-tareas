@@ -5,6 +5,8 @@
 
 package list.task;
 
+import java.io.Serializable;
+
 /**
  * <h1>Clase SimpleTask</h1>
  * Guarda la informacion de la tarea de tipo simple (nombre y estado)
@@ -15,7 +17,7 @@ package list.task;
  * 
  * @author Vanina Pintos 
  */
-public class SimpleTask extends Task{
+public class SimpleTask extends Task  implements Serializable{
     private Status status;
 
     /**
