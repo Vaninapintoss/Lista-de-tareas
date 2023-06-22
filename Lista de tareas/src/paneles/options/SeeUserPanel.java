@@ -54,15 +54,12 @@ public class SeeUserPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/infoUsuario/bugCat.png"))); // NOI18N
-        jLabel2.setMaximumSize(new java.awt.Dimension(92, 134));
-        jLabel2.setMinimumSize(new java.awt.Dimension(92, 134));
-        jLabel2.setPreferredSize(new java.awt.Dimension(92, 134));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, -1, 140));
 
-        text_email.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        text_email.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         text_email.setForeground(new java.awt.Color(195, 225, 203));
         text_email.setText("Email: ");
-        add(text_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
+        add(text_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
         text_calendarListN.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         text_calendarListN.setForeground(new java.awt.Color(195, 225, 203));
@@ -79,20 +76,16 @@ public class SeeUserPanel extends javax.swing.JPanel {
         text_taskListN.setText("Listas Simples: ");
         add(text_taskListN, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, 30));
 
-        text_location.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        text_location.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         text_location.setForeground(new java.awt.Color(195, 225, 203));
         text_location.setText("Localizacion: ");
-        add(text_location, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
+        add(text_location, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
 
-        email_user.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         email_user.setForeground(new java.awt.Color(195, 225, 203));
-        email_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        add(email_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 440, 20));
+        add(email_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 470, 20));
 
-        location_user.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         location_user.setForeground(new java.awt.Color(195, 225, 203));
-        location_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
-        add(location_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 380, 20));
+        add(location_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, 420, 20));
 
         image1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/infoUsuario/infoUsuario1.png"))); // NOI18N
         add(image1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));

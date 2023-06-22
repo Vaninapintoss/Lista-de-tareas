@@ -185,7 +185,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     
     public static void abrirApp(User user)
     {
-        AppUserLists app = new AppUserLists(user);
+        AppUserLists app = new AppUserLists(user, sistemaUsuarios);
         app.setVisible(true);
         homeScreen.dispose();
     }

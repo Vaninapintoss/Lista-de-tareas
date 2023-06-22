@@ -14,6 +14,7 @@ import paneles.options.ModifyLocationPanel;
 import paneles.options.ModifyPasswordPanel;
 import paneles.options.SeeUserPanel;
 import user.User;
+import user.UsersSystem;
 
 /**
  *
@@ -24,10 +25,11 @@ public class AppUserLists extends javax.swing.JFrame {
     /**
      * Creates new form AppUserLists
      */
-    public AppUserLists(User user) 
+    public AppUserLists(User user, UsersSystem users) 
     {
         menuOn = false;
         this.user = user;
+        this.users = users;
         initComponents();
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
         
@@ -328,7 +330,7 @@ public class AppUserLists extends javax.swing.JFrame {
 
     private void buttonChangeLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeLocationActionPerformed
         //cambio la pantalla a modificar la localizacion
-        modifyLocationPanel = new ModifyLocationPanel();
+        modifyLocationPanel = new ModifyLocationPanel(user, users);
         
         modifyLocationPanel.setSize(700, 450);
         modifyLocationPanel.setLocation(0, 0);
@@ -385,6 +387,7 @@ public class AppUserLists extends javax.swing.JFrame {
     }
     
     public static User user;
+    public static UsersSystem users;
     public static AppUserLists app;
     private PantallaPrincipalApp homescreenApp;
     private boolean menuOn;//si el menu esta abierto
@@ -433,7 +436,7 @@ public class AppUserLists extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                app = new AppUserLists(user);
+                app = new AppUserLists(user, users);
                 app.setVisible(true);
             }
         });
