@@ -177,14 +177,14 @@ public class SignupPanel extends javax.swing.JPanel {
         userSavedText.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         add(userSavedText, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 250, 20));
 
-        buttonSeePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButton.png"))); // NOI18N
+        buttonSeePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButton.png"))); // NOI18N
         buttonSeePassword.setBorderPainted(false);
         buttonSeePassword.setContentAreaFilled(false);
         buttonSeePassword.setMaximumSize(new java.awt.Dimension(30, 30));
         buttonSeePassword.setMinimumSize(new java.awt.Dimension(30, 30));
         buttonSeePassword.setPreferredSize(new java.awt.Dimension(30, 30));
-        buttonSeePassword.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButton.png"))); // NOI18N
-        buttonSeePassword.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButtonMouseOver.png"))); // NOI18N
+        buttonSeePassword.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButton.png"))); // NOI18N
+        buttonSeePassword.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButtonMouseOver.png"))); // NOI18N
         buttonSeePassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSeePasswordActionPerformed(evt);
@@ -192,14 +192,14 @@ public class SignupPanel extends javax.swing.JPanel {
         });
         add(buttonSeePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 110, -1, -1));
 
-        buttonSeePassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButton.png"))); // NOI18N
+        buttonSeePassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButton.png"))); // NOI18N
         buttonSeePassword2.setBorderPainted(false);
         buttonSeePassword2.setContentAreaFilled(false);
         buttonSeePassword2.setMaximumSize(new java.awt.Dimension(30, 30));
         buttonSeePassword2.setMinimumSize(new java.awt.Dimension(30, 30));
         buttonSeePassword2.setPreferredSize(new java.awt.Dimension(30, 30));
-        buttonSeePassword2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButton.png"))); // NOI18N
-        buttonSeePassword2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButtonMouseOver.png"))); // NOI18N
+        buttonSeePassword2.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButton.png"))); // NOI18N
+        buttonSeePassword2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButtonMouseOver.png"))); // NOI18N
         buttonSeePassword2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSeePassword2ActionPerformed(evt);

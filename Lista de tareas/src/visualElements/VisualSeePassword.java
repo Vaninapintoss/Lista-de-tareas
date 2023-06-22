@@ -15,11 +15,11 @@ public class VisualSeePassword
     
     public VisualSeePassword()
     {
-        seePassword = new ButtonImage("/imagenes/BotonesLogIn/seePasswordButton.png",
+        dontSeePassword = new ButtonImage("/imagenes/BotonesLogIn/seePasswordButton.png",
                                 "/imagenes/BotonesLogIn/dontSeePasswordButton.png",
                                "/imagenes/BotonesLogIn/seePasswordButtonMouseOver.png");
         
-        dontSeePassword = new ButtonImage("/imagenes/BotonesLogIn/dontSeePasswordButton.png",
+        seePassword = new ButtonImage("/imagenes/BotonesLogIn/dontSeePasswordButton.png",
                                 "/imagenes/BotonesLogIn/seePasswordButton.png",
                                "/imagenes/BotonesLogIn/dontSeePasswordButtonMouseOver.png");
     }

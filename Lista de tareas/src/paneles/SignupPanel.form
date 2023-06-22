@@ -304,7 +304,7 @@
     <Component class="javax.swing.JButton" name="buttonSeePassword">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/BotonesLogIn/seePasswordButton.png"/>
+          <Image iconType="3" name="/imagenes/BotonesLogIn/dontSeePasswordButton.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -318,10 +318,10 @@
           <Dimension value="[30, 30]"/>
         </Property>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/BotonesLogIn/dontSeePasswordButton.png"/>
+          <Image iconType="3" name="/imagenes/BotonesLogIn/seePasswordButton.png"/>
         </Property>
         <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/BotonesLogIn/seePasswordButtonMouseOver.png"/>
+          <Image iconType="3" name="/imagenes/BotonesLogIn/dontSeePasswordButtonMouseOver.png"/>
         </Property>
       </Properties>
       <Events>
@@ -336,7 +336,7 @@
     <Component class="javax.swing.JButton" name="buttonSeePassword2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/BotonesLogIn/seePasswordButton.png"/>
+          <Image iconType="3" name="/imagenes/BotonesLogIn/dontSeePasswordButton.png"/>
         </Property>
         <Property name="borderPainted" type="boolean" value="false"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -350,10 +350,10 @@
           <Dimension value="[30, 30]"/>
         </Property>
         <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/BotonesLogIn/dontSeePasswordButton.png"/>
+          <Image iconType="3" name="/imagenes/BotonesLogIn/seePasswordButton.png"/>
         </Property>
         <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/BotonesLogIn/seePasswordButtonMouseOver.png"/>
+          <Image iconType="3" name="/imagenes/BotonesLogIn/dontSeePasswordButtonMouseOver.png"/>
         </Property>
       </Properties>
       <Events>

@@ -4,6 +4,8 @@
  */
 package paneles;
 
+import static paneles.AppUserLists.user;
+
 /**
  *
  * @author sofia
@@ -15,6 +17,15 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
      */
     public PantallaPrincipalApp() {
         initComponents();
+        
+        if(user.getLocation().isEmpty())
+        {
+            //si no tiene cargada una localizacion muestro un panel
+        }
+        else
+        {
+            //si tiene una localizacion muestro el clima
+        }
     }
 
     /**
@@ -35,6 +46,8 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         contentWeather.setBackground(new java.awt.Color(255, 204, 204));
+        contentWeather.setMaximumSize(new java.awt.Dimension(660, 170));
+        contentWeather.setMinimumSize(new java.awt.Dimension(660, 170));
         contentWeather.setPreferredSize(new java.awt.Dimension(660, 170));
 
         javax.swing.GroupLayout contentWeatherLayout = new javax.swing.GroupLayout(contentWeather);

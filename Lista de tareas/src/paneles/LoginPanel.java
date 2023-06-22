@@ -128,14 +128,14 @@ public class LoginPanel extends javax.swing.JPanel {
         errorText_password.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
         add(errorText_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 190, 140, 20));
 
-        butoonSeePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButton.png"))); // NOI18N
+        butoonSeePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButton.png"))); // NOI18N
         butoonSeePassword.setBorderPainted(false);
         butoonSeePassword.setContentAreaFilled(false);
         butoonSeePassword.setMaximumSize(new java.awt.Dimension(30, 30));
         butoonSeePassword.setMinimumSize(new java.awt.Dimension(30, 30));
         butoonSeePassword.setPreferredSize(new java.awt.Dimension(30, 30));
-        butoonSeePassword.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButton.png"))); // NOI18N
-        butoonSeePassword.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButtonMouseOver.png"))); // NOI18N
+        butoonSeePassword.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/seePasswordButton.png"))); // NOI18N
+        butoonSeePassword.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/dontSeePasswordButtonMouseOver.png"))); // NOI18N
         butoonSeePassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 butoonSeePasswordActionPerformed(evt);

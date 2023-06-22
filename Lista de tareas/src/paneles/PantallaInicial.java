@@ -45,6 +45,23 @@ public class PantallaInicial extends javax.swing.JFrame {
         
         initComponents();
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
+        
+        //creo los paneles
+        login = new LoginPanel();
+ 
+        signup = new SignupPanel();
+        
+        //creo los elementos visuales de los botones
+        visualButtons = new VisualLoginSignupPage();
+        
+        //confirmo el tamaño del contenedor en los paneles
+        login.setSize(700, 310);
+        signup.setSize(700, 310);
+        
+        //posicion con respecto al contenedor
+        login.setLocation(0, 0);
+        signup.setLocation(0, 0);
+        
         //cargo al principio la pantalla de LogIn
         contentPantalla(login);
         
@@ -259,21 +276,7 @@ public class PantallaInicial extends javax.swing.JFrame {
      */
     public static void main(String args[]) 
     {      
-        //creo los paneles
-        login = new LoginPanel();
- 
-        signup = new SignupPanel();
         
-        //creo los elementos visuales de los botones
-        visualButtons = new VisualLoginSignupPage();
-        
-        //confirmo el tamaño del contenedor en los paneles
-        login.setSize(700, 310);
-        signup.setSize(700, 310);
-        
-        //posicion con respecto al contenedor
-        login.setLocation(0, 0);
-        signup.setLocation(0, 0);
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

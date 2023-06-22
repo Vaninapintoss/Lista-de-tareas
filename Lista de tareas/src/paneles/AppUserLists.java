@@ -4,6 +4,8 @@
  */
 package paneles;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Frame;
 import user.User;
 
@@ -16,11 +18,31 @@ public class AppUserLists extends javax.swing.JFrame {
     /**
      * Creates new form AppUserLists
      */
-    public static User user;
-    
     public AppUserLists() {
         initComponents();
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
+        
+        //creo los paneles
+        homescreenApp = new PantallaPrincipalApp();
+        
+        //confirmo el tamaño del contenedor en los paneles
+        homescreenApp.setSize(700, 450);
+        
+        //posicion con respecto al contenedor
+        homescreenApp.setLocation(0, 0);
+        
+        //cargo al principio la pantalla de LogIn
+        contentScreen(homescreenApp);
+        
+        
+    }
+    
+    public void contentScreen(Component panel)
+    {
+        contentScreenApp.removeAll();
+        contentScreenApp.add(panel,BorderLayout.CENTER);
+        contentScreenApp.revalidate();
+        contentScreenApp.repaint();
     }
 
     public void setUser(User userN)
@@ -41,7 +63,7 @@ public class AppUserLists extends javax.swing.JFrame {
         botonCerrar = new javax.swing.JButton();
         botonMinimizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        content = new javax.swing.JPanel();
+        contentScreenApp = new javax.swing.JPanel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -88,20 +110,20 @@ public class AppUserLists extends javax.swing.JFrame {
 
         getContentPane().add(barraArriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
 
-        content.setBackground(new java.awt.Color(255, 204, 204));
+        contentScreenApp.setBackground(new java.awt.Color(255, 204, 204));
 
-        javax.swing.GroupLayout contentLayout = new javax.swing.GroupLayout(content);
-        content.setLayout(contentLayout);
-        contentLayout.setHorizontalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout contentScreenAppLayout = new javax.swing.GroupLayout(contentScreenApp);
+        contentScreenApp.setLayout(contentScreenAppLayout);
+        contentScreenAppLayout.setHorizontalGroup(
+            contentScreenAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 700, Short.MAX_VALUE)
         );
-        contentLayout.setVerticalGroup(
-            contentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        contentScreenAppLayout.setVerticalGroup(
+            contentScreenAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 450, Short.MAX_VALUE)
         );
 
-        getContentPane().add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 700, 450));
+        getContentPane().add(contentScreenApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 700, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,10 +136,16 @@ public class AppUserLists extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCerrarActionPerformed
 
+    public static User user;
+    public static PantallaPrincipalApp homescreenApp;
+    public static AppUserLists app;
     /**
      * @param args the command line arguments
-     */
-    public static void main(String args[]) {
+     */    
+    public static void main(String args[]) 
+    {
+        
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -140,11 +168,13 @@ public class AppUserLists extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(AppUserLists.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AppUserLists().setVisible(true);
+                app = new AppUserLists();
+                app.setVisible(true);
             }
         });
     }
@@ -153,7 +183,7 @@ public class AppUserLists extends javax.swing.JFrame {
     private javax.swing.JPanel barraArriba;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonMinimizar;
-    private javax.swing.JPanel content;
+    private javax.swing.JPanel contentScreenApp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
