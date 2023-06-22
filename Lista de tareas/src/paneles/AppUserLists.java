@@ -66,6 +66,11 @@ public class AppUserLists extends javax.swing.JFrame {
         ButtonMenu = new javax.swing.JButton();
         contentMenu = new javax.swing.JPanel();
         buttonSeeUser = new javax.swing.JButton();
+        buttonChangePassword = new javax.swing.JButton();
+        buttonChangeLocation = new javax.swing.JButton();
+        buttonDeleteUser = new javax.swing.JButton();
+        buttonInfo = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         barraArriba = new javax.swing.JPanel();
         botonCerrar = new javax.swing.JButton();
         botonMinimizar = new javax.swing.JButton();
@@ -95,35 +100,67 @@ public class AppUserLists extends javax.swing.JFrame {
         getContentPane().add(ButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         contentMenu.setBackground(new java.awt.Color(204, 204, 255));
-        contentMenu.setMaximumSize(new java.awt.Dimension(203, 162));
-        contentMenu.setMinimumSize(new java.awt.Dimension(5, 5));
-        contentMenu.setPreferredSize(new java.awt.Dimension(203, 162));
+        contentMenu.setMaximumSize(new java.awt.Dimension(203, 180));
+        contentMenu.setMinimumSize(new java.awt.Dimension(203, 180));
+        contentMenu.setOpaque(false);
+        contentMenu.setPreferredSize(new java.awt.Dimension(203, 180));
+        contentMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        buttonSeeUser.setText("jButton1");
+        buttonSeeUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonVerUsuario.png"))); // NOI18N
+        buttonSeeUser.setBorderPainted(false);
+        buttonSeeUser.setContentAreaFilled(false);
+        buttonSeeUser.setMaximumSize(new java.awt.Dimension(185, 20));
+        buttonSeeUser.setMinimumSize(new java.awt.Dimension(185, 20));
+        buttonSeeUser.setPreferredSize(new java.awt.Dimension(185, 20));
+        buttonSeeUser.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonVerUsuarioMouseOver.png"))); // NOI18N
         buttonSeeUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonSeeUserActionPerformed(evt);
             }
         });
+        contentMenu.add(buttonSeeUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 20));
 
-        javax.swing.GroupLayout contentMenuLayout = new javax.swing.GroupLayout(contentMenu);
-        contentMenu.setLayout(contentMenuLayout);
-        contentMenuLayout.setHorizontalGroup(
-            contentMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonSeeUser)
-                .addContainerGap(140, Short.MAX_VALUE))
-        );
-        contentMenuLayout.setVerticalGroup(
-            contentMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(contentMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buttonSeeUser)
-                .addContainerGap(130, Short.MAX_VALUE))
-        );
+        buttonChangePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonModificarContraseña.png"))); // NOI18N
+        buttonChangePassword.setBorderPainted(false);
+        buttonChangePassword.setContentAreaFilled(false);
+        buttonChangePassword.setMaximumSize(new java.awt.Dimension(185, 20));
+        buttonChangePassword.setMinimumSize(new java.awt.Dimension(185, 20));
+        buttonChangePassword.setPreferredSize(new java.awt.Dimension(185, 20));
+        buttonChangePassword.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonModificarContraseñaMouseOver.png"))); // NOI18N
+        contentMenu.add(buttonChangePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
-        getContentPane().add(contentMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 32, -1, 160));
+        buttonChangeLocation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonModificarLocalizacion.png"))); // NOI18N
+        buttonChangeLocation.setBorderPainted(false);
+        buttonChangeLocation.setContentAreaFilled(false);
+        buttonChangeLocation.setMaximumSize(new java.awt.Dimension(185, 20));
+        buttonChangeLocation.setMinimumSize(new java.awt.Dimension(185, 20));
+        buttonChangeLocation.setPreferredSize(new java.awt.Dimension(185, 20));
+        buttonChangeLocation.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonModificarLocalizacionMouseOver.png"))); // NOI18N
+        contentMenu.add(buttonChangeLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+
+        buttonDeleteUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonEliminarUsuario.png"))); // NOI18N
+        buttonDeleteUser.setBorderPainted(false);
+        buttonDeleteUser.setContentAreaFilled(false);
+        buttonDeleteUser.setMaximumSize(new java.awt.Dimension(185, 20));
+        buttonDeleteUser.setMinimumSize(new java.awt.Dimension(185, 20));
+        buttonDeleteUser.setPreferredSize(new java.awt.Dimension(185, 20));
+        buttonDeleteUser.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonEliminarUsuarioMouseOver.png"))); // NOI18N
+        contentMenu.add(buttonDeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+
+        buttonInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonInfo.png"))); // NOI18N
+        buttonInfo.setBorderPainted(false);
+        buttonInfo.setContentAreaFilled(false);
+        buttonInfo.setMaximumSize(new java.awt.Dimension(185, 20));
+        buttonInfo.setMinimumSize(new java.awt.Dimension(185, 20));
+        buttonInfo.setPreferredSize(new java.awt.Dimension(185, 20));
+        buttonInfo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonInfoMouseOver.png"))); // NOI18N
+        contentMenu.add(buttonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/background.png"))); // NOI18N
+        jLabel2.setPreferredSize(new java.awt.Dimension(203, 180));
+        contentMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 180));
+
+        getContentPane().add(contentMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, 180));
 
         barraArriba.setBackground(new java.awt.Color(195, 225, 203));
         barraArriba.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -271,10 +308,15 @@ public class AppUserLists extends javax.swing.JFrame {
     private javax.swing.JPanel barraArriba;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonMinimizar;
+    private javax.swing.JButton buttonChangeLocation;
+    private javax.swing.JButton buttonChangePassword;
+    private javax.swing.JButton buttonDeleteUser;
+    private javax.swing.JButton buttonInfo;
     private javax.swing.JButton buttonSeeUser;
     private javax.swing.JPanel contentMenu;
     private javax.swing.JPanel contentScreenApp;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }
