@@ -46,7 +46,6 @@ public class AppUserLists extends javax.swing.JFrame {
         jToggleButton1.setText("jToggleButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(700, 500));
         setMinimumSize(new java.awt.Dimension(700, 500));
         setUndecorated(true);
         setResizable(false);
@@ -85,9 +84,6 @@ public class AppUserLists extends javax.swing.JFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/taskMasterProTitulo.png"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(180, 16));
-        jLabel1.setMinimumSize(new java.awt.Dimension(180, 16));
-        jLabel1.setPreferredSize(new java.awt.Dimension(180, 16));
         barraArriba.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         getContentPane().add(barraArriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
