@@ -7,6 +7,9 @@ package paneles;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Frame;
+import javax.swing.JPanel;
+import paneles.menu.EmptyMenuPanel;
+import paneles.menu.MenuPanel;
 import user.User;
 
 /**
@@ -20,12 +23,21 @@ public class AppUserLists extends javax.swing.JFrame {
      */
     public AppUserLists(User user) 
     {
+        menuOn = false;
         this.user = user;
         initComponents();
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
         
         //creo los paneles
         homescreenApp = new PantallaPrincipalApp(this.user);
+        
+        //creo un panel Menu cerrado
+        closedMenu = new EmptyMenuPanel();
+        closedMenu.setSize(5, 5);
+        
+        //creo un panel menu
+        menu = new MenuPanel(); 
+        menu.setSize(203, 187);
         
         //confirmo el tamaño del contenedor en los paneles
         homescreenApp.setSize(700, 450);
@@ -34,17 +46,20 @@ public class AppUserLists extends javax.swing.JFrame {
         homescreenApp.setLocation(0, 0);
         
         //cargo al principio la pantalla de LogIn
-        contentScreen(homescreenApp);
+        contentScreen(homescreenApp,contentScreenApp); 
         
-        
+        //menu
+        contentMenu.setVisible(false);
+        contentMenu.setLocation(0, 0);
+        contentScreen(closedMenu,contentMenu);
     }
     
-    public void contentScreen(Component panel)
+    public void contentScreen(Component panel, JPanel panelContent)
     {
-        contentScreenApp.removeAll();
-        contentScreenApp.add(panel,BorderLayout.CENTER);
-        contentScreenApp.revalidate();
-        contentScreenApp.repaint();
+        panelContent.removeAll();
+        panelContent.add(panel,BorderLayout.CENTER);
+        panelContent.revalidate();
+        panelContent.repaint();
     }
 
     /**
@@ -57,6 +72,8 @@ public class AppUserLists extends javax.swing.JFrame {
     private void initComponents() {
 
         jToggleButton1 = new javax.swing.JToggleButton();
+        ButtonMenu = new javax.swing.JButton();
+        contentMenu = new javax.swing.JPanel();
         barraArriba = new javax.swing.JPanel();
         botonCerrar = new javax.swing.JButton();
         botonMinimizar = new javax.swing.JButton();
@@ -70,6 +87,38 @@ public class AppUserLists extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ButtonMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonMenu.png"))); // NOI18N
+        ButtonMenu.setBorderPainted(false);
+        ButtonMenu.setContentAreaFilled(false);
+        ButtonMenu.setMaximumSize(new java.awt.Dimension(25, 25));
+        ButtonMenu.setMinimumSize(new java.awt.Dimension(25, 25));
+        ButtonMenu.setPreferredSize(new java.awt.Dimension(25, 25));
+        ButtonMenu.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonMenuMouseOver.png"))); // NOI18N
+        ButtonMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonMenuActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ButtonMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        contentMenu.setBackground(new java.awt.Color(204, 204, 255));
+        contentMenu.setMaximumSize(new java.awt.Dimension(203, 162));
+        contentMenu.setMinimumSize(new java.awt.Dimension(5, 5));
+        contentMenu.setPreferredSize(new java.awt.Dimension(203, 162));
+
+        javax.swing.GroupLayout contentMenuLayout = new javax.swing.GroupLayout(contentMenu);
+        contentMenu.setLayout(contentMenuLayout);
+        contentMenuLayout.setHorizontalGroup(
+            contentMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 203, Short.MAX_VALUE)
+        );
+        contentMenuLayout.setVerticalGroup(
+            contentMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(contentMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 32, -1, 160));
 
         barraArriba.setBackground(new java.awt.Color(195, 225, 203));
         barraArriba.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -134,9 +183,36 @@ public class AppUserLists extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCerrarActionPerformed
 
+    private void ButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMenuActionPerformed
+        //si el boton esta encendido se tiene que apagar
+        if(menuOn)
+        {
+            //cierro el menu
+            contentScreen(closedMenu,contentMenu);
+            contentMenu.setVisible(false);
+            menuOn = false;//se cierra
+        }
+        else
+        {
+            //abro el menu
+            contentMenu.setVisible(true);
+            contentMenu.setSize(203, 162);
+            contentScreen(menu,contentMenu);
+            menuOn = true;//se abre
+        }
+    }//GEN-LAST:event_ButtonMenuActionPerformed
+
+    public static void menuContentScreenApp()
+    {
+        
+    }
+    
     public static User user;
     public static PantallaPrincipalApp homescreenApp;
     public static AppUserLists app;
+    public static boolean menuOn;//si el menu esta abierto
+    public static EmptyMenuPanel closedMenu;
+    public static MenuPanel menu;
     /**
      * @param args the command line arguments
      */    
@@ -178,9 +254,11 @@ public class AppUserLists extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton ButtonMenu;
     private javax.swing.JPanel barraArriba;
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonMinimizar;
+    private javax.swing.JPanel contentMenu;
     private javax.swing.JPanel contentScreenApp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JToggleButton jToggleButton1;
