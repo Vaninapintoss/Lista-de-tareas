@@ -234,6 +234,19 @@ public class UsersSystem
         return FileController.readUsersFromFile("users.dat", users);
     }
     
+    /**
+     * <h1>Modificar Usuario</h1>
+     * Modifica el usuario y lo guarda en el archivo
+     * @param user 
+     */
+    public void modifyUser(User user)
+    {
+        users.put(user.getEmail(), user);
+        
+        saveUsersInFile();
+    }
+    
+    
     /*
     public String mostrarUsuarios()
     {

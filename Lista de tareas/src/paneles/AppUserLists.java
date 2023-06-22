@@ -298,7 +298,7 @@ public class AppUserLists extends javax.swing.JFrame {
 
     private void buttonSeeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeeUserActionPerformed
         //cambio la pantalla a ver usuario
-        seeUserPanel = new SeeUserPanel();
+        seeUserPanel = new SeeUserPanel(user);
         
         seeUserPanel.setSize(700, 450);
         seeUserPanel.setLocation(0, 0);
@@ -385,19 +385,19 @@ public class AppUserLists extends javax.swing.JFrame {
     }
     
     public static User user;
-    public static PantallaPrincipalApp homescreenApp;
     public static AppUserLists app;
-    public static boolean menuOn;//si el menu esta abierto
+    private PantallaPrincipalApp homescreenApp;
+    private boolean menuOn;//si el menu esta abierto
     
     //pabeles
-    public static SeeUserPanel seeUserPanel;
-    public static ModifyPasswordPanel modifyPasswordPanel;
-    public static ModifyLocationPanel modifyLocationPanel;
-    public static DeleteUserPanel deleteUserPanel;
-    public static InfoTaskMasterProPanel infoAppPanel;
+    private SeeUserPanel seeUserPanel;
+    private ModifyPasswordPanel modifyPasswordPanel;
+    private ModifyLocationPanel modifyLocationPanel;
+    private DeleteUserPanel deleteUserPanel;
+    private InfoTaskMasterProPanel infoAppPanel;
     
     //info del ultimo panel activo
-    public static JPanel lastPanel;
+    private JPanel lastPanel;
     
     /**
      * @param args the command line arguments

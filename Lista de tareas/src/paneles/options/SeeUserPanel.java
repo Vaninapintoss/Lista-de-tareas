@@ -4,6 +4,8 @@
  */
 package paneles.options;
 
+import user.User;
+
 /**
  *
  * @author sofia
@@ -13,8 +15,19 @@ public class SeeUserPanel extends javax.swing.JPanel {
     /**
      * Creates new form SeeUser
      */
-    public SeeUserPanel() {
+    public SeeUserPanel(User user) {
         initComponents();
+        updateUserPanel(user);
+    }
+    
+    public void updateUserPanel(User user)
+    {
+        email_user.setText(user.getEmail());
+        
+        if(user.getLocation().isEmpty())
+            location_user.setText("el usuario no tiene una localizacion cargada");
+        else
+            location_user.setText(user.getLocation().getName());
     }
 
     /**
@@ -26,32 +39,79 @@ public class SeeUserPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        text_email = new javax.swing.JLabel();
+        text_calendarListN = new javax.swing.JLabel();
+        text_trackListN = new javax.swing.JLabel();
+        text_taskListN = new javax.swing.JLabel();
+        text_location = new javax.swing.JLabel();
+        email_user = new javax.swing.JLabel();
+        location_user = new javax.swing.JLabel();
+        image1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(102, 0, 0));
+        setBackground(new java.awt.Color(195, 225, 203));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("USUARIO");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/infoUsuario/bugCat.png"))); // NOI18N
+        jLabel2.setMaximumSize(new java.awt.Dimension(92, 134));
+        jLabel2.setMinimumSize(new java.awt.Dimension(92, 134));
+        jLabel2.setPreferredSize(new java.awt.Dimension(92, 134));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 310, -1, 140));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(324, 324, 324)
-                .addComponent(jLabel1)
-                .addContainerGap(322, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(205, 205, 205)
-                .addComponent(jLabel1)
-                .addContainerGap(229, Short.MAX_VALUE))
-        );
+        text_email.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        text_email.setForeground(new java.awt.Color(195, 225, 203));
+        text_email.setText("Email: ");
+        add(text_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 80, -1, -1));
+
+        text_calendarListN.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        text_calendarListN.setForeground(new java.awt.Color(195, 225, 203));
+        text_calendarListN.setText("Listas con fecha: ");
+        add(text_calendarListN, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, 30));
+
+        text_trackListN.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        text_trackListN.setForeground(new java.awt.Color(195, 225, 203));
+        text_trackListN.setText("Listas con traqueo: ");
+        add(text_trackListN, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, 30));
+
+        text_taskListN.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        text_taskListN.setForeground(new java.awt.Color(195, 225, 203));
+        text_taskListN.setText("Listas Simples: ");
+        add(text_taskListN, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 280, -1, 30));
+
+        text_location.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        text_location.setForeground(new java.awt.Color(195, 225, 203));
+        text_location.setText("Localizacion: ");
+        add(text_location, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 120, -1, -1));
+
+        email_user.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        email_user.setForeground(new java.awt.Color(195, 225, 203));
+        email_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        add(email_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 440, 20));
+
+        location_user.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        location_user.setForeground(new java.awt.Color(195, 225, 203));
+        location_user.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        add(location_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 120, 380, 20));
+
+        image1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/infoUsuario/infoUsuario1.png"))); // NOI18N
+        add(image1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/infoUsuario/infoUsuario2.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel email_user;
+    private javax.swing.JLabel image1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel location_user;
+    private javax.swing.JLabel text_calendarListN;
+    private javax.swing.JLabel text_email;
+    private javax.swing.JLabel text_location;
+    private javax.swing.JLabel text_taskListN;
+    private javax.swing.JLabel text_trackListN;
     // End of variables declaration//GEN-END:variables
 }
