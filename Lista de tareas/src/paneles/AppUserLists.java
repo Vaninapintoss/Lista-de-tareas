@@ -8,6 +8,10 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Frame;
 import javax.swing.JPanel;
+import paneles.options.DeleteUserPanel;
+import paneles.options.InfoTaskMasterProPanel;
+import paneles.options.ModifyLocationPanel;
+import paneles.options.ModifyPasswordPanel;
 import paneles.options.SeeUserPanel;
 import user.User;
 
@@ -42,7 +46,10 @@ public class AppUserLists extends javax.swing.JFrame {
         //menu
         contentMenu.setVisible(false);
         contentMenu.setLocation(0, 0);
-        //contentScreen(closedMenu,contentMenu);
+        
+        
+        //boton atras
+        buttonGoBack.setVisible(false);
     }
     
     public void contentScreen(Component panel, JPanel panelContent)
@@ -71,11 +78,13 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonDeleteUser = new javax.swing.JButton();
         buttonInfo = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        panelEmpty = new javax.swing.JPanel();
+        buttonGoBack = new javax.swing.JButton();
+        contentScreenApp = new javax.swing.JPanel();
         barraArriba = new javax.swing.JPanel();
         botonCerrar = new javax.swing.JButton();
         botonMinimizar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        contentScreenApp = new javax.swing.JPanel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -127,6 +136,11 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonChangePassword.setMinimumSize(new java.awt.Dimension(185, 20));
         buttonChangePassword.setPreferredSize(new java.awt.Dimension(185, 20));
         buttonChangePassword.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonModificarContraseñaMouseOver.png"))); // NOI18N
+        buttonChangePassword.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonChangePasswordActionPerformed(evt);
+            }
+        });
         contentMenu.add(buttonChangePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         buttonChangeLocation.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonModificarLocalizacion.png"))); // NOI18N
@@ -136,6 +150,11 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonChangeLocation.setMinimumSize(new java.awt.Dimension(185, 20));
         buttonChangeLocation.setPreferredSize(new java.awt.Dimension(185, 20));
         buttonChangeLocation.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonModificarLocalizacionMouseOver.png"))); // NOI18N
+        buttonChangeLocation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonChangeLocationActionPerformed(evt);
+            }
+        });
         contentMenu.add(buttonChangeLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         buttonDeleteUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonEliminarUsuario.png"))); // NOI18N
@@ -145,6 +164,11 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonDeleteUser.setMinimumSize(new java.awt.Dimension(185, 20));
         buttonDeleteUser.setPreferredSize(new java.awt.Dimension(185, 20));
         buttonDeleteUser.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonEliminarUsuarioMouseOver.png"))); // NOI18N
+        buttonDeleteUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteUserActionPerformed(evt);
+            }
+        });
         contentMenu.add(buttonDeleteUser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         buttonInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonInfo.png"))); // NOI18N
@@ -154,6 +178,11 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonInfo.setMinimumSize(new java.awt.Dimension(185, 20));
         buttonInfo.setPreferredSize(new java.awt.Dimension(185, 20));
         buttonInfo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/botonInfoMouseOver.png"))); // NOI18N
+        buttonInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonInfoActionPerformed(evt);
+            }
+        });
         contentMenu.add(buttonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/background.png"))); // NOI18N
@@ -161,6 +190,49 @@ public class AppUserLists extends javax.swing.JFrame {
         contentMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 180));
 
         getContentPane().add(contentMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, 180));
+
+        panelEmpty.setOpaque(false);
+
+        buttonGoBack.setText("jButton2");
+        buttonGoBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGoBackActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelEmptyLayout = new javax.swing.GroupLayout(panelEmpty);
+        panelEmpty.setLayout(panelEmptyLayout);
+        panelEmptyLayout.setHorizontalGroup(
+            panelEmptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelEmptyLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(buttonGoBack)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+        panelEmptyLayout.setVerticalGroup(
+            panelEmptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEmptyLayout.createSequentialGroup()
+                .addContainerGap(442, Short.MAX_VALUE)
+                .addComponent(buttonGoBack)
+                .addGap(34, 34, 34))
+        );
+
+        getContentPane().add(panelEmpty, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 500));
+
+        contentScreenApp.setBackground(new java.awt.Color(255, 204, 204));
+
+        javax.swing.GroupLayout contentScreenAppLayout = new javax.swing.GroupLayout(contentScreenApp);
+        contentScreenApp.setLayout(contentScreenAppLayout);
+        contentScreenAppLayout.setHorizontalGroup(
+            contentScreenAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 700, Short.MAX_VALUE)
+        );
+        contentScreenAppLayout.setVerticalGroup(
+            contentScreenAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 450, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(contentScreenApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 700, 450));
 
         barraArriba.setBackground(new java.awt.Color(195, 225, 203));
         barraArriba.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -199,21 +271,6 @@ public class AppUserLists extends javax.swing.JFrame {
 
         getContentPane().add(barraArriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 50));
 
-        contentScreenApp.setBackground(new java.awt.Color(255, 204, 204));
-
-        javax.swing.GroupLayout contentScreenAppLayout = new javax.swing.GroupLayout(contentScreenApp);
-        contentScreenApp.setLayout(contentScreenAppLayout);
-        contentScreenAppLayout.setHorizontalGroup(
-            contentScreenAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-        );
-        contentScreenAppLayout.setVerticalGroup(
-            contentScreenAppLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(contentScreenApp, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 700, 450));
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -240,13 +297,85 @@ public class AppUserLists extends javax.swing.JFrame {
     }//GEN-LAST:event_ButtonMenuActionPerformed
 
     private void buttonSeeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeeUserActionPerformed
-        // TODO add your handling code here:
-        seeUser = new SeeUserPanel();
-        contentScreen(seeUser,contentScreenApp); 
+        //cambio la pantalla a ver usuario
+        seeUserPanel = new SeeUserPanel();
+        
+        seeUserPanel.setSize(700, 450);
+        seeUserPanel.setLocation(0, 0);
+        
+        contentScreen(seeUserPanel,contentScreenApp); 
+        lastPanel = homescreenApp;
         
         //cierro el menu
         seeMenu(false);
+        buttonGoBack.setVisible(true);
     }//GEN-LAST:event_buttonSeeUserActionPerformed
+
+    private void buttonChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangePasswordActionPerformed
+        //cambio la pantalla a modificar contraseña
+        modifyPasswordPanel = new ModifyPasswordPanel();
+        
+        modifyPasswordPanel.setSize(700, 450);
+        modifyPasswordPanel.setLocation(0, 0);
+        
+        contentScreen(modifyPasswordPanel,contentScreenApp); 
+        lastPanel = homescreenApp;
+        
+        //cierro el menu
+        seeMenu(false);
+        buttonGoBack.setVisible(true);
+    }//GEN-LAST:event_buttonChangePasswordActionPerformed
+
+    private void buttonChangeLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeLocationActionPerformed
+        //cambio la pantalla a modificar la localizacion
+        modifyLocationPanel = new ModifyLocationPanel();
+        
+        modifyLocationPanel.setSize(700, 450);
+        modifyLocationPanel.setLocation(0, 0);
+                
+        contentScreen(modifyLocationPanel,contentScreenApp); 
+        lastPanel = homescreenApp;
+        
+        //cierro el menu
+        seeMenu(false);
+        buttonGoBack.setVisible(true);
+    }//GEN-LAST:event_buttonChangeLocationActionPerformed
+
+    private void buttonDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteUserActionPerformed
+        //cambio la pantalla a eliminar usuario
+        deleteUserPanel = new DeleteUserPanel();
+        
+        deleteUserPanel.setSize(700, 450);
+        deleteUserPanel.setLocation(0, 0);
+                
+        contentScreen(deleteUserPanel,contentScreenApp); 
+        lastPanel = homescreenApp;
+        
+        //cierro el menu
+        seeMenu(false);
+        buttonGoBack.setVisible(true);
+    }//GEN-LAST:event_buttonDeleteUserActionPerformed
+
+    private void buttonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInfoActionPerformed
+        //cambio la pantalla a eliminar usuario
+        infoAppPanel = new InfoTaskMasterProPanel();
+        
+        infoAppPanel.setSize(700, 450);
+        infoAppPanel.setLocation(0, 0);
+        
+        contentScreen(infoAppPanel,contentScreenApp); 
+        lastPanel = homescreenApp;
+        
+        //cierro el menu
+        seeMenu(false);
+        buttonGoBack.setVisible(true);
+    }//GEN-LAST:event_buttonInfoActionPerformed
+
+    private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
+        contentScreen(lastPanel,contentScreenApp); 
+        if(lastPanel.equals(homescreenApp))
+            buttonGoBack.setVisible(false);
+    }//GEN-LAST:event_buttonGoBackActionPerformed
 
     private void seeMenu(boolean see)
     {
@@ -261,7 +390,14 @@ public class AppUserLists extends javax.swing.JFrame {
     public static boolean menuOn;//si el menu esta abierto
     
     //pabeles
-    public static SeeUserPanel seeUser;
+    public static SeeUserPanel seeUserPanel;
+    public static ModifyPasswordPanel modifyPasswordPanel;
+    public static ModifyLocationPanel modifyLocationPanel;
+    public static DeleteUserPanel deleteUserPanel;
+    public static InfoTaskMasterProPanel infoAppPanel;
+    
+    //info del ultimo panel activo
+    public static JPanel lastPanel;
     
     /**
      * @param args the command line arguments
@@ -311,6 +447,7 @@ public class AppUserLists extends javax.swing.JFrame {
     private javax.swing.JButton buttonChangeLocation;
     private javax.swing.JButton buttonChangePassword;
     private javax.swing.JButton buttonDeleteUser;
+    private javax.swing.JButton buttonGoBack;
     private javax.swing.JButton buttonInfo;
     private javax.swing.JButton buttonSeeUser;
     private javax.swing.JPanel contentMenu;
@@ -318,5 +455,6 @@ public class AppUserLists extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JPanel panelEmpty;
     // End of variables declaration//GEN-END:variables
 }
