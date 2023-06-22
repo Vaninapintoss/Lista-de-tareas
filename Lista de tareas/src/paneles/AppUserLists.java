@@ -18,12 +18,14 @@ public class AppUserLists extends javax.swing.JFrame {
     /**
      * Creates new form AppUserLists
      */
-    public AppUserLists() {
+    public AppUserLists(User user) 
+    {
+        this.user = user;
         initComponents();
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
         
         //creo los paneles
-        homescreenApp = new PantallaPrincipalApp();
+        homescreenApp = new PantallaPrincipalApp(this.user);
         
         //confirmo el tamaño del contenedor en los paneles
         homescreenApp.setSize(700, 450);
@@ -45,10 +47,6 @@ public class AppUserLists extends javax.swing.JFrame {
         contentScreenApp.repaint();
     }
 
-    public void setUser(User userN)
-    {
-        user = userN;
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -173,7 +171,7 @@ public class AppUserLists extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                app = new AppUserLists();
+                app = new AppUserLists(user);
                 app.setVisible(true);
             }
         });

@@ -8,12 +8,12 @@ package paneles.weather;
  *
  * @author sofia
  */
-public class noLocationWeather extends javax.swing.JPanel {
+public class NoLocationWeatherPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form noLocationWeather
      */
-    public noLocationWeather() {
+    public NoLocationWeatherPanel() {
         initComponents();
     }
 
@@ -26,10 +26,17 @@ public class noLocationWeather extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        noLocationImage = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        noLocationImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Clima/noLocation.png"))); // NOI18N
+        noLocationImage.setMaximumSize(new java.awt.Dimension(660, 170));
+        noLocationImage.setMinimumSize(new java.awt.Dimension(660, 170));
+        noLocationImage.setPreferredSize(new java.awt.Dimension(660, 170));
+        add(noLocationImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Clima/weatherBackground.png"))); // NOI18N
         background.setText("jLabel1");
@@ -42,5 +49,6 @@ public class noLocationWeather extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JLabel noLocationImage;
     // End of variables declaration//GEN-END:variables
 }

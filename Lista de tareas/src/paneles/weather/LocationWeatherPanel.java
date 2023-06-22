@@ -8,12 +8,12 @@ package paneles.weather;
  *
  * @author sofia
  */
-public class weather extends javax.swing.JPanel {
+public class LocationWeatherPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form weather
      */
-    public weather() {
+    public LocationWeatherPanel() {
         initComponents();
     }
 

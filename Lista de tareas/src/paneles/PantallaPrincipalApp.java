@@ -4,30 +4,75 @@
  */
 package paneles;
 
-import static paneles.AppUserLists.user;
+import java.awt.BorderLayout;
+import java.awt.Component;
+import paneles.weather.LocationWeatherPanel;
+import paneles.weather.NoLocationWeatherPanel;
+import user.User;
 
 /**
  *
  * @author sofia
  */
 public class PantallaPrincipalApp extends javax.swing.JPanel {
-
+    
+    public static NoLocationWeatherPanel noLocationPanel;
+    public static LocationWeatherPanel weatherPanel;
+    public static User user;
     /**
      * Creates new form PantallaPrincipalApp
      */
-    public PantallaPrincipalApp() {
+    public PantallaPrincipalApp(User user) {
+        this.user = user;
         initComponents();
-        
+        updateWeather();
+    }
+    
+    public void updateWeather()
+    {
         if(user.getLocation().isEmpty())
         {
-            //si no tiene cargada una localizacion muestro un panel
+            //si no tiene cargada una localizacion muestro un panel de info
+            
+            //creo el panel
+            noLocationPanel = new NoLocationWeatherPanel();
+            
+            //confirmo el tamaño del contenedor en el panel
+            noLocationPanel.setSize(661, 170);
+            
+            //posicion con respecto al contenedor
+            noLocationPanel.setLocation(0, 0);
+            
+            //muestro el panel en el contenedor
+            contentWeather(noLocationPanel);
         }
         else
         {
             //si tiene una localizacion muestro el clima
+            
+            //creo el panel
+            weatherPanel = new LocationWeatherPanel();
+            
+            //confirmo el tamaño del contenedor en el panel
+            weatherPanel.setSize(661, 170);
+            
+            //posicion con respecto al contenedor
+            weatherPanel.setLocation(0, 0);
+            
+            //muestro el panel en el contenedor
+            contentWeather(weatherPanel);
         }
     }
 
+    public void contentWeather(Component panel)
+    {
+        contentWeather.removeAll();
+        contentWeather.add(panel,BorderLayout.CENTER);
+        contentWeather.revalidate();
+        contentWeather.repaint();
+    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
