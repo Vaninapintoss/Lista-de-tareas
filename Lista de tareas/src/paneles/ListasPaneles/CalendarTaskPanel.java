@@ -252,10 +252,14 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         {
             public void actionPerformed(ActionEvent e)
             {
+                // | 
                 //elimino la tarea de la lista
+                
+                //las divido en un array
+                String[] parts = info.split(" | ");
                 try
                 {
-                    userLists.getDateLists().getDateList(category).deleteTask(button.getText());
+                    userLists.getDateLists().getDateList(category).deleteTask(parts[1]);
                 }
                 catch(TaskUntilNotCompletedException ex)
                 {
@@ -346,6 +350,9 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         }
 
         text_newTask.setText("");//reseteo el campo de texto
+        text_day.setText("");
+        text_month.setText("");
+        text_year.setText("");
 
     }//GEN-LAST:event_buttonCreateActionPerformed
 

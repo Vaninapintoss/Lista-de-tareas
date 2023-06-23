@@ -192,6 +192,6 @@ public final class DateTask extends Task  implements Serializable{
      */
     @Override
     public String toString() {
-        return finalDate + " " + name;
+        return finalDate + " | " + name;
     }
 }
