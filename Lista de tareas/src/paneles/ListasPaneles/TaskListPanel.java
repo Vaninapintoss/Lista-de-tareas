@@ -11,7 +11,10 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import list.List;
+import static paneles.AppUserLists.userLists;
 import static paneles.PantallaInicial.app;
+import userLists.UserLists;
+import userLists.exceptions.CategoryListAlreadyExistException;
 
 /**
  *
@@ -25,12 +28,12 @@ public class TaskListPanel extends javax.swing.JPanel {
      */
     private ArrayList<JButton> buttons;
     private int number;
+    private UserLists userLists;
     
-    public TaskListPanel() {
-        
+    public TaskListPanel(UserLists userLists) {
+        this.userLists = userLists;
         initComponents();
-        buttons = new ArrayList<>();
-        number = 0;
+        updateButtons();        
     }
 
     /**
@@ -42,6 +45,7 @@ public class TaskListPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        text_error = new javax.swing.JLabel();
         buttonGoBack = new javax.swing.JButton();
         titleTaskList = new javax.swing.JLabel();
         infoNewList = new javax.swing.JLabel();
@@ -54,6 +58,11 @@ public class TaskListPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        text_error.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_error.setForeground(new java.awt.Color(255, 153, 153));
+        text_error.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        add(text_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 350, 20));
 
         buttonGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolver.png"))); // NOI18N
         buttonGoBack.setBorderPainted(false);
@@ -120,6 +129,29 @@ public class TaskListPanel extends javax.swing.JPanel {
         app.replaceScreen(app.homescreenApp);
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
+    //agrego las listas guardadas en el archivo en la lista de botones
+    private void updateButtons()
+    {
+        JButton button;
+        String listas = userLists.getSimpleLists().showLists();//obtengo todas las listas en un string
+        panel.removeAll();
+        if(!listas.isEmpty())
+        {
+            //las divido en un array
+            String[] parts = listas.split("_");
+        
+            for(String aux : parts)
+            {
+                button = createButton(aux);//creo un boton y le envio la info de la lista
+                System.out.println(0);
+                panel.add(button);//acgrego el boton al panel
+            }
+            
+        }
+        
+        panel.updateUI();//actualizar ver botones
+    }
+    
     private JButton createButton(String info)
     {
         //crear boton
@@ -139,26 +171,27 @@ public class TaskListPanel extends javax.swing.JPanel {
         }
         );
         
-        buttons.add(button);
-        
         return button;
     }
     
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
-        // TODO add your handling code here:
         
-        
-        panel.add(createButton(text_newList.getText()));
-        
-        panel.updateUI();//actualizar ver botones
-        
-        text_newList.setText("");
-        
-        //primero veo si la lista existe
-        
-        //si existe tiro un mensaje
-        
-        //si no existe la agrego al sistema
+        text_error.setText("");//reinicio los mensajes de error
+        try
+        {
+            //trato de agregar una nueva lista
+            userLists.addSimpleList(text_newList.getText());
+            
+            //actualizo los botones
+            updateButtons();  
+        }
+        catch(CategoryListAlreadyExistException ex)
+        {
+            //si existe tiro un mensaje
+            text_error.setText("La lista "+text_newList.getText()+" ya existe");
+        }
+ 
+        text_newList.setText("");//reseteo el campo de texto
     }//GEN-LAST:event_buttonCreateActionPerformed
 
 
@@ -170,6 +203,7 @@ public class TaskListPanel extends javax.swing.JPanel {
     private javax.swing.JLabel infoNewList;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
+    private javax.swing.JLabel text_error;
     private javax.swing.JTextField text_newList;
     private javax.swing.JLabel titleTaskList;
     // End of variables declaration//GEN-END:variables

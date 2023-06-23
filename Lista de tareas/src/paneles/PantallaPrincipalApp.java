@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.io.IOException;
 import location.Exceptions.EmptyLocationException;
 import org.json.JSONException;
+import static paneles.AppUserLists.userLists;
 import paneles.ListasPaneles.TaskListCalendarPanel;
 import paneles.ListasPaneles.TaskListPanel;
 import paneles.ListasPaneles.TaskListTrackPanel;
@@ -16,6 +17,7 @@ import static paneles.PantallaInicial.app;
 import paneles.weather.LocationWeatherPanel;
 import paneles.weather.NoLocationWeatherPanel;
 import user.User;
+import userLists.UserLists;
 import weather.Weather;
 
 /**
@@ -27,10 +29,12 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
     public static NoLocationWeatherPanel noLocationPanel;
     public static LocationWeatherPanel weatherPanel;
     public static User user;
+    private UserLists userLists;
     /**
      * Creates new form PantallaPrincipalApp
      */
-    public PantallaPrincipalApp(User user) {
+    public PantallaPrincipalApp(User user, UserLists userLists) {
+        this.userLists = userLists;
         this.user = user;
         initComponents();
         updateWeather();
@@ -193,7 +197,7 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
 
     private void buttonTaskListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTaskListActionPerformed
         //reemplazo la pantalla principal con la lista de tareas con calendario
-        app.replaceScreen(new TaskListPanel());
+        app.replaceScreen(new TaskListPanel(userLists));
     }//GEN-LAST:event_buttonTaskListActionPerformed
 
     private void buttonTrakingListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTrakingListActionPerformed

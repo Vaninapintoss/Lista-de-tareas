@@ -70,7 +70,7 @@ public class AppUserLists extends javax.swing.JFrame {
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
         
         //creo los paneles
-        homescreenApp = new PantallaPrincipalApp(this.user);
+        homescreenApp = new PantallaPrincipalApp(this.user, userLists);
         
         //confirmo el tamaño del contenedor en los paneles
         homescreenApp.setSize(700, 450);
