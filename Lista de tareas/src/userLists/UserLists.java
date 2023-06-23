@@ -75,11 +75,11 @@ public class UserLists {
         return simpleLists.getListaSimple(category).howManyTasks();
     }
     
-   public String saveInFile(){
+   public String saveSimpleInFile(){
         return saveSimpleListsInFile(filename,simpleLists.getHashMap());
     }
     
-    public String readFromFile() throws IOException{
+    public String readSimpleFromFile() throws IOException{
         return readSimpleListsFromFile(filename,simpleLists.getHashMap());
     }
 }
