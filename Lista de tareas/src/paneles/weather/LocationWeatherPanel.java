@@ -4,6 +4,15 @@
  */
 package paneles.weather;
 
+import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import location.Exceptions.EmptyLocationException;
+import org.json.JSONException;
+import user.User;
+import weather.Weather;
+
 /**
  *
  * @author sofia
@@ -13,8 +22,30 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
     /**
      * Creates new form weather
      */
-    public LocationWeatherPanel() {
+    
+    private Weather weather;
+    public LocationWeatherPanel(Weather weather) {
+        DecimalFormat df = new DecimalFormat("#.0");
+        String temp = df.format(weather.getTemp());
+        String tempMax = df.format(weather.getTemp_max());
+        String tempMin = df.format(weather.getTemp_min());
+        
         initComponents();
+        text_temp.setText(""+temp+" ºC");    
+        text_maxTemp.setText("Temp max: "+tempMax+" ºC");
+        text_minTemp.setText("Temp min: "+tempMin+" ºC");
+        text_humidity.setText("Humedad: "+weather.getHumidity()+" %");
+        text_description.setText(weather.getDescription());
+        text_location.setText(weather.getLocation());
+        
+    }
+    
+    private void updateIcon()
+    {
+        switch(weather.getIcon())
+        {
+            
+        }
     }
 
     /**
@@ -26,10 +57,55 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        text_temp = new javax.swing.JLabel();
+        text_location = new javax.swing.JLabel();
+        text_maxTemp = new javax.swing.JLabel();
+        text_minTemp = new javax.swing.JLabel();
+        text_humidity = new javax.swing.JLabel();
+        text_description = new javax.swing.JLabel();
+        barra = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        text_temp.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        text_temp.setForeground(new java.awt.Color(195, 225, 203));
+        text_temp.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        text_temp.setText("--,- ºC");
+        text_temp.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        add(text_temp, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+
+        text_location.setForeground(new java.awt.Color(195, 225, 203));
+        text_location.setText("Localizacion");
+        add(text_location, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, -1, -1));
+
+        text_maxTemp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        text_maxTemp.setForeground(new java.awt.Color(195, 225, 203));
+        text_maxTemp.setText("Temp max: ");
+        add(text_maxTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+
+        text_minTemp.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        text_minTemp.setForeground(new java.awt.Color(195, 225, 203));
+        text_minTemp.setText("Temp min: ");
+        add(text_minTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
+
+        text_humidity.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        text_humidity.setForeground(new java.awt.Color(195, 225, 203));
+        text_humidity.setText("Humedad: ");
+        add(text_humidity, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 60, -1, -1));
+
+        text_description.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        text_description.setForeground(new java.awt.Color(195, 225, 203));
+        text_description.setText("clima");
+        add(text_description, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
+
+        barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Clima/barra.png"))); // NOI18N
+        barra.setText("jLabel1");
+        barra.setMaximumSize(new java.awt.Dimension(3, 86));
+        barra.setMinimumSize(new java.awt.Dimension(3, 86));
+        barra.setPreferredSize(new java.awt.Dimension(3, 86));
+        add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Clima/weatherBackground.png"))); // NOI18N
         background.setText("jLabel1");
@@ -42,5 +118,12 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JLabel barra;
+    private javax.swing.JLabel text_description;
+    private javax.swing.JLabel text_humidity;
+    private javax.swing.JLabel text_location;
+    private javax.swing.JLabel text_maxTemp;
+    private javax.swing.JLabel text_minTemp;
+    private javax.swing.JLabel text_temp;
     // End of variables declaration//GEN-END:variables
 }

@@ -6,16 +6,23 @@ package paneles;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JPanel;
+import location.Exceptions.EmptyLocationException;
+import org.json.JSONException;
 import paneles.weather.LocationWeatherPanel;
 import paneles.weather.NoLocationWeatherPanel;
 import user.User;
+import weather.Weather;
 
 /**
- *
+ * INGRESAR API KEY
  * @author sofia
  */
 public class PantallaPrincipalApp extends javax.swing.JPanel {
-    
+    private final String APIKEY = "a39bf665486281158ba6fa28b34147ce";
     public static NoLocationWeatherPanel noLocationPanel;
     public static LocationWeatherPanel weatherPanel;
     public static User user;
@@ -30,38 +37,65 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
     
     public void updateWeather()
     {
-        if(user.getLocation().isEmpty())
-        {
-            //si no tiene cargada una localizacion muestro un panel de info
-            
-            //creo el panel
-            noLocationPanel = new NoLocationWeatherPanel();
-            
-            //confirmo el tamaño del contenedor en el panel
-            noLocationPanel.setSize(661, 170);
-            
-            //posicion con respecto al contenedor
-            noLocationPanel.setLocation(0, 0);
-            
-            //muestro el panel en el contenedor
-            contentWeather(noLocationPanel);
-        }
-        else
+        if(!user.getLocation().isEmpty())
         {
             //si tiene una localizacion muestro el clima
+            //si no tiene algun problema para extraer el clima entra a el otro panel
+            try
+            {
+                //creo el Clima
+                Weather weather = new Weather();
+                
+                //actualizo el clima
+                weather.updateWeather(user.getLocation(), APIKEY);
+                
+                //creo el panel
+                weatherPanel = new LocationWeatherPanel(weather);
             
-            //creo el panel
-            weatherPanel = new LocationWeatherPanel();
+                //confirmo el tamaño del contenedor en el panel
+                weatherPanel.setSize(661, 170);
             
-            //confirmo el tamaño del contenedor en el panel
-            weatherPanel.setSize(661, 170);
+                //posicion con respecto al contenedor
+                weatherPanel.setLocation(0, 0);
             
-            //posicion con respecto al contenedor
-            weatherPanel.setLocation(0, 0);
-            
-            //muestro el panel en el contenedor
-            contentWeather(weatherPanel);
+                //muestro el panel en el contenedor
+                contentWeather(weatherPanel);
+            } 
+            catch (JSONException ex) 
+            {
+                weatherPanelnoLocation();
+            } 
+            catch (IOException ex) 
+            {
+                weatherPanelnoLocation();
+            }
+            catch (EmptyLocationException ex) 
+            {
+                weatherPanelnoLocation();
+            }
         }
+        else
+        {            
+            //si no tiene cargada una localizacion muestro un panel de info
+            
+            weatherPanelnoLocation();
+        }
+    }
+    
+    private void weatherPanelnoLocation()
+    {        
+        //creo el panel
+        noLocationPanel = new NoLocationWeatherPanel();
+        
+        //confirmo el tamaño del contenedor en el panel
+        noLocationPanel.setSize(661, 170);
+            
+        //posicion con respecto al contenedor
+        noLocationPanel.setLocation(0, 0);
+            
+        //muestro el panel en el contenedor
+        contentWeather(noLocationPanel);
+        
     }
 
     public void contentWeather(Component panel)
