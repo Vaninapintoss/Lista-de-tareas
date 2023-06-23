@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import location.Exceptions.EmptyLocationException;
 import org.json.JSONException;
 import user.User;
@@ -25,6 +26,7 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
     
     private Weather weather;
     public LocationWeatherPanel(Weather weather) {
+        this.weather = weather;
         DecimalFormat df = new DecimalFormat("#.0");
         String temp = df.format(weather.getTemp());
         String tempMax = df.format(weather.getTemp_max());
@@ -37,15 +39,15 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
         text_humidity.setText("Humedad: "+weather.getHumidity()+" %");
         text_description.setText(weather.getDescription());
         text_location.setText(weather.getLocation());
+        updateIcon();
         
     }
     
     private void updateIcon()
     {
-        switch(weather.getIcon())
-        {
-            
-        }
+        String icon = "/imagenes/Clima/iconos/"+weather.getIcon()+".gif";
+        
+        iconWeather.setIcon(new ImageIcon(getClass().getResource(icon)));       
     }
 
     /**
@@ -64,6 +66,7 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
         text_humidity = new javax.swing.JLabel();
         text_description = new javax.swing.JLabel();
         barra = new javax.swing.JLabel();
+        iconWeather = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(195, 225, 203));
@@ -107,6 +110,12 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
         barra.setPreferredSize(new java.awt.Dimension(3, 86));
         add(barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, -1, -1));
 
+        iconWeather.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Clima/iconos/01d.gif"))); // NOI18N
+        iconWeather.setMaximumSize(new java.awt.Dimension(207, 140));
+        iconWeather.setMinimumSize(new java.awt.Dimension(207, 140));
+        iconWeather.setPreferredSize(new java.awt.Dimension(207, 140));
+        add(iconWeather, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, -1, -1));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Clima/weatherBackground.png"))); // NOI18N
         background.setText("jLabel1");
         background.setMaximumSize(new java.awt.Dimension(660, 170));
@@ -119,6 +128,7 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JLabel barra;
+    private javax.swing.JLabel iconWeather;
     private javax.swing.JLabel text_description;
     private javax.swing.JLabel text_humidity;
     private javax.swing.JLabel text_location;

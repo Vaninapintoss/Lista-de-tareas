@@ -384,6 +384,9 @@ public class AppUserLists extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonInfoActionPerformed
 
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
+        //actualizo el clima
+        homescreenApp.updateWeather();
+        
         contentScreen(lastPanel,contentScreenApp); 
         if(lastPanel.equals(homescreenApp))
             buttonGoBack.setVisible(false);
