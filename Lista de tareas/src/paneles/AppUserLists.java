@@ -290,6 +290,11 @@ public class AppUserLists extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonCerrarActionPerformed
 
+    public static void closeApp()
+    {
+        appActive.dispose();
+    }
+    
     private void ButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMenuActionPerformed
         //si el boton esta encendido se tiene que apagar
         if(menuOn)
@@ -394,7 +399,7 @@ public class AppUserLists extends javax.swing.JFrame {
     
     public static User user;
     public static UsersSystem users;
-    public static AppUserLists app;
+    public static AppUserLists appActive;
     private PantallaPrincipalApp homescreenApp;
     private boolean menuOn;//si el menu esta abierto
     
@@ -442,8 +447,8 @@ public class AppUserLists extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                app = new AppUserLists(user, users);
-                app.setVisible(true);
+                appActive = new AppUserLists(user, users);
+                appActive.setVisible(true);
             }
         });
     }

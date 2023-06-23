@@ -4,12 +4,9 @@
  */
 package paneles.options;
 
-import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import static paneles.AppUserLists.app;
+import static paneles.AppUserLists.closeApp;
 import user.User;
 import user.UsersSystem;
 import user.exceptions.IncorrectPasswordException;
@@ -206,6 +203,7 @@ public class DeleteUserPanel extends javax.swing.JPanel {
             {
                 try 
                 {
+                    closeApp();
                     users.deleteUser(user, text_password.getText()); 
                 } 
                 catch (IncorrectPasswordException ex) 
