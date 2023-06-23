@@ -238,19 +238,27 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
 
         text_error.setText("");//reinicio los mensajes de error
-        try
+        
+        if(text_newTask.getText().isEmpty())
         {
-            //trato de agregar una nueva lista
-            userLists.getSimpleLists().getListaSimple(category).addTask(new SimpleTask(text_newTask.getText()));
-
-            userLists.saveSimpleInFile();
-            //actualizo los botones
-            updateButtons();
+            text_error.setText("No se puede agregar una tarea vacia");
         }
-        catch(ElementAlreadyExistException ex)
+        else
         {
-            //si existe tiro un mensaje
-            text_error.setText("La tarea "+text_newTask.getText()+" ya existe");
+            try
+            {
+                //trato de agregar una nueva lista
+                userLists.getSimpleLists().getListaSimple(category).addTask(new SimpleTask(text_newTask.getText()));
+
+                userLists.saveSimpleInFile();
+                //actualizo los botones
+                updateButtons();
+            }
+            catch(ElementAlreadyExistException ex)
+            {
+                //si existe tiro un mensaje
+                text_error.setText("La tarea "+text_newTask.getText()+" ya existe");
+            }
         }
 
         text_newTask.setText("");//reseteo el campo de texto

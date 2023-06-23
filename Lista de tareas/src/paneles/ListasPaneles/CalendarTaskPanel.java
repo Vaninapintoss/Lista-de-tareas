@@ -8,8 +8,11 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.time.LocalDate;
 import javax.swing.JButton;
+import list.exceptions.ElementAlreadyExistException;
 import list.exceptions.TaskUntilNotCompletedException;
+import list.task.DateTask;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
 import userLists.exceptions.UnfinishedTasksException;
@@ -305,25 +308,45 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
 
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
 
-        /*
+        
         text_error.setText("");//reinicio los mensajes de error
-        try
+        if(text_newTask.getText().isEmpty())
         {
-            //trato de agregar una nueva lista
-            userLists.getSimpleLists().getListaSimple(category).addTask(new SimpleTask(text_newTask.getText()));
-
-            userLists.saveSimpleInFile();
-            //actualizo los botones
-            updateButtons();
+            text_error.setText("No se puede agregar una tarea vacia");
         }
-        catch(ElementAlreadyExistException ex)
+        else if((text_day.getText().isEmpty())||(text_month.getText().isEmpty())||
+                (text_month.getText().isEmpty()))
         {
-            //si existe tiro un mensaje
-            text_error.setText("La tarea "+text_newTask.getText()+" ya existe");
+            text_error.setText("Completar la fecha a finalizar");
+        }
+        else
+        {
+            try
+            {
+                //trato de agregar una nueva lista
+                int year = Integer.parseInt(text_year.getText());
+                int month = Integer.parseInt(text_month.getText());
+                int day = Integer.parseInt(text_day.getText());
+                
+                LocalDate date = LocalDate.of(year, month, day);
+                
+                DateTask task = new DateTask(text_newTask.getText(),date);
+                
+                userLists.getDateLists().getDateList(category).addTask(task);
+
+                userLists.saveSimpleInFile();
+                //actualizo los botones
+                updateButtons();
+            }
+            catch(ElementAlreadyExistException ex)
+            {
+                //si existe tiro un mensaje
+                text_error.setText("La tarea "+text_newTask.getText()+" ya existe");
+            }
         }
 
         text_newTask.setText("");//reseteo el campo de texto
-*/
+
     }//GEN-LAST:event_buttonCreateActionPerformed
 
     private void buttonGoBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBack1ActionPerformed
