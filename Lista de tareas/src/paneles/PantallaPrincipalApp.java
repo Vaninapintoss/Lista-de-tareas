@@ -202,7 +202,7 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
 
     private void buttonTrakingListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTrakingListActionPerformed
         //reemplazo la pantalla principal con la lista de tareas con traqueo
-        app.replaceScreen(new TaskListTrackPanel());
+        app.replaceScreen(new TaskListTrackPanel(userLists));
     }//GEN-LAST:event_buttonTrakingListActionPerformed
 
 

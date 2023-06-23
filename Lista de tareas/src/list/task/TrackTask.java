@@ -92,6 +92,6 @@ public class TrackTask extends Task implements Serializable{
      */
     @Override
     public String toString() {
-        return name + " " + duration;
+        return name;
     }
 }

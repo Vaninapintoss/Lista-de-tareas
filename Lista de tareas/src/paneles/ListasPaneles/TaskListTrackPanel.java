@@ -4,8 +4,14 @@
  */
 package paneles.ListasPaneles;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import static paneles.PantallaInicial.app;
 import paneles.PantallaPrincipalApp;
+import userLists.UserLists;
+import userLists.exceptions.CategoryListAlreadyExistException;
 
 /**
  *
@@ -16,8 +22,11 @@ public class TaskListTrackPanel extends javax.swing.JPanel {
     /**
      * Creates new form TaskListTrackPanel
      */
-    public TaskListTrackPanel() {
+    private UserLists userLists;
+    public TaskListTrackPanel(UserLists userLists) {
+        this.userLists = userLists;
         initComponents();
+        updateButtons();
     }
 
     /**
@@ -29,16 +38,24 @@ public class TaskListTrackPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        text_error = new javax.swing.JLabel();
         buttonGoBack = new javax.swing.JButton();
         titleTaskList = new javax.swing.JLabel();
         infoNewList = new javax.swing.JLabel();
         text_newList = new javax.swing.JTextField();
         buttonCreate = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panel = new javax.swing.JPanel();
         backGroundText = new javax.swing.JLabel();
         backgroundTaskList = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        text_error.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_error.setForeground(new java.awt.Color(255, 153, 153));
+        text_error.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        add(text_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 350, 20));
 
         buttonGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolver.png"))); // NOI18N
         buttonGoBack.setBorderPainted(false);
@@ -75,7 +92,23 @@ public class TaskListTrackPanel extends javax.swing.JPanel {
         buttonCreate.setMinimumSize(new java.awt.Dimension(94, 30));
         buttonCreate.setPreferredSize(new java.awt.Dimension(94, 30));
         buttonCreate.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonCrearMouseOver.png"))); // NOI18N
+        buttonCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreateActionPerformed(evt);
+            }
+        });
         add(buttonCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(0, 128, 97));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new java.awt.Color(0, 128, 97));
+        jScrollPane1.setOpaque(false);
+
+        panel.setBackground(new java.awt.Color(0, 128, 97));
+        panel.setLayout(new java.awt.GridLayout(0, 1));
+        jScrollPane1.setViewportView(panel);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 600, 200));
 
         backGroundText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/espacioTextoList.png"))); // NOI18N
         add(backGroundText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
@@ -89,13 +122,83 @@ public class TaskListTrackPanel extends javax.swing.JPanel {
         app.replaceScreen(app.homescreenApp);
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
+    private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
+        text_error.setText("");//reinicio los mensajes de error
+        try
+        {
+            //trato de agregar una nueva lista
+            userLists.addTrackList(text_newList.getText());
+            
+            //actualizo los botones
+            updateButtons();  
+        }
+        catch(CategoryListAlreadyExistException ex)
+        {
+            //si existe tiro un mensaje
+            text_error.setText("La lista "+text_newList.getText()+" ya existe");
+        }
+ 
+        text_newList.setText("");//reseteo el campo de texto
+    }//GEN-LAST:event_buttonCreateActionPerformed
 
+
+    //agrego las listas guardadas en el archivo en la lista de botones
+    private void updateButtons()
+    {
+        JButton button;
+        String listas = userLists.getTrackLists().showLists();//obtengo todas las listas en un string
+        panel.removeAll();
+        if(!listas.isEmpty())
+        {
+            //las divido en un array
+            String[] parts = listas.split("_");
+        
+            for(String aux : parts)
+            {
+                button = createButton(aux);//creo un boton y le envio la info de la lista
+                panel.add(button);//acgrego el boton al panel
+            }
+            
+        }
+        
+        panel.updateUI();//actualizar ver botones
+    }
+    
+    private JButton createButton(String info)
+    {
+        //crear boton
+        JButton button = new JButton(info);
+        
+        //visual del boton
+        button.setBackground(new Color(0,82,77));
+        button.setForeground(new Color(195,225,203));
+        
+        button.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                //crear SimpleTaskPanel y enviarle la lista
+                TrackTaskPanel taskListTrack = new TrackTaskPanel(userLists,
+                                                                button.getText());
+                
+                //reemplazo la pantalla principal con la lista
+                app.replaceScreen(taskListTrack);
+            }
+        }
+        );
+        
+        return button;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backGroundText;
     private javax.swing.JLabel backgroundTaskList;
     private javax.swing.JButton buttonCreate;
     private javax.swing.JButton buttonGoBack;
     private javax.swing.JLabel infoNewList;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panel;
+    private javax.swing.JLabel text_error;
     private javax.swing.JTextField text_newList;
     private javax.swing.JLabel titleTaskList;
     // End of variables declaration//GEN-END:variables
