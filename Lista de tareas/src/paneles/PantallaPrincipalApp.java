@@ -192,7 +192,7 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
 
     private void buttonCalendarListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalendarListActionPerformed
         //reemplazo la pantalla principal con la lista de tareas
-        app.replaceScreen(new TaskListCalendarPanel());
+        app.replaceScreen(new TaskListCalendarPanel(userLists));
     }//GEN-LAST:event_buttonCalendarListActionPerformed
 
     private void buttonTaskListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTaskListActionPerformed

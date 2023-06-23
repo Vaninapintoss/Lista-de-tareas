@@ -4,7 +4,13 @@
  */
 package paneles.ListasPaneles;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import static paneles.PantallaInicial.app;
+import userLists.UserLists;
+import userLists.exceptions.CategoryListAlreadyExistException;
 
 /**
  *
@@ -12,11 +18,15 @@ import static paneles.PantallaInicial.app;
  */
 public class TaskListCalendarPanel extends javax.swing.JPanel {
 
+    private UserLists userLists;
     /**
      * Creates new form TaskListCalendar
      */
-    public TaskListCalendarPanel() {
+    public TaskListCalendarPanel(UserLists userLists) 
+    {
+        this.userLists = userLists;
         initComponents();
+        updateButtons(); 
     }
 
     /**
@@ -28,16 +38,13 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        text_year = new javax.swing.JTextField();
-        text_day = new javax.swing.JTextField();
-        text_month = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        text_error = new javax.swing.JLabel();
         buttonCreate = new javax.swing.JButton();
         text_newList = new javax.swing.JTextField();
         infoNewList = new javax.swing.JLabel();
         titleTaskList = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panel = new javax.swing.JPanel();
         backGroundText = new javax.swing.JLabel();
         backgroundTaskList = new javax.swing.JLabel();
         buttonGoBack = new javax.swing.JButton();
@@ -45,62 +52,10 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        text_year.setBackground(new java.awt.Color(195, 225, 203));
-        text_year.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        text_year.setForeground(new java.awt.Color(102, 102, 102));
-        text_year.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        text_year.setBorder(null);
-        text_year.setOpaque(false);
-        text_year.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                text_yearKeyTyped(evt);
-            }
-        });
-        add(text_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 30, 30));
-
-        text_day.setBackground(new java.awt.Color(195, 225, 203));
-        text_day.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        text_day.setForeground(new java.awt.Color(102, 102, 102));
-        text_day.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        text_day.setBorder(null);
-        text_day.setOpaque(false);
-        text_day.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                text_dayKeyTyped(evt);
-            }
-        });
-        add(text_day, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 30, 30));
-
-        text_month.setBackground(new java.awt.Color(195, 225, 203));
-        text_month.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        text_month.setForeground(new java.awt.Color(102, 102, 102));
-        text_month.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        text_month.setBorder(null);
-        text_month.setOpaque(false);
-        text_month.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                text_monthKeyTyped(evt);
-            }
-        });
-        add(text_month, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 140, 30, 30));
-
-        jLabel1.setBackground(new java.awt.Color(195, 225, 203));
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(195, 225, 203));
-        jLabel1.setText("Dia");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, 30));
-
-        jLabel4.setBackground(new java.awt.Color(195, 225, 203));
-        jLabel4.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(195, 225, 203));
-        jLabel4.setText("Mes");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 140, -1, 30));
-
-        jLabel5.setBackground(new java.awt.Color(195, 225, 203));
-        jLabel5.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(195, 225, 203));
-        jLabel5.setText("Año");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, 30));
+        text_error.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_error.setForeground(new java.awt.Color(255, 153, 153));
+        text_error.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        add(text_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 350, 20));
 
         buttonCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonCrear.png"))); // NOI18N
         buttonCreate.setBorderPainted(false);
@@ -109,6 +64,11 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
         buttonCreate.setMinimumSize(new java.awt.Dimension(94, 30));
         buttonCreate.setPreferredSize(new java.awt.Dimension(94, 30));
         buttonCreate.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonCrearMouseOver.png"))); // NOI18N
+        buttonCreate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCreateActionPerformed(evt);
+            }
+        });
         add(buttonCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
 
         text_newList.setBackground(new java.awt.Color(195, 225, 203));
@@ -124,6 +84,17 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
 
         titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/tituloListaSimpleConFecha.png"))); // NOI18N
         add(titleTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(0, 128, 97));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new java.awt.Color(0, 128, 97));
+        jScrollPane1.setOpaque(false);
+
+        panel.setBackground(new java.awt.Color(0, 128, 97));
+        panel.setLayout(new java.awt.GridLayout(0, 1));
+        jScrollPane1.setViewportView(panel);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 600, 200));
 
         backGroundText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/espacioTextoList.png"))); // NOI18N
         add(backGroundText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
@@ -146,44 +117,77 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
         add(buttonGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void text_dayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_dayKeyTyped
-        //valida que la tecla ingresada por teclado sea solo numero
-        char validate = evt.getKeyChar();
-        
-        if(Character.isLetter(validate))
-        {
-            //borro la ultima letra ingresara
-            evt.consume();
-        }
-    }//GEN-LAST:event_text_dayKeyTyped
-
-    private void text_monthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_monthKeyTyped
-        //valida que la tecla ingresada por teclado sea solo numero
-        char validate = evt.getKeyChar();
-        
-        if(Character.isLetter(validate))
-        {
-            //borro la ultima letra ingresara
-            evt.consume();
-        }
-    }//GEN-LAST:event_text_monthKeyTyped
-
-    private void text_yearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_yearKeyTyped
-        //valida que la tecla ingresada por teclado sea solo numero
-        char validate = evt.getKeyChar();
-        
-        if(Character.isLetter(validate))
-        {
-            //borro la ultima letra ingresara
-            evt.consume();
-        }
-    }//GEN-LAST:event_text_yearKeyTyped
-
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
         //vuelve a la pantalla principal
         app.replaceScreen(app.homescreenApp);
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
+    private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
+         text_error.setText("");//reinicio los mensajes de error
+        try
+        {
+            //trato de agregar una nueva lista
+            userLists.addDateList(text_newList.getText());
+            
+            //actualizo los botones
+            updateButtons();  
+        }
+        catch(CategoryListAlreadyExistException ex)
+        {
+            //si existe tiro un mensaje
+            text_error.setText("La lista "+text_newList.getText()+" ya existe");
+        }
+ 
+        text_newList.setText("");//reseteo el campo de texto
+    }//GEN-LAST:event_buttonCreateActionPerformed
+
+    //agrego las listas guardadas en el archivo en la lista de botones
+    private void updateButtons()
+    {
+        JButton button;
+        String listas = userLists.getDateLists().showLists();//obtengo las listas
+        panel.removeAll();
+        if(!listas.isEmpty())
+        {
+            //las divido en un array
+            String[] parts = listas.split("_");
+        
+            for(String aux : parts)
+            {
+                button = createButton(aux);//creo un boton y le envio la info de la lista
+                panel.add(button);//acgrego el boton al panel
+            }
+            
+        }
+        
+        panel.updateUI();//actualizar ver botones
+    }
+    
+    private JButton createButton(String info)
+    {
+        //crear boton
+        JButton button = new JButton(info);
+        
+        //visual del boton
+        button.setBackground(new Color(0,82,77));
+        button.setForeground(new Color(195,225,203));
+        
+        button.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                //crear SimpleTaskPanel y enviarle la lista
+                CalendarTaskPanel taskDateList = new CalendarTaskPanel(userLists,
+                                                                button.getText());
+                
+                //reemplazo la pantalla principal con la lista
+                app.replaceScreen(taskDateList);
+            }
+        }
+        );
+        
+        return button;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backGroundText;
@@ -191,13 +195,10 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonCreate;
     private javax.swing.JButton buttonGoBack;
     private javax.swing.JLabel infoNewList;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField text_day;
-    private javax.swing.JTextField text_month;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panel;
+    private javax.swing.JLabel text_error;
     private javax.swing.JTextField text_newList;
-    private javax.swing.JTextField text_year;
     private javax.swing.JLabel titleTaskList;
     // End of variables declaration//GEN-END:variables
 }

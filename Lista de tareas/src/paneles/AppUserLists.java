@@ -54,12 +54,17 @@ public class AppUserLists extends javax.swing.JFrame {
         menuOn = false;//seteo el menu en false - cerrado
         this.user = user;//actualizo el usuario
         this.users = users;//actualizo los usuarios
+        
         userLists = new UserLists(user.getEmail());//creo el objeto listas de usuario
+        
         
         //actualizo la lista
         try
         {
             userLists.readSimpleFromFile();//actualizo la lista simple con el archivo correspondiente
+            userLists.readDateFromFile();
+            userLists.readTrackFromFile();
+            System.out.println("hasta aca");
         }
         catch(IOException ex)
         {

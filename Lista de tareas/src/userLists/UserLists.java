@@ -45,6 +45,16 @@ public class UserLists {
         return simpleLists;
     }
     
+    public DateLists getDateLists()
+    {
+        return dateLists;
+    }
+    
+    public TrackLists getTrackLists()
+    {
+        return trackLists;
+    }
+    
     public void addSimpleList(String category)throws CategoryListAlreadyExistException{
         
         SimpleList sl = new SimpleList(category);

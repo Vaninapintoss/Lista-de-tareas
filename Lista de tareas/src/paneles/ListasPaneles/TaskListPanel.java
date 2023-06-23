@@ -27,8 +27,7 @@ public class TaskListPanel extends javax.swing.JPanel {
     /**
      * Creates new form TaskListPanel
      */
-    private ArrayList<JButton> buttons;
-    private int number;
+    
     private UserLists userLists;
     
     public TaskListPanel(UserLists userLists) {

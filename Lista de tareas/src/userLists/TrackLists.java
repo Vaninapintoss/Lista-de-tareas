@@ -31,7 +31,7 @@ public class TrackLists implements IStorageActions<TrackList>{
         hashMapOfTL = new HashMap<>();
     }
     
-    public HashMap<String, TrackList> getHashMap() {
+    public Map<String, TrackList> getHashMap() {
         return hashMapOfTL;
     }
 
