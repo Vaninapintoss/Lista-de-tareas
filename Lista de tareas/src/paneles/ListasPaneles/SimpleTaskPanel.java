@@ -205,7 +205,7 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
                 }
                 catch(TaskUntilNotCompletedException ex)
                 {
-                    
+                    System.out.println("no elimina");
                 }
                 
                 userLists.saveSimpleInFile();

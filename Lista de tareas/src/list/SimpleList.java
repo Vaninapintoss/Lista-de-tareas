@@ -136,9 +136,8 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
 
         if(found != null){
 
-            if(found.getStatus()==Status.COMPLETED){
-
-                simpleList.remove(found);
+            if(simpleList.remove(found))
+            {    
                 deleted = true;
             }else{
                 throw new TaskUntilNotCompletedException("tarea sin terminar");
