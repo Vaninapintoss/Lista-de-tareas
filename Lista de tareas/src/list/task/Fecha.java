@@ -27,6 +27,11 @@ public class Fecha implements Serializable{
         this.anio = anio;
     }
     
+    public String toString()
+    {
+        return dia+"-"+mes+"-"+anio;
+    }
+    
     //que la fecha ingresad sea mayor a la de hoy
     public static boolean validDate(int dia,int mes,int anio) throws DatePastException{
         boolean valid = false;

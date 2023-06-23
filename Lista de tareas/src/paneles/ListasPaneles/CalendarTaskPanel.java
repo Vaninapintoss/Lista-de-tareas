@@ -8,8 +8,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Month;
 import java.time.format.DateTimeParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +18,6 @@ import list.task.DateTask;
 import list.task.Fecha;
 import static list.task.Fecha.validDate;
 import list.task.exceptions.DatePastException;
-import list.task.exceptions.InvalidPatternDateException;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
 import userLists.exceptions.UnfinishedTasksException;
@@ -347,12 +344,10 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
                 
                 Fecha date = new Fecha(day,month,year);
                 
-                try{
+                
                     validDate(day,month,year);
                     
-                }catch(DatePastException e){
-                    text_error.setText("Fecha invalida");
-                }                
+                                
                 
                 DateTask task = new DateTask(text_newTask.getText(),date);
                 
@@ -370,7 +365,10 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
                 text_error.setText("La tarea "+text_newTask.getText()+" ya existe");
             } catch (DateTimeParseException ex) {
                 Logger.getLogger(CalendarTaskPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DatePastException ex) {
+                text_error.setText("Fecha invalida");
             }
+                
         }
 
         text_newTask.setText("");//reseteo el campo de texto
