@@ -32,6 +32,14 @@ public class DateLists implements IStorageActions<DateList>{
         hashMapOfDL = new HashMap<>();
     }
 
+    public HashMap<String, DateList> getHashMap() {
+        return hashMapOfDL;
+    }
+
+    public DateList getDateList(String category) {
+        return hashMapOfDL.get(category);
+    }
+
     /**
      * <h1>Agregar una lista</h1>
      * 

@@ -158,14 +158,23 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
      * 
      * @author Vanina Pintos
      */
-    public boolean editTaskName(String name, String newName) throws EmptyNameTaskException{
+    public boolean editTaskName(String name, String newName) throws EmptyNameTaskException, ElementAlreadyExistException{
         boolean edited = false;
         
         DateTask found = searchTask(name);
         
         if(found != null){
-            found.setName(name); 
-            edited = true;
+            
+            DateTask existsName = searchTask(newName);
+            
+            if(existsName != null){
+                
+                throw new ElementAlreadyExistException("esa tarea ya existe");
+                
+            }else{
+                found.setName(newName); 
+                edited = true;
+            }
         }
         
         return edited;   

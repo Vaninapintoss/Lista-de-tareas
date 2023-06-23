@@ -30,6 +30,14 @@ public class TrackLists implements IStorageActions<TrackList>{
     public TrackLists() {
         hashMapOfTL = new HashMap<>();
     }
+    
+    public HashMap<String, TrackList> getHashMap() {
+        return hashMapOfTL;
+    }
+
+    public TrackList getTrackList(String category) {
+        return hashMapOfTL.get(category);
+    }
 
     /**
      * <h1>Agregar una lista</h1>
