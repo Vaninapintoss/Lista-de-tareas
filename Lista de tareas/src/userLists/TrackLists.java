@@ -61,6 +61,7 @@ public class TrackLists implements IStorageActions<TrackList>{
      * <h1>Mostrar listas</h1>
      * 
      * showLists() devuelve en formato String las listas existentes en el HashMap
+     * separados por el caracter "_"
      * 
      * @return String | las listas en formato String
      * 
@@ -71,6 +72,7 @@ public class TrackLists implements IStorageActions<TrackList>{
         String aux = "";
         for (Map.Entry<String, TrackList> entry : hashMapOfTL.entrySet()) {
             aux += entry.getKey();
+            aux += "_";
         }
         return aux;
     }

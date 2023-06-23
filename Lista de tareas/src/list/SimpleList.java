@@ -83,7 +83,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
         String aux ="";
         for(SimpleTask e : simpleList){
             aux += e.toString();
-            aux +="";
+            aux +="_";
         }
         return aux;
     }
@@ -224,5 +224,17 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
         }
         
         return  true;
+    }
+
+    /**
+     * <h1>Cantidad de tareas</h1>
+     * 
+     * @return int | cantidad de tareas almacenadas en la coleccion
+     * 
+     * @author Vanina Pintos
+     */
+    @Override
+    public int howManyTasks() {
+        return simpleList.size();
     }
 }

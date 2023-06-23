@@ -63,6 +63,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
      * <h1>Mostrar listas</h1>
      * 
      * showLists() devuelve en formato String las listas existentes en el HashMap
+     * separadas por el caracter "_"
      * 
      * @return String | las listas en formato String
      * 
@@ -73,6 +74,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
         String aux = "";
         for (Map.Entry<String, SimpleList> entry : hashMapOfSL.entrySet()) {
             aux += entry.getKey();
+            aux += "_";
         }
         return aux;
     }

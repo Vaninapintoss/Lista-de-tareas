@@ -62,6 +62,7 @@ public class DateLists implements IStorageActions<DateList>{
      * <h1>Mostrar listas</h1>
      * 
      * showLists() devuelve en formato String las listas existentes en el HashMap
+     * separados por el caracter "_"
      * 
      * @return String | las listas en formato String
      * 
@@ -72,6 +73,7 @@ public class DateLists implements IStorageActions<DateList>{
         String aux = "";
         for (Map.Entry<String, DateList> entry : hashMapOfDL.entrySet()) {
             aux += entry.getKey();
+            aux += "_";
         }
         return aux;
     }

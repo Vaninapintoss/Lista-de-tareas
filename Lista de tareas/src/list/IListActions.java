@@ -55,4 +55,13 @@ public interface IListActions <Task>{
      * @author Vanina Pintos
      */
     Task searchTask(String name);
+    
+    /**
+     * <h1>Cantidad de tareas</h1>
+     * 
+     * @return int | cantidad de tareas almacenadas en la coleccion
+     * 
+     * @author Vanina Pintos
+     */
+    public int howManyTasks();
 }

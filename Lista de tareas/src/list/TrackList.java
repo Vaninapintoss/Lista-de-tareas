@@ -66,7 +66,7 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
         String aux ="";
         for(TrackTask e : trackList){
             aux += e.toString();
-            aux +="";
+            aux +="_";
         }
         return aux;
     }
@@ -95,5 +95,17 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
         }
         
         return found;
+    }
+    
+    /**
+     * <h1>Cantidad de tareas</h1>
+     * 
+     * @return int | cantidad de tareas almacenadas en la coleccion
+     * 
+     * @author Vanina Pintos
+     */
+    @Override
+    public int howManyTasks() {
+        return trackList.size();
     }
 }
