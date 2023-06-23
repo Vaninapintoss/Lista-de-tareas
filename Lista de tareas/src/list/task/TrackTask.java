@@ -80,7 +80,7 @@ public class TrackTask extends Task implements Serializable{
         if (!Objects.equals(this.duration, other.duration)) {
             return false;
         }
-        return name.equals(other.name) && (startDateTime.compareTo(other.startDateTime)==0);
+        return name.equals(other.name);
     }
 
     /**
@@ -92,6 +92,6 @@ public class TrackTask extends Task implements Serializable{
      */
     @Override
     public String toString() {
-        return name + " - " + duration + " - " + startDateTime;
+        return name + " " + duration;
     }
 }
