@@ -1,4 +1,6 @@
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import list.SimpleList;
 import list.exceptions.ElementAlreadyExistException;
 import list.exceptions.TaskUntilNotCompletedException;
@@ -55,6 +57,8 @@ public class NewMain {
             
         }catch(EmptyNameTaskException e){
             System.out.println(e.getMessage());
+        } catch (ElementAlreadyExistException ex) {
+            Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

@@ -4,6 +4,8 @@
  */
 package paneles.ListasPaneles;
 
+import static paneles.PantallaInicial.app;
+
 /**
  *
  * @author sofia
@@ -38,6 +40,7 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
         titleTaskList = new javax.swing.JLabel();
         backGroundText = new javax.swing.JLabel();
         backgroundTaskList = new javax.swing.JLabel();
+        buttonGoBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,6 +130,20 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
 
         backgroundTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoListas.png"))); // NOI18N
         add(backgroundTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
+
+        buttonGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolver.png"))); // NOI18N
+        buttonGoBack.setBorderPainted(false);
+        buttonGoBack.setContentAreaFilled(false);
+        buttonGoBack.setMaximumSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setMinimumSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setPreferredSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolverMouseOver.png"))); // NOI18N
+        buttonGoBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGoBackActionPerformed(evt);
+            }
+        });
+        add(buttonGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void text_dayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_dayKeyTyped
@@ -162,11 +179,17 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_text_yearKeyTyped
 
+    private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
+        //vuelve a la pantalla principal
+        app.replaceScreen(app.homescreenApp);
+    }//GEN-LAST:event_buttonGoBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backGroundText;
     private javax.swing.JLabel backgroundTaskList;
     private javax.swing.JButton buttonCreate;
+    private javax.swing.JButton buttonGoBack;
     private javax.swing.JLabel infoNewList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;

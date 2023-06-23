@@ -323,6 +323,11 @@ public class AppUserLists extends javax.swing.JFrame {
         contentScreen(panel,contentScreenApp); 
     }
     
+    public void showGoBackButton()
+    {
+        buttonGoBack.setVisible(true);
+    }
+    
     private void buttonSeeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeeUserActionPerformed
         //cambio la pantalla a ver usuario
         seeUserPanel = new SeeUserPanel(user);
@@ -417,7 +422,7 @@ public class AppUserLists extends javax.swing.JFrame {
     public static User user;
     public static UsersSystem users;
     public static AppUserLists appActive;
-    private PantallaPrincipalApp homescreenApp;
+    public PantallaPrincipalApp homescreenApp;
     private boolean menuOn;//si el menu esta abierto
     
     //pabeles

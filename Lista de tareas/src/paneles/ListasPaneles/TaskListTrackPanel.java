@@ -4,6 +4,9 @@
  */
 package paneles.ListasPaneles;
 
+import static paneles.PantallaInicial.app;
+import paneles.PantallaPrincipalApp;
+
 /**
  *
  * @author sofia
@@ -26,6 +29,7 @@ public class TaskListTrackPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGoBack = new javax.swing.JButton();
         titleTaskList = new javax.swing.JLabel();
         infoNewList = new javax.swing.JLabel();
         text_newList = new javax.swing.JTextField();
@@ -35,6 +39,20 @@ public class TaskListTrackPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        buttonGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolver.png"))); // NOI18N
+        buttonGoBack.setBorderPainted(false);
+        buttonGoBack.setContentAreaFilled(false);
+        buttonGoBack.setMaximumSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setMinimumSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setPreferredSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolverMouseOver.png"))); // NOI18N
+        buttonGoBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGoBackActionPerformed(evt);
+            }
+        });
+        add(buttonGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
 
         titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/tituloListaTraqueo.png"))); // NOI18N
         add(titleTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
@@ -66,11 +84,17 @@ public class TaskListTrackPanel extends javax.swing.JPanel {
         add(backgroundTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
+        //vuelve a la pantalla principal
+        app.replaceScreen(app.homescreenApp);
+    }//GEN-LAST:event_buttonGoBackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backGroundText;
     private javax.swing.JLabel backgroundTaskList;
     private javax.swing.JButton buttonCreate;
+    private javax.swing.JButton buttonGoBack;
     private javax.swing.JLabel infoNewList;
     private javax.swing.JTextField text_newList;
     private javax.swing.JLabel titleTaskList;
