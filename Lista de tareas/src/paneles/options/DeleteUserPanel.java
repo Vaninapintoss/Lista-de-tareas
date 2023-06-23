@@ -4,6 +4,17 @@
  */
 package paneles.options;
 
+import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import static paneles.AppUserLists.app;
+import user.User;
+import user.UsersSystem;
+import user.exceptions.IncorrectPasswordException;
+import visualElements.ButtonImage;
+
 /**
  *
  * @author sofia
@@ -13,7 +24,22 @@ public class DeleteUserPanel extends javax.swing.JPanel {
     /**
      * Creates new form DeleteUser
      */
-    public DeleteUserPanel() {
+    private boolean agree;
+    private ButtonImage agreeBox, disagreeBox;
+    private User user;
+    private UsersSystem users;
+    
+    public DeleteUserPanel(User user, UsersSystem users) {
+        this.user = user;
+        this.users = users;
+        agree = false;
+        
+        agreeBox = new ButtonImage("/imagenes/modifyUser/deleteUser/boxagree.png",
+                             "/imagenes/modifyUser/deleteUser/boxvacioMouseOver.png",
+                            "/imagenes/modifyUser/deleteUser/boxvacio.png");
+        disagreeBox = new ButtonImage("/imagenes/modifyUser/deleteUser/boxvacio.png",
+                                "/imagenes/modifyUser/deleteUser/agreeMouseOver.png",
+                               "/imagenes/modifyUser/deleteUser/boxagree.png");
         initComponents();
     }
 
@@ -26,32 +52,215 @@ public class DeleteUserPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        passwordLabel = new javax.swing.JLabel();
+        password2Label = new javax.swing.JLabel();
+        text_errorPassword = new javax.swing.JLabel();
+        text_errorPassword2 = new javax.swing.JLabel();
+        text_password = new javax.swing.JTextField();
+        text_password2 = new javax.swing.JTextField();
+        text_succesful = new javax.swing.JLabel();
+        buttonDelete = new javax.swing.JButton();
+        text_errorDelete = new javax.swing.JLabel();
+        fondoTexto1 = new javax.swing.JLabel();
+        fondoTexto2 = new javax.swing.JLabel();
+        buttonAgree = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 153, 153));
+        setBackground(new java.awt.Color(195, 225, 203));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Eliminar Usuario");
+        passwordLabel.setBackground(new java.awt.Color(195, 225, 203));
+        passwordLabel.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        passwordLabel.setForeground(new java.awt.Color(195, 225, 203));
+        passwordLabel.setText("Ingrese su contraseña");
+        add(passwordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(299, 299, 299)
-                .addComponent(jLabel1)
-                .addContainerGap(308, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(jLabel1)
-                .addContainerGap(227, Short.MAX_VALUE))
-        );
+        password2Label.setBackground(new java.awt.Color(195, 225, 203));
+        password2Label.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        password2Label.setForeground(new java.awt.Color(195, 225, 203));
+        password2Label.setText("Confirme su contraseña");
+        add(password2Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
+
+        text_errorPassword.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_errorPassword.setForeground(new java.awt.Color(255, 153, 153));
+        text_errorPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        add(text_errorPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 120, 370, 20));
+
+        text_errorPassword2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_errorPassword2.setForeground(new java.awt.Color(255, 153, 153));
+        text_errorPassword2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        add(text_errorPassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 200, 370, 20));
+
+        text_password.setBackground(new java.awt.Color(195, 225, 203));
+        text_password.setForeground(new java.awt.Color(102, 102, 102));
+        text_password.setBorder(null);
+        text_password.setMaximumSize(new java.awt.Dimension(370, 30));
+        text_password.setMinimumSize(new java.awt.Dimension(370, 30));
+        text_password.setPreferredSize(new java.awt.Dimension(370, 30));
+        add(text_password, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 350, -1));
+
+        text_password2.setBackground(new java.awt.Color(195, 225, 203));
+        text_password2.setForeground(new java.awt.Color(102, 102, 102));
+        text_password2.setBorder(null);
+        text_password2.setMaximumSize(new java.awt.Dimension(370, 30));
+        text_password2.setMinimumSize(new java.awt.Dimension(370, 30));
+        text_password2.setPreferredSize(new java.awt.Dimension(370, 30));
+        add(text_password2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 350, -1));
+
+        text_succesful.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_succesful.setForeground(new java.awt.Color(0, 204, 0));
+        text_succesful.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(text_succesful, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 370, 20));
+
+        buttonDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/deleteUser/botonEliminar.png"))); // NOI18N
+        buttonDelete.setBorderPainted(false);
+        buttonDelete.setContentAreaFilled(false);
+        buttonDelete.setMaximumSize(new java.awt.Dimension(110, 40));
+        buttonDelete.setMinimumSize(new java.awt.Dimension(110, 40));
+        buttonDelete.setPreferredSize(new java.awt.Dimension(110, 40));
+        buttonDelete.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/deleteUser/botonEliminarMouseOver.png"))); // NOI18N
+        buttonDelete.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/deleteUser/botonEliminarMouseOver.png"))); // NOI18N
+        buttonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteActionPerformed(evt);
+            }
+        });
+        add(buttonDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, -1));
+
+        text_errorDelete.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_errorDelete.setForeground(new java.awt.Color(255, 153, 153));
+        text_errorDelete.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(text_errorDelete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 370, 20));
+
+        fondoTexto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
+        add(fondoTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+
+        fondoTexto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
+        add(fondoTexto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
+
+        buttonAgree.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/deleteUser/boxvacio.png"))); // NOI18N
+        buttonAgree.setBorderPainted(false);
+        buttonAgree.setContentAreaFilled(false);
+        buttonAgree.setMaximumSize(new java.awt.Dimension(22, 22));
+        buttonAgree.setMinimumSize(new java.awt.Dimension(22, 22));
+        buttonAgree.setPreferredSize(new java.awt.Dimension(22, 22));
+        buttonAgree.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/deleteUser/boxagree.png"))); // NOI18N
+        buttonAgree.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/deleteUser/agreeMouseOver.png"))); // NOI18N
+        buttonAgree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAgreeActionPerformed(evt);
+            }
+        });
+        add(buttonAgree, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, -1, -1));
+
+        jLabel2.setBackground(new java.awt.Color(195, 225, 203));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(195, 225, 203));
+        jLabel2.setText("la informacion de mis listas");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 270, 330, -1));
+
+        jLabel1.setBackground(new java.awt.Color(195, 225, 203));
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(195, 225, 203));
+        jLabel1.setText("Estoy de acuerdo con que al eliminar mi usuario perdere toda");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 350, -1));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/background.png"))); // NOI18N
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void resetInfoText()
+    {
+        text_errorPassword.setText("");
+        text_errorPassword2.setText("");
+        text_errorDelete.setText("");
+        text_succesful.setText("");
+    }
+    
+    
+    private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
+
+        resetInfoText();
+        
+        if(!agree)
+        {
+            text_errorDelete.setText("Haga click en el CheckBox para continuar");
+        }
+        else
+        {
+            if(text_password.getText().isEmpty())
+            {
+                text_errorPassword.setText("Ingrese su contraseña");
+            }
+            else if(text_password2.getText().isEmpty())
+            {
+                text_errorPassword2.setText("Reingrese su contraseña");
+            }
+            else if(!text_password.getText().equals(text_password2.getText()))
+            {
+                text_errorPassword2.setText("Las contraseñas deben coincidir");
+            }
+            else
+            {
+                try 
+                {
+                    users.deleteUser(user, text_password.getText()); 
+                } 
+                catch (IncorrectPasswordException ex) 
+                {
+                    text_errorPassword.setText("Contraseña invalida");
+                }
+            }
+        }
+
+        
+    }//GEN-LAST:event_buttonDeleteActionPerformed
+
+    
+    private void changeJButton(JButton boton, ButtonImage imagenBoton)
+    {
+        String icon = imagenBoton.getIcon();
+        String pressedIcon = imagenBoton.getPressedIcon();
+        String rolloverIcon = imagenBoton.getRolloverIcon();
+        
+        //cambio las caracteristicas del boton enviado por parametro
+        boton.setIcon(new ImageIcon(getClass().getResource(icon)));
+        boton.setPressedIcon(new ImageIcon(getClass().getResource(pressedIcon)));
+        boton.setRolloverIcon(new ImageIcon(getClass().getResource(rolloverIcon)));
+    }
+    
+    private void buttonAgreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgreeActionPerformed
+        if(agree)
+        {
+            agree = false;
+            changeJButton(buttonAgree,disagreeBox);
+           
+        }
+        else
+        {
+            agree = true;
+            changeJButton(buttonAgree,agreeBox);
+        }
+    }//GEN-LAST:event_buttonAgreeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
+    private javax.swing.JButton buttonAgree;
+    private javax.swing.JButton buttonDelete;
+    private javax.swing.JLabel fondoTexto1;
+    private javax.swing.JLabel fondoTexto2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel password2Label;
+    private javax.swing.JLabel passwordLabel;
+    private javax.swing.JLabel text_errorDelete;
+    private javax.swing.JLabel text_errorPassword;
+    private javax.swing.JLabel text_errorPassword2;
+    private javax.swing.JTextField text_password;
+    private javax.swing.JTextField text_password2;
+    private javax.swing.JLabel text_succesful;
     // End of variables declaration//GEN-END:variables
 }

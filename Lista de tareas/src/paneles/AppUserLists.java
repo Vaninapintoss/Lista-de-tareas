@@ -7,6 +7,10 @@ package paneles;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Frame;
+import java.awt.LayoutManager;
+import java.awt.Panel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import paneles.options.DeleteUserPanel;
 import paneles.options.InfoTaskMasterProPanel;
@@ -54,10 +58,6 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonGoBack.setVisible(false);
     }
     
-    public static void closeApp()
-    {
-        app.dispose();
-    }
     
     public void contentScreen(Component panel, JPanel panelContent)
     {
@@ -193,7 +193,6 @@ public class AppUserLists extends javax.swing.JFrame {
         contentMenu.add(buttonInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menu/background.png"))); // NOI18N
-        jLabel2.setPreferredSize(new java.awt.Dimension(203, 180));
         contentMenu.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 180));
 
         getContentPane().add(contentMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, -1, 180));
@@ -227,6 +226,8 @@ public class AppUserLists extends javax.swing.JFrame {
         getContentPane().add(panelEmpty, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 500));
 
         contentScreenApp.setBackground(new java.awt.Color(255, 204, 204));
+        contentScreenApp.setMaximumSize(new java.awt.Dimension(700, 450));
+        contentScreenApp.setMinimumSize(new java.awt.Dimension(700, 450));
 
         javax.swing.GroupLayout contentScreenAppLayout = new javax.swing.GroupLayout(contentScreenApp);
         contentScreenApp.setLayout(contentScreenAppLayout);
@@ -350,7 +351,7 @@ public class AppUserLists extends javax.swing.JFrame {
 
     private void buttonDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteUserActionPerformed
         //cambio la pantalla a eliminar usuario
-        deleteUserPanel = new DeleteUserPanel();
+        deleteUserPanel = new DeleteUserPanel(user, users);
         
         deleteUserPanel.setSize(700, 450);
         deleteUserPanel.setLocation(0, 0);

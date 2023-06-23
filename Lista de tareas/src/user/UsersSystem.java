@@ -90,6 +90,7 @@ public class UsersSystem
         if(user.verifyPassword(password))
         {
             deleted = users.remove(user.getEmail(), user);
+            saveUsersInFile();//actualizo el archivo con los usuarios
         }
         else
         {
