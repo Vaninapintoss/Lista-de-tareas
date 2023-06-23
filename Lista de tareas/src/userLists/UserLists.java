@@ -35,33 +35,40 @@ public class UserLists {
         
         SimpleList sl = new SimpleList(category);
         simpleLists.addList(sl); //exception
+        saveSimpleListsInFile(filename,simpleLists.getHashMap());
     }
     
     public void deleteSimpleList(String category) throws UnfinishedTasksException{
         
         simpleLists.deleteList(category);
+        saveSimpleListsInFile(filename,simpleLists.getHashMap());
     }
     
     public void editSimpleListCategory(String category, String newCategory)  throws EmptyCategoryListException, CategoryListAlreadyExistException{
         simpleLists.editListCategory(category, newCategory);
+        saveSimpleListsInFile(filename,simpleLists.getHashMap());
     }
     
     public void addTaskToSimpleList(String category, String taskName)throws ElementAlreadyExistException{
         
         SimpleTask st = new SimpleTask(taskName);
         simpleLists.getListaSimple(category).addTask(st); //exception
+        saveSimpleListsInFile(filename,simpleLists.getHashMap());
     }
     
     public void checkTaskOfSimpleList(String category, String taskName){
         simpleLists.getListaSimple(category).checkTask(taskName);
+        saveSimpleListsInFile(filename,simpleLists.getHashMap());
     }
     
     public void deleteTaskOfSimpleList(String category, String taskName) throws  TaskUntilNotCompletedException{
         simpleLists.getListaSimple(category).deleteTask(taskName);
+        saveSimpleListsInFile(filename,simpleLists.getHashMap());
     }
     
     public void editTaskNameOfSimpleList(String category, String taskName, String newTaskName)throws EmptyNameTaskException, ElementAlreadyExistException{
         simpleLists.getListaSimple(category).editTaskName(taskName, newTaskName);
+        saveSimpleListsInFile(filename,simpleLists.getHashMap());
     }
     
     public int howManyTasksSimpleList(String category){
