@@ -1,4 +1,6 @@
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import list.SimpleList;
@@ -18,48 +20,20 @@ public class NewMain {
 
     public static void main(String[] args) {
         
-        //LISTA SIMPLE
+        //captura de hora de inicio
+        LocalDateTime start = LocalDateTime.now();
         
-        //creacion de una lista simple
-        SimpleList sl = new SimpleList("Universidad");
+        //captura de hora de finalizacion
+        LocalDateTime finish = LocalDateTime.now();
         
-        //agregacion de tareas simples a esa lista
+        //guardado de datos para la creacion de la tarea
+        Duration duration = Duration.between(start, finish);        
         
-            //primero creamos la simpleTask
-            SimpleTask st1 = new SimpleTask("hacer el tp final");
-            //despues la agregamos
-            try{
-                sl.addTask(st1);
-                
-            }catch(ElementAlreadyExistException e){
-                
-                System.out.println(e.getMessage());
-            }
-            
-        //mostramos la lista de tareas simples
-        System.out.println(sl.showTasks());   
+        //para poder imprimir duration
+        long hours = duration.toHours();
+        long minutes = duration.toMinutes() % 60;
+        long seconds = duration.getSeconds() % 60;
         
-        //marcamos como completada la tarea
-        sl.checkTask(st1.getName());
-        
-        //eliminamos la tarea
-        try{
-            sl.deleteTask(st1.getName());
-            
-        }catch(TaskUntilNotCompletedException e){
-            
-            System.out.println(e.getMessage());
-        }
-        
-        //editamos el nombre de la tarea
-        try{
-            sl.editTaskName(st1.getName(), "hacer tarea spd");
-            
-        }catch(EmptyNameTaskException e){
-            System.out.println(e.getMessage());
-        } catch (ElementAlreadyExistException ex) {
-            Logger.getLogger(NewMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }
     
 }
