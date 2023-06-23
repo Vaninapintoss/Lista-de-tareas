@@ -7,11 +7,8 @@ package paneles;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Frame;
-import java.awt.LayoutManager;
-import java.awt.Panel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import static paneles.PantallaInicial.homeScreen;
 import paneles.options.DeleteUserPanel;
 import paneles.options.InfoTaskMasterProPanel;
 import paneles.options.ModifyLocationPanel;
@@ -288,11 +285,13 @@ public class AppUserLists extends javax.swing.JFrame {
 
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
         this.dispose();
+        PantallaInicial.closeApp();
     }//GEN-LAST:event_botonCerrarActionPerformed
 
-    public static void closeApp()
+    public void closeApp()
     {
-        appActive.dispose();
+        homeScreen.goBackToLogin();
+        this.dispose();    
     }
     
     private void ButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMenuActionPerformed
@@ -447,8 +446,7 @@ public class AppUserLists extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                appActive = new AppUserLists(user, users);
-                appActive.setVisible(true);
+                new AppUserLists(user, users).setVisible(true);
             }
         });
     }

@@ -185,8 +185,19 @@ public class PantallaInicial extends javax.swing.JFrame {
     
     public static void abrirApp(User user)
     {
-        AppUserLists app = new AppUserLists(user, sistemaUsuarios);
+        app = new AppUserLists(user, sistemaUsuarios);
         app.setVisible(true);
+        homeScreen.setVisible(false);
+    }
+    
+    public static void goBackToLogin()
+    {
+        
+        homeScreen.setVisible(true);
+    }
+    
+    public static void closeApp()
+    {
         homeScreen.dispose();
     }
     
@@ -249,6 +260,8 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
     
     
+    
+    
     private void contentPantalla(Component panel)
     {
         content.removeAll();
@@ -266,6 +279,7 @@ public class PantallaInicial extends javax.swing.JFrame {
     public static VisualLoginSignupPage visualButtons;
     
     public static PantallaInicial homeScreen;
+    public static AppUserLists app;
     
     //usuarios
     public static UsersSystem sistemaUsuarios;
