@@ -37,9 +37,6 @@ public class TaskListPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/tituloListaSimpleGeneral.png"))); // NOI18N
-        titleTaskList.setMaximumSize(new java.awt.Dimension(660, 55));
-        titleTaskList.setMinimumSize(new java.awt.Dimension(660, 55));
-        titleTaskList.setPreferredSize(new java.awt.Dimension(660, 55));
         add(titleTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         infoNewList.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -63,15 +60,9 @@ public class TaskListPanel extends javax.swing.JPanel {
         add(buttonCreate, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, -1, -1));
 
         backGroundText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/espacioTextoList.png"))); // NOI18N
-        backGroundText.setMaximumSize(new java.awt.Dimension(465, 30));
-        backGroundText.setMinimumSize(new java.awt.Dimension(465, 30));
-        backGroundText.setPreferredSize(new java.awt.Dimension(465, 30));
         add(backGroundText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         backgroundTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoListas.png"))); // NOI18N
-        backgroundTaskList.setMaximumSize(new java.awt.Dimension(660, 315));
-        backgroundTaskList.setMinimumSize(new java.awt.Dimension(660, 315));
-        backgroundTaskList.setPreferredSize(new java.awt.Dimension(660, 315));
         add(backgroundTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

@@ -7,11 +7,11 @@ package paneles;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JPanel;
 import location.Exceptions.EmptyLocationException;
 import org.json.JSONException;
+import paneles.ListasPaneles.TaskListCalendarPanel;
+import paneles.ListasPaneles.TaskListPanel;
+import static paneles.PantallaInicial.app;
 import paneles.weather.LocationWeatherPanel;
 import paneles.weather.NoLocationWeatherPanel;
 import user.User;
@@ -149,6 +149,11 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         buttonTaskList.setMinimumSize(new java.awt.Dimension(661, 55));
         buttonTaskList.setPreferredSize(new java.awt.Dimension(661, 55));
         buttonTaskList.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonTaskListMouseOver.png"))); // NOI18N
+        buttonTaskList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTaskListActionPerformed(evt);
+            }
+        });
         add(buttonTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, -1, -1));
 
         buttonCalendarList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonListaCalendario.png"))); // NOI18N
@@ -176,8 +181,13 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCalendarListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalendarListActionPerformed
-        // TODO add your handling code here:
+        //reemplazo la pantalla principal con la lista de tareas
+        app.replaceScreen(new TaskListCalendarPanel());
     }//GEN-LAST:event_buttonCalendarListActionPerformed
+
+    private void buttonTaskListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTaskListActionPerformed
+        app.replaceScreen(new TaskListPanel());
+    }//GEN-LAST:event_buttonTaskListActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

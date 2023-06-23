@@ -315,6 +315,14 @@ public class AppUserLists extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ButtonMenuActionPerformed
 
+    public void replaceScreen(JPanel panel)
+    {
+        panel.setSize(700, 450);
+        panel.setLocation(0, 0);
+        
+        contentScreen(panel,contentScreenApp); 
+    }
+    
     private void buttonSeeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeeUserActionPerformed
         //cambio la pantalla a ver usuario
         seeUserPanel = new SeeUserPanel(user);
