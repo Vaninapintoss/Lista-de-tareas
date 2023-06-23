@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import list.List;
+import list.SimpleList;
 import static paneles.AppUserLists.userLists;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
@@ -165,7 +166,7 @@ public class TaskListPanel extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e)
             {
                 //crear SimpleTaskPanel y enviarle la lista
-                SimpleTaskPanel taskList = new SimpleTaskPanel(userLists.getSimpleLists(),
+                SimpleTaskPanel taskList = new SimpleTaskPanel(userLists,
                                                                 button.getText());
                 
                 //reemplazo la pantalla principal con la lista
