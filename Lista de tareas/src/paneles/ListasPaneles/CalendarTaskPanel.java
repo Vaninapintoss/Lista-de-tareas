@@ -93,7 +93,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         text_titleList.setText("PROGRA");
         add(text_titleList, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 21, -1, 30));
 
-        titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/titulosListaSimpleParticular.png"))); // NOI18N
+        titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/titulosListaFechaParticular.png"))); // NOI18N
         add(titleTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         text_error.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -334,6 +334,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         }
         else
         {
+            /*
             try
             {
                 //trato de agregar una nueva lista
@@ -359,7 +360,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
                 Logger.getLogger(CalendarTaskPanel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (DateTimeParseException ex) {
                 Logger.getLogger(CalendarTaskPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
         }
 
         text_newTask.setText("");//reseteo el campo de texto
@@ -411,7 +412,5 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
     private javax.swing.JLabel titleTaskList;
     // End of variables declaration//GEN-END:variables
 
-    private LocalDate LocalDate(int year, int month, int day) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
 }
