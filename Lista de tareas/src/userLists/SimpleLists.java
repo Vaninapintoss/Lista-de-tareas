@@ -31,6 +31,10 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     public SimpleLists() {
         hashMapOfSL = new HashMap<>();
     }
+    
+    public SimpleList getListaSimple(String category) {
+        return hashMapOfSL.get(category);
+    }
 
     /**
      * <h1>Agregar una lista</h1>
