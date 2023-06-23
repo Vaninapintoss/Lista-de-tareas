@@ -81,7 +81,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
         String aux ="";
         for(DateTask e : dateList){
             aux += e.toString();
-            aux +="_";
+            aux +="/";
         }
         return aux;
     }

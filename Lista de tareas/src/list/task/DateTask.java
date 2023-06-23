@@ -67,9 +67,8 @@ public final class DateTask extends Task  implements Serializable{
      * 
      * @author Vanina Pintos
      */
-    public LocalDate createDate(String date)throws InvalidPatternDateException, DateTimeParseException{
+    public static LocalDate createDate(String date)throws InvalidPatternDateException, DateTimeParseException{
         
-        validPatternDate(date);
         DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return LocalDate.parse(date, formatoFecha);
     }
@@ -192,6 +191,6 @@ public final class DateTask extends Task  implements Serializable{
      */
     @Override
     public String toString() {
-        return finalDate + " | " + name;
+        return finalDate + "_" + name;
     }
 }

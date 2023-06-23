@@ -9,10 +9,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.DateTimeParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import list.exceptions.ElementAlreadyExistException;
 import list.exceptions.TaskUntilNotCompletedException;
 import list.task.DateTask;
+import list.task.exceptions.InvalidPatternDateException;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
 import userLists.exceptions.UnfinishedTasksException;
@@ -216,17 +221,20 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         JButton button;
         try
         {
-            userLists.readSimpleFromFile();
+            userLists.readDateFromFile();
         }
         catch(IOException ex)
-        {}
+        {
+            System.out.println("no lee el archivo");
+        }
         
         String listas = userLists.getDateLists().getDateList(category).showTasks();
+        System.out.println(listas);
         panel.removeAll();
         if(!listas.isEmpty())
         {
             //las divido en un array
-            String[] parts = listas.split("_");
+            String[] parts = listas.split("/");
         
             for(String aux : parts)
             {
@@ -256,9 +264,10 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
                 //elimino la tarea de la lista
                 
                 //las divido en un array
-                String[] parts = info.split(" | ");
+                String[] parts = info.split("_");
                 try
                 {
+                    userLists.getDateLists().getDateList(category).checkTask(parts[1]);
                     userLists.getDateLists().getDateList(category).deleteTask(parts[1]);
                 }
                 catch(TaskUntilNotCompletedException ex)
@@ -266,7 +275,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
                     System.out.println("no elimina");
                 }
                 
-                userLists.saveSimpleInFile();
+                userLists.saveDateInFile();
                 
                 //actualizo el panel
                 updateButtons();
@@ -332,7 +341,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
                 int month = Integer.parseInt(text_month.getText());
                 int day = Integer.parseInt(text_day.getText());
                 
-                LocalDate date = LocalDate.of(year, month, day);
+                LocalDate date = DateTask.createDate(day+"/"+month+"/"+year);
                 
                 DateTask task = new DateTask(text_newTask.getText(),date);
                 
@@ -346,6 +355,10 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
             {
                 //si existe tiro un mensaje
                 text_error.setText("La tarea "+text_newTask.getText()+" ya existe");
+            } catch (InvalidPatternDateException ex) {
+                Logger.getLogger(CalendarTaskPanel.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (DateTimeParseException ex) {
+                Logger.getLogger(CalendarTaskPanel.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -397,4 +410,8 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
     private javax.swing.JTextField text_year;
     private javax.swing.JLabel titleTaskList;
     // End of variables declaration//GEN-END:variables
+
+    private LocalDate LocalDate(int year, int month, int day) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
