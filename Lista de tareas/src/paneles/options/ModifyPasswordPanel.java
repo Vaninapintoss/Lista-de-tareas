@@ -4,6 +4,11 @@
  */
 package paneles.options;
 
+import user.User;
+import user.UsersSystem;
+import user.exceptions.EmptyPasswordException;
+import user.exceptions.InvalidPasswordException;
+
 /**
  *
  * @author sofia
@@ -13,7 +18,11 @@ public class ModifyPasswordPanel extends javax.swing.JPanel {
     /**
      * Creates new form ModifyPassword
      */
-    public ModifyPasswordPanel() {
+    private User user;
+    private UsersSystem users;
+    public ModifyPasswordPanel(User user, UsersSystem users) {
+        this.user = user;
+        this.users = users;
         initComponents();
     }
 
@@ -26,32 +35,202 @@ public class ModifyPasswordPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        text_errorOldPassword = new javax.swing.JLabel();
+        text_errorNewPassword = new javax.swing.JLabel();
+        text_errorNewPassword2 = new javax.swing.JLabel();
+        text_succesful = new javax.swing.JLabel();
+        text_errorModify = new javax.swing.JLabel();
+        buttonModify = new javax.swing.JButton();
+        oldPasswordLabel = new javax.swing.JLabel();
+        newPasswordLabel = new javax.swing.JLabel();
+        newPassword2Label = new javax.swing.JLabel();
+        text_oldPassword = new javax.swing.JTextField();
+        text_newPassword = new javax.swing.JTextField();
+        text_newPassword2 = new javax.swing.JTextField();
+        fondoTexto = new javax.swing.JLabel();
+        fondoTexto2 = new javax.swing.JLabel();
+        fondoTexto1 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 0, 102));
+        setBackground(new java.awt.Color(195, 225, 203));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Modificar contraseña");
+        text_errorOldPassword.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_errorOldPassword.setForeground(new java.awt.Color(255, 153, 153));
+        text_errorOldPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        add(text_errorOldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 120, 370, 20));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(322, 322, 322)
-                .addComponent(jLabel1)
-                .addContainerGap(264, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(209, 209, 209)
-                .addComponent(jLabel1)
-                .addContainerGap(225, Short.MAX_VALUE))
-        );
+        text_errorNewPassword.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_errorNewPassword.setForeground(new java.awt.Color(255, 153, 153));
+        text_errorNewPassword.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        add(text_errorNewPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(181, 200, 370, 20));
+
+        text_errorNewPassword2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_errorNewPassword2.setForeground(new java.awt.Color(255, 153, 153));
+        text_errorNewPassword2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        add(text_errorNewPassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 370, 20));
+
+        text_succesful.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_succesful.setForeground(new java.awt.Color(0, 204, 0));
+        text_succesful.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(text_succesful, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 370, 20));
+
+        text_errorModify.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        text_errorModify.setForeground(new java.awt.Color(255, 153, 153));
+        text_errorModify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(text_errorModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 370, 20));
+
+        buttonModify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/Location/botonModificar.png"))); // NOI18N
+        buttonModify.setBorderPainted(false);
+        buttonModify.setContentAreaFilled(false);
+        buttonModify.setMaximumSize(new java.awt.Dimension(110, 40));
+        buttonModify.setMinimumSize(new java.awt.Dimension(110, 40));
+        buttonModify.setPreferredSize(new java.awt.Dimension(110, 40));
+        buttonModify.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/Location/botonModificarMouseOver.png"))); // NOI18N
+        buttonModify.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonModifyActionPerformed(evt);
+            }
+        });
+        add(buttonModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, -1));
+
+        oldPasswordLabel.setBackground(new java.awt.Color(195, 225, 203));
+        oldPasswordLabel.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        oldPasswordLabel.setForeground(new java.awt.Color(195, 225, 203));
+        oldPasswordLabel.setText("Contraseña Actual");
+        add(oldPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, -1, -1));
+
+        newPasswordLabel.setBackground(new java.awt.Color(195, 225, 203));
+        newPasswordLabel.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        newPasswordLabel.setForeground(new java.awt.Color(195, 225, 203));
+        newPasswordLabel.setText("Contraseña nueva");
+        add(newPasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
+
+        newPassword2Label.setBackground(new java.awt.Color(195, 225, 203));
+        newPassword2Label.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        newPassword2Label.setForeground(new java.awt.Color(195, 225, 203));
+        newPassword2Label.setText("Confirme su nueva contraseña");
+        add(newPassword2Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
+
+        text_oldPassword.setBackground(new java.awt.Color(195, 225, 203));
+        text_oldPassword.setForeground(new java.awt.Color(102, 102, 102));
+        text_oldPassword.setBorder(null);
+        text_oldPassword.setPreferredSize(new java.awt.Dimension(370, 30));
+        add(text_oldPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 90, 350, 30));
+
+        text_newPassword.setBackground(new java.awt.Color(195, 225, 203));
+        text_newPassword.setForeground(new java.awt.Color(102, 102, 102));
+        text_newPassword.setBorder(null);
+        text_newPassword.setPreferredSize(new java.awt.Dimension(370, 30));
+        add(text_newPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 350, 30));
+
+        text_newPassword2.setBackground(new java.awt.Color(195, 225, 203));
+        text_newPassword2.setForeground(new java.awt.Color(102, 102, 102));
+        text_newPassword2.setBorder(null);
+        text_newPassword2.setPreferredSize(new java.awt.Dimension(370, 30));
+        add(text_newPassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 350, 30));
+
+        fondoTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
+        add(fondoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
+
+        fondoTexto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
+        add(fondoTexto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
+
+        fondoTexto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
+        add(fondoTexto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/background.png"))); // NOI18N
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void resetInfoText()
+    {
+        text_errorOldPassword.setText("");
+        text_errorNewPassword.setText("");
+        text_errorNewPassword2.setText("");
+        text_errorModify.setText("");
+        text_succesful.setText("");
+    }
+    
+    private void buttonModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifyActionPerformed
+
+        boolean modify = true;
+        
+        resetInfoText();
+        
+        if(text_oldPassword.getText().isEmpty())
+        {
+            text_errorOldPassword.setText("Ingrese su contraseña actual");
+            modify = false;
+        }
+        else if(!user.verifyPassword(text_oldPassword.getText()))
+        {
+            text_errorOldPassword.setText("Contraseña actual incorrecta");
+            modify = false;
+        }
+        if(text_newPassword.getText().isEmpty())
+        {
+            text_errorNewPassword.setText("Ingrese su nueva contraseña");
+            modify = false;
+        }
+        if(text_newPassword2.getText().isEmpty())
+        {
+            text_errorNewPassword2.setText("Ingrese su nueva contraseña");
+            modify = false;
+        }
+        else
+        {
+            if(!text_newPassword.getText().equals(text_newPassword2.getText()))
+            {
+                text_errorNewPassword2.setText("La contraseña ingresada no coincide");
+                modify = false;
+            }
+            else if(text_newPassword.getText().equals(text_oldPassword.getText()))
+            {
+                text_errorNewPassword2.setText("La contraseña nueva coincide con la contraseña actual");
+                modify = false;
+            }
+        }
+        
+        
+        if(modify)
+        {
+            try
+            {
+                user.setPassword(text_oldPassword.getText(), text_newPassword.getText());
+                users.modifyUser(user);
+                
+                text_succesful.setText("Contraseña modificada exitosamente");
+            }
+            catch(EmptyPasswordException ex)
+            {
+                text_errorModify.setText("La contraseña nueva esta vacia");
+            }
+            catch(InvalidPasswordException ex)
+            {
+                text_errorModify.setText("La contraseña debe tener mas de 8 caracteres, una letra y un numero");
+            }
+        }
+        
+    }//GEN-LAST:event_buttonModifyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel background;
+    private javax.swing.JButton buttonModify;
+    private javax.swing.JLabel fondoTexto;
+    private javax.swing.JLabel fondoTexto1;
+    private javax.swing.JLabel fondoTexto2;
+    private javax.swing.JLabel newPassword2Label;
+    private javax.swing.JLabel newPasswordLabel;
+    private javax.swing.JLabel oldPasswordLabel;
+    private javax.swing.JLabel text_errorModify;
+    private javax.swing.JLabel text_errorNewPassword;
+    private javax.swing.JLabel text_errorNewPassword2;
+    private javax.swing.JLabel text_errorOldPassword;
+    private javax.swing.JTextField text_newPassword;
+    private javax.swing.JTextField text_newPassword2;
+    private javax.swing.JTextField text_oldPassword;
+    private javax.swing.JLabel text_succesful;
     // End of variables declaration//GEN-END:variables
 }

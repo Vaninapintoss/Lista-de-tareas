@@ -37,7 +37,7 @@ public class ModifyLocationPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        buttonModify = new javax.swing.JButton();
         ciudadLabel = new javax.swing.JLabel();
         provinciaLabel = new javax.swing.JLabel();
         paisLabel = new javax.swing.JLabel();
@@ -52,24 +52,26 @@ public class ModifyLocationPanel extends javax.swing.JPanel {
         text_errorCountry = new javax.swing.JLabel();
         text_errorModify = new javax.swing.JLabel();
         text_locationSuccesful = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        background = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(195, 225, 203));
+        setMinimumSize(new java.awt.Dimension(700, 450));
+        setPreferredSize(new java.awt.Dimension(700, 450));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/Location/botonModificar.png"))); // NOI18N
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setMaximumSize(new java.awt.Dimension(110, 40));
-        jButton1.setMinimumSize(new java.awt.Dimension(110, 40));
-        jButton1.setPreferredSize(new java.awt.Dimension(110, 40));
-        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/Location/botonModificarMouseOver.png"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonModify.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/Location/botonModificar.png"))); // NOI18N
+        buttonModify.setBorderPainted(false);
+        buttonModify.setContentAreaFilled(false);
+        buttonModify.setMaximumSize(new java.awt.Dimension(110, 40));
+        buttonModify.setMinimumSize(new java.awt.Dimension(110, 40));
+        buttonModify.setPreferredSize(new java.awt.Dimension(110, 40));
+        buttonModify.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/Location/botonModificarMouseOver.png"))); // NOI18N
+        buttonModify.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonModifyActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, -1));
+        add(buttonModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 320, -1, -1));
 
         ciudadLabel.setBackground(new java.awt.Color(195, 225, 203));
         ciudadLabel.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -114,9 +116,6 @@ public class ModifyLocationPanel extends javax.swing.JPanel {
         add(text_country, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 250, 350, -1));
 
         fondoTexto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
-        fondoTexto.setMaximumSize(new java.awt.Dimension(370, 30));
-        fondoTexto.setMinimumSize(new java.awt.Dimension(370, 30));
-        fondoTexto.setPreferredSize(new java.awt.Dimension(370, 30));
         add(fondoTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, -1, -1));
 
         fondoTexto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/BotonesLogIn/barraTexto.png"))); // NOI18N
@@ -143,18 +142,15 @@ public class ModifyLocationPanel extends javax.swing.JPanel {
         text_errorModify.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         text_errorModify.setForeground(new java.awt.Color(255, 153, 153));
         text_errorModify.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(text_errorModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 360, 20));
+        add(text_errorModify, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 370, 20));
 
         text_locationSuccesful.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         text_locationSuccesful.setForeground(new java.awt.Color(0, 204, 0));
         text_locationSuccesful.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         add(text_locationSuccesful, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 370, 20));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/background.png"))); // NOI18N
-        jLabel1.setMaximumSize(new java.awt.Dimension(630, 368));
-        jLabel1.setMinimumSize(new java.awt.Dimension(630, 368));
-        jLabel1.setPreferredSize(new java.awt.Dimension(630, 368));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modifyUser/background.png"))); // NOI18N
+        add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void resetInfoText()
@@ -166,7 +162,7 @@ public class ModifyLocationPanel extends javax.swing.JPanel {
         text_locationSuccesful.setText("");
     }
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifyActionPerformed
         
         boolean modify = true;
         
@@ -213,16 +209,16 @@ public class ModifyLocationPanel extends javax.swing.JPanel {
                 text_errorModify.setText("Algo salio mal");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonModifyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
+    private javax.swing.JButton buttonModify;
     private javax.swing.JLabel ciudadLabel;
     private javax.swing.JLabel fondoTexto;
     private javax.swing.JLabel fondoTexto1;
     private javax.swing.JLabel fondoTexto2;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel paisLabel;
     private javax.swing.JLabel provinciaLabel;
     private javax.swing.JTextField text_city;

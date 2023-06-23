@@ -54,6 +54,11 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonGoBack.setVisible(false);
     }
     
+    public static void closeApp()
+    {
+        app.dispose();
+    }
+    
     public void contentScreen(Component panel, JPanel panelContent)
     {
         panelContent.removeAll();
@@ -315,7 +320,7 @@ public class AppUserLists extends javax.swing.JFrame {
 
     private void buttonChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangePasswordActionPerformed
         //cambio la pantalla a modificar contraseña
-        modifyPasswordPanel = new ModifyPasswordPanel();
+        modifyPasswordPanel = new ModifyPasswordPanel(user, users);
         
         modifyPasswordPanel.setSize(700, 450);
         modifyPasswordPanel.setLocation(0, 0);
