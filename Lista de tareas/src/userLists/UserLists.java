@@ -20,6 +20,7 @@ import list.exceptions.ElementAlreadyExistException;
 import list.exceptions.EmptyCategoryListException;
 import list.exceptions.TaskUntilNotCompletedException;
 import list.task.DateTask;
+import list.task.Fecha;
 import list.task.SimpleTask;
 import list.task.TrackTask;
 import list.task.exceptions.EmptyNameTaskException;
@@ -132,7 +133,7 @@ public class UserLists {
         saveDateListsInFile(filenameDate,dateLists.getHashMap());
     }
     
-    public void addTaskToDateList(String category, String taskName,LocalDate date)throws ElementAlreadyExistException{
+    public void addTaskToDateList(String category, String taskName,Fecha date)throws ElementAlreadyExistException{
         
         DateTask dt = new DateTask(taskName,date);
         dateLists.getDateList(category).addTask(dt); //exception

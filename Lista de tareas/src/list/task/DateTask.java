@@ -25,7 +25,7 @@ import list.task.exceptions.InvalidPatternDateException;
  */
 public final class DateTask extends Task  implements Serializable{
     private Status status;
-    private LocalDate finalDate;
+    private Fecha finalDate;
 
     /**
      * <h1>Constructor de la clase DateTask</h1>
@@ -43,7 +43,7 @@ public final class DateTask extends Task  implements Serializable{
      * 
      * @author Vanina Pintos
      */
-    public DateTask(String name, LocalDate date) {
+    public DateTask(String name, Fecha date) {
         super(name);
         this.status = status.TODO;
         this.finalDate = date;
@@ -133,7 +133,7 @@ public final class DateTask extends Task  implements Serializable{
      * 
      * @author Vanina Pintos
      */
-    public LocalDate getFinalDate(){
+    public Fecha getFinalDate(){
         return finalDate;
     }
     
@@ -151,8 +151,8 @@ public final class DateTask extends Task  implements Serializable{
      * 
      * @author Vanina Pintos
      */
-    public void setFinalDate(String date) throws InvalidPatternDateException, DateTimeParseException{
-        this.finalDate = createDate(date);
+    public void setFinalDate(Fecha date) throws InvalidPatternDateException, DateTimeParseException{
+        this.finalDate = date;
     }
 
     /**

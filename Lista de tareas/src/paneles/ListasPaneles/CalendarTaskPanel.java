@@ -17,6 +17,9 @@ import javax.swing.JButton;
 import list.exceptions.ElementAlreadyExistException;
 import list.exceptions.TaskUntilNotCompletedException;
 import list.task.DateTask;
+import list.task.Fecha;
+import static list.task.Fecha.validDate;
+import list.task.exceptions.DatePastException;
 import list.task.exceptions.InvalidPatternDateException;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
@@ -334,7 +337,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         }
         else
         {
-            /*
+            
             try
             {
                 //trato de agregar una nueva lista
@@ -342,13 +345,22 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
                 int month = Integer.parseInt(text_month.getText());
                 int day = Integer.parseInt(text_day.getText());
                 
-                LocalDate date = DateTask.createDate(day+"/"+month+"/"+year);
+                Fecha date = new Fecha(day,month,year);
+                
+                try{
+                    validDate(day,month,year);
+                    
+                }catch(DatePastException e){
+                    text_error.setText("Fecha invalida");
+                }                
                 
                 DateTask task = new DateTask(text_newTask.getText(),date);
                 
+                
                 userLists.getDateLists().getDateList(category).addTask(task);
 
-                userLists.saveSimpleInFile();
+
+                userLists.saveDateInFile();
                 //actualizo los botones
                 updateButtons();
             }
@@ -356,11 +368,9 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
             {
                 //si existe tiro un mensaje
                 text_error.setText("La tarea "+text_newTask.getText()+" ya existe");
-            } catch (InvalidPatternDateException ex) {
-                Logger.getLogger(CalendarTaskPanel.class.getName()).log(Level.SEVERE, null, ex);
             } catch (DateTimeParseException ex) {
                 Logger.getLogger(CalendarTaskPanel.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
+            }
         }
 
         text_newTask.setText("");//reseteo el campo de texto
