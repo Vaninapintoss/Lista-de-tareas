@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Frame;
 import javax.swing.JPanel;
+import paneles.ListasPaneles.TaskListPanel;
 import static paneles.PantallaInicial.homeScreen;
 import paneles.options.DeleteUserPanel;
 import paneles.options.InfoTaskMasterProPanel;
@@ -196,7 +197,13 @@ public class AppUserLists extends javax.swing.JFrame {
 
         panelEmpty.setOpaque(false);
 
-        buttonGoBack.setText("jButton2");
+        buttonGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolver.png"))); // NOI18N
+        buttonGoBack.setBorderPainted(false);
+        buttonGoBack.setContentAreaFilled(false);
+        buttonGoBack.setMaximumSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setMinimumSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setPreferredSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolverMouseOver.png"))); // NOI18N
         buttonGoBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGoBackActionPerformed(evt);
@@ -208,16 +215,16 @@ public class AppUserLists extends javax.swing.JFrame {
         panelEmptyLayout.setHorizontalGroup(
             panelEmptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelEmptyLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(buttonGoBack)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(buttonGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(87, Short.MAX_VALUE))
         );
         panelEmptyLayout.setVerticalGroup(
             panelEmptyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelEmptyLayout.createSequentialGroup()
-                .addContainerGap(442, Short.MAX_VALUE)
-                .addComponent(buttonGoBack)
-                .addGap(34, 34, 34))
+                .addContainerGap(457, Short.MAX_VALUE)
+                .addComponent(buttonGoBack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         getContentPane().add(panelEmpty, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 500));
@@ -411,6 +418,7 @@ public class AppUserLists extends javax.swing.JFrame {
     private ModifyLocationPanel modifyLocationPanel;
     private DeleteUserPanel deleteUserPanel;
     private InfoTaskMasterProPanel infoAppPanel;
+    private TaskListPanel taskListPanel;
     
     //info del ultimo panel activo
     private JPanel lastPanel;
