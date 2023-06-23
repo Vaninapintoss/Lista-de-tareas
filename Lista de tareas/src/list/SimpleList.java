@@ -199,8 +199,8 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * @author Vanina Pintos
      */
     @Override
-    public SimpleTask searchTask(String name){
-        
+    public SimpleTask searchTask(String name)
+    {        
         SimpleTask found = null;
         
         Iterator iterator = simpleList.iterator();

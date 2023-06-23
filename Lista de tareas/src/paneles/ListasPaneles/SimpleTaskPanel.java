@@ -7,10 +7,13 @@ package paneles.ListasPaneles;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JButton;
 import list.SimpleList;
 import list.exceptions.ElementAlreadyExistException;
+import list.exceptions.TaskUntilNotCompletedException;
 import list.task.SimpleTask;
+import static paneles.AppUserLists.user;
 import static paneles.PantallaInicial.app;
 import userLists.SimpleLists;
 import userLists.UserLists;
@@ -30,6 +33,7 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         this.userLists = userLists;
         this.category = category;
         initComponents();
+        updateButtons();
         text_titleList.setText(category.toUpperCase());
     }
 
@@ -156,6 +160,13 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
     public void updateButtons()
     {
         JButton button;
+        try
+        {
+            userLists.readSimpleFromFile();
+        }
+        catch(IOException ex)
+        {}
+        
         String listas = userLists.getSimpleLists().getListaSimple(category).showTasks();
         panel.removeAll();
         if(!listas.isEmpty())
@@ -188,9 +199,16 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e)
             {
                 //elimino la tarea de la lista
-                userLists.getSimpleLists().getListaSimple(category).checkTask(button.getText());
+                try
+                {
+                    userLists.getSimpleLists().getListaSimple(category).deleteTask(button.getText());
+                }
+                catch(TaskUntilNotCompletedException ex)
+                {
+                    
+                }
                 
-                panel.removeAll();
+                userLists.saveSimpleInFile();
                 
                 //actualizo el panel
                 updateButtons();
@@ -209,6 +227,7 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
             //trato de agregar una nueva lista
             userLists.getSimpleLists().getListaSimple(category).addTask(new SimpleTask(text_newTask.getText()));
 
+            userLists.saveSimpleInFile();
             //actualizo los botones
             updateButtons();
         }
