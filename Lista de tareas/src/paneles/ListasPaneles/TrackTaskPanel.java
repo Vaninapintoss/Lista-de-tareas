@@ -4,10 +4,13 @@
  */
 package paneles.ListasPaneles;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.time.Duration;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import list.task.Stopwatch1;
+import list.task.TrackTask;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
 import userLists.exceptions.UnfinishedTasksException;
@@ -20,14 +23,18 @@ public class TrackTaskPanel extends javax.swing.JPanel {
 
     private UserLists userLists;
     private String category;
+    private Stopwatch1 stopwatch1;
+    private boolean play;
+    
     /**
      * Creates new form TrackTaskPanel
      */
     public TrackTaskPanel(UserLists userLists, String category) {
+        play = false;
         this.userLists = userLists;
         this.category = category;
         initComponents();
-        updateButtons();
+        updateTrackList();
         text_titleList.setText(category.toUpperCase());
     }
 
@@ -40,18 +47,49 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonPlay = new javax.swing.JButton();
+        buttonStop = new javax.swing.JButton();
         text_error = new javax.swing.JLabel();
         text_titleList = new javax.swing.JLabel();
         infoNewList = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        panelTaskViewer = new javax.swing.JPanel();
         text_newTask = new javax.swing.JTextField();
         backGroundText = new javax.swing.JLabel();
         titleTaskList = new javax.swing.JLabel();
         panel = new javax.swing.JPanel();
         backgroundTaskList = new javax.swing.JLabel();
         buttonDeleteList = new javax.swing.JButton();
+        buttonGoBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        buttonPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonPlayInactivo.png"))); // NOI18N
+        buttonPlay.setBorderPainted(false);
+        buttonPlay.setContentAreaFilled(false);
+        buttonPlay.setMaximumSize(new java.awt.Dimension(30, 30));
+        buttonPlay.setMinimumSize(new java.awt.Dimension(30, 30));
+        buttonPlay.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPlayActionPerformed(evt);
+            }
+        });
+        add(buttonPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 100, -1, -1));
+
+        buttonStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonStopActivo.png"))); // NOI18N
+        buttonStop.setBorderPainted(false);
+        buttonStop.setContentAreaFilled(false);
+        buttonStop.setMaximumSize(new java.awt.Dimension(30, 30));
+        buttonStop.setMinimumSize(new java.awt.Dimension(30, 30));
+        buttonStop.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonStop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonStopActionPerformed(evt);
+            }
+        });
+        add(buttonStop, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, -1, -1));
 
         text_error.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         text_error.setForeground(new java.awt.Color(255, 153, 153));
@@ -69,13 +107,27 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         infoNewList.setText("Crear nueva tarea");
         add(infoNewList, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, 30));
 
+        jScrollPane1.setBackground(new java.awt.Color(0, 128, 97));
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setForeground(new java.awt.Color(0, 128, 97));
+        jScrollPane1.setOpaque(false);
+
+        panelTaskViewer.setBackground(new java.awt.Color(0, 128, 97));
+        panelTaskViewer.setLayout(new java.awt.GridLayout(0, 1));
+        jScrollPane1.setViewportView(panelTaskViewer);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 600, 200));
+
         text_newTask.setBackground(new java.awt.Color(195, 225, 203));
         text_newTask.setForeground(new java.awt.Color(102, 102, 102));
         text_newTask.setBorder(null);
         text_newTask.setPreferredSize(new java.awt.Dimension(100, 30));
-        add(text_newTask, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 440, -1));
+        add(text_newTask, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 350, -1));
 
-        backGroundText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/espacioTextoList.png"))); // NOI18N
+        backGroundText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/barraTextoTrakingList.png"))); // NOI18N
+        backGroundText.setMaximumSize(new java.awt.Dimension(370, 30));
+        backGroundText.setMinimumSize(new java.awt.Dimension(370, 30));
+        backGroundText.setPreferredSize(new java.awt.Dimension(370, 30));
         add(backGroundText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
         titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/titulosListaSimpleParticular.png"))); // NOI18N
@@ -101,25 +153,79 @@ public class TrackTaskPanel extends javax.swing.JPanel {
             }
         });
         add(buttonDeleteList, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, -1, -1));
+
+        buttonGoBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolver.png"))); // NOI18N
+        buttonGoBack.setBorderPainted(false);
+        buttonGoBack.setContentAreaFilled(false);
+        buttonGoBack.setMaximumSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setMinimumSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setPreferredSize(new java.awt.Dimension(37, 37));
+        buttonGoBack.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonVolverMouseOver.png"))); // NOI18N
+        buttonGoBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonGoBackActionPerformed(evt);
+            }
+        });
+        add(buttonGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonDeleteListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteListActionPerformed
         // TODO add your handling code here:
-        try
+        if(!play)
         {
-            userLists.deleteSimpleList(category);//elimino la lista
+            userLists.deleteTrackList(category);//elimino la lista
 
             //vuelvo a la pantalla principal
             app.replaceScreen(app.homescreenApp);
         }
-        catch(UnfinishedTasksException ex)
-        {
-            text_error.setText("No se puede eliminar un lista con tareas pendientes");
-        }
     }//GEN-LAST:event_buttonDeleteListActionPerformed
 
+    private void buttonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlayActionPerformed
+        text_error.setText("");//reinicio el texto de s
+        
+        if(text_newTask.getText().isEmpty())
+        {
+            text_error.setText("Ingrese un nombre antes de empezar");
+        }
+        else if(!play)
+        {
+            //si no esta reproduciendo nada
+            play = true;
+            stopwatch1 = new Stopwatch1();
+            stopwatch1.start();//inicia el reloj
+        }
+        
+    }//GEN-LAST:event_buttonPlayActionPerformed
+
+    private void buttonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStopActionPerformed
+        // TODO add your handling code here:
+        if(play)
+        {
+            //solo se puede pausar si esta en play
+            play = false;
+            stopwatch1.stop();
+            
+            //ahora que tengo el tiempo creo un Duration con el tiempo
+            Duration duration = Duration.ofMillis(stopwatch1.getElapsedMilliseconds());
+            
+            TrackTask task = new TrackTask(text_newTask.getText(),duration);
+            //se agrego a la lista
+            userLists.getTrackLists().getTrackList(category).addTask(task); 
+            userLists.saveTrackInFile();//guardo el task en la lista       
+            
+            updateTrackList();
+            text_newTask.setText("");
+        }
+    }//GEN-LAST:event_buttonStopActionPerformed
+
+    private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
+        //vuelve a la pantalla principal
+        if(!play)
+            app.replaceScreen(app.homescreenApp);
+    }//GEN-LAST:event_buttonGoBackActionPerformed
+
     //agrego las listas guardadas en el archivo en la lista de botones
-    public void updateButtons()
+    public void updateTrackList()
     {
         JLabel text;
         try
@@ -137,16 +243,12 @@ public class TrackTaskPanel extends javax.swing.JPanel {
             String[] parts = listas.split("_");
         
             for(String aux : parts)
-            {
-                String info = aux;
-                Duration duration = userLists.getTrackLists().getTrackList(category).searchTask(aux).getDuration();
-    
+            {    
                 text = new JLabel();//creo un label y le envio la info de la lista
                 
-                info+=("     time: "+duration.toString());
-                
-                text.setText(info);
-                panel.add(text);//acgrego el boton al panel
+                text.setText(aux);
+                text.setForeground(new Color(195,225,203));
+                panelTaskViewer.add(text);//acgrego el boton al panel
             }
             
         }
@@ -158,8 +260,13 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     private javax.swing.JLabel backGroundText;
     private javax.swing.JLabel backgroundTaskList;
     private javax.swing.JButton buttonDeleteList;
+    private javax.swing.JButton buttonGoBack;
+    private javax.swing.JButton buttonPlay;
+    private javax.swing.JButton buttonStop;
     private javax.swing.JLabel infoNewList;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
+    private javax.swing.JPanel panelTaskViewer;
     private javax.swing.JLabel text_error;
     private javax.swing.JTextField text_newTask;
     private javax.swing.JLabel text_titleList;
