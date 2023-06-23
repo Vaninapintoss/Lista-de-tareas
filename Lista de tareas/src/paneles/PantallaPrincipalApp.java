@@ -11,6 +11,7 @@ import location.Exceptions.EmptyLocationException;
 import org.json.JSONException;
 import paneles.ListasPaneles.TaskListCalendarPanel;
 import paneles.ListasPaneles.TaskListPanel;
+import paneles.ListasPaneles.TaskListTrackPanel;
 import static paneles.PantallaInicial.app;
 import paneles.weather.LocationWeatherPanel;
 import paneles.weather.NoLocationWeatherPanel;
@@ -177,6 +178,11 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         buttonTrakingList.setMinimumSize(new java.awt.Dimension(661, 55));
         buttonTrakingList.setPreferredSize(new java.awt.Dimension(661, 55));
         buttonTrakingList.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/botonListaTraqueoMouseOver.png"))); // NOI18N
+        buttonTrakingList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonTrakingListActionPerformed(evt);
+            }
+        });
         add(buttonTrakingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -186,8 +192,14 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonCalendarListActionPerformed
 
     private void buttonTaskListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTaskListActionPerformed
+        //reemplazo la pantalla principal con la lista de tareas con calendario
         app.replaceScreen(new TaskListPanel());
     }//GEN-LAST:event_buttonTaskListActionPerformed
+
+    private void buttonTrakingListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTrakingListActionPerformed
+        //reemplazo la pantalla principal con la lista de tareas con traqueo
+        app.replaceScreen(new TaskListTrackPanel());
+    }//GEN-LAST:event_buttonTrakingListActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
