@@ -8,6 +8,8 @@ package list.task;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
+import static java.time.temporal.TemporalQueries.localDate;
+
 import java.util.Objects;
 
 /**
@@ -37,35 +39,9 @@ public class TrackTask extends Task implements Serializable{
      * 
      * @author Vanina Pintos
      */
-    public TrackTask(String name) {
+    public TrackTask(String name,Duration duration) {
         super(name);
-        this.duration = null;
-        this.startDateTime = null;
-    }
-      
-    /**
-     * <h1>Comenzar temporizador</h1>
-     * 
-     * startTimer() captura la fecha y la hora cuando se comienza la tarea 
-     * y se lo asigna al atributo de fecha
-     * 
-     * @author Vanina Pintos
-     */
-    public void startTimer(){
-        startDateTime = LocalDateTime.now();
-    }
-    
-    /**
-     * <h1>Terminar temporizador</h1>
-     * 
-     * finishTimer() captura la fecha y hora cuando se termina la tarea,
-     * saca la diferencia entre esta y la fechahora de inicio y la asigna
-     * al atributo duracion
-     * 
-     * @author Vanina Pintos
-     */
-    public void finishTimer(){
-        setDuration(Duration.between(startDateTime, LocalDateTime.now()));
+        this.duration = duration;
     }
   
     /**
@@ -77,31 +53,7 @@ public class TrackTask extends Task implements Serializable{
      */
     public Duration getDuration(){
         return duration;
-    }
-    
-    /**
-     * <h1>Cambiar duracion</h1>
-     * 
-     * setDuration(Duration duration) actualiza la duracion de la tarea
-     * 
-     * @param duration | actualizacion de duracion
-     * 
-     * @author Vanina Pintos
-     */
-    private void setDuration(Duration duration){
-        this.duration = duration; 
-    }
-    
-    /**
-     * <h1>Obtener fecha y hora de comienzo</h1>
-     * 
-     * @return LocalDateTime | fecha y hora de comienzo de la tarea
-     * 
-     * @author Vanina Pintos
-     */
-    public LocalDateTime getStartDate(){
-        return startDateTime;
-    }   
+    } 
     
     /**
      * Verifica que el objeto sea igual
@@ -128,7 +80,7 @@ public class TrackTask extends Task implements Serializable{
         if (!Objects.equals(this.duration, other.duration)) {
             return false;
         }
-        return name.equals(other.name) && (startDateTime.compareTo(other.startDateTime)==0);
+        return name.equals(other.name);
     }
 
     /**
@@ -140,6 +92,6 @@ public class TrackTask extends Task implements Serializable{
      */
     @Override
     public String toString() {
-        return name + " - " + duration + " - " + startDateTime;
+        return name + " " + duration;
     }
 }
