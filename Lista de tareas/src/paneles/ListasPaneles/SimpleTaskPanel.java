@@ -17,6 +17,7 @@ import static paneles.AppUserLists.user;
 import static paneles.PantallaInicial.app;
 import userLists.SimpleLists;
 import userLists.UserLists;
+import userLists.exceptions.UnfinishedTasksException;
 
 /**
  *
@@ -47,6 +48,7 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGoBack = new javax.swing.JButton();
+        buttonDeleteList = new javax.swing.JButton();
         text_newTask = new javax.swing.JTextField();
         infoNewList = new javax.swing.JLabel();
         buttonCreate = new javax.swing.JButton();
@@ -74,6 +76,20 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        buttonDeleteList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonDelete.png"))); // NOI18N
+        buttonDeleteList.setBorderPainted(false);
+        buttonDeleteList.setContentAreaFilled(false);
+        buttonDeleteList.setMaximumSize(new java.awt.Dimension(37, 37));
+        buttonDeleteList.setMinimumSize(new java.awt.Dimension(37, 37));
+        buttonDeleteList.setPreferredSize(new java.awt.Dimension(37, 37));
+        buttonDeleteList.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonDeleteMouseOver.png"))); // NOI18N
+        buttonDeleteList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonDeleteListActionPerformed(evt);
+            }
+        });
+        add(buttonDeleteList, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, -1, -1));
 
         text_newTask.setBackground(new java.awt.Color(195, 225, 203));
         text_newTask.setForeground(new java.awt.Color(102, 102, 102));
@@ -240,11 +256,27 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         text_newTask.setText("");//reseteo el campo de texto
     }//GEN-LAST:event_buttonCreateActionPerformed
 
+    private void buttonDeleteListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteListActionPerformed
+        // TODO add your handling code here:
+        try
+        {
+            userLists.deleteSimpleList(category);//elimino la lista
+            
+            //vuelvo a la pantalla principal
+            app.replaceScreen(app.homescreenApp);
+        }
+        catch(UnfinishedTasksException ex)
+        {
+            
+        }
+    }//GEN-LAST:event_buttonDeleteListActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel backGroundText;
     private javax.swing.JLabel backgroundTaskList;
     private javax.swing.JButton buttonCreate;
+    private javax.swing.JButton buttonDeleteList;
     private javax.swing.JButton buttonGoBack;
     private javax.swing.JButton buttonGoBack1;
     private javax.swing.JLabel infoNewList;
