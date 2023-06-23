@@ -7,6 +7,7 @@ package paneles;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Frame;
+import java.io.IOException;
 import javax.swing.JPanel;
 import paneles.ListasPaneles.TaskListPanel;
 import static paneles.PantallaInicial.homeScreen;
@@ -17,6 +18,7 @@ import paneles.options.ModifyPasswordPanel;
 import paneles.options.SeeUserPanel;
 import user.User;
 import user.UsersSystem;
+import userLists.UserLists;
 
 /**
  *
@@ -24,14 +26,46 @@ import user.UsersSystem;
  */
 public class AppUserLists extends javax.swing.JFrame {
 
+    public static User user;
+    public static UsersSystem users;
+    public static AppUserLists appActive;
+    public PantallaPrincipalApp homescreenApp;
+    private boolean menuOn;//si el menu esta abierto
+    
+    //pabeles
+    private SeeUserPanel seeUserPanel;
+    private ModifyPasswordPanel modifyPasswordPanel;
+    private ModifyLocationPanel modifyLocationPanel;
+    private DeleteUserPanel deleteUserPanel;
+    private InfoTaskMasterProPanel infoAppPanel;
+    private TaskListPanel taskListPanel;
+    
+    //info del ultimo panel activo
+    private JPanel lastPanel;
+    
+    //lista
+    public static UserLists userLists;
+    
     /**
      * Creates new form AppUserLists
      */
     public AppUserLists(User user, UsersSystem users) 
     {
-        menuOn = false;
-        this.user = user;
-        this.users = users;
+        menuOn = false;//seteo el menu en false - cerrado
+        this.user = user;//actualizo el usuario
+        this.users = users;//actualizo los usuarios
+        userLists = new UserLists(user.getEmail());//creo el objeto listas de usuario
+        
+        //actualizo la lista
+        try
+        {
+            userLists.readSimpleFromFile();//actualizo la lista simple con el archivo correspondiente
+        }
+        catch(IOException ex)
+        {
+            this.dispose();//cierro el programa
+        }
+        
         initComponents();
         setLocationRelativeTo(null);//para que la ventana inicie en el centro de la pantalla
         
@@ -418,23 +452,6 @@ public class AppUserLists extends javax.swing.JFrame {
 
         menuOn = see;
     }
-    
-    public static User user;
-    public static UsersSystem users;
-    public static AppUserLists appActive;
-    public PantallaPrincipalApp homescreenApp;
-    private boolean menuOn;//si el menu esta abierto
-    
-    //pabeles
-    private SeeUserPanel seeUserPanel;
-    private ModifyPasswordPanel modifyPasswordPanel;
-    private ModifyLocationPanel modifyLocationPanel;
-    private DeleteUserPanel deleteUserPanel;
-    private InfoTaskMasterProPanel infoAppPanel;
-    private TaskListPanel taskListPanel;
-    
-    //info del ultimo panel activo
-    private JPanel lastPanel;
     
     /**
      * @param args the command line arguments

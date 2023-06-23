@@ -31,6 +31,11 @@ public class UserLists {
     
     //--------------------------------------------------------------------------SIMPLE
     
+    public SimpleLists getSimpleLists()
+    {
+        return simpleLists;
+    }
+    
     public void addSimpleList(String category)throws CategoryListAlreadyExistException{
         
         SimpleList sl = new SimpleList(category);
