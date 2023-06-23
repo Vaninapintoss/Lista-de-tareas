@@ -9,6 +9,7 @@ import java.awt.Component;
 import java.awt.Frame;
 import java.io.IOException;
 import javax.swing.JPanel;
+import paneles.ListasPaneles.CalendarTaskPanel;
 import paneles.ListasPaneles.TaskListPanel;
 import static paneles.PantallaInicial.homeScreen;
 import paneles.options.DeleteUserPanel;
@@ -39,6 +40,7 @@ public class AppUserLists extends javax.swing.JFrame {
     private DeleteUserPanel deleteUserPanel;
     private InfoTaskMasterProPanel infoAppPanel;
     private TaskListPanel taskListPanel;
+    private CalendarTaskPanel dateListPanel;
     
     //info del ultimo panel activo
     private JPanel lastPanel;
@@ -64,7 +66,6 @@ public class AppUserLists extends javax.swing.JFrame {
             userLists.readSimpleFromFile();//actualizo la lista simple con el archivo correspondiente
             userLists.readDateFromFile();
             userLists.readTrackFromFile();
-            System.out.println("hasta aca");
         }
         catch(IOException ex)
         {

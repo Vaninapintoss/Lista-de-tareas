@@ -24,6 +24,7 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
      */
     public TaskListCalendarPanel(UserLists userLists) 
     {
+        
         this.userLists = userLists;
         initComponents();
         updateButtons(); 
@@ -177,8 +178,10 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e)
             {
                 //crear SimpleTaskPanel y enviarle la lista
+                System.out.println("hasta aca antes de crear");
                 CalendarTaskPanel taskDateList = new CalendarTaskPanel(userLists,
                                                                 button.getText());
+                
                 
                 //reemplazo la pantalla principal con la lista
                 app.replaceScreen(taskDateList);

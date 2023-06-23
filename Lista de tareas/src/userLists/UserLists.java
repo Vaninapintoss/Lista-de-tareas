@@ -27,13 +27,17 @@ import userLists.exceptions.CategoryListAlreadyExistException;
 import userLists.exceptions.UnfinishedTasksException;
 
 public class UserLists {
-    private String filename; 
+    private String filenameSimple; 
+    private String filenameDate; 
+    private String filenameTrack; 
     private SimpleLists simpleLists;
     private DateLists dateLists;
     private TrackLists trackLists;
 
-    public UserLists(String filename) {
-        this.filename = filename+"lists.dat";
+    public UserLists(String email) {
+        filenameSimple = email+"simple.dat";
+        filenameDate = email+"date.dat";
+        filenameTrack = email+"track.dat";
         this.simpleLists = new SimpleLists();
         this.dateLists = new DateLists();
         this.trackLists = new TrackLists();
@@ -60,40 +64,40 @@ public class UserLists {
         
         SimpleList sl = new SimpleList(category);
         simpleLists.addList(sl); //exception
-        saveSimpleListsInFile(filename,simpleLists.getHashMap());
+        saveSimpleListsInFile(filenameSimple,simpleLists.getHashMap());
     }
     
     public void deleteSimpleList(String category) throws UnfinishedTasksException{
         
         simpleLists.deleteList(category);
-        saveSimpleListsInFile(filename,simpleLists.getHashMap());
+        saveSimpleListsInFile(filenameSimple,simpleLists.getHashMap());
     }
     
     public void editSimpleListCategory(String category, String newCategory)  throws EmptyCategoryListException, CategoryListAlreadyExistException{
         simpleLists.editListCategory(category, newCategory);
-        saveSimpleListsInFile(filename,simpleLists.getHashMap());
+        saveSimpleListsInFile(filenameSimple,simpleLists.getHashMap());
     }
     
     public void addTaskToSimpleList(String category, String taskName)throws ElementAlreadyExistException{
         
         SimpleTask st = new SimpleTask(taskName);
         simpleLists.getListaSimple(category).addTask(st); //exception
-        saveSimpleListsInFile(filename,simpleLists.getHashMap());
+        saveSimpleListsInFile(filenameSimple,simpleLists.getHashMap());
     }
     
     public void checkTaskOfSimpleList(String category, String taskName){
         simpleLists.getListaSimple(category).checkTask(taskName);
-        saveSimpleListsInFile(filename,simpleLists.getHashMap());
+        saveSimpleListsInFile(filenameSimple,simpleLists.getHashMap());
     }
     
     public void deleteTaskOfSimpleList(String category, String taskName) throws  TaskUntilNotCompletedException{
         simpleLists.getListaSimple(category).deleteTask(taskName);
-        saveSimpleListsInFile(filename,simpleLists.getHashMap());
+        saveSimpleListsInFile(filenameSimple,simpleLists.getHashMap());
     }
     
     public void editTaskNameOfSimpleList(String category, String taskName, String newTaskName)throws EmptyNameTaskException, ElementAlreadyExistException{
         simpleLists.getListaSimple(category).editTaskName(taskName, newTaskName);
-        saveSimpleListsInFile(filename,simpleLists.getHashMap());
+        saveSimpleListsInFile(filenameSimple,simpleLists.getHashMap());
     } 
     
     public int howManyTasksSimpleList(String category){
@@ -101,11 +105,11 @@ public class UserLists {
     }
     
     public String saveSimpleInFile(){
-        return saveSimpleListsInFile(filename,simpleLists.getHashMap());
+        return saveSimpleListsInFile(filenameSimple,simpleLists.getHashMap());
     }
     
     public String readSimpleFromFile() throws IOException{
-        return readSimpleListsFromFile(filename,simpleLists.getHashMap());
+        return readSimpleListsFromFile(filenameSimple,simpleLists.getHashMap());
     }
     
     //--------------------------------------------------------------------------DATE
@@ -114,40 +118,40 @@ public class UserLists {
         
         DateList sl = new DateList(category);
         dateLists.addList(sl); //exception
-        saveDateListsInFile(filename,dateLists.getHashMap());
+        saveDateListsInFile(filenameDate,dateLists.getHashMap());
     }
     
     public void deleteDateList(String category) throws UnfinishedTasksException{
         
         dateLists.deleteList(category);
-        saveDateListsInFile(filename,dateLists.getHashMap());
+        saveDateListsInFile(filenameDate,dateLists.getHashMap());
     }
     
     public void editDateListCategory(String category, String newCategory)  throws EmptyCategoryListException, CategoryListAlreadyExistException{
         dateLists.editListCategory(category, newCategory);
-        saveDateListsInFile(filename,dateLists.getHashMap());
+        saveDateListsInFile(filenameDate,dateLists.getHashMap());
     }
     
     public void addTaskToDateList(String category, String taskName,LocalDate date)throws ElementAlreadyExistException{
         
         DateTask dt = new DateTask(taskName,date);
         dateLists.getDateList(category).addTask(dt); //exception
-        saveDateListsInFile(filename,dateLists.getHashMap());
+        saveDateListsInFile(filenameDate,dateLists.getHashMap());
     }
     
     public void checkTaskOfDateList(String category, String taskName){
         dateLists.getDateList(category).checkTask(taskName);
-        saveDateListsInFile(filename,dateLists.getHashMap());
+        saveDateListsInFile(filenameDate,dateLists.getHashMap());
     }
     
     public void deleteTaskOfDateList(String category, String taskName) throws  TaskUntilNotCompletedException{
         dateLists.getDateList(category).deleteTask(taskName);
-        saveDateListsInFile(filename,dateLists.getHashMap());
+        saveDateListsInFile(filenameDate,dateLists.getHashMap());
     }
     
     public void editTaskNameOfDateList(String category, String taskName, String newTaskName)throws EmptyNameTaskException, ElementAlreadyExistException{
         dateLists.getDateList(category).editTaskName(taskName, newTaskName);
-        saveDateListsInFile(filename,dateLists.getHashMap());
+        saveDateListsInFile(filenameDate,dateLists.getHashMap());
     }
     
     public int howManyTasksDateList(String category){
@@ -155,11 +159,11 @@ public class UserLists {
     }
     
     public String saveDateInFile(){
-        return saveDateListsInFile(filename,dateLists.getHashMap());
+        return saveDateListsInFile(filenameDate,dateLists.getHashMap());
     }
     
     public String readDateFromFile() throws IOException{
-        return readDateListsFromFile(filename,dateLists.getHashMap());
+        return readDateListsFromFile(filenameDate,dateLists.getHashMap());
     }
     
     //--------------------------------------------------------------------------TRACK
@@ -168,25 +172,25 @@ public class UserLists {
         
         TrackList tl = new TrackList(category);
         trackLists.addList(tl); //exception
-        saveTrackListsInFile(filename,trackLists.getHashMap());
+        saveTrackListsInFile(filenameTrack,trackLists.getHashMap());
     }
     
     public void deleteTrackList(String category){
         
         trackLists.deleteList(category);
-        saveTrackListsInFile(filename,trackLists.getHashMap());
+        saveTrackListsInFile(filenameTrack,trackLists.getHashMap());
     }
     
     public void editTrackListCategory(String category, String newCategory)  throws EmptyCategoryListException, CategoryListAlreadyExistException{
         trackLists.editListCategory(category, newCategory);
-        saveTrackListsInFile(filename,trackLists.getHashMap());
+        saveTrackListsInFile(filenameTrack,trackLists.getHashMap());
     }
     
     public void addTaskToTrackList(String category, String taskName,Duration duration){
         
         TrackTask dt = new TrackTask(taskName,duration);
         trackLists.getTrackList(category).addTask(dt); //exception
-        saveTrackListsInFile(filename,trackLists.getHashMap());
+        saveTrackListsInFile(filenameTrack,trackLists.getHashMap());
     }
     
     public int howManyTasksTrackList(String category){
@@ -194,11 +198,11 @@ public class UserLists {
     }
     
     public String saveTrackInFile(){
-        return saveTrackListsInFile(filename,trackLists.getHashMap());
+        return saveTrackListsInFile(filenameTrack,trackLists.getHashMap());
     }
     
     public String readTrackFromFile() throws IOException{
-        return readTrackListsFromFile(filename,trackLists.getHashMap());
+        return readTrackListsFromFile(filenameTrack,trackLists.getHashMap());
     }
     
 }

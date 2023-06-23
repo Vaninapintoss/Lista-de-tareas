@@ -26,6 +26,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
      * Creates new form CalendarTaskPanel
      */
     public CalendarTaskPanel(UserLists userLists, String category) {
+        
         this.userLists = userLists;
         this.category = category;
         initComponents();
