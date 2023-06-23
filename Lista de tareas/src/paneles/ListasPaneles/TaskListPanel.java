@@ -143,7 +143,6 @@ public class TaskListPanel extends javax.swing.JPanel {
             for(String aux : parts)
             {
                 button = createButton(aux);//creo un boton y le envio la info de la lista
-                System.out.println(0);
                 panel.add(button);//acgrego el boton al panel
             }
             
@@ -166,7 +165,11 @@ public class TaskListPanel extends javax.swing.JPanel {
             public void actionPerformed(ActionEvent e)
             {
                 //crear SimpleTaskPanel y enviarle la lista
+                SimpleTaskPanel taskList = new SimpleTaskPanel(userLists.getSimpleLists(),
+                                                                button.getText());
                 
+                //reemplazo la pantalla principal con la lista
+                app.replaceScreen(taskList);
             }
         }
         );
