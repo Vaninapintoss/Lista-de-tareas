@@ -4,6 +4,9 @@
  */
 package userLists;
 
+import static fileController.FileController.readSimpleListsFromFile;
+import static fileController.FileController.saveSimpleListsInFile;
+import java.io.IOException;
 import list.SimpleList;
 import list.exceptions.ElementAlreadyExistException;
 import list.exceptions.EmptyCategoryListException;
@@ -25,6 +28,8 @@ public class UserLists {
         this.dateLists = new DateLists();
         this.trackLists = new TrackLists();
     }
+    
+    //--------------------------------------------------------------------------SIMPLE
     
     public void addSimpleList(String category)throws CategoryListAlreadyExistException{
         
@@ -61,5 +66,13 @@ public class UserLists {
     
     public int howManyTasksSimpleList(String category){
         return simpleLists.getListaSimple(category).howManyTasks();
+    }
+    
+   public String saveInFile(){
+        return saveSimpleListsInFile(filename,simpleLists.getHashMap());
+    }
+    
+    public String readFromFile() throws IOException{
+        return readSimpleListsFromFile(filename,simpleLists.getHashMap());
     }
 }

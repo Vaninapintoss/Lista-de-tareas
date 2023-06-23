@@ -19,7 +19,7 @@ import userLists.exceptions.UnfinishedTasksException;
  * 
  * @author Vanina Pintos
  */
-public class SimpleLists implements IStorageActions<SimpleList>{
+public class SimpleLists extends Lists implements IStorageActions<SimpleList>{
     private HashMap <String,SimpleList> hashMapOfSL;
 
     /**
@@ -30,6 +30,10 @@ public class SimpleLists implements IStorageActions<SimpleList>{
      */
     public SimpleLists() {
         hashMapOfSL = new HashMap<>();
+    }
+
+    public HashMap<String, SimpleList> getHashMap() {
+        return hashMapOfSL;
     }
     
     public SimpleList getListaSimple(String category) {
