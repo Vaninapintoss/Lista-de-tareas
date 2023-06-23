@@ -20,7 +20,9 @@ import java.util.Set;
 import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import list.DateList;
 import list.SimpleList;
+import list.TrackList;
 import user.User;
 import userLists.Lists;
 
@@ -112,6 +114,92 @@ public class FileController
                 Map.Entry entry = (Map.Entry) it.next();
                 SimpleList sl = (SimpleList) entry.getValue();
                 objectOutputStream.writeObject(sl);
+            }
+        }
+        catch(IOException ex)
+        {
+            saved = "ERROR EN EL ARCHIVO";
+        }
+        finally {
+            try
+            {
+                if (fileOutputStream != null)
+                    fileOutputStream.close();
+
+                if (objectOutputStream != null)
+                    objectOutputStream.close();
+    
+            }
+            catch (IOException exIO)
+            {
+                saved = exIO.getMessage()+" Problemas al cerrar el archivo";
+            }
+        }
+
+        return saved;
+    }
+   
+   public static String saveDateListsInFile(String fileName, Map<String, DateList> map)
+    {
+        String saved = "Se guardo correctamente";
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+
+        try
+        {
+            fileOutputStream = new FileOutputStream(fileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            Iterator it = map.entrySet().iterator();
+    
+            while(it.hasNext())
+            {
+                Map.Entry entry = (Map.Entry) it.next();
+                DateList dl = (DateList) entry.getValue();
+                objectOutputStream.writeObject(dl);
+            }
+        }
+        catch(IOException ex)
+        {
+            saved = "ERROR EN EL ARCHIVO";
+        }
+        finally {
+            try
+            {
+                if (fileOutputStream != null)
+                    fileOutputStream.close();
+
+                if (objectOutputStream != null)
+                    objectOutputStream.close();
+    
+            }
+            catch (IOException exIO)
+            {
+                saved = exIO.getMessage()+" Problemas al cerrar el archivo";
+            }
+        }
+
+        return saved;
+    }
+   
+   public static String saveTrackListsInFile(String fileName, Map<String, TrackList> map)
+    {
+        String saved = "Se guardo correctamente";
+        FileOutputStream fileOutputStream = null;
+        ObjectOutputStream objectOutputStream = null;
+
+        try
+        {
+            fileOutputStream = new FileOutputStream(fileName);
+            objectOutputStream = new ObjectOutputStream(fileOutputStream);
+
+            Iterator it = map.entrySet().iterator();
+    
+            while(it.hasNext())
+            {
+                Map.Entry entry = (Map.Entry) it.next();
+                TrackList tl = (TrackList) entry.getValue();
+                objectOutputStream.writeObject(tl);
             }
         }
         catch(IOException ex)
@@ -335,6 +423,120 @@ public class FileController
             {
                 SimpleList sl = (SimpleList)objectInputStream.readObject();
                 map.put(sl.getCategory(), sl);
+            }
+        }
+        catch (EOFException ex)
+        {
+            readed = "FIN de ARCHIVO";
+        }
+        catch (ClassNotFoundException ex)
+        {
+            readed = "ERROR " + ex.getMessage();
+        }
+        catch (IOException ex)
+        {
+            readed = "ERROR " + ex.getMessage();
+        }
+        finally
+        {
+            try
+            {
+                if (fileInputStream!=null)
+                    fileInputStream.close();
+
+                if (objectInputStream!=null)
+                    objectInputStream.close();
+
+            }
+            catch (IOException exIO)
+            {
+                readed = "ERROR " + exIO.getMessage();
+            }
+
+        }
+        return readed;
+    }
+    
+    public static String readDateListsFromFile(String fileName, Map<String,DateList> map) throws IOException
+    {
+        String readed = "Extraccion exitosa";
+
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+        
+        File file = new File(fileName);//verifico que exista el archivo
+        if(!file.exists())
+        {
+            //si el archivo no existe lo creo
+            file.createNewFile();
+        }
+
+        try
+        {
+            fileInputStream = new FileInputStream(fileName);
+            objectInputStream = new ObjectInputStream(fileInputStream);
+
+            while(true)
+            {
+                DateList dl = (DateList)objectInputStream.readObject();
+                map.put(dl.getCategory(), dl);
+            }
+        }
+        catch (EOFException ex)
+        {
+            readed = "FIN de ARCHIVO";
+        }
+        catch (ClassNotFoundException ex)
+        {
+            readed = "ERROR " + ex.getMessage();
+        }
+        catch (IOException ex)
+        {
+            readed = "ERROR " + ex.getMessage();
+        }
+        finally
+        {
+            try
+            {
+                if (fileInputStream!=null)
+                    fileInputStream.close();
+
+                if (objectInputStream!=null)
+                    objectInputStream.close();
+
+            }
+            catch (IOException exIO)
+            {
+                readed = "ERROR " + exIO.getMessage();
+            }
+
+        }
+        return readed;
+    }
+    
+    public static String readTrackListsFromFile(String fileName, Map<String,TrackList> map) throws IOException
+    {
+        String readed = "Extraccion exitosa";
+
+        FileInputStream fileInputStream = null;
+        ObjectInputStream objectInputStream = null;
+        
+        File file = new File(fileName);//verifico que exista el archivo
+        if(!file.exists())
+        {
+            //si el archivo no existe lo creo
+            file.createNewFile();
+        }
+
+        try
+        {
+            fileInputStream = new FileInputStream(fileName);
+            objectInputStream = new ObjectInputStream(fileInputStream);
+
+            while(true)
+            {
+                TrackList tl = (TrackList)objectInputStream.readObject();
+                map.put(tl.getCategory(), tl);
             }
         }
         catch (EOFException ex)
