@@ -4,7 +4,10 @@
  */
 package list;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 /**
  *
@@ -15,7 +18,15 @@ public class ViewDateList {
 
     public ViewDateList() {
         dateList = new ArrayList <>();
+    }   
+    
+    public void orderByDate(String string){
+        separateStringData(string);
+        Collections.sort(dateList);
+    }
+    
+    public void separateStringData(String string) {
+        String[] array = string.split("_");
+        dateList = new ArrayList<>(Arrays.asList(array));
     } 
-    
-    
 }
