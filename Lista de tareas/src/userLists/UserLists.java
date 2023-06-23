@@ -11,6 +11,7 @@ import static fileController.FileController.saveDateListsInFile;
 import static fileController.FileController.saveSimpleListsInFile;
 import static fileController.FileController.saveTrackListsInFile;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDate;
 import list.DateList;
 import list.SimpleList;
@@ -171,9 +172,9 @@ public class UserLists {
         saveTrackListsInFile(filename,trackLists.getHashMap());
     }
     
-    public void addTaskToTrackList(String category, String taskName,LocalDate date){
+    public void addTaskToTrackList(String category, String taskName,Duration duration){
         
-        TrackTask dt = new TrackTask(taskName);
+        TrackTask dt = new TrackTask(taskName,duration);
         trackLists.getTrackList(category).addTask(dt); //exception
         saveTrackListsInFile(filename,trackLists.getHashMap());
     }
