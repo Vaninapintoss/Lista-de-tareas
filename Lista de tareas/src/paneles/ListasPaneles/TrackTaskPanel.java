@@ -147,6 +147,16 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         text_newTask.setForeground(new java.awt.Color(102, 102, 102));
         text_newTask.setBorder(null);
         text_newTask.setPreferredSize(new java.awt.Dimension(100, 30));
+        text_newTask.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                text_newTaskActionPerformed(evt);
+            }
+        });
+        text_newTask.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                text_newTaskKeyTyped(evt);
+            }
+        });
         add(text_newTask, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 350, -1));
 
         backGroundText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/barraTextoTrakingList.png"))); // NOI18N
@@ -303,8 +313,30 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
         //vuelve a la pantalla principal
         if(!play)
+        {
+            app.seeMenu(false);
             app.replaceScreen(app.homescreenApp);
+        }
     }//GEN-LAST:event_buttonGoBackActionPerformed
+
+    private void text_newTaskKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_newTaskKeyTyped
+        char validate = evt.getKeyChar();
+        char delete = 127;
+        
+        if(validate != delete)
+        {
+            // limitar la cantidad de letras que se ingresan
+            if(text_newTask.getText().length() == 40 )
+            {
+                //borro la ultima letra ingresara
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_text_newTaskKeyTyped
+
+    private void text_newTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_newTaskActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_text_newTaskActionPerformed
 
     //agrego las listas guardadas en el archivo en la lista de botones
     public void updateTrackList()

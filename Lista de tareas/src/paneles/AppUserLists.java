@@ -366,6 +366,7 @@ public class AppUserLists extends javax.swing.JFrame {
     public void showGoBackButton()
     {
         buttonGoBack.setVisible(true);
+        seeMenu(false);
     }
     
     private void buttonSeeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeeUserActionPerformed
@@ -452,7 +453,7 @@ public class AppUserLists extends javax.swing.JFrame {
             buttonGoBack.setVisible(false);
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
-    private void seeMenu(boolean see)
+    public void seeMenu(boolean see)
     {
         contentMenu.setVisible(see);
 

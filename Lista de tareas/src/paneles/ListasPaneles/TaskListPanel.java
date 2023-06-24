@@ -87,6 +87,11 @@ public class TaskListPanel extends javax.swing.JPanel {
         text_newList.setForeground(new java.awt.Color(102, 102, 102));
         text_newList.setBorder(null);
         text_newList.setPreferredSize(new java.awt.Dimension(100, 30));
+        text_newList.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                text_newListKeyTyped(evt);
+            }
+        });
         add(text_newList, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 440, -1));
 
         buttonCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonCrear.png"))); // NOI18N
@@ -198,6 +203,21 @@ public class TaskListPanel extends javax.swing.JPanel {
  
         text_newList.setText("");//reseteo el campo de texto
     }//GEN-LAST:event_buttonCreateActionPerformed
+
+    private void text_newListKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_newListKeyTyped
+        char validate = evt.getKeyChar();
+        char delete = 127;
+        
+        if(validate != delete)
+        {
+            // limitar la cantidad de letras que se ingresan
+            if(text_newList.getText().length() == 40 )
+            {
+                //borro la ultima letra ingresara
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_text_newListKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
