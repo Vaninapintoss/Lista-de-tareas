@@ -14,12 +14,12 @@ import userLists.exceptions.UnfinishedTasksException;
 /**
  * <h1>Clase SimpleLists</h1>
  * 
- * Clase que guarda las listas de tareas simples (SimpleList) en un HashMap
+ * Clase que guarda las listas de tareas simples en un HashMap
  * Implementa la interfaz IStorageActions
  * 
  * @author Vanina Pintos
  */
-public class SimpleLists extends Lists implements IStorageActions<SimpleList>{
+public class SimpleLists implements IStorageActions<SimpleList>{
     private HashMap <String,SimpleList> hashMapOfSL;
 
     /**
@@ -31,11 +31,22 @@ public class SimpleLists extends Lists implements IStorageActions<SimpleList>{
     public SimpleLists() {
         hashMapOfSL = new HashMap<>();
     }
-
+    
+    /**
+     * <h1>Obtener el hash map</h1>
+     * 
+     * @return HashMap
+     */
     public HashMap<String, SimpleList> getHashMap() {
         return hashMapOfSL;
     }
     
+    /**
+     * <h1>Obtener lista segun categoria</h1>
+     * 
+     * @param category | categoria de la lista que se desea obtener
+     * @return SimpleList
+     */
     public SimpleList getListaSimple(String category) {
         return hashMapOfSL.get(category);
     }
@@ -46,7 +57,9 @@ public class SimpleLists extends Lists implements IStorageActions<SimpleList>{
      * addList(SimpleList list) recibe una lista para agregar al HashMap
      * 
      * @param list | lista a agregar
-     * @return boolean | true si pudo agregarse correctamente
+     * 
+     * @return boolean | true agregada correctamente | false no se pudo agregar 
+     * 
      * @throws CategoryListAlreadyExistException | si ya existe una lista
      * con esa categoria dentro del HashMap
      * 
@@ -93,9 +106,11 @@ public class SimpleLists extends Lists implements IStorageActions<SimpleList>{
      * deleteList(String category) recibe la categoria de la lista a eliminar
      * 
      * @param category | categoria de la lista a eliminar
-     * @return boolean | true si se pudo eliminar correctamente
+     * 
+     * @return boolean | true lista eliminada | false la lista no se pudo eliminar 
+     * 
      * @throws UnfinishedTasksException | si la lista que se intenta eliminar
-     * tiene tareas sin finalizar (status: TODO)
+     * tiene tareas sin finalizar
      * 
      * @author Vanina Pintos
      */
@@ -126,7 +141,9 @@ public class SimpleLists extends Lists implements IStorageActions<SimpleList>{
      * 
      * @param category | categoria a reemplazar
      * @param newCategory | nueva categoria
+     * 
      * @return boolean | true si pudo modificarse con exito
+     * 
      * @throws EmptyCategoryListException | si la nueva categoria que se le envio
      * por parametro es un String vacio
      * @throws CategoryListAlreadyExistException | si la nueva categoria que se le 
@@ -161,7 +178,7 @@ public class SimpleLists extends Lists implements IStorageActions<SimpleList>{
      * searchList(String category) recibe la categoria de una lista y si existe la retorna
      * 
      * @param category | categoria a buscar
-     * @return SimpleList | SimpleList si la lista existe | null si no existe
+     * @return SimpleList | SimpleList | null si no existe
      */
     @Override
     public SimpleList searchList(String category) {
