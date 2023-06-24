@@ -395,7 +395,7 @@ public class UserLists {
      * @param taskName | nombre de la tarea a agregar
      * 
      */
-    public void addTaskToTrackList(String category, String taskName,Duration duration){
+    public void addTaskToTrackList(String category, String taskName,String duration){
         
         TrackTask dt = new TrackTask(taskName,duration);
         trackLists.getTrackList(category).addTask(dt); //exception

@@ -23,7 +23,7 @@ import java.util.Objects;
  * @author Vanina Pintos & Sofia Brocardo
  */
 public class TrackTask extends Task implements Serializable{ 
-    private Duration duration; 
+    private String duration; 
 
     /**
      * <h1>Constructor de la clase TrackTask</h1>
@@ -39,7 +39,7 @@ public class TrackTask extends Task implements Serializable{
      * 
      * @author Vanina Pintos
      */
-    public TrackTask(String name,Duration duration) {
+    public TrackTask(String name,String duration) {
         super(name);
         this.duration = duration;
     }
@@ -51,7 +51,7 @@ public class TrackTask extends Task implements Serializable{
      * 
      * @author Vanina Pintos
      */
-    public Duration getDuration(){
+    public String getDuration(){
         return duration;
     } 
     
@@ -91,6 +91,12 @@ public class TrackTask extends Task implements Serializable{
      */
     @Override
     public String toString() {
-        return name+" ............................. tiempo:"+duration.getSeconds()+" seg";
+        int spaceN = 120 - (name.length()+duration.length());
+        String space = " ";
+        for(int i=0; i<spaceN; i++)
+        {
+            space+=" ";
+        }
+        return name+space+duration;
     }
 }

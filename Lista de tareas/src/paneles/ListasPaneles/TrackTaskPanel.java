@@ -5,12 +5,15 @@
 package paneles.ListasPaneles;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.time.Duration;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import list.task.Stopwatch1;
+import javax.swing.Timer;
+
 import list.task.TrackTask;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
@@ -25,22 +28,29 @@ public class TrackTaskPanel extends javax.swing.JPanel {
 
     private UserLists userLists;
     private String category;
-    private Stopwatch1 stopwatch1;
     private boolean play;
+    private int sec;
+    private int min;
+    private int hour;
+    private Timer timer;
 
     
     /**
      * Creates new form TrackTaskPanel
      */
     public TrackTaskPanel(UserLists userLists, String category) {
+        sec = 0;
+        min = 0;
+        hour = 0;
         play = false;
         this.userLists = userLists;
         this.category = category;
         initComponents();
+        text_timer.setText("00:00:00");
         updateTrackList();
         text_titleList.setText(category.toUpperCase());
-        
-        
+        timer = new Timer(10, timeAction);
+  
     }
 
     /**
@@ -52,6 +62,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        text_timer = new javax.swing.JLabel();
         buttonPlay = new javax.swing.JButton();
         buttonStop = new javax.swing.JButton();
         text_error = new javax.swing.JLabel();
@@ -69,6 +80,11 @@ public class TrackTaskPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        text_timer.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        text_timer.setForeground(new java.awt.Color(195, 225, 203));
+        text_timer.setText("00:00:00");
+        add(text_timer, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, 30));
 
         buttonPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonPlayInactivo.png"))); // NOI18N
         buttonPlay.setBorderPainted(false);
@@ -175,6 +191,39 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         add(buttonGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    private ActionListener timeAction = new ActionListener()
+    {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            sec++;
+            
+            if(sec == 60)
+            {
+                sec = 0;
+                min++;
+            }
+            
+            if(min == 60)
+            {
+                min = 0;
+                hour++;
+            }
+            
+            if(hour == 24)
+            {
+                hour = 0;
+            }
+            
+            updateTimer();
+        }      
+    };
+    
+    private void updateTimer()
+    {
+        String text = (hour<=9?"0":"")+hour+":"+(min<=9?"0":"")+min+":"+(sec<=9?"0":"")+sec;
+        text_timer.setText(text);
+    }
+    
     private void buttonDeleteListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteListActionPerformed
         // TODO add your handling code here:
         if(!play)
@@ -207,9 +256,8 @@ public class TrackTaskPanel extends javax.swing.JPanel {
                         
             //si no esta reproduciendo nada
             play = true;
-            stopwatch1 = new Stopwatch1();
-            stopwatch1.start();//inicia el reloj
             
+            timer.start();
             
         }
         
@@ -231,12 +279,12 @@ public class TrackTaskPanel extends javax.swing.JPanel {
             
             //solo se puede pausar si esta en play
             play = false;
-            stopwatch1.stop();
+     
             
             //ahora que tengo el tiempo creo un Duration con el tiempo
-            Duration duration = Duration.ofMillis(stopwatch1.getElapsedMilliseconds());
+            timer.stop();
             
-            TrackTask task = new TrackTask(text_newTask.getText(),duration);
+            TrackTask task = new TrackTask(text_newTask.getText(),text_timer.getText());
             //se agrego a la lista
             userLists.getTrackLists().getTrackList(category).addTask(task); 
             userLists.saveTrackInFile();//guardo el task en la lista       
@@ -244,6 +292,10 @@ public class TrackTaskPanel extends javax.swing.JPanel {
             updateTrackList();
             text_newTask.setText("");
             
+            sec = 0;
+            min = 0;
+            hour = 0;
+            updateTimer();//actualizo el timer
             
         }
     }//GEN-LAST:event_buttonStopActionPerformed
@@ -303,6 +355,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     private javax.swing.JPanel panelTaskViewer;
     private javax.swing.JLabel text_error;
     private javax.swing.JTextField text_newTask;
+    private javax.swing.JLabel text_timer;
     private javax.swing.JLabel text_titleList;
     private javax.swing.JLabel titleTaskList;
     // End of variables declaration//GEN-END:variables
