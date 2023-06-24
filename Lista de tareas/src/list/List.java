@@ -10,6 +10,7 @@ import list.exceptions.EmptyCategoryListException;
 
 /**
  * <h1>Clase List</h1>
+ * 
  * Clase abstracta padre de las clases SimpleList, DateList y TrackList
  * Guarda la informacion de la categoria de la lista
  * 
@@ -24,9 +25,10 @@ public abstract class List  implements Serializable{
     /**
      * <h1>Constructor de la clase List</h1>
      * 
-     * Unico constructor de la clase List, recibe una categoria
+     * Unico constructor de la clase List, recibe una categoria 
+     * que debe ser validada antes de ser enviada
      *  
-     * @param category - validar antes de pasar por parametro
+     * @param category - categoria validar antes de enviar
      * 
      * @see List#validCategory(String); 
      * 
@@ -50,11 +52,13 @@ public abstract class List  implements Serializable{
     /**
      * <h1>Cambiar categoria</h1>
      * 
-     * (String category) recibe la nueva categoria
+     * (String category) recibe una categoria y valida de que no se trate de un 
+     * string vacio para modificar la categoria anterior
      * 
      * @param category | nueva categoria 
      * 
-     * @return boolean | true si la categoria es valida
+     * @return boolean | true la categoria se pudo modificar | false la categoria no se pudo 
+     * modidicar
      * 
      * @throws EmptyCategoryListException | si la contraseña se envia en un String vacio ""
      * 
@@ -75,11 +79,12 @@ public abstract class List  implements Serializable{
     /**
      * <h1>Validar categoria</h1>
      * 
-     * validCategory(String category) recibe una categoria a validar
+     * validCategory(String category) recibe una categoria para validar de que no 
+     * se trate de un string vacio
      * 
      * @param category | categoria a validar
      * 
-     * @return boolean | true si la categoria es valida
+     * @return boolean | true categoria valida | false categoria invalida
      * 
      * @throws EmptyCategoryListException | si la contraseña se envia en un String vacio ""
      * 

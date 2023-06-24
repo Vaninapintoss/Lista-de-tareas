@@ -18,7 +18,7 @@ import list.task.exceptions.EmptyNameTaskException;
  * <h1>Clase SimpleList</h1>
  * 
  * Guarda tareas de tipo Simple dentro un HashSet
- * Se extiende de la clase List e implementa la interaz IListActions
+ * Se extiende de la clase List e implementa la interfaz IListActions
  * 
  * @author Vanina Pintos 
  */
@@ -29,10 +29,13 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * <h1>Constructor de la clase SimpleList</h1>
      * 
      * Unico constructor de la clase SimpleList
-     * Recibe una categoria por parametro
+     * Recibe una categoria por parametro que debe ser validada antes de 
+     * ser enviada y verificar que no este repetida
      * Crea un HashSet para almacenar las tareas vacio
      * 
-     * @param category | verificar que no este repetida antes de enviar
+     * @param category | categoria validar antes de enviar
+     * 
+     * @see List#validCategory(String) 
      * 
      * @author Vanina Pintos
      */
@@ -44,11 +47,12 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     /**
      * <h1>Agregar una tarea</h1>
      * 
-     * addTask(SimpleTask task) recibe una tarea y la agrega al HashSet
+     * addTask(SimpleTask task) recibe una tarea, valida que no exista dentro 
+     * del HashSet y la agrega
      * 
      * @param task | tarea a agregar
      * 
-     * @return boolean | true si lo agrego correctamente a el HashSet
+     * @return boolean | true agregada correctamente | false no se pudo agregar
      * 
      * @throws ElementAlreadyExistException | si la tarea ya existe en el HashSet
      * 
@@ -74,7 +78,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * 
      * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
      * 
-     * @return String | tareas almacenadas en el HashSet en formato String
+     * @return String | tareas almacenadas en formato String
      * 
      * @author Vanina Pintos
      */
@@ -94,9 +98,10 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * checkTask(String name) recibe el nombre de una tarea y cambia 
      * su estado de TODO a COMPLETED. 
      * 
-     * @param name | nombre de la tarea a marcar como completada
+     * @param name | nombre de la tarea 
      * 
-     * @return boolean | true si la tarea pudo marcarse como completada con exito
+     * @return boolean | true la tarea pudo marcarse como completada | false la tarea
+     * no pudo marcarse como completada
      * 
      * @author Vanina Pintos
      */
@@ -121,9 +126,9 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * deleteElement(String name) recibe el nombre de la tarea a eliminar. 
      * Para que una tarea pueda ser eliminada su estado tiene que ser COMPLETED
      * 
-     * @param name | nombre de la tarea a eliminar
+     * @param name | nombre de la tarea 
      * 
-     * @return boolean | true si la tarea pudo eliminarse con exito
+     * @return boolean | true tarea eliminada | false la tarea no pudo ser eliminada
      * 
      * @throws TaskUntilNotCompletedException | si el estado de la tarea no es COMPLETED
      * 
@@ -151,14 +156,16 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * <h1>Editar nombre de una tarea</h1>
      * 
      * editNameElement(String name,String newName) recibe el nombre de la tarea
-     * a modificar y el nuevo nombre que se le quiere asignar
+     * a modificar y el nuevo nombre que se le quiere asignar, valida este ultimo y si
+     * lo es entonces lo modifica
      * 
-     * @param name | nombre de la tarea a eliminar
+     * @param name | nombre de la tarea
      * @param newName | nuevo nombre a asignar
      * 
-     * @return boolean | true si la tarea se pudo modificar con exito
+     * @return boolean | true modificacion exitosa | false error en la modificacion
      * 
      * @throws EmptyNameTaskException | si el nombre enviado es un String vacio
+     * @throws ElementAlreadyExistException | si ya existe una tarea con ese nombre
      * 
      * @author Vanina Pintos
      */
@@ -190,10 +197,9 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * searchTask(String name) recibe el nombre de la tarea
      * a buscar y si se encuentra dentro del HashSet lo retorna
      * 
-     * @param name | nombre de la tarea a buscar
+     * @param name | nombre de la tarea 
      * 
-     * @return SimpleTask | la tarea encontrada dentro del HashSet | null
-     * si no eixste dentro del HashSet
+     * @return SimpleTask | tarea encontrada | null si no se encontro
      * 
      * @author Vanina Pintos
      */
@@ -217,9 +223,10 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * <h1>Verificar si las tareas fueron completadas</h1>
      * 
      *  tasksWereChecked() verifica si todas las tareas existentes 
-     *  dentro de la lista fueron completadas
+     *  dentro del HashSet fueron completadas
      * 
-     * @return boolean | true si todas las tareas fueron completadas
+     * @return boolean | true todas las tareas completadas | false faltan tareas
+     * por completar
      * 
      * @author Vanina Pintos
      */

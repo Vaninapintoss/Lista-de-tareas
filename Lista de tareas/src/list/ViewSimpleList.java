@@ -20,7 +20,7 @@ public class ViewSimpleList {
     private ArrayList <String> simpleList; 
 
     /**
-     * <h1>Unico constrcutor de la clase</h1>
+     * <h1>Unico constrcutor de la clase ViewSimpleList</h1>
      * 
      * Crea un array list vacio
      * 
@@ -33,7 +33,7 @@ public class ViewSimpleList {
     /**
      * <h1>Ordenar alfabeticamente el array list</h1>
      * 
-     * void orderAlphabetically(String string) recibe un string comprimido que 
+     * orderAlphabetically(String string) recibe un string comprimido que 
      * contiene todos los datos de una lista simple, los separa y los ordena 
      * alfabeticamente. 
      * 
@@ -53,7 +53,8 @@ public class ViewSimpleList {
      * <h1>Separar datos comprimidos en un String</h1>
      * 
      * separateStringData(String string) recibe un string con los datos comprimidos de 
-     * la lista y los separa. La separacion de un dato con otro la demarca un "_". 
+     * la lista, los separa y los almacena dento del array list
+     * La separacion de un dato con otro la demarca un "_"
      * 
      * @param string | string comprimido con los datos de la lista simple
      * 

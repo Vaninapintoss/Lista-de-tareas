@@ -8,9 +8,10 @@ import list.exceptions.ElementAlreadyExistException;
 
 /**
  * <h1>Interfaz IListActions</h1>
+ * 
  * Interfaz de acciones de listas 
  * 
- * @param <Task> | 
+ * @param <Task> | usable con clases derivadas de la clase Task
  *
  * @author Vanina Pintos
  */
@@ -23,7 +24,7 @@ public interface IListActions <Task>{
      * 
      * @param task | tarea a agregar
      * 
-     * @return boolean | true si se agrego con exito
+     * @return boolean | true se agrego con exito | false no puedo agregarse
      * 
      * @throws ElementAlreadyExistException | si el elemento ya existe en la lista
      * 
@@ -50,7 +51,7 @@ public interface IListActions <Task>{
      * 
      * @param name | nombre de la tarea a buscar 
      * 
-     * @return Task | tarea encontrada dentro de la lista | null si no la encontro
+     * @return Task | tarea encontrada | null tarea no encontrada
      * 
      * @author Vanina Pintos
      */

@@ -24,7 +24,6 @@ import list.DateList;
 import list.SimpleList;
 import list.TrackList;
 import user.User;
-import userLists.Lists;
 
 /**
  * <h1>Clase controladora de archivos</h1>

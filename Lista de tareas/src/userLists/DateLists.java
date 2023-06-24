@@ -14,7 +14,7 @@ import userLists.exceptions.UnfinishedTasksException;
 /**
  * <h1>Clase DateLists</h1>
  * 
- * Clase que guarda las listas de tareas con fecha (DateList) en un HashMap
+ * Clase que guarda las listas de tareas con fecha en un HashMap
  * Implementa la interfaz IStorageActions
  * 
  * @author Vanina Pintos
@@ -32,10 +32,19 @@ public class DateLists implements IStorageActions<DateList>{
         hashMapOfDL = new HashMap<>();
     }
 
+    /**
+     * <h1>Obtener el hash map</h1>
+     * @return HashMap
+     */
     public HashMap<String, DateList> getHashMap() {
         return hashMapOfDL;
     }
 
+    /**
+     * <h1>Obtener una lista</h1>
+     * @param category | categoria de la lista que se quiere obtener
+     * @return DateList 
+     */
     public DateList getDateList(String category) {
         return hashMapOfDL.get(category);
     }
@@ -46,7 +55,9 @@ public class DateLists implements IStorageActions<DateList>{
      * addList(DateList list) recibe una lista para agregar al HashMap
      * 
      * @param list | lista a agregar
+     * 
      * @return boolean | true si pudo agregarse correctamente
+     * 
      * @throws CategoryListAlreadyExistException | si ya existe una lista
      * con esa categoria dentro del HashMap
      * 
@@ -92,7 +103,9 @@ public class DateLists implements IStorageActions<DateList>{
      * deleteList(String category) recibe la categoria de la lista a eliminar
      * 
      * @param category | categoria de la lista a eliminar
+     * 
      * @return boolean | true si se pudo eliminar correctamente
+     * 
      * @throws UnfinishedTasksException | si la lista que se intenta eliminar
      * tiene tareas sin finalizar (status: TODO)
      * 
@@ -124,7 +137,9 @@ public class DateLists implements IStorageActions<DateList>{
      * 
      * @param category | categoria a reemplazar
      * @param newCategory | nueva categoria
+     * 
      * @return boolean | true si pudo modificarse con exito
+     * 
      * @throws EmptyCategoryListException | si la nueva categoria que se le envio
      * por parametro es un String vacio
      * @throws CategoryListAlreadyExistException | si la nueva categoria que se le 
@@ -158,7 +173,10 @@ public class DateLists implements IStorageActions<DateList>{
      * searchList(String category) recibe la categoria de una lista y si existe la retorna
      * 
      * @param category | categoria a buscar
+     * 
      * @return DateList | DateList si la lista existe | null si no existe
+     * 
+     * @author Vanina Pintos
      */
     @Override
     public DateList searchList(String category) {

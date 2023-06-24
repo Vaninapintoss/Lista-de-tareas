@@ -6,10 +6,15 @@ package list.exceptions;
 
 /**
  *
- * @author vanim
+ * @author Vanina Pintos
  */
 public class TaskUntilNotCompletedException extends Exception{
 
+    /**
+     * <h1>Excepcion de tarea no completada</h1>
+     * 
+     * @param message 
+     */
     public TaskUntilNotCompletedException(String message) {
         super("Error: " +  message);
     }

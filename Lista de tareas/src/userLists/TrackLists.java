@@ -13,7 +13,7 @@ import userLists.exceptions.CategoryListAlreadyExistException;
 /**
  * <h1>Clase TrackLists</h1>
  * 
- * Clase que guarda las listas de tareas de traqueo (TrackList) en un HashMap
+ * Clase que guarda las listas de tareas de traqueo en un HashMap
  * Implementa la interfaz IStorageActions
  * 
  * @author Vanina Pintos
@@ -31,10 +31,19 @@ public class TrackLists implements IStorageActions<TrackList>{
         hashMapOfTL = new HashMap<>();
     }
     
+    /**
+     * <h1>Obtener el hash map</h1>
+     * @return HashMap
+     */
     public Map<String, TrackList> getHashMap() {
         return hashMapOfTL;
     }
 
+    /**
+     * <h1>Obtener una lista</h1>
+     * @param category | categoria de la lista que se quiere obtener
+     * @return DateList 
+     */
     public TrackList getTrackList(String category) {
         return hashMapOfTL.get(category);
     }
@@ -45,7 +54,9 @@ public class TrackLists implements IStorageActions<TrackList>{
      * addList(TrackList list) recibe una lista para agregar al HashMap
      * 
      * @param list | lista a agregar
+     * 
      * @return boolean | true si pudo agregarse correctamente
+     * 
      * @throws CategoryListAlreadyExistException | si ya existe una lista
      * con esa categoria dentro del HashMap
      * 
@@ -91,6 +102,7 @@ public class TrackLists implements IStorageActions<TrackList>{
      * deleteList(String category) recibe la categoria de la lista a eliminar
      * 
      * @param category | categoria de la lista a eliminar
+     * 
      * @return boolean | true si se pudo eliminar correctamente
      * 
      * @author Vanina Pintos
@@ -116,7 +128,9 @@ public class TrackLists implements IStorageActions<TrackList>{
      * 
      * @param category | categoria a reemplazar
      * @param newCategory | nueva categoria
+     * 
      * @return boolean | true si pudo modificarse con exito
+     * 
      * @throws EmptyCategoryListException | si la nueva categoria que se le envio
      * por parametro es un String vacio
      * @throws CategoryListAlreadyExistException | si la nueva categoria que se le 
@@ -151,7 +165,10 @@ public class TrackLists implements IStorageActions<TrackList>{
      * searchList(String category) recibe la categoria de una lista y si existe la retorna
      * 
      * @param category | categoria a buscar
+     * 
      * @return TrackList | TrackList si la lista existe | null si no existe
+     * 
+     * @author Vanina Pintos
      */
     @Override
     public TrackList searchList(String category) {

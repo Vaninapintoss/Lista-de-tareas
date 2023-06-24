@@ -8,13 +8,13 @@ package list.task;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import static java.time.temporal.TemporalQueries.localDate;
 
 import java.util.Objects;
 
 /**
  * <h1>Clase TrackTask</h1>
- * Guarda la informacion de una tarea de tipo track (nombre, duracion y fecha de inicio) 
+ * 
+ * Guarda la informacion de una tarea de tipo track (nombre y duracion) 
  * Se extiende de la clase Task
  * 
  * <b>Note:</b>
@@ -23,17 +23,17 @@ import java.util.Objects;
  * @author Vanina Pintos & Sofia Brocardo
  */
 public class TrackTask extends Task implements Serializable{ 
-    private Duration duration;
-    private LocalDateTime startDateTime; 
+    private Duration duration; 
 
     /**
      * <h1>Constructor de la clase TrackTask</h1>
      * 
-     * Unico constructor de la clase DateTask. 
-     * Debe recibir un nombre
-     * La duracion y la fecha se crean con valor null por defecto
+     * Unico constructor de la clase DateTask
+     * Debe recibir un nombre que debe ser validado antes de enviarse
+     * Debe recibr una duracion
      *  
      * @param name - validar antes de pasar por parametro
+     * @param duration - duracion 
      * 
      * @see Task#validName() 
      * 
@@ -56,12 +56,11 @@ public class TrackTask extends Task implements Serializable{
     } 
     
     /**
-     * Verifica que el objeto sea igual
+     * Verifica que el objeto sea igual (segun nombre)
      * 
      * @param obj
      * 
      * @return boolean | true si son iguales |false si no son iguales 
-     * (segun nombre y fecha y hora de comienzo)
      * 
      * @author Vanina Pintos
      */
@@ -84,7 +83,7 @@ public class TrackTask extends Task implements Serializable{
     }
 
     /**
-     * devuelve el objeto en formato String
+     * Devuelve el objeto en formato String
      * 
      * @return String | objeto en formato String
      * 
