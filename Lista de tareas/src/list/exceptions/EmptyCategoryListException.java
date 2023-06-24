@@ -6,10 +6,15 @@ package list.exceptions;
 
 /**
  *
- * @author vanim
+ * @author Vanina Pintos
  */
 public class EmptyCategoryListException extends Exception{
 
+    /**
+     * <h1>Excepcion de categoria vacia</h1>
+     * 
+     * @param message 
+     */
     public EmptyCategoryListException(String message) {
         super("Error: " + message);
     }

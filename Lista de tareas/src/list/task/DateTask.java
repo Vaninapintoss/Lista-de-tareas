@@ -6,20 +6,16 @@
 package list.task;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.regex.Pattern;
-import list.task.exceptions.InvalidPatternDateException;
 
 /**
  * <h1>Clase DateTask</h1>
- * Guarda la informacion de una tarea de tipo date (nombre, fecha de caducidad
- * y estado) 
+ * 
+ * Guarda la informacion de una tarea de tipo date (nombre, 
+ * fecha de caducidad y estado) 
  * Se extiende de la clase Task
  * 
  * <b>Note:</b>
- * su nombre, fecha y estado pueden ser modificados
+ * Su nombre, fecha y estado pueden ser modificados
  * 
  * @author Vanina Pintos
  */
@@ -31,15 +27,16 @@ public final class DateTask extends Task  implements Serializable{
      * <h1>Constructor de la clase DateTask</h1>
      * 
      * Unico constructor de la clase DateTask. 
-     * Debe recibir un nombre una fecha de caducidad
+     * Debe recibir un nombre una fecha de caducidad los cuales
+     * deben ser verificados antes de ser enviados
      * El estado de la tarea por default comienza con el valor TODO
      *  
-     * @param name - validar antes de pasar por parametro
-     * @param date - creada y valiadad antes de pasar por parametro con
-     * la funcion especificada abajo
+     * @param name - nombre validar antes de pasar por parametro
+     * @param date - fecha validar antes de pasar por parametro
      * 
      * @see Task#validName() 
      * @see DateTask#createDate(String) 
+     * @see Fecha#validDate(int dia,int mes,int anio)
      * 
      * @author Vanina Pintos
      */
@@ -47,59 +44,6 @@ public final class DateTask extends Task  implements Serializable{
         super(name);
         this.status = status.TODO;
         this.finalDate = date;
-    }
-    
-    /**
-     * <h1>Crear una fecha</h1>
-     * 
-     * createDate(String date) recibe una fecha en formato Sring para poder
-     * convertirlo a un formato valido para enviar por parametro cuando
-     * se quiera crear una dateTask.
-     * 
-     * @param date | fecha en formato string
-     * 
-     * @return LocalDate | fecha en formato apto para el constructor de DateTask
-     *
-     * @throws InvalidPatternDateException | si la fecha en formato de string 
-     * no esta en el formato especificado dd/MM/yyyy
-     * 
-     * @throws DateTimeParseException | si la fecha indicada no es valida
-     * 
-     * @author Vanina Pintos
-     */
-    public static LocalDate createDate(String date)throws InvalidPatternDateException, DateTimeParseException{
-        
-        DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        return LocalDate.parse(date, formatoFecha);
-    }
-    
-    /**
-     * <h1>Validar patron de fecha</h1>
-     * 
-     * validPatternDate(String date) valida si la fecha recibida en formato
-     * String cumple con el patron dd/MM/yyyy
-     * 
-     * @param date| patron de fecha a validar 
-     * 
-     * @return boolean | true si el patron de la fecha es valida 
-     *
-     * @throws InvalidPatternDateException | si el formato de String enviado 
-     * es distinto de dd/MM/yyyy
-     * 
-     * @author Vanina Pintos
-     */
-    public boolean validPatternDate(String date) throws InvalidPatternDateException{ //valida el patron de fecha dd/MM/yyyy
-        
-        boolean valid = false; 
-        String patron = "\\d{2}/\\d{2}/\\d{4}"; 
-
-        if(Pattern.matches(patron, date)){
-            valid = true;
-        }else{
-            throw new InvalidPatternDateException("formato de fecha incorrecto");
-        }
-        
-        return valid;
     }
     
     /**
@@ -117,6 +61,7 @@ public final class DateTask extends Task  implements Serializable{
      * <h1>Cambiar status</h1>
      * 
      * setStatus(Status status) recibe por parametros el nuevo status
+     * para modificar el antiguo
      * 
      * @param status | nuevo status 
      * 
@@ -129,7 +74,7 @@ public final class DateTask extends Task  implements Serializable{
     /**
      * <h1>Obtener Fecha de caducidad</h1>
      * 
-     * @return LocalDate | fecha final actual del objeto
+     * @return LocalDate | fecha de caducidad actual del objeto
      * 
      * @author Vanina Pintos
      */
@@ -140,27 +85,23 @@ public final class DateTask extends Task  implements Serializable{
     /**
      * <h1>Cambiar fecha de caducidad</h1>
      * 
-     * setFinalDate(String date) recibe por parametros la nueva fecha en formato 
-     * String dd/MM/yyyy
+     * setFinalDate(String date) recibe una fecha que debe ser validada 
+     * antes de enviarse, para modifica la fecha anterior
      * 
-     * @param date | nueva fecha
-     * 
-     * @throws InvalidPatternDateException | si el formato de String enviado 
-     * es distinto de dd/MM/yyyy 
-     * @throws DateTimeParseException | si la fecha es invalida
+     * @param date | nueva fecha validar antes de enviar
      * 
      * @author Vanina Pintos
      */
-    public void setFinalDate(Fecha date) throws InvalidPatternDateException, DateTimeParseException{
+    public void setFinalDate(Fecha date){
         this.finalDate = date;
     }
 
     /**
-     * Verifica que el objeto sea igual
+     * Verifica que el objeto sea igual (segun nombre)
      * 
-     * @param obj
+     * @param obj | objeto a comparar
      * 
-     * @return boolean | true si son iguales |false si no son iguales (segun nombre)
+     * @return boolean | true si son iguales |false si no son iguales 
      * 
      * @author Vanina Pintos
      */
@@ -183,7 +124,7 @@ public final class DateTask extends Task  implements Serializable{
     }
 
     /**
-     * devuelve el objeto en formato String
+     * Devuelve el objeto en formato String
      * 
      * @return String | objeto en formato String
      * 

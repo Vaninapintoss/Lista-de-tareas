@@ -28,10 +28,13 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
      * <h1>Constructor de la clase DateList</h1>
      * 
      * Unico constructor de la clase DateList
-     * Recibe una categoria por parametro
+     * Recibe una categoria por parametro que debe ser validada y verificar
+     * que no este repetida antes de ser enviada
      * Crea un HashSet para almacenar las tareas vacio
      * 
-     * @param category | verificar que no este repetida antes de enviar
+     * @param category | categoria validar y verificar antes de ser enviada
+     * 
+     * @see List#validCategory(String) 
      * 
      * @author Vanina Pintos
      */
@@ -47,7 +50,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
      * 
      * @param task | tarea a agregar
      * 
-     * @return boolean | true si lo agrego correctamente a el HashSet
+     * @return boolean | true agregada correctamente | false no se pudoa agregar
      * 
      * @throws ElementAlreadyExistException | si la tarea ya existe en el HashSet
      * 
@@ -94,7 +97,8 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
      * 
      * @param name | nombre de la tarea a marcar como completada
      * 
-     * @return boolean | true si la tarea pudo marcarse como completada con exito
+     * @return boolean | true tarea marcada como ompletada | false la tarea no se
+     * pudo marcar como completada
      * 
      * @author Vanina Pintos
      */
@@ -113,13 +117,13 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     
     /**
      * <h1>Eliminar una tarea</h1>
- 
- deleteTask(String name) recibe el nombre de la tarea a eliminar. 
- Para que una tarea pueda ser eliminada su estado tiene que ser COMPLETED
+     * 
+     *  deleteTask(String name) recibe el nombre de la tarea a eliminar. 
+     *  Para que una tarea pueda ser eliminada su estado tiene que ser COMPLETED
      * 
      * @param name | nombre de la tarea a eliminar
      * 
-     * @return boolean | true si la tarea pudo eliminarse con exito
+     * @return boolean | true eliminada con exito | false no se pudo eliminar
      * 
      * @throws TaskUntilNotCompletedException | si el estado de la tarea no es COMPLETED
      * 
@@ -147,12 +151,13 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
      * <h1>Editar nombre de una tarea</h1>
      * 
      * editTaskName(String name,String newName) recibe el nombre de la tarea
-     * a modificar y el nuevo nombre que se le quiere asignar
+     * a modificar y el nuevo nombre que se le quiere asignar validando este ultimo
+     * y si lo es entonces realiza la modificacion
      * 
      * @param name | nombre de la tarea a eliminar
      * @param newName | nuevo nombre a asignar
      * 
-     * @return boolean | true si la tarea se pudo modificar con exito
+     * @return boolean | true tarea modificada con exito | false la tarea no se pudo modificar
      * 
      * @throws EmptyNameTaskException | si el nombre enviado es un String vacio
      * 
@@ -188,8 +193,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
      * 
      * @param name | nombre de la tarea a buscar
      * 
-     * @return SimpleTask | la tarea encontrada dentro del HashSet | null
-     * si no eixste dentro del HashSet
+     * @return SimpleTask | tare encontrada | null tarea no encontrada
      * 
      * @author Vanina Pintos
      */

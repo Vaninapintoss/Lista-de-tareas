@@ -9,11 +9,12 @@ import java.io.Serializable;
 
 /**
  * <h1>Clase SimpleTask</h1>
+ * 
  * Guarda la informacion de la tarea de tipo simple (nombre y estado)
  * Se extiende de la clase Task
  * 
  * <b>Note:</b>
- * su nombre y estado pueden ser modificados
+ * Su nombre y estado pueden ser modificados.
  * 
  * @author Vanina Pintos 
  */
@@ -24,10 +25,11 @@ public class SimpleTask extends Task  implements Serializable{
      * <h1>Constructor de la clase SimpleTask</h1>
      *  
      * Unico constructor de la clase SimpleTask 
-     * Debe recibir un nombre
+     * Debe recibir un nombre, el cual tiene que ser validado antes de
+     * ser enviado
      * El estado de la tarea por default comienza con el valor TODO
      * 
-     * @param name - validar antes de pasar por parametro
+     * @param name - nombre validar antes de enviar
      * 
      * @see Task#validName() 
      * 
@@ -52,7 +54,8 @@ public class SimpleTask extends Task  implements Serializable{
     /**
      * <h1>Cambiar status</h1>
      * 
-     * setStatus(Status status) recibe por parametros el nuevo status 
+     * setStatus(Status status) recibe por parametros el nuevo status
+     * para modificar el antiguo
      * 
      * @param status | nuevo status 
      *  
@@ -63,11 +66,11 @@ public class SimpleTask extends Task  implements Serializable{
     } 
 
     /**
-     * Verifica que el objeto sea igual
+     * Verifica que el objeto sea igual (segun nombre)
      * 
-     * @param obj
+     * @param obj | obj a comparar
      * 
-     * @return boolean | true si son iguales (segun nombre)
+     * @return boolean | true si son iguales 
      * 
      * @author Vanina Pintos
      */
@@ -87,7 +90,7 @@ public class SimpleTask extends Task  implements Serializable{
     }
     
     /**
-     * devuelve el objeto en formato String
+     * Devuelve el objeto en formato String
      * 
      * @return String | objeto en formato String
      * 

@@ -6,10 +6,14 @@ package list.task.exceptions;
 
 /**
  *
- * @author soyva
+ * @author Vanina Pintos
  */
 public class DatePastException extends Exception{
 
+    /**
+     * <h1>Excepcion fecha anterior a la actual</h1>
+     * @param message 
+     */
     public DatePastException(String message) {
         super("Error: " + message);
     }

@@ -24,10 +24,13 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
      * <h1>Constructor de la clase TrackList</h1>
      * 
      * Unico constructor de la clase TrackList
-     * Recibe una categoria por parametro
+     * Recibe una categoria por parametro que debe ser validada y verificar que no
+     * este repetida antes de ser enviada
      * Crea un LinkedList para almacenar las tareas vacio
      * 
-     * @param category | verificar que no este repetida antes de enviar
+     * @param category | verificar y validar antes de ser enviada
+     * 
+     * @see List#validCategory(String) 
      * 
      * @author Vanina Pintos
      */
@@ -43,7 +46,7 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
      * 
      * @param task | tarea a agregar
      * 
-     * @return boolean | true si lo agrego correctamente a el HashSet
+     * @return boolean | true tarea agregada | false no se pudo agregar la tarea
      * 
      * @author Vanina Pintos
      */
@@ -75,12 +78,11 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
      * <h1>Buscar una tarea</h1>
      * 
      * searchTask(String name) recibe el nombre de la tarea
-     * a buscar y si se encuentra dentro del LinkedList lo retorna
+     * a buscar y si se encuentra dentro del LinkedList la retorna
      * 
      * @param name | nombre de la tarea a buscar
      * 
-     * @return TrackTask | la tarea encontrada dentro del LinkedList | null
-     * si no eixste dentro del LinkedList
+     * @return TrackTask | la tarea encontrada | null tarea no encontrada
      * 
      * @author Vanina Pintos
      */

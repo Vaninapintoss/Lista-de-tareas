@@ -6,7 +6,7 @@ package list.task;
 
 /**
  *
- * @author sofia
+ * @author Sofia Brocardo
  */
 public class Stopwatch1 {
     private final long nanoSecondsPerMillisecond = 1000000;

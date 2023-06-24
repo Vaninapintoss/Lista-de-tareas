@@ -14,6 +14,9 @@ import list.task.exceptions.EmptyNameTaskException;
  * Clase abstracta padre de los tipos de tareas como SimpleTask, DateTask y TrackTask. 
  * Guarda la informacion del nombre de la tarea
  * 
+ * <b>Note:</b>
+ * Su nombre puede ser modificado
+ * 
  * @author Vanina Pintos
  */
 public abstract class Task implements Serializable{
@@ -23,7 +26,7 @@ public abstract class Task implements Serializable{
      * <h1>Constructor de la clase Task</h1>
      * 
      * Unico constructor de la clase Task
-     * Debe recibir un nombre
+     * Debe recibir un nombre que debe ser validado antes de ser enviado
      * 
      * @param name - validar antes de pasar por parametro
      * 
@@ -91,7 +94,8 @@ public abstract class Task implements Serializable{
     /**
      * <h1>Cambiar nombre</h1>
      * 
-     * setName(String name) recibe por parametro el nuevo nombre 
+     * setName(String name) recibe por parametro el nuevo nombre y lo valida
+     * antes de hacer la modificacion
      * 
      * @param name | nuevo nombre 
      * 
