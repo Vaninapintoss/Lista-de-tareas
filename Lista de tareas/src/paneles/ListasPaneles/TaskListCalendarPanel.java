@@ -7,7 +7,9 @@ package paneles.ListasPaneles;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
 import userLists.exceptions.CategoryListAlreadyExistException;
@@ -172,6 +174,11 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
         //visual del boton
         button.setBackground(new Color(0,82,77));
         button.setForeground(new Color(195,225,203));
+        button.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/fondoBotonesDinamicos.png")));
+        button.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/fondoBotonesDinamicosMO.png")));
+        button.setHorizontalTextPosition(JLabel.CENTER);
+        button.setBorderPainted(false);
+        button.setContentAreaFilled(false);
         
         button.addActionListener(new ActionListener()
         {

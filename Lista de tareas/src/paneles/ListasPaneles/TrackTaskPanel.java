@@ -226,8 +226,8 @@ public class TrackTaskPanel extends javax.swing.JPanel {
             
             //cambio las imagenes del boton Stop
             buttonStop.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopActivo.png")));
-            //buttonStop.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopActivoRollOver.png")));
-            //buttonStop.setPressedIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopInactivo.png")));
+            buttonStop.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopActivoRollOver.png")));
+            buttonStop.setPressedIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopInactivo.png")));
             
             //solo se puede pausar si esta en play
             play = false;
@@ -257,7 +257,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     //agrego las listas guardadas en el archivo en la lista de botones
     public void updateTrackList()
     {
-        JLabel text;
+        JButton text;
         try
         {
             userLists.readTrackFromFile();
@@ -274,7 +274,11 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         
             for(String aux : parts)
             {    
-                text = new JLabel();//creo un label y le envio la info de la lista
+                text = new JButton();//creo un label y le envio la info de la lista
+                text.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/fondoTaskTrack.png")));
+                text.setHorizontalTextPosition(JLabel.CENTER);
+                text.setBorderPainted(false);
+                text.setContentAreaFilled(false);
                 
                 text.setText(aux);
                 text.setForeground(new Color(195,225,203));
