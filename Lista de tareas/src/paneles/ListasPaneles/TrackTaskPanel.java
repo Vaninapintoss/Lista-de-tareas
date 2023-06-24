@@ -7,6 +7,7 @@ package paneles.ListasPaneles;
 import java.awt.Color;
 import java.io.IOException;
 import java.time.Duration;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import list.task.Stopwatch1;
@@ -14,6 +15,7 @@ import list.task.TrackTask;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
 import userLists.exceptions.UnfinishedTasksException;
+import visualElements.ButtonImage;
 
 /**
  *
@@ -25,6 +27,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     private String category;
     private Stopwatch1 stopwatch1;
     private boolean play;
+
     
     /**
      * Creates new form TrackTaskPanel
@@ -36,6 +39,8 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         initComponents();
         updateTrackList();
         text_titleList.setText(category.toUpperCase());
+        
+        
     }
 
     /**
@@ -71,6 +76,8 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         buttonPlay.setMaximumSize(new java.awt.Dimension(30, 30));
         buttonPlay.setMinimumSize(new java.awt.Dimension(30, 30));
         buttonPlay.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonPlay.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonPlayActivo.png"))); // NOI18N
+        buttonPlay.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonPlayInactivoRollOver.png"))); // NOI18N
         buttonPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonPlayActionPerformed(evt);
@@ -84,6 +91,8 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         buttonStop.setMaximumSize(new java.awt.Dimension(30, 30));
         buttonStop.setMinimumSize(new java.awt.Dimension(30, 30));
         buttonStop.setPreferredSize(new java.awt.Dimension(30, 30));
+        buttonStop.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonStopInactivo.png"))); // NOI18N
+        buttonStop.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonStopActivoRollOver.png"))); // NOI18N
         buttonStop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonStopActionPerformed(evt);
@@ -125,12 +134,9 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         add(text_newTask, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 350, -1));
 
         backGroundText.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/barraTextoTrakingList.png"))); // NOI18N
-        backGroundText.setMaximumSize(new java.awt.Dimension(370, 30));
-        backGroundText.setMinimumSize(new java.awt.Dimension(370, 30));
-        backGroundText.setPreferredSize(new java.awt.Dimension(370, 30));
         add(backGroundText, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, -1, -1));
 
-        titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/titulosListaSimpleParticular.png"))); // NOI18N
+        titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/titulosListaTraqueoParticular.png"))); // NOI18N
         add(titleTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         panel.setBackground(new java.awt.Color(0, 128, 97));
@@ -189,10 +195,22 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         }
         else if(!play)
         {
+            //cambio las imagenes del boton Play
+            buttonPlay.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonPlayActivo.png")));
+            buttonPlay.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonPlayActivoRollOver.png")));
+            buttonPlay.setPressedIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonPlayInactivo.png")));
+            
+            //cambio las imagenes del boton Stop
+            buttonStop.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopInactivo.png")));
+            buttonStop.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopInactivoRollOver.png")));
+            buttonStop.setPressedIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopActivo.png")));
+                        
             //si no esta reproduciendo nada
             play = true;
             stopwatch1 = new Stopwatch1();
             stopwatch1.start();//inicia el reloj
+            
+            
         }
         
     }//GEN-LAST:event_buttonPlayActionPerformed
@@ -201,6 +219,16 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(play)
         {
+            //cambio las imagenes del boton Plat
+            buttonPlay.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonPlayInactivo.png")));
+            buttonPlay.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonPlayInactivoRollOver.png")));
+            buttonPlay.setPressedIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonPlayActivo.png")));
+            
+            //cambio las imagenes del boton Stop
+            buttonStop.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopActivo.png")));
+            //buttonStop.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopActivoRollOver.png")));
+            //buttonStop.setPressedIcon(new ImageIcon(getClass().getResource("/imagenes/listas/botonStopInactivo.png")));
+            
             //solo se puede pausar si esta en play
             play = false;
             stopwatch1.stop();
@@ -215,6 +243,8 @@ public class TrackTaskPanel extends javax.swing.JPanel {
             
             updateTrackList();
             text_newTask.setText("");
+            
+            
         }
     }//GEN-LAST:event_buttonStopActionPerformed
 
@@ -236,7 +266,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         {}
         
         String listas = userLists.getTrackLists().getTrackList(category).showTasks();
-        panel.removeAll();
+        panelTaskViewer.removeAll();
         if(!listas.isEmpty())
         {
             //las divido en un array

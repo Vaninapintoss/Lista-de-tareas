@@ -8,7 +8,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.border.Border;
 import list.SimpleList;
 import list.exceptions.ElementAlreadyExistException;
 import list.exceptions.TaskUntilNotCompletedException;
@@ -103,6 +106,7 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         add(infoNewList, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, 30));
 
         buttonCreate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonCrear.png"))); // NOI18N
+        buttonCreate.setBorder(null);
         buttonCreate.setBorderPainted(false);
         buttonCreate.setContentAreaFilled(false);
         buttonCreate.setMaximumSize(new java.awt.Dimension(94, 30));

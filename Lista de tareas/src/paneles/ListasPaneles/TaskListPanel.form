@@ -71,7 +71,7 @@
     <Component class="javax.swing.JLabel" name="titleTaskList">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/imagenes/listas/tituloListaSimpleGeneral.png"/>
+          <Image iconType="3" name="/imagenes/listas/tituloListaTraqueo.png"/>
         </Property>
       </Properties>
       <Constraints>
