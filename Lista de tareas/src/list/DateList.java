@@ -5,12 +5,13 @@
 package list;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.stream.Collectors;
 import list.exceptions.ElementAlreadyExistException;
 import list.exceptions.TaskUntilNotCompletedException;
 import list.task.DateTask;
-import list.task.Status;
 import list.task.exceptions.EmptyNameTaskException;
 
 /**
@@ -82,9 +83,53 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     @Override
     public String showTasks() {
         String aux ="";
+        
         for(DateTask e : dateList){
             aux += e.toString();
             aux +="/";
+        }
+        return aux;
+    }
+    
+    /**
+     * <h1>Mostrar tareas chequeadas</h1>
+     * 
+     * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
+     * 
+     * @return String | tareas almacenadas en el HashSet en formato String
+     * 
+     * @author Sofia Brocardo
+     */
+    public String showCheckTasks() {
+        String aux ="";
+        
+        for(DateTask e : dateList){
+            if(e.getCheck())
+            {
+                aux += e.toString();
+                aux +="/";
+            }
+        }
+        return aux;
+    }
+    
+    /**
+     * <h1>Mostrar tareas NOchequeadas</h1>
+     * 
+     * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
+     * 
+     * @return String | tareas almacenadas en el HashSet en formato String
+     * 
+     * @author Vanina Pintos
+     */
+    public String showUncheckTasks() {
+        String aux ="";
+        for(DateTask e : dateList){
+            if(!e.getCheck())
+            {
+                aux += e.toString();
+                aux +="/";
+            }
         }
         return aux;
     }
@@ -108,7 +153,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
         DateTask found = searchTask(name);
         
         if(found != null){
-            found.setStatus(Status.COMPLETED);
+            found.checkTask();
             checked = true;
         }
         
@@ -136,7 +181,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
         
         if(found != null){
             
-            if(found.getStatus() == Status.COMPLETED){
+            if(found.getCheck() == true){
                 dateList.remove(found);
                 deleted = true;
             }else{
@@ -223,13 +268,14 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
      * @author Vanina Pintos
      */
     public boolean tasksWereChecked() {
+        boolean checked = true;        
         for(DateTask st : dateList){
-            if(st.getStatus() == Status.TODO){
-                return false;
+            if(!st.getCheck()){
+                checked = false;
             }
         }
         
-        return  true;
+        return checked;
     }
     
     /**

@@ -326,7 +326,8 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
             try
             {
                 //trato de agregar una nueva lista
-                userLists.getSimpleLists().getListaSimple(category).addTask(new SimpleTask(text_newTask.getText()));
+                SimpleTask task = new SimpleTask(text_newTask.getText().toUpperCase());
+                userLists.getSimpleLists().getListaSimple(category).addTask(task);
 
                 userLists.saveSimpleInFile();
                 //actualizo los botones

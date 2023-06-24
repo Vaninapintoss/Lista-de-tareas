@@ -54,11 +54,8 @@ public class SimpleTask extends Task  implements Serializable{
     /**
      * <h1>Cambiar status</h1>
      * 
-     * setStatus(Status status) recibe por parametros el nuevo status
-     * para modificar el antiguo
+     * cambia el estado
      * 
-     * @param status | nuevo status 
-     *  
      * @author Vanina Pintos
      */
     public void checkTask() {

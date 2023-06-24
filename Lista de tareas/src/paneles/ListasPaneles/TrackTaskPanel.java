@@ -343,7 +343,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
             //ahora que tengo el tiempo creo un Duration con el tiempo
             timer.stop();
             
-            TrackTask task = new TrackTask(text_newTask.getText(),text_timer.getText());
+            TrackTask task = new TrackTask(text_newTask.getText().toUpperCase(),text_timer.getText());
             //se agrego a la lista
             userLists.getTrackLists().getTrackList(category).addTask(task); 
             userLists.saveTrackInFile();//guardo el task en la lista       
@@ -371,11 +371,12 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     private void text_newTaskKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_newTaskKeyTyped
         char validate = evt.getKeyChar();
         char delete = 127;
+        char underscore = 95;
         
-        if(validate != delete)
+        if((validate != delete))
         {
             // limitar la cantidad de letras que se ingresan
-            if(text_newTask.getText().length() == 40 )
+            if((text_newTask.getText().length() == 40) || (validate == underscore))
             {
                 //borro la ultima letra ingresara
                 evt.consume();

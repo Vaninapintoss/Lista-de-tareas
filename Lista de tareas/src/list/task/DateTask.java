@@ -20,7 +20,7 @@ import java.io.Serializable;
  * @author Vanina Pintos
  */
 public final class DateTask extends Task  implements Serializable{
-    private Status status;
+    private boolean check;
     private Fecha finalDate;
 
     /**
@@ -42,7 +42,7 @@ public final class DateTask extends Task  implements Serializable{
      */
     public DateTask(String name, Fecha date) {
         super(name);
-        this.status = status.TODO;
+        this.check = false;
         this.finalDate = date;
     }
     
@@ -53,23 +53,23 @@ public final class DateTask extends Task  implements Serializable{
      * 
      * @author Vanina Pintos
      */
-    public Status getStatus(){
-        return status;
+    public boolean getCheck(){
+        return check;
     }
     
     /**
      * <h1>Cambiar status</h1>
      * 
-     * setStatus(Status status) recibe por parametros el nuevo status
-     * para modificar el antiguo
-     * 
-     * @param status | nuevo status 
+     * cambia el estado
      * 
      * @author Vanina Pintos
      */
-    public void setStatus(Status status){
-        this.status = status;
-    }
+    public void checkTask() {
+        if(check)
+            check = false;
+        else
+            check = true;
+    } 
     
     /**
      * <h1>Obtener Fecha de caducidad</h1>
@@ -117,7 +117,7 @@ public final class DateTask extends Task  implements Serializable{
             return false;
         }
         final DateTask other = (DateTask) obj;
-        if (this.status != other.status) {
+        if (this.check != other.check) {
             return false;
         }
         return name.equals(other.name);
@@ -131,7 +131,8 @@ public final class DateTask extends Task  implements Serializable{
      * @author Vanina Pintos
      */
     @Override
-    public String toString() {
-        return finalDate.toString() + "_" + name;
+    public String toString() 
+    {
+        return finalDate.toString() + " ........ " + name;
     }
 }

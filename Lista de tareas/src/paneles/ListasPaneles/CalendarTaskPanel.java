@@ -8,16 +8,15 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import list.exceptions.ElementAlreadyExistException;
-import list.exceptions.TaskUntilNotCompletedException;
 import list.task.DateTask;
 import list.task.Fecha;
 import static list.task.Fecha.validDate;
@@ -282,7 +281,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
     //agrego las listas guardadas en el archivo en la lista de botones
     public void updateButtons()
     {
-        JButton button;
+        JButton button = null;
         try
         {
             userLists.readDateFromFile();
@@ -292,9 +291,19 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
             System.out.println("no lee el archivo");
         }
         
-        String listas = userLists.getDateLists().getDateList(category).showTasks();
-        System.out.println(listas);
         panel.removeAll();
+        
+        String listas = userLists.getDateLists().getDateList(category).showUncheckTasks();
+        String listasUnchecked = userLists.getDateLists().getDateList(category).showCheckTasks();
+        
+        addButtonToPanel(listas,button);
+        addButtonToPanel(listasUnchecked,button);
+        
+        panel.updateUI();//actualizar ver botones
+    }
+    
+    private void addButtonToPanel(String listas, JButton button)
+    {
         if(!listas.isEmpty())
         {
             //las divido en un array
@@ -307,37 +316,70 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
             }
             
         }
-        
-        panel.updateUI();//actualizar ver botones
     }
     
     private JButton createButton(String info)
     {
         //crear boton
-        JButton button = new JButton(info);
+        JButton button = new JButton(""+info);
         
-        //visual del boton
+         //visual del boton
         button.setBackground(new Color(0,82,77));
         button.setForeground(new Color(195,225,203));
+        button.setSize(500,35);
+        button.setBorderPainted(false);
+        button.setContentAreaFilled(false);
+        
+        String[] parts = info.split(" ........ ");
+        String nameTask = parts[1];
+        
+        //la imagen depende de si esta checkeado o no
+        DateTask task = userLists.getDateLists().getDateList(category).searchTask(nameTask);
+        
+        
+        if(task.getCheck())
+        {
+            //imagen ckequeada
+            button.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/taskSimpleChecked.png")));
+            button.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/taskSimpleMouseOver.png")));
+        }
+        else
+        {
+            //imagen sin chequear
+            //ver si vencio
+            String[] fecha = parts[0].split("-");
+            
+            try {
+                Fecha.validDate(Integer.parseInt(fecha[0]),
+                        Integer.parseInt(fecha[1]),
+                        Integer.parseInt(fecha[2]));
+                
+                button.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/taskSimpleUnchecked.png")));
+                button.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/taskSimpleMouseOver.png")));
+            } 
+            catch (DatePastException ex) 
+            {
+                button.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/datePassboton.png")));
+                button.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/datePassbotonMO.png")));
+            } 
+            catch (DateTimeParseException ex) 
+            {
+                
+            }
+                 
+        }
+  
+        button.setHorizontalTextPosition(JLabel.CENTER);
         
         button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
-            {
-                // | 
+            { 
                 //elimino la tarea de la lista
                 
                 //las divido en un array
-                String[] parts = info.split("_");
-                try
-                {
-                    userLists.getDateLists().getDateList(category).checkTask(parts[1]);
-                    userLists.getDateLists().getDateList(category).deleteTask(parts[1]);
-                }
-                catch(TaskUntilNotCompletedException ex)
-                {
-                    System.out.println("no elimina");
-                }
+                
+                userLists.getDateLists().getDateList(category).checkTask(nameTask);
                 
                 userLists.saveDateInFile();
                 
@@ -349,6 +391,8 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         
         return button;
     }
+    
+    
     
     private void text_dayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_dayKeyTyped
         //valida que la tecla ingresada por teclado sea solo numero
@@ -420,17 +464,12 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
                 {
                     //trato de agregar una nueva lista              
                     Fecha date = new Fecha(day,month,year);
-                
-                
+               
                     validDate(day,month,year);
-                    
-                                
-                
-                    DateTask task = new DateTask(text_newTask.getText(),date);
-                    
+  
+                    DateTask task = new DateTask(text_newTask.getText().toUpperCase(),date);                   
                 
                     userLists.getDateLists().getDateList(category).addTask(task);
-
 
                     userLists.saveDateInFile();
                     //actualizo los botones
@@ -493,7 +532,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         if(validate != delete)
         {
             // limitar la cantidad de letras que se ingresan
-            if(text_newTask.getText().length() == 40 )
+            if((text_newTask.getText().length() == 40) || (validate == '.'))
             {
                 //borro la ultima letra ingresara
                 evt.consume();
