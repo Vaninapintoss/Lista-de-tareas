@@ -11,7 +11,6 @@ import java.util.Iterator;
 import list.exceptions.ElementAlreadyExistException;
 import list.exceptions.TaskUntilNotCompletedException;
 import list.task.SimpleTask;
-import list.task.Status;
 import list.task.exceptions.EmptyNameTaskException;
 
 /**
@@ -72,9 +71,10 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
         
         return added;
     }
+    
 
     /**
-     * <h1>Mostrar tareas</h1>
+     * <h1>Mostrar tareas Chequeadas</h1>
      * 
      * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
      * 
@@ -82,12 +82,56 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * 
      * @author Vanina Pintos
      */
-    @Override
+    public String showCheckedTasks() {
+        String aux ="";
+        for(SimpleTask e : simpleList){
+            if(e.getCheck())
+            {
+                aux += e.toString();
+                aux +="_";
+            }
+        }
+        return aux;
+    }
+    
+    /**
+     * <h1>Mostrar tareas NO Chequeadas</h1>
+     * 
+     * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
+     * 
+     * @return String | tareas almacenadas en formato String
+     * 
+     * @author Vanina Pintos
+     */
+    public String showUncheckedTasks() {
+        String aux ="";
+        for(SimpleTask e : simpleList){
+            if(!e.getCheck())
+            {
+                aux += e.toString();
+                aux +="_";
+            }
+        }
+        return aux;
+    }
+    
+    /**
+     * <h1>Mostrar todas tareas</h1>
+     * 
+     * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
+     * 
+     * @return String | tareas almacenadas en formato String
+     * 
+     * @author Vanina Pintos
+     */
     public String showTasks() {
         String aux ="";
         for(SimpleTask e : simpleList){
-            aux += e.toString();
-            aux +="_";
+            if(e.getCheck())
+            {
+                aux += e.toString();
+                aux +="_";
+            }
         }
         return aux;
     }
@@ -105,20 +149,17 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * 
      * @author Vanina Pintos
      */
-    public boolean checkTask(String name){ 
-        
-        boolean checked = false;
+    public void checkTask(String name){ 
         
         SimpleTask found = searchTask(name);
 
         if(found != null){
-            found.setStatus(Status.COMPLETED);
-            checked = true;
-            
-        }
-
-        return checked;        
+            found.checkTask();            
+        }     
     }
+    
+    
+   
 
     /**
      * <h1>Eliminar una tarea</h1>
@@ -230,15 +271,16 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
      * 
      * @author Vanina Pintos
      */
-    public boolean tasksWereChecked() {
-        
+    public boolean tasksWereChecked() 
+    {
+        boolean checked = true;        
         for(SimpleTask st : simpleList){
-            if(st.getStatus() == Status.TODO){
-                return false;
+            if(!st.getCheck()){
+                checked = false;
             }
         }
         
-        return  true;
+        return checked;
     }
 
     /**
@@ -252,4 +294,5 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     public int howManyTasks() {
         return simpleList.size();
     }
+    
 }

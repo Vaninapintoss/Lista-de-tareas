@@ -8,17 +8,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.border.Border;
-import list.SimpleList;
+import javax.swing.JLabel;
 import list.exceptions.ElementAlreadyExistException;
-import list.exceptions.TaskUntilNotCompletedException;
 import list.task.SimpleTask;
-import static paneles.AppUserLists.user;
 import static paneles.PantallaInicial.app;
-import userLists.SimpleLists;
 import userLists.UserLists;
 import userLists.exceptions.UnfinishedTasksException;
 
@@ -30,6 +25,7 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
 
     private UserLists userLists;
     private String category;
+
     /**
      * Creates new form SimpleTaskPanel
      */
@@ -38,6 +34,7 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         this.category = category;
         initComponents();
         updateButtons();
+        confirmDeletePanel.setVisible(false);
         text_titleList.setText(category.toUpperCase());
     }
 
@@ -51,6 +48,12 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         buttonGoBack = new javax.swing.JButton();
+        confirmDeletePanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         buttonDeleteList = new javax.swing.JButton();
         text_newTask = new javax.swing.JTextField();
         infoNewList = new javax.swing.JLabel();
@@ -79,6 +82,58 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        confirmDeletePanel.setOpaque(false);
+        confirmDeletePanel.setPreferredSize(new java.awt.Dimension(325, 130));
+        confirmDeletePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setBackground(new java.awt.Color(195, 225, 203));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 223, 138));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("SE BORRARAN PERMANETEMENTE LOS DATOS");
+        confirmDeletePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 310, 30));
+
+        jButton1.setForeground(new java.awt.Color(202, 74, 23));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/BotonEliminar.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setPreferredSize(new java.awt.Dimension(150, 30));
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/BotonEliminarMO.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        confirmDeletePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(202, 74, 23));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoBotonCerrar.png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setPreferredSize(new java.awt.Dimension(20, 20));
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoBotonCerrarMO.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        confirmDeletePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 20, 20));
+
+        jLabel3.setBackground(new java.awt.Color(195, 225, 203));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 223, 138));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("¿ESTA SEGURO QUE DESEA ELIMINAR LA LISTA?");
+        confirmDeletePanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 310, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoEliminarLista.png"))); // NOI18N
+        confirmDeletePanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        add(confirmDeletePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, -1));
 
         buttonDeleteList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonDelete.png"))); // NOI18N
         buttonDeleteList.setBorderPainted(false);
@@ -109,9 +164,6 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         buttonCreate.setBorder(null);
         buttonCreate.setBorderPainted(false);
         buttonCreate.setContentAreaFilled(false);
-        buttonCreate.setMaximumSize(new java.awt.Dimension(94, 30));
-        buttonCreate.setMinimumSize(new java.awt.Dimension(94, 30));
-        buttonCreate.setPreferredSize(new java.awt.Dimension(94, 30));
         buttonCreate.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonCrearMouseOver.png"))); // NOI18N
         buttonCreate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,9 +196,9 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         add(titleTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         text_error.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        text_error.setForeground(new java.awt.Color(255, 153, 153));
-        text_error.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        add(text_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 350, 20));
+        text_error.setForeground(new java.awt.Color(204, 0, 0));
+        text_error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(text_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, 350, 20));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 128, 97));
         jScrollPane1.setBorder(null);
@@ -179,7 +231,7 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
     //agrego las listas guardadas en el archivo en la lista de botones
     public void updateButtons()
     {
-        JButton button;
+        JButton button = null;
         try
         {
             userLists.readSimpleFromFile();
@@ -187,8 +239,18 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         catch(IOException ex)
         {}
         
-        String listas = userLists.getSimpleLists().getListaSimple(category).showTasks();
+        String listas = userLists.getSimpleLists().getListaSimple(category).showUncheckedTasks();
+        String listasUnchecked = userLists.getSimpleLists().getListaSimple(category).showCheckedTasks();
         panel.removeAll();
+        
+        addButtonToPanel(listas,button);
+        addButtonToPanel(listasUnchecked,button);
+        
+        panel.updateUI();//actualizar ver botones
+    }
+    
+    private void addButtonToPanel(String listas, JButton button)
+    {
         if(!listas.isEmpty())
         {
             //las divido en un array
@@ -201,8 +263,6 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
             }
             
         }
-        
-        panel.updateUI();//actualizar ver botones
     }
     
      private JButton createButton(String info)
@@ -213,20 +273,34 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         //visual del boton
         button.setBackground(new Color(0,82,77));
         button.setForeground(new Color(195,225,203));
+        button.setSize(500,35);
+        button.setHorizontalTextPosition(JLabel.CENTER);
+        button.setBorderPainted(false);
+        button.setContentAreaFilled(false);
+        
+        //la imagen depende de si esta checkeado o no
+        SimpleTask task = userLists.getSimpleLists().getListaSimple(category).searchTask(button.getText());
+        if(task.getCheck())
+        {
+            //imagen ckequeada
+            button.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/taskSimpleChecked.png")));
+        }
+        else
+        {
+            //imagen sin chequear
+            button.setIcon(new ImageIcon(getClass().getResource("/imagenes/listas/taskSimpleUnchecked.png")));
+        }
+        
+        //el rollOver es igual en las dos
+        button.setRolloverIcon(new ImageIcon(getClass().getResource("/imagenes/listas/taskSimpleMouseOver.png")));
+        
         
         button.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
                 //elimino la tarea de la lista
-                try
-                {
-                    userLists.getSimpleLists().getListaSimple(category).deleteTask(button.getText());
-                }
-                catch(TaskUntilNotCompletedException ex)
-                {
-                    System.out.println("no elimina");
-                }
+                userLists.getSimpleLists().getListaSimple(category).checkTask(button.getText());
                 
                 userLists.saveSimpleInFile();
                 
@@ -269,7 +343,12 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonCreateActionPerformed
 
     private void buttonDeleteListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteListActionPerformed
-        // TODO add your handling code here:
+        confirmDeletePanel.setVisible(true);
+        text_newTask.setVisible(false);
+        
+    }//GEN-LAST:event_buttonDeleteListActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
             userLists.deleteSimpleList(category);//elimino la lista
@@ -281,7 +360,13 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         {
             text_error.setText("No se puede eliminar un lista con tareas pendientes");
         }
-    }//GEN-LAST:event_buttonDeleteListActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        confirmDeletePanel.setVisible(false);
+        text_newTask.setVisible(true);
+        text_error.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -291,7 +376,13 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonDeleteList;
     private javax.swing.JButton buttonGoBack;
     private javax.swing.JButton buttonGoBack1;
+    private javax.swing.JPanel confirmDeletePanel;
     private javax.swing.JLabel infoNewList;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
     private javax.swing.JLabel text_error;

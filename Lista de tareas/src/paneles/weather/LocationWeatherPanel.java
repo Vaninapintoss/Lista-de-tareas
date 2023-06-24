@@ -4,14 +4,9 @@
  */
 package paneles.weather;
 
-import java.io.IOException;
+
 import java.text.DecimalFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import location.Exceptions.EmptyLocationException;
-import org.json.JSONException;
-import user.User;
 import weather.Weather;
 
 /**

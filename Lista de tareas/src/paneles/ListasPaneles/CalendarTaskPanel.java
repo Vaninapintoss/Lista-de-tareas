@@ -8,6 +8,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -39,6 +43,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         this.category = category;
         initComponents();
         updateButtons();
+        confirmDeletePanel.setVisible(false);
         text_titleList.setText(category.toUpperCase());
     }
 
@@ -51,6 +56,12 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        confirmDeletePanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         buttonDeleteList = new javax.swing.JButton();
         text_titleList = new javax.swing.JLabel();
         titleTaskList = new javax.swing.JLabel();
@@ -72,6 +83,57 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        confirmDeletePanel.setOpaque(false);
+        confirmDeletePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setBackground(new java.awt.Color(195, 225, 203));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 223, 138));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("SE BORRARAN PERMANETEMENTE LOS DATOS");
+        confirmDeletePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 310, 30));
+
+        jButton1.setForeground(new java.awt.Color(202, 74, 23));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/BotonEliminar.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setPreferredSize(new java.awt.Dimension(150, 30));
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/BotonEliminarMO.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        confirmDeletePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(202, 74, 23));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoBotonCerrar.png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setPreferredSize(new java.awt.Dimension(20, 20));
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoBotonCerrarMO.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        confirmDeletePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 20, 20));
+
+        jLabel3.setBackground(new java.awt.Color(195, 225, 203));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 223, 138));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("¿ESTA SEGURO QUE DESEA ELIMINAR LA LISTA?");
+        confirmDeletePanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 310, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoEliminarLista.png"))); // NOI18N
+        confirmDeletePanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        add(confirmDeletePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, -1));
 
         buttonDeleteList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/botonDelete.png"))); // NOI18N
         buttonDeleteList.setBorderPainted(false);
@@ -97,9 +159,9 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         add(titleTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         text_error.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        text_error.setForeground(new java.awt.Color(255, 153, 153));
-        text_error.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        add(text_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 350, 20));
+        text_error.setForeground(new java.awt.Color(204, 0, 0));
+        text_error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(text_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 350, 20));
 
         jLabel1.setBackground(new java.awt.Color(195, 225, 203));
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -112,7 +174,6 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         text_day.setForeground(new java.awt.Color(102, 102, 102));
         text_day.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         text_day.setBorder(null);
-        text_day.setOpaque(false);
         text_day.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 text_dayKeyTyped(evt);
@@ -131,7 +192,6 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         text_month.setForeground(new java.awt.Color(102, 102, 102));
         text_month.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         text_month.setBorder(null);
-        text_month.setOpaque(false);
         text_month.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 text_monthKeyTyped(evt);
@@ -150,18 +210,22 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         text_year.setForeground(new java.awt.Color(102, 102, 102));
         text_year.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         text_year.setBorder(null);
-        text_year.setOpaque(false);
         text_year.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 text_yearKeyTyped(evt);
             }
         });
-        add(text_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 30, 30));
+        add(text_year, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 140, 40, 30));
 
         text_newTask.setBackground(new java.awt.Color(195, 225, 203));
         text_newTask.setForeground(new java.awt.Color(102, 102, 102));
         text_newTask.setBorder(null);
         text_newTask.setPreferredSize(new java.awt.Dimension(100, 30));
+        text_newTask.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                text_newTaskKeyTyped(evt);
+            }
+        });
         add(text_newTask, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 440, -1));
 
         infoNewList.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -290,7 +354,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         //valida que la tecla ingresada por teclado sea solo numero
         char validate = evt.getKeyChar();
 
-        if(Character.isLetter(validate))
+        if(Character.isLetter(validate)||text_day.getText().length() == 2)
         {
             //borro la ultima letra ingresara
             evt.consume();
@@ -301,7 +365,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         //valida que la tecla ingresada por teclado sea solo numero
         char validate = evt.getKeyChar();
 
-        if(Character.isLetter(validate))
+        if(Character.isLetter(validate)||text_month.getText().length() == 2)
         {
             //borro la ultima letra ingresara
             evt.consume();
@@ -312,7 +376,7 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         //valida que la tecla ingresada por teclado sea solo numero
         char validate = evt.getKeyChar();
 
-        if(Character.isLetter(validate))
+        if(Character.isLetter(validate)||text_year.getText().length() == 4)
         {
             //borro la ultima letra ingresara
             evt.consume();
@@ -328,45 +392,59 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
             text_error.setText("No se puede agregar una tarea vacia");
         }
         else if((text_day.getText().isEmpty())||(text_month.getText().isEmpty())||
-                (text_month.getText().isEmpty()))
+                (text_year.getText().isEmpty()))
         {
             text_error.setText("Completar la fecha a finalizar");
         }
         else
         {
+            //verificar fecha
+            boolean validateDate = true;
+            int day = Integer.parseInt(text_day.getText());
+            int month = Integer.parseInt(text_month.getText());
+            int year = Integer.parseInt(text_year.getText());
             
             try
             {
-                //trato de agregar una nueva lista
-                int year = Integer.parseInt(text_year.getText());
-                int month = Integer.parseInt(text_month.getText());
-                int day = Integer.parseInt(text_day.getText());
-                
-                Fecha date = new Fecha(day,month,year);
+                LocalDate.of(year, month, day);
+            }
+            catch(DateTimeException e) 
+            {
+                text_error.setText("Fecha invalida");
+                validateDate = false;
+            }
+            
+            if(validateDate)
+            {
+                try
+                {
+                    //trato de agregar una nueva lista              
+                    Fecha date = new Fecha(day,month,year);
                 
                 
                     validDate(day,month,year);
                     
                                 
                 
-                DateTask task = new DateTask(text_newTask.getText(),date);
+                    DateTask task = new DateTask(text_newTask.getText(),date);
+                    
                 
-                
-                userLists.getDateLists().getDateList(category).addTask(task);
+                    userLists.getDateLists().getDateList(category).addTask(task);
 
 
-                userLists.saveDateInFile();
-                //actualizo los botones
-                updateButtons();
-            }
-            catch(ElementAlreadyExistException ex)
-            {
-                //si existe tiro un mensaje
-                text_error.setText("La tarea "+text_newTask.getText()+" ya existe");
-            } catch (DateTimeParseException ex) {
-                Logger.getLogger(CalendarTaskPanel.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (DatePastException ex) {
-                text_error.setText("Fecha invalida");
+                    userLists.saveDateInFile();
+                    //actualizo los botones
+                    updateButtons();
+                }
+                catch(ElementAlreadyExistException ex)
+                {
+                    //si existe tiro un mensaje
+                    text_error.setText("La tarea "+text_newTask.getText()+" ya existe");
+                } catch (DateTimeParseException ex) {
+                    Logger.getLogger(CalendarTaskPanel.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (DatePastException ex) {
+                    text_error.setText("Fecha invalida");
+                }
             }
                 
         }
@@ -384,7 +462,11 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonGoBack1ActionPerformed
 
     private void buttonDeleteListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteListActionPerformed
-        // TODO add your handling code here:
+        confirmDeletePanel.setVisible(true);
+        text_newTask.setVisible(false);
+    }//GEN-LAST:event_buttonDeleteListActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
             userLists.deleteDateList(category);//elimino la lista
@@ -396,7 +478,28 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         {
             text_error.setText("No se puede eliminar un lista con tareas pendientes");
         }
-    }//GEN-LAST:event_buttonDeleteListActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        confirmDeletePanel.setVisible(false);
+        text_newTask.setVisible(true);
+        text_error.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void text_newTaskKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_newTaskKeyTyped
+        char validate = evt.getKeyChar();
+        char delete = 127;
+        
+        if(validate != delete)
+        {
+            // limitar la cantidad de letras que se ingresan
+            if(text_newTask.getText().length() == 40 )
+            {
+                //borro la ultima letra ingresara
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event_text_newTaskKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -405,10 +508,16 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonCreate;
     private javax.swing.JButton buttonDeleteList;
     private javax.swing.JButton buttonGoBack1;
+    private javax.swing.JPanel confirmDeletePanel;
     private javax.swing.JLabel infoNewList;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
     private javax.swing.JTextField text_day;

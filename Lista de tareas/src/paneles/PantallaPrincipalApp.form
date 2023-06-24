@@ -144,5 +144,18 @@
         </Constraint>
       </Constraints>
     </Component>
+    <Component class="javax.swing.JLabel" name="text_errorFaltaApyKey">
+      <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="33" green="33" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Falta ApyKey"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="20" y="180" width="218" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>

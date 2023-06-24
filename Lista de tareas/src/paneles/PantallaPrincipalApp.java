@@ -9,7 +9,6 @@ import java.awt.Component;
 import java.io.IOException;
 import location.Exceptions.EmptyLocationException;
 import org.json.JSONException;
-import static paneles.AppUserLists.userLists;
 import paneles.ListasPaneles.TaskListCalendarPanel;
 import paneles.ListasPaneles.TaskListPanel;
 import paneles.ListasPaneles.TaskListTrackPanel;
@@ -25,7 +24,7 @@ import weather.Weather;
  * @author sofia
  */
 public class PantallaPrincipalApp extends javax.swing.JPanel {
-    private final String APIKEY = "a39bf665486281158ba6fa28b34147ce";
+    private final String APIKEY = "";
     public static NoLocationWeatherPanel noLocationPanel;
     public static LocationWeatherPanel weatherPanel;
     public static User user;
@@ -37,12 +36,14 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         this.userLists = userLists;
         this.user = user;
         initComponents();
+        text_errorFaltaApyKey.setVisible(false);
         updateWeather();
     }
     
     public void updateWeather()
     {
-        if(!user.getLocation().isEmpty())
+        
+        if(!user.getLocation().isEmpty() && !APIKEY.isEmpty())
         {
             //si tiene una localizacion muestro el clima
             //si no tiene algun problema para extraer el clima entra a el otro panel
@@ -84,6 +85,12 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
             //si no tiene cargada una localizacion muestro un panel de info
             
             weatherPanelnoLocation();
+            
+            if(APIKEY.isEmpty())
+            {
+                //muestro pantalla para ingresar apikey
+                text_errorFaltaApyKey.setVisible(true);
+            }
         }
     }
     
@@ -125,6 +132,7 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         buttonTaskList = new javax.swing.JButton();
         buttonCalendarList = new javax.swing.JButton();
         buttonTrakingList = new javax.swing.JButton();
+        text_errorFaltaApyKey = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -188,6 +196,10 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
             }
         });
         add(buttonTrakingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
+
+        text_errorFaltaApyKey.setForeground(new java.awt.Color(255, 51, 51));
+        text_errorFaltaApyKey.setText("Falta ApyKey");
+        add(text_errorFaltaApyKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 218, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCalendarListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalendarListActionPerformed
@@ -211,5 +223,6 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
     private javax.swing.JButton buttonTaskList;
     private javax.swing.JButton buttonTrakingList;
     private javax.swing.JPanel contentWeather;
+    private javax.swing.JLabel text_errorFaltaApyKey;
     // End of variables declaration//GEN-END:variables
 }

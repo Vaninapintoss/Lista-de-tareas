@@ -132,6 +132,8 @@ public class SimpleLists implements IStorageActions<SimpleList>{
         
         return deleted; 
     }
+    
+    
 
     /**
      * <h1>Editar categoria de una lista</h1>

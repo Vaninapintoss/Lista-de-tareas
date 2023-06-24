@@ -8,17 +8,14 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.time.Duration;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.Timer;
-
 import list.task.TrackTask;
 import static paneles.PantallaInicial.app;
 import userLists.UserLists;
-import userLists.exceptions.UnfinishedTasksException;
-import visualElements.ButtonImage;
+
 
 /**
  *
@@ -46,6 +43,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         this.userLists = userLists;
         this.category = category;
         initComponents();
+         confirmDeletePanel.setVisible(false);
         text_timer.setText("00:00:00");
         updateTrackList();
         text_titleList.setText(category.toUpperCase());
@@ -62,6 +60,12 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        confirmDeletePanel = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         text_timer = new javax.swing.JLabel();
         buttonPlay = new javax.swing.JButton();
         buttonStop = new javax.swing.JButton();
@@ -80,6 +84,57 @@ public class TrackTaskPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        confirmDeletePanel.setOpaque(false);
+        confirmDeletePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setBackground(new java.awt.Color(195, 225, 203));
+        jLabel2.setFont(new java.awt.Font("Dialog", 1, 10)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 223, 138));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("SE BORRARAN PERMANETEMENTE LOS DATOS");
+        confirmDeletePanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 310, 30));
+
+        jButton1.setForeground(new java.awt.Color(202, 74, 23));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/BotonEliminar.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setPreferredSize(new java.awt.Dimension(150, 30));
+        jButton1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/BotonEliminarMO.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        confirmDeletePanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(202, 74, 23));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoBotonCerrar.png"))); // NOI18N
+        jButton2.setToolTipText("");
+        jButton2.setBorderPainted(false);
+        jButton2.setContentAreaFilled(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setPreferredSize(new java.awt.Dimension(20, 20));
+        jButton2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoBotonCerrarMO.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        confirmDeletePanel.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 20, 20));
+
+        jLabel3.setBackground(new java.awt.Color(195, 225, 203));
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 223, 138));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("¿ESTA SEGURO QUE DESEA ELIMINAR LA LISTA?");
+        confirmDeletePanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 310, 30));
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/fondoEliminarLista.png"))); // NOI18N
+        confirmDeletePanel.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        add(confirmDeletePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 0, -1, -1));
 
         text_timer.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         text_timer.setForeground(new java.awt.Color(195, 225, 203));
@@ -117,9 +172,9 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         add(buttonStop, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 100, -1, -1));
 
         text_error.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        text_error.setForeground(new java.awt.Color(255, 153, 153));
-        text_error.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        add(text_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 80, 350, 20));
+        text_error.setForeground(new java.awt.Color(204, 0, 0));
+        text_error.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(text_error, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 420, 350, 20));
 
         text_titleList.setBackground(new java.awt.Color(195, 225, 203));
         text_titleList.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
@@ -235,14 +290,8 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     }
     
     private void buttonDeleteListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteListActionPerformed
-        // TODO add your handling code here:
-        if(!play)
-        {
-            userLists.deleteTrackList(category);//elimino la lista
-
-            //vuelvo a la pantalla principal
-            app.replaceScreen(app.homescreenApp);
-        }
+        confirmDeletePanel.setVisible(true);
+        text_newTask.setVisible(false);
     }//GEN-LAST:event_buttonDeleteListActionPerformed
 
     private void buttonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlayActionPerformed
@@ -338,6 +387,22 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_text_newTaskActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if(!play)
+        {
+            userLists.deleteTrackList(category);//elimino la lista
+
+            //vuelvo a la pantalla principal
+            app.replaceScreen(app.homescreenApp);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        confirmDeletePanel.setVisible(false);
+        text_newTask.setVisible(true);
+        text_error.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     //agrego las listas guardadas en el archivo en la lista de botones
     public void updateTrackList()
     {
@@ -381,7 +446,13 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     private javax.swing.JButton buttonGoBack;
     private javax.swing.JButton buttonPlay;
     private javax.swing.JButton buttonStop;
+    private javax.swing.JPanel confirmDeletePanel;
     private javax.swing.JLabel infoNewList;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelTaskViewer;

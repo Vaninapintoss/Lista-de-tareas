@@ -19,7 +19,7 @@ import java.io.Serializable;
  * @author Vanina Pintos 
  */
 public class SimpleTask extends Task  implements Serializable{
-    private Status status;
+    private boolean check;
 
     /**
      * <h1>Constructor de la clase SimpleTask</h1>
@@ -37,7 +37,7 @@ public class SimpleTask extends Task  implements Serializable{
      */
     public SimpleTask(String name) {
         super(name);
-        this.status = Status.TODO;
+        this.check = false;
     }
 
     /**
@@ -47,8 +47,8 @@ public class SimpleTask extends Task  implements Serializable{
      * 
      * @author Vanina Pintos
      */
-    public Status getStatus() {
-        return status;
+    public boolean getCheck() {
+        return check;
     }
    
     /**
@@ -61,8 +61,11 @@ public class SimpleTask extends Task  implements Serializable{
      *  
      * @author Vanina Pintos
      */
-    public void setStatus(Status status) {
-        this.status = status;
+    public void checkTask() {
+        if(check)
+            check = false;
+        else
+            check = true;
     } 
 
     /**
