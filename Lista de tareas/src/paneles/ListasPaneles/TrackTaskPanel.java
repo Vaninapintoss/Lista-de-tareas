@@ -26,6 +26,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     private UserLists userLists;
     private String category;
     private boolean play;
+    int centSec;
     private int sec;
     private int min;
     private int hour;
@@ -37,6 +38,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
      * @param category  | category
      */
     public TrackTaskPanel(UserLists userLists, String category) {
+        centSec = 0;
         sec = 0;
         min = 0;
         hour = 0;
@@ -45,7 +47,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         this.category = category;
         initComponents();
          confirmDeletePanel.setVisible(false);
-        text_timer.setText("00:00:00");
+        text_timer.setText("00:00:00:00");
         updateTrackList();
         text_titleList.setText(category.toUpperCase());
         timer = new Timer(10, timeAction);
@@ -264,8 +266,13 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     {
         @Override
         public void actionPerformed(ActionEvent e) {
-            sec++;
+            centSec++;
             
+            if(centSec == 100)
+            {
+                centSec = 0;
+                sec++;
+            }
             if(sec == 60)
             {
                 sec = 0;
@@ -292,7 +299,7 @@ public class TrackTaskPanel extends javax.swing.JPanel {
      */
     private void updateTimer()
     {
-        String text = (hour<=9?"0":"")+hour+":"+(min<=9?"0":"")+min+":"+(sec<=9?"0":"")+sec;
+        String text = (hour<=9?"0":"")+hour+":"+(min<=9?"0":"")+min+":"+(sec<=9?"0":"")+sec+":"+(centSec<=9?"0":"")+centSec;
         text_timer.setText(text);
     }
     
