@@ -4,6 +4,9 @@
  */
 package paneles;
 
+import fileController.FileController;
+import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -16,9 +19,11 @@ import user.User;
 import user.UsersSystem;
 import user.exceptions.EmptyEmailException;
 import user.exceptions.EmptyPasswordException;
+import user.exceptions.IncorrectPasswordException;
 import user.exceptions.InvalidEmailException;
 import user.exceptions.InvalidPasswordException;
 import user.exceptions.UserAlreadyExistException;
+import user.exceptions.UserNotFoundException;
 import visualElements.ButtonImage;
 import visualElements.VisualSeePassword;
 
@@ -226,10 +231,25 @@ public class SignupPanel extends javax.swing.JPanel {
                 //verifico antes que la segunda contraseña y la primera coincidan
                 if(text_password.getText().contentEquals(text_passwordConfirmed.getText()))
                 {
+                    User user = new User(text_email.getText(),text_password.getText());;
                     String saved;
-                    //creo un nuevo usuario
-                    User user = new User(text_email.getText(),text_password.getText());
                     
+                    //veo si el usuario existe en el archivo de usuarios eliminados
+                    try 
+                    {
+                        sistemaUsuarios.readDeletedUsersInFile();
+                        user = sistemaUsuarios.searchDeletedUser(text_email.getText());
+                        sistemaUsuarios.deleteUserDeleted(user);
+                    } 
+                    catch (IOException ex) 
+                    {
+                        System.out.println("exception 1");
+                    } 
+                    catch (UserNotFoundException ex) 
+                    {
+                        System.out.println("exception 2");
+                    } 
+
                     //agrego el usuario a el sistema
                     sistemaUsuarios.signup(user);
                     

@@ -14,8 +14,6 @@ import user.exceptions.UserAlreadyExistException;
 import user.exceptions.UserNotFoundException;
 import fileController.FileController;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Map;
 
 
 /**
@@ -28,6 +26,8 @@ import java.util.Map;
 public class UsersSystem 
 {
     private LinkedHashMap <String,User> users;//usuarios del sistema
+    private LinkedHashMap <String,User> deletedUsers;//usuarios del sistema
+    
 
     /**
      * <h1>Constructor de la clase UsersSystem</h1>
@@ -40,6 +40,7 @@ public class UsersSystem
     public UsersSystem() 
     {
         users = new LinkedHashMap<String, User>();
+        deletedUsers = new LinkedHashMap<String, User>();
     }
     
     /**
@@ -91,11 +92,35 @@ public class UsersSystem
         {
             deleted = users.remove(user.getEmail(), user);
             saveUsersInFile();//actualizo el archivo con los usuarios
+            
+            //lo guardo en un archivo de usuarios eliminados
+            deletedUsers.put(user.getEmail(), user);
+            FileController.saveUsersInFile("deletedUsers.dat", deletedUsers);
         }
         else
         {
             throw new IncorrectPasswordException("Contraseña invalida");
         }
+            
+        return deleted;
+    }
+    
+    /**
+     * <h1>Borrar Usuario eliminado</h1>
+     * Elimina un usuario del LinkedHashMap
+     * 
+     * @param user | usuario a borrar
+     * 
+     * @return boolean |true si existia, pudo borrarse y la contraseña coincide |false si no se pudo borrar
+     * 
+     * @author Vanina Pintos
+     */
+    public boolean deleteUserDeleted(User user)
+    {
+        boolean deleted = false;
+        
+        deleted = deletedUsers.remove(user.getEmail(), user);
+        saveDeletedUsersInFile();//actualizo el archivo con los usuarios
             
         return deleted;
     }
@@ -118,6 +143,30 @@ public class UsersSystem
         
         if(users.containsKey(email))
             user = users.get(email);
+        else
+            throw new UserNotFoundException("Error : Usuario no registrado.");
+        
+        return user;
+    }
+    
+    /**
+     * <h1>Buscar usuario eliminado</h1>
+     * <b>Funcion privada</b>
+     * Busca si un email existe entre los usuarios registrados
+     * 
+     * @param email | email a verificar su existencia dentro del LinkedHashMap
+     * 
+     * @return User | retorna el usuario si lo encuentra
+     * 
+     * @throws UserNotFoundException | si no encuentra a un usuario registrado con el mail del parametro
+     * 
+     * @author Vanina Pintos
+     */
+    public User searchDeletedUser(String email) throws UserNotFoundException{
+        User user = null;
+        
+        if(deletedUsers.containsKey(email))
+            user = deletedUsers.get(email);
         else
             throw new UserNotFoundException("Error : Usuario no registrado.");
         
@@ -226,6 +275,15 @@ public class UsersSystem
     }
     
     /**
+     * <h1>Guadar Usuarios en Archivo</h1>
+     * @return String con error o correcto
+     */
+    public String saveDeletedUsersInFile()
+    {
+        return FileController.saveUsersInFile("deletedUsers.dat", users);
+    }
+    
+    /**
      * <h1>Leer Usuarios en Archivo</h1>
      * @return String con error o correcto
      * @throws IOException 
@@ -233,6 +291,16 @@ public class UsersSystem
     public String readUsersInFile() throws IOException
     {
         return FileController.readUsersFromFile("users.dat", users);
+    }
+    
+    /**
+     * <h1>Leer Usuarios en Archivo</h1>
+     * @return String con error o correcto
+     * @throws IOException 
+     */
+    public String readDeletedUsersInFile() throws IOException
+    {
+        return FileController.readUsersFromFile("deletedUsers.dat", deletedUsers);
     }
     
     /**

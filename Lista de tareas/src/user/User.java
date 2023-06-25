@@ -308,6 +308,8 @@ import user.exceptions.InvalidPasswordException;
      */
     @Override
     public boolean equals(Object obj) {
+        
+        boolean userEqual = false;
         if (this == obj) {
             return true;
         }
@@ -324,6 +326,6 @@ import user.exceptions.InvalidPasswordException;
         if (!Objects.equals(this.password, other.password)) {
             return false;
         }
-        return Objects.equals(this.location, other.location);
+        return userEqual;
     }
 }

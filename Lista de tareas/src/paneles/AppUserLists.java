@@ -331,8 +331,9 @@ public class AppUserLists extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMinimizarActionPerformed
 
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
-        this.dispose();
+        
         PantallaInicial.closeApp();
+        this.dispose();
     }//GEN-LAST:event_botonCerrarActionPerformed
 
     public void closeApp()
@@ -447,6 +448,7 @@ public class AppUserLists extends javax.swing.JFrame {
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
         //actualizo el clima
         homescreenApp.updateWeather();
+        seeMenu(false);
         
         contentScreen(lastPanel,contentScreenApp); 
         if(lastPanel.equals(homescreenApp))
