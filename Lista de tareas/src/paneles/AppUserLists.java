@@ -22,15 +22,30 @@ import user.UsersSystem;
 import userLists.UserLists;
 
 /**
- *
- * @author sofia
+ * AppUserLists
+ * @author Sofia Brocardo
  */
 public class AppUserLists extends javax.swing.JFrame {
 
+    /**
+     * user
+     */
     public static User user;
+    /**
+     * users
+     */
     public static UsersSystem users;
+    /**
+     * appActive
+     */
     public static AppUserLists appActive;
+    /**
+     * homescreenApp
+     */
     public PantallaPrincipalApp homescreenApp;
+    /**
+     * menuOn
+     */
     private boolean menuOn;//si el menu esta abierto
     
     //pabeles
@@ -45,11 +60,18 @@ public class AppUserLists extends javax.swing.JFrame {
     //info del ultimo panel activo
     private JPanel lastPanel;
     
-    //lista
-    public static UserLists userLists;
-    
     /**
+     * UserLists
+     */
+    public static UserLists userLists;
+
+    /**
+     * AppUserLists
+     * 
      * Creates new form AppUserLists
+     * 
+     * @param user | user
+     * @param users | users
      */
     public AppUserLists(User user, UsersSystem users) 
     {
@@ -377,7 +399,7 @@ public class AppUserLists extends javax.swing.JFrame {
 
     /**
      * public void replaceScreen(JPanel panel)
-     * @param panel 
+     * @param panel | panel
      */
     public void replaceScreen(JPanel panel)
     {
@@ -507,7 +529,7 @@ public class AppUserLists extends javax.swing.JFrame {
 
     /**
      * seeMenu
-     * @param see 
+     * @param see | see
      */
     public void seeMenu(boolean see)
     {
@@ -517,6 +539,7 @@ public class AppUserLists extends javax.swing.JFrame {
     }
     
     /**
+     * main
      * @param args the command line arguments
      */    
     public static void main(String args[]) 

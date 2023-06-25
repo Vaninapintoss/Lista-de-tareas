@@ -5,15 +5,15 @@
 package userLists.exceptions;
 
 /**
- *
+ * UnfinishedTasksException
  * @author Vanina Pintos
  */
 public class UnfinishedTasksException extends Exception{
 
     /**
-     * <h1>Excepcion de tareas sin terminar</h1>
+     * Excepcion de tareas sin terminar
      * 
-     * @param message 
+     * @param message | message
      */
     public UnfinishedTasksException(String message) {
         super("Error: " + message);

@@ -17,11 +17,11 @@ import java.io.IOException;
 
 
 /**
- * <h1>Clase UsersSystem</h1>
+ * Clase UsersSystem
  * 
  * Guarda la informacion de todos los usuarios del sistema en un LinkedHashMap
  * 
- * @author Vanina Pintos & Sofia Brocardo
+ * @author Vanina Pintos y Sofia Brocardo
  */
 public class UsersSystem 
 {
@@ -30,7 +30,7 @@ public class UsersSystem
     
 
     /**
-     * <h1>Constructor de la clase UsersSystem</h1>
+     * Constructor de la clase UsersSystem
      * 
      * Unico constructor de la clase UsersSystem
      * Crea un LinkedHashMap para almacenar los usuarios vacio
@@ -44,7 +44,7 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Agregar nuevo usuario</h1>
+     * Agregar nuevo usuario
      * Agrega un usuario a el LinkedHashMap
      * 
      * @param user | User a agregar
@@ -71,7 +71,7 @@ public class UsersSystem
     
     
     /**
-     * <h1>Borrar Usuario</h1>
+     * Borrar Usuario
      * Elimina un usuario del LinkedHashMap
      * 
      * @param user | usuario a borrar
@@ -106,7 +106,7 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Borrar Usuario eliminado</h1>
+     * Borrar Usuario eliminado
      * Elimina un usuario del LinkedHashMap
      * 
      * @param user | usuario a borrar
@@ -126,8 +126,8 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Buscar usuario</h1>
-     * <b>Funcion privada</b>
+     * Buscar usuario
+     * Funcion privada
      * Busca si un email existe entre los usuarios registrados
      * 
      * @param email | email a verificar su existencia dentro del LinkedHashMap
@@ -150,8 +150,8 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Buscar usuario eliminado</h1>
-     * <b>Funcion privada</b>
+     * Buscar usuario eliminado
+     * Funcion privada
      * Busca si un email existe entre los usuarios registrados
      * 
      * @param email | email a verificar su existencia dentro del LinkedHashMap
@@ -175,7 +175,7 @@ public class UsersSystem
     
      
     /**
-     * <h1>Cambiar contraseña</h1>
+     * Cambiar contraseña
      * Cambia la contraseña de un usuario a una nueva
      * 
      * @param user | usuario a cambiar contraseña
@@ -200,7 +200,7 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Login</h1>
+     * Login
      * Busca si existe en el sistema un usuario con ese email, para luego verificar la contraseña.
      * Si no hay ningun error devuelve el usuario
      * 
@@ -232,7 +232,7 @@ public class UsersSystem
     }  
     
     /**
-     * <h1>Signup</h1>
+     * Signup
      * Ingresar un nuevo usuario al sistema
      * 
      * @param user | usuario a ingresar 
@@ -266,7 +266,7 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Guadar Usuarios en Archivo</h1>
+     * Guadar Usuarios en Archivo
      * @return String con error o correcto
      */
     public String saveUsersInFile()
@@ -275,7 +275,7 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Guadar Usuarios en Archivo</h1>
+     * Guadar Usuarios en Archivo
      * @return String con error o correcto
      */
     public String saveDeletedUsersInFile()
@@ -284,9 +284,9 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Leer Usuarios en Archivo</h1>
+     * Leer Usuarios en Archivo
      * @return String con error o correcto
-     * @throws IOException 
+     * @throws IOException | IOException
      */
     public String readUsersInFile() throws IOException
     {
@@ -294,9 +294,9 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Leer Usuarios en Archivo</h1>
+     * Leer Usuarios en Archivo
      * @return String con error o correcto
-     * @throws IOException 
+     * @throws IOException | IOException
      */
     public String readDeletedUsersInFile() throws IOException
     {
@@ -304,9 +304,9 @@ public class UsersSystem
     }
     
     /**
-     * <h1>Modificar Usuario</h1>
+     * Modificar Usuario
      * Modifica el usuario y lo guarda en el archivo
-     * @param user 
+     * @param user | user
      */
     public void modifyUser(User user)
     {
@@ -314,23 +314,5 @@ public class UsersSystem
         
         saveUsersInFile();
     }
-    
-    
-    /*
-    public String mostrarUsuarios()
-    {
-        String usuarios ="0";
-        
-        Iterator it = users.entrySet().iterator();
-        while(it.hasNext())
-        {
-            Map.Entry entry = (Map.Entry) it.next();
-            User user = (User) entry.getValue();
-            usuarios+=user.getEmail()+"\n";
-        }
-        
-        return usuarios;
-    }
-*/
     
 }

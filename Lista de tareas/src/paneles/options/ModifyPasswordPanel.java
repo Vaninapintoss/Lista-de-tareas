@@ -10,7 +10,7 @@ import user.exceptions.EmptyPasswordException;
 import user.exceptions.InvalidPasswordException;
 
 /**
- *
+ * ModifyPasswordPanel
  * @author sofia
  */
 public class ModifyPasswordPanel extends javax.swing.JPanel {
@@ -23,8 +23,8 @@ public class ModifyPasswordPanel extends javax.swing.JPanel {
     
     /**
      * ModifyPasswordPanel
-     * @param user
-     * @param users 
+     * @param user | user
+     * @param users | users
      */
     public ModifyPasswordPanel(User user, UsersSystem users) {
         this.user = user;

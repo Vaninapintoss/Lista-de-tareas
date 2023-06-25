@@ -11,14 +11,15 @@ import java.net.URL;
 import java.util.Scanner;
 
 /**
- * <h1>Controladora de APIs</h1>
+ * Controladora de APIs
  * 
  * @author Sofia Brocardo
  */
 public class APIController 
 {
+    
     /**
-     * <h1>Obtener Informacion</h1>
+     * Obtener Informacion
      * 
      * @param urlAPI | URL de la API 
      * 

@@ -13,7 +13,7 @@ import userLists.exceptions.CategoryListAlreadyExistException;
 import userLists.exceptions.UnfinishedTasksException;
 
 /**
- * <h1>Clase SimpleLists</h1>
+ * Clase SimpleLists
  * 
  * Clase que guarda las listas de tareas simples en un HashMap
  * Implementa la interfaz IStorageActions
@@ -24,7 +24,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     private HashMap <String,SimpleList> hashMapOfSL;
 
     /**
-     * <h1>Constructor de la clase SimpleLists</h1>
+     * Constructor de la clase SimpleLists
      * 
      * Crea un HashMap vacio
      * 
@@ -34,7 +34,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     }
     
     /**
-     * <h1>Obtener cantidad de listas</h1>
+     * Obtener cantidad de listas
      * @return int
      */
     public int howManyLists()
@@ -52,7 +52,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     }
     
     /**
-     * <h1>Obtener el hash map</h1>
+     * Obtener el hash map
      * 
      * @return HashMap
      */
@@ -61,7 +61,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     }
     
     /**
-     * <h1>Obtener lista segun categoria</h1>
+     * Obtener lista segun categoria
      * 
      * @param category | categoria de la lista que se desea obtener
      * @return SimpleList
@@ -71,7 +71,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     }
 
     /**
-     * <h1>Agregar una lista</h1>
+     * Agregar una lista
      * 
      * addList(SimpleList list) recibe una lista para agregar al HashMap
      * 
@@ -100,7 +100,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     }
 
     /**
-     * <h1>Mostrar listas</h1>
+     * Mostrar listas
      * 
      * showLists() devuelve en formato String las listas existentes en el HashMap
      * separadas por el caracter "_"
@@ -120,7 +120,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     }
 
     /**
-     * <h1>Eliminar lista</h1>
+     * Eliminar lista
      * 
      * deleteList(String category) recibe la categoria de la lista a eliminar
      * 
@@ -155,7 +155,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     
 
     /**
-     * <h1>Editar categoria de una lista</h1>
+     * Editar categoria de una lista
      * 
      * editListCategory(String category, String newCategory) recibe la categoria de
      * la lista a modificar y la nueva categoria que se le desea asignar
@@ -194,7 +194,7 @@ public class SimpleLists implements IStorageActions<SimpleList>{
     }
 
     /**
-     * <h1>Buscar una lista</h1>
+     * Buscar una lista
      * 
      * searchList(String category) recibe la categoria de una lista y si existe la retorna
      * 

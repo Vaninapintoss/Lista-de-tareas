@@ -8,7 +8,7 @@ package list.task;
 import java.io.Serializable;
 
 /**
- * <h1>Clase SimpleTask</h1>
+ * lase SimpleTask
  * 
  * Guarda la informacion de la tarea de tipo simple (nombre y estado)
  * Se extiende de la clase Task
@@ -22,7 +22,7 @@ public class SimpleTask extends Task  implements Serializable{
     private boolean check;
 
     /**
-     * <h1>Constructor de la clase SimpleTask</h1>
+     * Constructor de la clase SimpleTask
      *  
      * Unico constructor de la clase SimpleTask 
      * Debe recibir un nombre, el cual tiene que ser validado antes de
@@ -31,7 +31,7 @@ public class SimpleTask extends Task  implements Serializable{
      * 
      * @param name - nombre validar antes de enviar
      * 
-     * @see Task#validName() 
+     * @see Task#validName(String name) 
      * 
      * @author Vanina Pintos
      */
@@ -41,7 +41,7 @@ public class SimpleTask extends Task  implements Serializable{
     }
 
     /**
-     * <h1>Obtener status</h1>
+     * Obtener status
      * 
      * @return Status | satus actual del objeto
      * 
@@ -52,7 +52,7 @@ public class SimpleTask extends Task  implements Serializable{
     }
    
     /**
-     * <h1>Cambiar status</h1>
+     * Cambiar status
      * 
      * cambia el estado
      * 

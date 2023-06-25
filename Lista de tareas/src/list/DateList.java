@@ -15,7 +15,7 @@ import list.task.DateTask;
 import list.task.exceptions.EmptyNameTaskException;
 
 /**
- * <h1>Clase DateList</h1>
+ * Clase DateList
  * 
  * Guarda tareas de tipo Date dentro un HashSet
  * Se extiende de la clase List e implementa la interaz IListActions
@@ -26,7 +26,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     private HashSet <DateTask> dateList;
 
     /**
-     * <h1>Constructor de la clase DateList</h1>
+     * Constructor de la clase DateList
      * 
      * Unico constructor de la clase DateList
      * Recibe una categoria por parametro que debe ser validada y verificar
@@ -45,7 +45,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
 
     /**
-     * <h1>Agregar una tarea</h1>
+     * Agregar una tarea
      * 
      * addTask(DateTask task) recibe una tarea y la agrega al HashSet
      * 
@@ -72,7 +72,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
 
     /**
-     * <h1>Mostrar tareas</h1>
+     * Mostrar tareas
      * 
      * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
      * 
@@ -92,7 +92,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
     
     /**
-     * <h1>Mostrar tareas chequeadas</h1>
+     * Mostrar tareas chequeadas
      * 
      * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
      * 
@@ -114,7 +114,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
     
     /**
-     * <h1>Mostrar tareas NOchequeadas</h1>
+     * Mostrar tareas NOchequeadas
      * 
      * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
      * 
@@ -135,7 +135,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
 
     /**
-     * <h1>Marcar como completada una tarea</h1>
+     * Marcar como completada una tarea
      * 
      * checkTask(String name) recibe el nombre de una tarea y cambia 
      * su estado de TODO a COMPLETED. 
@@ -161,7 +161,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
     
     /**
-     * <h1>Eliminar una tarea</h1>
+     * Eliminar una tarea
      * 
      *  deleteTask(String name) recibe el nombre de la tarea a eliminar. 
      *  Para que una tarea pueda ser eliminada su estado tiene que ser COMPLETED
@@ -193,7 +193,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
     
     /**
-     * <h1>Editar nombre de una tarea</h1>
+     * Editar nombre de una tarea
      * 
      * editTaskName(String name,String newName) recibe el nombre de la tarea
      * a modificar y el nuevo nombre que se le quiere asignar validando este ultimo
@@ -205,6 +205,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
      * @return boolean | true tarea modificada con exito | false la tarea no se pudo modificar
      * 
      * @throws EmptyNameTaskException | si el nombre enviado es un String vacio
+     * @throws ElementAlreadyExistException | si el nombre ya existe
      * 
      * @author Vanina Pintos
      */
@@ -231,7 +232,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
 
     /**
-     * <h1>Buscar una tarea</h1>
+     * Buscar una tarea
      * 
      * searchTask(String name) recibe el nombre de la tarea
      * a buscar y si se encuentra dentro del HashSet lo retorna
@@ -258,7 +259,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
 
     /**
-     * <h1>Verificar si las tareas fueron completadas</h1>
+     * Verificar si las tareas fueron completadas
      * 
      *  tasksWereChecked() verifica si todas las tareas existentes 
      *  dentro de la lista fueron completadas
@@ -279,7 +280,7 @@ public class DateList extends List implements IListActions<DateTask>, Serializab
     }
     
     /**
-     * <h1>Cantidad de tareas</h1>
+     * Cantidad de tareas
      * 
      * @return int | cantidad de tareas almacenadas en la coleccion
      * 

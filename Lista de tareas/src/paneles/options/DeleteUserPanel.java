@@ -14,7 +14,7 @@ import user.exceptions.IncorrectPasswordException;
 import visualElements.ButtonImage;
 
 /**
- *
+ * DeleteUserPanel
  * @author sofia
  */
 public class DeleteUserPanel extends javax.swing.JPanel {
@@ -29,8 +29,8 @@ public class DeleteUserPanel extends javax.swing.JPanel {
     
     /**
      * DeleteUserPanel
-     * @param user
-     * @param users 
+     * @param user | user
+     * @param users | users
      */
     public DeleteUserPanel(User user, UsersSystem users) {
         this.user = user;

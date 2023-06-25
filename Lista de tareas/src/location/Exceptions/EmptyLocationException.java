@@ -5,14 +5,14 @@
 package location.Exceptions;
 
 /**
- *
+ * EmptyLocationException
  * @author Sofia Brocardo
  */
 public class EmptyLocationException extends Exception{
 
     /**
-     * <h1>Excepcion de Localizacion Vacia</h1>
-     * @param message 
+     * Excepcion de Localizacion Vacia
+     * @param message | message
      */
     public EmptyLocationException(String message) {
         super("Error: " + message);

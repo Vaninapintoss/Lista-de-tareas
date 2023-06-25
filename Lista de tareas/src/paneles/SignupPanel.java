@@ -28,7 +28,7 @@ import visualElements.ButtonImage;
 import visualElements.VisualSeePassword;
 
 /**
- *
+ * SignupPanel
  * @author sofia
  */
 public class SignupPanel extends javax.swing.JPanel {
@@ -37,9 +37,25 @@ public class SignupPanel extends javax.swing.JPanel {
     /**
      * Creates new form panelSignup
      */
+    
+    /**
+     * seePassword1
+     */
     public static boolean seePassword1;//booleando que determina si se va la contraseña
+    
+    /**
+     * seePassword2
+     */
     public static boolean seePassword2;
+    
+    /**
+     * seePasswordButton1
+     */
     public static VisualSeePassword seePasswordButton1;
+    
+    /**
+     * seePasswordButton2
+     */
     public static VisualSeePassword seePasswordButton2;
     
     /**

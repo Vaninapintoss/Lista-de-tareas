@@ -15,14 +15,16 @@ import userLists.UserLists;
 import userLists.exceptions.CategoryListAlreadyExistException;
 
 /**
- *
+ * TaskListCalendarPanel
  * @author sofia
  */
 public class TaskListCalendarPanel extends javax.swing.JPanel {
 
     private UserLists userLists;
+
     /**
      * Creates new form TaskListCalendar
+     * @param userLists | userLists
      */
     public TaskListCalendarPanel(UserLists userLists) 
     {

@@ -16,7 +16,7 @@ import userLists.UserLists;
 import userLists.exceptions.CategoryListAlreadyExistException;
 
 /**
- *
+ * TaskListTrackPanel
  * @author sofia
  */
 public class TaskListTrackPanel extends javax.swing.JPanel {
@@ -28,7 +28,7 @@ public class TaskListTrackPanel extends javax.swing.JPanel {
     
     /**
      * TaskListTrackPanel
-     * @param userLists 
+     * @param userLists | userLists
      */
     public TaskListTrackPanel(UserLists userLists) {
         this.userLists = userLists;

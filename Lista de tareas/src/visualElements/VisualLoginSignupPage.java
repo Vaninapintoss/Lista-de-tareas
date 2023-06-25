@@ -5,7 +5,7 @@
 package visualElements;
 
 /**
- *
+ * VisualLoginSignupPage
  * @author sofia
  */
 public class VisualLoginSignupPage 
@@ -38,7 +38,7 @@ public class VisualLoginSignupPage
     
     /**
      * ButtonImage
-     * @return 
+     * @return ButtonImage
      */
     public ButtonImage getSignupOn()
     {
@@ -47,7 +47,7 @@ public class VisualLoginSignupPage
     
     /**
      * getSignupOf
-     * @return 
+     * @return ButtonImage
      */
     public ButtonImage getSignupOf()
     {
@@ -56,7 +56,7 @@ public class VisualLoginSignupPage
     
     /**
      * getLoginOn
-     * @return 
+     * @return ButtonImage
      */
     public ButtonImage getLoginOn()
     {
@@ -65,7 +65,7 @@ public class VisualLoginSignupPage
     
     /**
      * getLoginOf
-     * @return 
+     * @return ButtonImage
      */
     public ButtonImage getLoginOf()
     {

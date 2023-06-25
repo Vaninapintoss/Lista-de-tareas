@@ -13,7 +13,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
- *<h1>Clase Location</h1>
+ * Clase Location
  * Almacena la latitud y longitud, junto con el nombre de una localizacion
  * 
  * @author Sofia Brocardo
@@ -26,7 +26,7 @@ public class Location implements Serializable
     
     
     /**
-     * <h1>Constructor vacio</h1>
+     * Constructor vacio
      * 
      * @author Sofia Brocardo
      */
@@ -38,7 +38,7 @@ public class Location implements Serializable
     }
     
     /**
-     * <h1>Funcion que determina si tiene datos</h1>
+     * Funcion que determina si tiene datos
      * 
      * @return boolean | true si esta vacio | false si tiene datos
      * 
@@ -56,7 +56,7 @@ public class Location implements Serializable
     
         
     /**
-     * <h1>Actualizar Localizacion</h1>
+     * Actualizar Localizacion
      * Obtiene las coordenadas y el nombre del lugar de una API
      * 
      * @param city | ciudad, esta se puede especificar con un barrio separado por una coma, ej: barrio,ciudad
@@ -90,7 +90,7 @@ public class Location implements Serializable
     }
     
     /**
-     * <h1>Actualizar datos con JSON</h1>
+     * Actualizar datos con JSON
      * Siempre guarda solo los datos del primer elemento del array
      * 
      * @param jsonArray | JSONArray con los datos de la localizacion
@@ -106,7 +106,7 @@ public class Location implements Serializable
     }
     
     /**
-     * <h1>Obtener Latitud</h1>
+     * Obtener Latitud
      * 
      * @return latitud
      * 
@@ -118,7 +118,7 @@ public class Location implements Serializable
     }
     
     /**
-     * <h1>Obtener Longitud</h1>
+     * Obtener Longitud
      * 
      * @return longitud
      * 
@@ -130,7 +130,7 @@ public class Location implements Serializable
     }
     
     /**
-     * <h1>Obtener nombre</h1>
+     * Obtener nombre
      * 
      * @return nombre de la localizacion
      * 

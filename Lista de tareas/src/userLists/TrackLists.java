@@ -12,7 +12,7 @@ import list.exceptions.EmptyCategoryListException;
 import userLists.exceptions.CategoryListAlreadyExistException;
 
 /**
- * <h1>Clase TrackLists</h1>
+ * Clase TrackLists
  * 
  * Clase que guarda las listas de tareas de traqueo en un HashMap
  * Implementa la interfaz IStorageActions
@@ -23,7 +23,7 @@ public class TrackLists implements IStorageActions<TrackList>{
     private HashMap <String,TrackList> hashMapOfTL;
 
     /**
-     * <h1>Constructor de la clase TrackLists</h1>
+     * Constructor de la clase TrackLists
      * 
      * Crea un HashMap vacio
      * 
@@ -33,7 +33,7 @@ public class TrackLists implements IStorageActions<TrackList>{
     }
     
     /**
-     * <h1>Obtener el hash map</h1>
+     * Obtener el hash map
      * @return HashMap
      */
     public Map<String, TrackList> getHashMap() {
@@ -41,7 +41,7 @@ public class TrackLists implements IStorageActions<TrackList>{
     }
     
     /**
-     * <h1>Obtener cantidad de listas</h1>
+     * Obtener cantidad de listas
      * @return int
      */
     public int howManyLists()
@@ -59,7 +59,7 @@ public class TrackLists implements IStorageActions<TrackList>{
     }
 
     /**
-     * <h1>Obtener una lista</h1>
+     * Obtener una lista
      * @param category | categoria de la lista que se quiere obtener
      * @return DateList 
      */
@@ -68,7 +68,7 @@ public class TrackLists implements IStorageActions<TrackList>{
     }
 
     /**
-     * <h1>Agregar una lista</h1>
+     * Agregar una lista
      * 
      * addList(TrackList list) recibe una lista para agregar al HashMap
      * 
@@ -96,7 +96,7 @@ public class TrackLists implements IStorageActions<TrackList>{
     }
 
     /**
-     * <h1>Mostrar listas</h1>
+     * Mostrar listas
      * 
      * showLists() devuelve en formato String las listas existentes en el HashMap
      * separados por el caracter "_"
@@ -116,7 +116,7 @@ public class TrackLists implements IStorageActions<TrackList>{
     }
 
     /**
-     * <h1>Eliminar lista</h1>
+     * Eliminar lista
      * 
      * deleteList(String category) recibe la categoria de la lista a eliminar
      * 
@@ -140,7 +140,7 @@ public class TrackLists implements IStorageActions<TrackList>{
     }
 
     /**
-     * <h1>Editar categoria de una lista</h1>
+     * Editar categoria de una lista
      * 
      * editListCategory(String category, String newCategory) recibe la categoria de
      * la lista a modificar y la nueva categoria que se le desea asignar
@@ -179,7 +179,7 @@ public class TrackLists implements IStorageActions<TrackList>{
     }
 
     /**
-     * <h1>Buscar una lista</h1>
+     * Buscar una lista
      * 
      * searchList(String category) recibe la categoria de una lista y si existe la retorna
      * 

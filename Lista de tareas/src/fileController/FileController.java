@@ -25,7 +25,7 @@ import list.TrackList;
 import user.User;
 
 /**
- * <h1>Clase controladora de archivos</h1>
+ * Clase controladora de archivos
  *
  * En esta clase se encuentran las funciones necesarias para guardar colecciones
  * en archivos, y pasar informacion de archivos a colecciones
@@ -39,7 +39,7 @@ public class FileController
 {
 
     /**
-     * <h1>Guardar Map en un archivo</h1>
+     * Guardar Map en un archivo
      * Guarda el mapa en un archivo, cuyo nombre es pasado por parametro
      *
      * @param fileName | nombre del archivo
@@ -95,7 +95,7 @@ public class FileController
     }
     
    /**
-    * <h1>Guardar APIKey en un archivo</h1>
+    * Guardar APIKey en un archivo
     * 
     * @param apiKey | api key a guardar
     * 
@@ -138,7 +138,7 @@ public class FileController
     }
    
    /**
-    * <h1>Leer APIKey de un archivo</h1>
+    * Leer APIKey de un archivo
     * 
     * @return String | mensaje con informacion
     */
@@ -191,7 +191,7 @@ public class FileController
     }
     
     /**
-     * <h1>Guardar listas simples en archivos</h1>
+     * Guardar listas simples en archivos
      * 
      * @param fileName | nombre del archivo
      * @param map | coleccion que alamcena las listas
@@ -242,7 +242,7 @@ public class FileController
     }
    
    /**
-     * <h1>Guardar listas con fecha en archivos</h1>
+     * Guardar listas con fecha en archivos
      * 
      * @param fileName | nombre del archivo
      * @param map | coleccion que alamcena las listas
@@ -293,7 +293,7 @@ public class FileController
     }
    
    /**
-     * <h1>Guardar listas de traqueo en archivos</h1>
+     * Guardar listas de traqueo en archivos
      * 
      * @param fileName | nombre del archivo
      * @param map | coleccion que alamcena las listas
@@ -344,11 +344,12 @@ public class FileController
     }
 
     /**
-     * <h1>Guardar Set en un archivo</h1>
+     * Guardar Set en un archivo
      * Guarda la coleccion Set en un archivo, cuyo nombre es pasado por parametro
      *
      * @param fileName | nombre del archivo
      * @param set | Set, su valor debe implementar Serializable
+     * @param <V> | v
      * 
      * @return String | con informacion del proceso, si fue exitoso o si ocurrio algun error
      *
@@ -398,11 +399,12 @@ public class FileController
     }
 
     /**
-     * <h1>Guardar List en un archivo</h1>
+     * Guardar List en un archivo
      * Guarda la coleccion List en un archivo, cuyo nombre es pasado por parametro
      *
      * @param fileName | nombre del archivo
      * @param list | List, su valor debe implementar Serializable
+     * @param <V> | v
      * 
      * @return String | con informacion del proceso, si fue exitoso o si ocurrio algun error
      *
@@ -451,13 +453,15 @@ public class FileController
     
     
     /**
-     * <h1>Leer Map de un archivo</h1>
+     * Leer Map de un archivo
      * Guarda la informacion del archivo en un map
      *
      * @param fileName | nombre del archivo con la info a guardar
      * @param map | mapa donde almacenar la informacion, su valor debe implementar Serializable
      *
      * @return String | con informacion del proceso, si fue exitoso o si ocurrio algun error
+     * 
+     * @throws IOException | IOException
      *
      * @author Sofia Brocardo
      */
@@ -519,7 +523,7 @@ public class FileController
     }
     
     /**
-     * <h1>Leer listas simples del archivo</h1>
+     * Leer listas simples del archivo
      * 
      * @param fileName | nombre del archivo
      * @param map | mapa que recibe la informacion leida
@@ -586,7 +590,7 @@ public class FileController
     }
     
     /**
-     * <h1>Leer listas con fecha del archivo</h1>
+     * Leer listas con fecha del archivo
      * 
      * @param fileName | nombre del archivo
      * @param map | mapa que recibe la informacion leida
@@ -653,7 +657,7 @@ public class FileController
     }
     
     /**
-     * <h1>Leer listas de traqueo del archivo</h1>
+     * Leer listas de traqueo del archivo
      * 
      * @param fileName | nombre del archivo
      * @param map | mapa que recibe la informacion leida
@@ -720,13 +724,16 @@ public class FileController
     }
 
     /**
-     * <h1>Leer Coleccion de un archivo</h1>
+     * Leer Coleccion de un archivo
      * Guarda la informacion del archivo en una Coleccion
      *
+     * @param <V> | v
      * @param fileName | nombre del archivo con la info a guardar
      * @param colection | coleccion donde almacenar la informacion, su valor debe implementar Serializable
      *
      * @return String | con informacion del proceso, si fue exitoso o si ocurrio algun error
+     * 
+     * @throws IOException | error
      *
      * @see Serializable
      *

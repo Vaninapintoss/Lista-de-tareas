@@ -5,14 +5,14 @@
 package user.exceptions;
 
 /**
- *
+ * UserAlreadyExistException
  * @author Vanina Pintos
  */
 public class UserAlreadyExistException extends Exception{
 
     /**
-     * <h1>Excepcion de Usuario ya existente</h1>
-     * @param message 
+     * Excepcion de Usuario ya existente
+     * @param message | message
      */
     public UserAlreadyExistException(String message) {
         super(message);

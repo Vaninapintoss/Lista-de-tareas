@@ -8,7 +8,7 @@ package list.task;
 import java.io.Serializable;
 
 /**
- * <h1>Clase DateTask</h1>
+ * Clase DateTask
  * 
  * Guarda la informacion de una tarea de tipo date (nombre, 
  * fecha de caducidad y estado) 
@@ -24,7 +24,7 @@ public final class DateTask extends Task  implements Serializable{
     private Fecha finalDate;
 
     /**
-     * <h1>Constructor de la clase DateTask</h1>
+     * Constructor de la clase DateTask
      * 
      * Unico constructor de la clase DateTask. 
      * Debe recibir un nombre una fecha de caducidad los cuales
@@ -34,8 +34,7 @@ public final class DateTask extends Task  implements Serializable{
      * @param name - nombre validar antes de pasar por parametro
      * @param date - fecha validar antes de pasar por parametro
      * 
-     * @see Task#validName() 
-     * @see DateTask#createDate(String) 
+     * @see Task#validName(String name) 
      * @see Fecha#validDate(int dia,int mes,int anio)
      * 
      * @author Vanina Pintos
@@ -47,7 +46,7 @@ public final class DateTask extends Task  implements Serializable{
     }
     
     /**
-     * <h1>Obtener status</h1>
+     * Obtener status
      * 
      * @return Status | status actual del objeto
      * 
@@ -58,7 +57,7 @@ public final class DateTask extends Task  implements Serializable{
     }
     
     /**
-     * <h1>Cambiar status</h1>
+     * Cambiar status
      * 
      * cambia el estado
      * 
@@ -72,7 +71,7 @@ public final class DateTask extends Task  implements Serializable{
     } 
     
     /**
-     * <h1>Obtener Fecha de caducidad</h1>
+     * Obtener Fecha de caducidad
      * 
      * @return LocalDate | fecha de caducidad actual del objeto
      * 
@@ -83,7 +82,7 @@ public final class DateTask extends Task  implements Serializable{
     }
     
     /**
-     * <h1>Cambiar fecha de caducidad</h1>
+     * Cambiar fecha de caducidad
      * 
      * setFinalDate(String date) recibe una fecha que debe ser validada 
      * antes de enviarse, para modifica la fecha anterior

@@ -5,14 +5,14 @@
 package user.exceptions;
 
 /**
- *
+ * InvalidPasswordException
  * @author Vanina Pintos
  */
 public class InvalidPasswordException extends Exception
 {
     /**
-     * <h1>Excepcion de Contraseña invalida</h1>
-     * @param message 
+     * Excepcion de Contraseña invalida
+     * @param message | message
      */
     public InvalidPasswordException(String message) {
         super(message);

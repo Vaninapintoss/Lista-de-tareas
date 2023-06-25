@@ -14,7 +14,7 @@ import list.task.SimpleTask;
 import list.task.exceptions.EmptyNameTaskException;
 
 /**
- * <h1>Clase SimpleList</h1>
+ * Clase SimpleList
  * 
  * Guarda tareas de tipo Simple dentro un HashSet
  * Se extiende de la clase List e implementa la interfaz IListActions
@@ -25,7 +25,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     private HashSet <SimpleTask> simpleList;   
 
     /**
-     * <h1>Constructor de la clase SimpleList</h1>
+     * Constructor de la clase SimpleList
      * 
      * Unico constructor de la clase SimpleList
      * Recibe una categoria por parametro que debe ser validada antes de 
@@ -44,7 +44,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     }  
 
     /**
-     * <h1>Agregar una tarea</h1>
+     * Agregar una tarea
      * 
      * addTask(SimpleTask task) recibe una tarea, valida que no exista dentro 
      * del HashSet y la agrega
@@ -74,7 +74,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     
 
     /**
-     * <h1>Mostrar tareas Chequeadas</h1>
+     * Mostrar tareas Chequeadas
      * 
      * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
      * 
@@ -95,7 +95,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     }
     
     /**
-     * <h1>Mostrar tareas NO Chequeadas</h1>
+     * Mostrar tareas NO Chequeadas
      * 
      * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
      * 
@@ -116,7 +116,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     }
     
     /**
-     * <h1>Mostrar todas tareas</h1>
+     * Mostrar todas tareas
      * 
      * String showTasks() devuelve las tareas almacenadas en el HashSet en formato String
      * 
@@ -137,15 +137,13 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     }
 
     /**
-     * <h1>Marcar como completada una tarea</h1>
+     * Marcar como completada una tarea
      * 
      * checkTask(String name) recibe el nombre de una tarea y cambia 
      * su estado de TODO a COMPLETED. 
      * 
      * @param name | nombre de la tarea 
      * 
-     * @return boolean | true la tarea pudo marcarse como completada | false la tarea
-     * no pudo marcarse como completada
      * 
      * @author Vanina Pintos
      */
@@ -162,7 +160,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
    
 
     /**
-     * <h1>Eliminar una tarea</h1>
+     * Eliminar una tarea
      * 
      * deleteElement(String name) recibe el nombre de la tarea a eliminar. 
      * Para que una tarea pueda ser eliminada su estado tiene que ser COMPLETED
@@ -194,7 +192,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     }
 
     /**
-     * <h1>Editar nombre de una tarea</h1>
+     * Editar nombre de una tarea
      * 
      * editNameElement(String name,String newName) recibe el nombre de la tarea
      * a modificar y el nuevo nombre que se le quiere asignar, valida este ultimo y si
@@ -233,7 +231,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     }
 
     /**
-     * <h1>Buscar una tarea</h1>
+     * Buscar una tarea
      * 
      * searchTask(String name) recibe el nombre de la tarea
      * a buscar y si se encuentra dentro del HashSet lo retorna
@@ -261,7 +259,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     }
 
     /**
-     * <h1>Verificar si las tareas fueron completadas</h1>
+     * Verificar si las tareas fueron completadas
      * 
      *  tasksWereChecked() verifica si todas las tareas existentes 
      *  dentro del HashSet fueron completadas
@@ -284,7 +282,7 @@ public class SimpleList extends List implements IListActions<SimpleTask>, Serial
     }
 
     /**
-     * <h1>Cantidad de tareas</h1>
+     * Cantidad de tareas
      * 
      * @return int | cantidad de tareas almacenadas en la coleccion
      * 

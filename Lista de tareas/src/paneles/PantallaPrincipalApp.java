@@ -28,12 +28,33 @@ import weather.Weather;
  */
 public class PantallaPrincipalApp extends javax.swing.JPanel {
     private String APIKEY;
+    
+    /**
+     * noLocationPanel
+     */
     public static NoLocationWeatherPanel noLocationPanel;
+    
+    /**
+     * weatherPanel
+     */
     public static LocationWeatherPanel weatherPanel;
+    
+    /**
+     * user
+     */
     public static User user;
+    
+    /**
+     * userLists
+     */
     private UserLists userLists;
     /**
      * Creates new form PantallaPrincipalApp
+     */
+    /**
+     * PantallaPrincipalApp
+     * @param user | user
+     * @param userLists | userLists
      */
     public PantallaPrincipalApp(User user, UserLists userLists) {
         this.userLists = userLists;
@@ -131,7 +152,7 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
 
     /**
      * contentWeather
-     * @param panel 
+     * @param panel | panel
      */
     public void contentWeather(Component panel)
     {

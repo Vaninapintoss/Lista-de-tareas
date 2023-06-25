@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
- *
+ * ButtonImage
  * @author sofia
  */
 public class ButtonImage 
@@ -21,9 +21,9 @@ public class ButtonImage
     //---------------------------------------------------------------------------------- METODOS
     /**
      * ButtonImage
-     * @param icon
-     * @param pressedIcon
-     * @param rolloverIcon 
+     * @param icon | icon 
+     * @param pressedIcon | pressedIcon
+     * @param rolloverIcon | rolloverIcon
      */
     public ButtonImage(String icon, String pressedIcon, String rolloverIcon)
     {
@@ -34,7 +34,7 @@ public class ButtonImage
     
     /**
      * getIcon
-     * @return 
+     * @return String 
      */
     public String getIcon()
     {
@@ -43,7 +43,7 @@ public class ButtonImage
     
     /**
      * getPressedIcon
-     * @return 
+     * @return String
      */
     public String getPressedIcon()
     {
@@ -52,7 +52,7 @@ public class ButtonImage
     
     /**
      * getRolloverIcon
-     * @return 
+     * @return String
      */
     public String getRolloverIcon()
     {

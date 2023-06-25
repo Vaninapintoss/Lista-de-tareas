@@ -5,7 +5,7 @@
 package visualElements;
 
 /**
- *
+ * VisualSeePassword
  * @author sofia
  */
 public class VisualSeePassword 
@@ -29,7 +29,7 @@ public class VisualSeePassword
     
     /**
      * getSeePassword
-     * @return 
+     * @return ButtonImage
      */
     public ButtonImage getSeePassword()
     {
@@ -38,7 +38,8 @@ public class VisualSeePassword
     
     /**
      * getDontSeePassword
-     * @return 
+     * @return ButtonImage
+     * 
      */
     public ButtonImage getDontSeePassword()
     {

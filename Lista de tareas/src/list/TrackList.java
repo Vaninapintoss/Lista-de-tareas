@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import list.task.TrackTask;
 
 /**
- * <h1>Clase TrackList</h1>
+ * Clase TrackList
  * 
  * Guarda tareas de tipo Track dentro un HashSet
  * Se extiende de la clase List e implementa la interaz IListActions
@@ -21,7 +21,7 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
     private LinkedList <TrackTask> trackList;
 
     /**
-     * <h1>Constructor de la clase TrackList</h1>
+     * Constructor de la clase TrackList
      * 
      * Unico constructor de la clase TrackList
      * Recibe una categoria por parametro que debe ser validada y verificar que no
@@ -40,7 +40,7 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
     }
     
     /**
-     * <h1>Agregar una tarea</h1>
+     * Agregar una tarea
      * 
      * addTask(TrackTask task) recibe una tarea y la agrega al LinkedList
      * 
@@ -56,7 +56,7 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
     }
 
     /**
-     * <h1>Mostrar tareas</h1>
+     * Mostrar tareas
      * 
      * String showTasks() devuelve las tareas almacenadas en el LinkedList en formato String
      * 
@@ -75,7 +75,7 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
     }
 
     /**
-     * <h1>Buscar una tarea</h1>
+     * Buscar una tarea
      * 
      * searchTask(String name) recibe el nombre de la tarea
      * a buscar y si se encuentra dentro del LinkedList la retorna
@@ -100,7 +100,7 @@ public class TrackList extends List implements IListActions<TrackTask>, Serializ
     }
     
     /**
-     * <h1>Cantidad de tareas</h1>
+     * Cantidad de tareas
      * 
      * @return int | cantidad de tareas almacenadas en la coleccion
      * 

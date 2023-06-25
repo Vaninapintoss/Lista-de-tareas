@@ -14,7 +14,7 @@ import APIController.APIController;
 import location.Location;
 
 /**
- * <h1>Clima</h1>
+ * Clima
  * La clase clima tiene los datos de descripcion, icono (para poder usar en interfaz grafica),
  * temperatura, temperatura minima, temperatura maxima, humedad y ubicacion del usuario
  * 
@@ -30,7 +30,7 @@ public class Weather {
     private Location location;
     
     /**
-     * <h1>Constructor vacio</h1>
+     * Constructor vacio
      * Inicializa todo en 0 o en ""
      * 
      * @author Sofia Brocardo
@@ -47,7 +47,7 @@ public class Weather {
     }
     
     /**
-     * <h1>To String</h1>
+     * To String
      * 
      * @return String con los datos del clima
      * 
@@ -65,7 +65,7 @@ public class Weather {
     }
     
     /**
-     * <h1>Obtener la ultima descripcion del clima guardada</h1>
+     * Obtener la ultima descripcion del clima guardada
      * Para alcualizar los valores llamar a la funcion updateWeather
      * 
      * @return String | descripcion del clima
@@ -80,7 +80,7 @@ public class Weather {
     }
     
     /**
-     * <h1>Obtener el ultimo icono guardado</h1>
+     * Obtener el ultimo icono guardado
      * Para alcualizar los valores llamar a la funcion updateWeather
      * 
      * @return String | nombre del icono del clima
@@ -95,7 +95,7 @@ public class Weather {
     }
     
     /**
-     * <h1>Obtener el ultimo nivel de temperatura guardado</h1>
+     * Obtener el ultimo nivel de temperatura guardado
      * Para alcualizar los valores llamar a la funcion updateWeather
      * 
      * @return double | temperatura (Cº)
@@ -110,7 +110,7 @@ public class Weather {
     }
     
     /**
-     * <h1>Obtener el ultimo nivel de temperatura minima guardado</h1>
+     * Obtener el ultimo nivel de temperatura minima guardado
      * Para alcualizar los valores llamar a la funcion updateWeather
      * 
      * @return double | temperatura minima (Cº)
@@ -125,7 +125,7 @@ public class Weather {
     }
     
     /**
-     * <h1>Obtener el ultimo nivel de temperatura maxima guardado</h1>
+     * Obtener el ultimo nivel de temperatura maxima guardado
      * Para alcualizar los valores llamar a la funcion updateWeather
      * 
      * @return double | temperatura maxima (Cº)
@@ -140,7 +140,7 @@ public class Weather {
     }
     
     /**
-     * <h1>Obtener el ultimo nivel de humedad guardado</h1>
+     * Obtener el ultimo nivel de humedad guardado
      * Para alcualizar los valores llamar a la funcion updateWeather
      *
      * @return double | niveles de humedad
@@ -155,7 +155,7 @@ public class Weather {
     }
             
     /**
-     * <h1>Obtener la ultima localizacion guardada</h1>
+     * Obtener la ultima localizacion guardada
      * Para alcualizar los valores llamar a la funcion updateWeather
      * 
      * @return String | localizacion
@@ -171,7 +171,7 @@ public class Weather {
     
     
     /**
-     * <h1>Actualizar el clima</h1> 
+     * Actualizar el clima
      * 
      * Los atributos de la clase clima  se actualizan con la API de OpenWeatherMap
      * 
@@ -206,7 +206,7 @@ public class Weather {
     }
     
     /**
-     * <h1>Actualizar con JSON</h1>
+     * Actualizar con JSON
      * Metodo privado
      * Se actualizan los atributos de la clase Weather con los datos del JSON
      * 

@@ -18,7 +18,7 @@ import userLists.UserLists;
 import userLists.exceptions.UnfinishedTasksException;
 
 /**
- *
+ * SimpleTaskPanel
  * @author sofia
  */
 public class SimpleTaskPanel extends javax.swing.JPanel {
@@ -28,6 +28,8 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form SimpleTaskPanel
+     * @param userLists | userLists
+     * @param category | category
      */
     public SimpleTaskPanel(UserLists userLists, String category) {
         this.userLists = userLists;

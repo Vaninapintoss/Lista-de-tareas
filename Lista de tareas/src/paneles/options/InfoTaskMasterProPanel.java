@@ -5,7 +5,7 @@
 package paneles.options;
 
 /**
- *
+ * InfoTaskMasterProPanel
  * @author sofia
  */
 public class InfoTaskMasterProPanel extends javax.swing.JPanel {

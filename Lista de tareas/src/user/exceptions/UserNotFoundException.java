@@ -5,14 +5,14 @@
 package user.exceptions;
 
 /**
- *
+ * UserNotFoundException
  * @author Vanina Pintos
  */
 public class UserNotFoundException extends Exception{
 
     /**
-     * <h1>Excepcion de Usuario no encontrado</h1>
-     * @param message 
+     * Excepcion de Usuario no encontrado
+     * @param message | message
      */
     public UserNotFoundException(String message) {
         super(message);
