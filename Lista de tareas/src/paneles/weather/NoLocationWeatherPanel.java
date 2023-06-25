@@ -5,7 +5,7 @@
 package paneles.weather;
 
 /**
- *
+ * NoLocationWeatherPanel
  * @author sofia
  */
 public class NoLocationWeatherPanel extends javax.swing.JPanel {

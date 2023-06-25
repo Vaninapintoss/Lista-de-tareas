@@ -7,13 +7,16 @@ import user.User;
 import userLists.UserLists;
 
 /**
- *
+ * SeeUserPanel
  * @author sofia
  */
 public class SeeUserPanel extends javax.swing.JPanel {
 
     /**
+     * SeeUserPanel
      * Creates new form SeeUser
+     * @param user | user
+     * @param userLists | userLists
      */
     public SeeUserPanel(User user, UserLists userLists) {
         initComponents();
@@ -22,8 +25,8 @@ public class SeeUserPanel extends javax.swing.JPanel {
     
     /**
      * updateUserPanel
-     * @param user
-     * @param userLists 
+     * @param user | user
+     * @param userLists | userlists
      */
     public void updateUserPanel(User user, UserLists userLists)
     {

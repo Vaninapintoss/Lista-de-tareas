@@ -13,7 +13,7 @@ import userLists.exceptions.CategoryListAlreadyExistException;
 import userLists.exceptions.UnfinishedTasksException;
 
 /**
- * <h1>Clase DateLists</h1>
+ * Clase DateLists
  * 
  * Clase que guarda las listas de tareas con fecha en un HashMap
  * Implementa la interfaz IStorageActions
@@ -24,7 +24,7 @@ public class DateLists implements IStorageActions<DateList>{
     private HashMap <String,DateList> hashMapOfDL; 
 
     /**
-     * <h1>Constructor de la clase DateLists</h1>
+     * Constructor de la clase DateLists
      * 
      * Crea un HashMap vacio
      * 
@@ -34,7 +34,7 @@ public class DateLists implements IStorageActions<DateList>{
     }
 
     /**
-     * <h1>Obtener el hash map</h1>
+     * Obtener el hash map
      * @return HashMap
      */
     public HashMap<String, DateList> getHashMap() {
@@ -42,7 +42,7 @@ public class DateLists implements IStorageActions<DateList>{
     }
     
     /**
-     * <h1>Obtener cantidad de listas</h1>
+     * Obtener cantidad de listas
      * @return int
      */
     public int howManyLists()
@@ -60,7 +60,7 @@ public class DateLists implements IStorageActions<DateList>{
     }
 
     /**
-     * <h1>Obtener una lista</h1>
+     * Obtener una lista
      * @param category | categoria de la lista que se quiere obtener
      * @return DateList 
      */
@@ -69,7 +69,7 @@ public class DateLists implements IStorageActions<DateList>{
     }
 
     /**
-     * <h1>Agregar una lista</h1>
+     * Agregar una lista
      * 
      * addList(DateList list) recibe una lista para agregar al HashMap
      * 
@@ -97,7 +97,7 @@ public class DateLists implements IStorageActions<DateList>{
     }
 
     /**
-     * <h1>Mostrar listas</h1>
+     * Mostrar listas
      * 
      * showLists() devuelve en formato String las listas existentes en el HashMap
      * separados por el caracter "_"
@@ -117,7 +117,7 @@ public class DateLists implements IStorageActions<DateList>{
     }
 
     /**
-     * <h1>Eliminar lista</h1>
+     * Eliminar lista
      * 
      * deleteList(String category) recibe la categoria de la lista a eliminar
      * 
@@ -149,7 +149,7 @@ public class DateLists implements IStorageActions<DateList>{
         return deleted;    }
 
     /**
-     * <h1>Editar categoria de una lista</h1>
+     * Editar categoria de una lista
      * 
      * editListCategory(String category, String newCategory) recibe la categoria de
      * la lista a modificar y la nueva categoria que se le desea asignar
@@ -187,7 +187,7 @@ public class DateLists implements IStorageActions<DateList>{
         return edited;    }
 
     /**
-     * <h1>Buscar una lista</h1>
+     * Buscar una lista
      * 
      * searchList(String category) recibe la categoria de una lista y si existe la retorna
      * 

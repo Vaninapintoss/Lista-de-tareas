@@ -9,7 +9,7 @@ import java.io.Serializable;
 import list.exceptions.EmptyCategoryListException;
 
 /**
- * <h1>Clase List</h1>
+ * Clase List
  * 
  * Clase abstracta padre de las clases SimpleList, DateList y TrackList
  * Guarda la informacion de la categoria de la lista
@@ -23,14 +23,14 @@ public abstract class List  implements Serializable{
     private String category;
 
     /**
-     * <h1>Constructor de la clase List</h1>
+     * Constructor de la clase List
      * 
      * Unico constructor de la clase List, recibe una categoria 
      * que debe ser validada antes de ser enviada
      *  
      * @param category - categoria validar antes de enviar
      * 
-     * @see List#validCategory(String); 
+     * @see List#validCategory(String)
      * 
      * @author Vanina Pintos
      */
@@ -39,7 +39,7 @@ public abstract class List  implements Serializable{
     }
     
     /**
-     * <h1>Obtener categoria</h1>
+     * Obtener categoria
      * 
      * @return String | categoria actual del objeto
      * 
@@ -50,7 +50,7 @@ public abstract class List  implements Serializable{
     }
     
     /**
-     * <h1>Cambiar categoria</h1>
+     * Cambiar categoria
      * 
      * (String category) recibe una categoria y valida de que no se trate de un 
      * string vacio para modificar la categoria anterior
@@ -77,7 +77,7 @@ public abstract class List  implements Serializable{
     }
     
     /**
-     * <h1>Validar categoria</h1>
+     * Validar categoria
      * 
      * validCategory(String category) recibe una categoria para validar de que no 
      * se trate de un string vacio
@@ -103,7 +103,7 @@ public abstract class List  implements Serializable{
     }
     
     /**
-     * <h1>Validar categoria del objeto</h1>
+     * Validar categoria del objeto
      * 
      * validThisCategory() valida la contraseña actual del objeto List
      * 

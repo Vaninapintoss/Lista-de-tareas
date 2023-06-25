@@ -9,7 +9,7 @@ import userLists.exceptions.CategoryListAlreadyExistException;
 import userLists.exceptions.UnfinishedTasksException;
 
 /**
- * <h1>Interfaz IStorageActions</h1>
+ * Interfaz IStorageActions
  * 
  * Interfaz con acciones de manipulacion de listas de tareas
  * 
@@ -20,7 +20,7 @@ import userLists.exceptions.UnfinishedTasksException;
 public interface IStorageActions<List> {
     
     /**
-     * <h1>Agregar una lista</h1>
+     * gregar una lista
      * 
      * addList(List list) recibe una lista para agregar a una coleccion
      * 
@@ -36,7 +36,7 @@ public interface IStorageActions<List> {
     boolean addList(List list) throws CategoryListAlreadyExistException;
     
     /**
-     * <h1>Mostrar listas</h1>
+     * Mostrar listas
      * 
      * showLists() devuelve en formato String las listas existentes
      * 
@@ -47,7 +47,7 @@ public interface IStorageActions<List> {
     String showLists();
     
     /**
-     * <h1>Eliminar lista</h1>
+     * Eliminar lista
      * 
      * deleteList(String category) recibe la categoria de la lista a eliminar
      * 
@@ -63,7 +63,7 @@ public interface IStorageActions<List> {
     boolean deleteList(String category) throws UnfinishedTasksException;
     
     /**
-     * <h1>Editar categoria de una lista</h1>
+     * Editar categoria de una lista
      * 
      * editListCategory(String category, String newCategory) recibe la categoria de
      * la lista a modificar y la nueva categoria que se le desea asignar, la valida y 
@@ -84,7 +84,7 @@ public interface IStorageActions<List> {
     boolean editListCategory(String category, String newCategory)throws EmptyCategoryListException, CategoryListAlreadyExistException;
     
     /**
-     * <h1>Buscar una lista</h1>
+     * Buscar una lista
      * 
      * searchList(String category) recibe la categoria de una lista, valida la 
      * que se le encia por parametro no sea una categoria vacia y si existe la retorna

@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /**
- *<h1>Clase ShowSimpleList</h1>
+ *Clase ShowSimpleList
  * 
  * Almacena en un array list los datos de una lista simple (nombre)
  * con orden alfabetico para una mejor visualizacion
@@ -20,7 +20,7 @@ public class ViewSimpleList {
     private ArrayList <String> simpleList; 
 
     /**
-     * <h1>Unico constrcutor de la clase ViewSimpleList</h1>
+     * Unico constrcutor de la clase ViewSimpleList
      * 
      * Crea un array list vacio
      * 
@@ -31,13 +31,12 @@ public class ViewSimpleList {
     }
     
     /**
-     * <h1>Ordenar alfabeticamente el array list</h1>
+     * Ordenar alfabeticamente el array list
      * 
      * orderAlphabetically(String string) recibe un string comprimido que 
      * contiene todos los datos de una lista simple, los separa y los ordena 
      * alfabeticamente. 
      * 
-     * @note 
      * espera recibir el to string de la clase list.SimpleList
      * 
      * @param string | string comprimido con los datos de la lista simple
@@ -50,7 +49,7 @@ public class ViewSimpleList {
     }
     
     /**
-     * <h1>Separar datos comprimidos en un String</h1>
+     * Separar datos comprimidos en un String
      * 
      * separateStringData(String string) recibe un string con los datos comprimidos de 
      * la lista, los separa y los almacena dento del array list

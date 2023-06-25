@@ -17,14 +17,14 @@ import user.exceptions.InvalidEmailException;
 import user.exceptions.InvalidPasswordException;
 
 /**
- * <h1>Clase User</h1>
+ * Clase User
  * Guarda la informacion escencial del usuario 
  * como su email, contraseña y localizacion 
  * 
  * <b>Note:</b>
  * su contraseña y localizacion pueden ser modificados
  * 
- * @author Vanina Pintos & Sofia Brocardo
+ * @author Vanina Pintos y Sofia Brocardo
  */
     public class User implements Serializable {
     private String email;//email debe contener un @, y un .
@@ -32,7 +32,7 @@ import user.exceptions.InvalidPasswordException;
     private Location location;//ubicacion actual del usuario
     
     /**
-     * <h1>Constructor de la clase User</h1>
+     * Constructor de la clase User
      * 
      * Usar este constructor si:
      * Su localizacion no es necesaria a la hora de crear el usuario
@@ -41,8 +41,8 @@ import user.exceptions.InvalidPasswordException;
      * @param email - validar antes de pasar por parametro
      * @param password - validar antes de pasar por parametro
      * 
-     * @see User#validEmail(String) 
-     * @see User#validPassword()
+     * @see User#validEmail(String email) 
+     * @see User#validPassword(String password)
      * 
      * @author Vanina Pintos
      */
@@ -54,7 +54,7 @@ import user.exceptions.InvalidPasswordException;
     }
     
     /**
-     * <h1>Constructor completo de la clase User</h1>
+     * Constructor completo de la clase User
      * 
      * Debe recibir un email ya validado, una contraseña y localizacion ya validada
      * 
@@ -67,8 +67,8 @@ import user.exceptions.InvalidPasswordException;
      * @param password | validar antes de pasar por parametro
      * @param location | localizacion actual del usuario
      * 
-     * @see User#validEmail() 
-     * @see User#validPassword()
+     * @see User#validEmail(String email) 
+     * @see User#validPassword(String password)
      * 
      * @author Vanina Pintos
      */
@@ -80,7 +80,7 @@ import user.exceptions.InvalidPasswordException;
     }
     
     /**
-     * <h1>Validar contraseña del objeto</h1>
+     * Validar contraseña del objeto
      * validThisPassword() valida la contraseña actual del objeto User
      * (debe contener al menos 8 caracteres, 1 letra y 1 numero)
      * 
@@ -97,7 +97,7 @@ import user.exceptions.InvalidPasswordException;
     }
 
     /**
-     * <h1>Validar contraseña</h1>
+     * Validar contraseña
      * validPassword(String password) valida si el String pasado por parametro 
      * es una contraseña valida (debe contener al menos 8 caracteres, 1 letra y 1 numero)
      * 
@@ -130,7 +130,7 @@ import user.exceptions.InvalidPasswordException;
     }
     
     /**
-     * <h1>Validar Email del objeto</h1>
+     * Validar Email del objeto
      * validThisEmail() valida el email actual del objeto User
      * (debe contener un @ y un .)
      * 
@@ -147,7 +147,7 @@ import user.exceptions.InvalidPasswordException;
     }
     
     /**
-     * <h1>Validar Email</h1>
+     * Validar Email
      * validEmail(String email) valida si el String pasado por parametro 
      * es un email valido (debe contener un @ y un .)
      * 
@@ -185,7 +185,7 @@ import user.exceptions.InvalidPasswordException;
     }
     
     /**
-     * <h1>Obtener Email</h1>
+     * Obtener Email
      * 
      * @return String | email actual del objeto
      * 
@@ -197,7 +197,7 @@ import user.exceptions.InvalidPasswordException;
 
     
     /**
-     * <h1>Cambiar Contraseña</h1>
+     * Cambiar Contraseña
      * 
      * setPassword(String oldPassword, String newPassword) recibe por parametros
      * la contraseña antigua y la nueva, para modificarla de manera segura
@@ -233,7 +233,7 @@ import user.exceptions.InvalidPasswordException;
     }
 
     /**
-     * <h1>Obtener Localizacion</h1>
+     * Obtener Localizacion
      * 
      * @return Location | ultima localizacion guardada
      *                    si retorna un String vacio ("") significa que nunca se seteo una localizacion
@@ -245,14 +245,14 @@ import user.exceptions.InvalidPasswordException;
     }
 
     /**
-     * <h1>Modificar Localizacion</h1>
+     * Modificar Localizacion
      * 
      * @param city | ciudad, esta se puede especificar con un barrio separado por una coma, ej: barrio,ciudad
      * @param state_province | estado o provincia
      * @param country | pais
      * 
-     * @throws IOException
-     * @throws InvalidLocationException 
+     * @throws IOException | IOException
+     * @throws InvalidLocationException | InvalidLocationException
      * 
      * @see Location#updateLocation(java.lang.String, java.lang.String, java.lang.String) 
      * 
@@ -277,7 +277,8 @@ import user.exceptions.InvalidPasswordException;
     }
     
     /**
-     * <h1>Verificar Contraseña</h1>
+     * 
+     * Verificar Contraseña
      * 
      * Verifica que la contraseña pasada por parametro coincida con la contraseña actual
      * 
@@ -300,7 +301,7 @@ import user.exceptions.InvalidPasswordException;
     /**
      * Verifica que el objeto sea igual
      * 
-     * @param obj
+     * @param obj | obj
      * 
      * @return boolean | true si son iguales |false si no son iguales
      * 

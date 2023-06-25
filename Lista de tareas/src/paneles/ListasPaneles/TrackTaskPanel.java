@@ -18,7 +18,7 @@ import userLists.UserLists;
 
 
 /**
- *
+ * TrackTaskPanel
  * @author sofia
  */
 public class TrackTaskPanel extends javax.swing.JPanel {
@@ -30,10 +30,11 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     private int min;
     private int hour;
     private Timer timer;
-
     
     /**
      * Creates new form TrackTaskPanel
+     * @param userLists | userLists
+     * @param category  | category
      */
     public TrackTaskPanel(UserLists userLists, String category) {
         sec = 0;

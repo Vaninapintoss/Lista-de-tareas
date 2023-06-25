@@ -10,7 +10,7 @@ import java.time.format.DateTimeParseException;
 import list.task.exceptions.DatePastException;
 
 /**
- * <h1>Clase Fecha</h1>
+ * Clase Fecha
  * 
  * Clase que guarda la informacion de una determinada fecha,
  * dia, mes y anio.
@@ -23,13 +23,13 @@ public class Fecha implements Serializable{
     private int anio;
     
     /**
-     * <h1>Constructor de la clase Fecha</h1>
+     * Constructor de la clase Fecha
      * 
      * Unico contstructor de la clase Fecha
      * Debe recibir un dia, mes y anio que deben ser validados antes de 
      * ser enviados
      * 
-     * @see Fecha#validDate(int dia,int mes,int anio);
+     * @see Fecha#validDate(int dia,int mes,int anio)
      * 
      * @param dia | dia validar antes de enviar
      * @param mes | mes validar antes de enviar
@@ -43,7 +43,7 @@ public class Fecha implements Serializable{
     
     
     /**
-     * <h1>String de fecha</h1>
+     * String de fecha
      * 
      * Devuelve la fecha en formato String
      * 
@@ -55,7 +55,7 @@ public class Fecha implements Serializable{
     }
     
     /**
-     * <h1>Validacion de fecha</h1>
+     * Validacion de fecha
      * 
      * validDate(int dia,int mes,int anio) recibe los datos de una fecha
      * para validar que corresponda a una fecha valida y que a su vez esta 
@@ -68,6 +68,7 @@ public class Fecha implements Serializable{
      * @return boolean | true al fecha es valida | fale fecha invalida
      * 
      * @throws DatePastException | si la fecha ingresada es posterior a la actual
+     * @throws DateTimeParseException | si la fecha es invalida
      */
     public static boolean validDate(int dia,int mes,int anio) throws DatePastException,DateTimeParseException{
         boolean valid = false;

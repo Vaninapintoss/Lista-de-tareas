@@ -27,7 +27,7 @@ import userLists.exceptions.UnfinishedTasksException;
 
 
 /**
- * <h1>Clase UserLists</h1>
+ * Clase UserLists
  * 
  * Clase envoltorio que contiene la lista de listas de tareas y sus funciones
  * 
@@ -42,7 +42,7 @@ public class UserLists {
     private TrackLists trackLists;
 
     /**
-     * <h1>Constructor de la clase UserLists</h1>
+     * Constructor de la clase UserLists
      * 
      * Recibe un email del usuario que ingresa para poder 
      * tener acceso a sus archivos y crea las listas vacias
@@ -59,7 +59,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Obtener listas simples<h/1>
+     * Obtener listas simples
      * 
      * @return SimpleLists
      * 
@@ -70,7 +70,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Obtener listas con fecha<h/1>
+     * Obtener listas con fecha
      * 
      * @return DateLists
      * 
@@ -81,7 +81,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Obtener listas de traqueo<h/1>
+     * Obtener listas de traqueo
      * 
      * @return TrackLists
      */
@@ -93,7 +93,7 @@ public class UserLists {
     //--------------------------------------------------------------------------SIMPLE
     
     /**
-     * <h1>Agregar una lista simple<h/1>
+     * Agregar una lista simple
      * 
      * @param category | categoria de nueva lista
      * 
@@ -107,7 +107,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Borrar una lista simple<h/1>
+     * Borrar una lista simple
      * 
      * @param category | categoria de la lista a borrar
      * 
@@ -120,7 +120,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Editar la categoria de una lista simple<h/1>
+     * Editar la categoria de una lista simple
      * 
      * @param category | categoria de la lista a editar
      * 
@@ -136,7 +136,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Agregar una tarea simple<h/1>
+     * Agregar una tarea simple
      * 
      * @param category | categoria de la lista en la que se quiere agregar la tarea
      * @param taskName | nombre de la tarea a agregar
@@ -151,7 +151,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Marcar como completada una tarea simple<h/1>
+     * Marcar como completada una tarea simple
      * 
      * @param category | categoria de la lista donde se encuentra la tarea
      * @param taskName | nombre de la tarea a marcar como completada
@@ -162,7 +162,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Eliminar una tarea simple<h/1>
+     * Eliminar una tarea simple
      * 
      * @param category | categoria de la lista en la que se encuentra la tarea
      * @param taskName | mombre de la tarea a eliminar
@@ -175,7 +175,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Editar el nombre de una tarea simple<h/1>
+     * Editar el nombre de una tarea simple
      * 
      * @param category | categoria de la lista en donde se encuentra la tarea 
      * @param taskName | nombre de la tarea a modificar
@@ -190,7 +190,7 @@ public class UserLists {
     } 
     
     /**
-     * <h1>Cantidad de tareas de una lista simple<h/1>
+     * Cantidad de tareas de una lista simple
      * 
      * @param category | categoria de la lista de la cual se desea saber
      * cuantas tareas almacena
@@ -201,7 +201,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Guardar lista de listas de tareas simples<h/1>
+     * Guardar lista de listas de tareas simples
      * @return String | informacion de guardado
      */
     public String saveSimpleInFile(){
@@ -209,7 +209,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Guardar lista de listas de tareas simples<h/1>
+     * Guardar lista de listas de tareas simples
      * @return String | informacion de guardado
      * @throws IOException | si hubo algun error al tratar de leer el archivo
      */
@@ -220,7 +220,7 @@ public class UserLists {
     //--------------------------------------------------------------------------DATE
     
     /**
-     * <h1>Agregar una lista con fecha<h/1>
+     * Agregar una lista con fecha
      * 
      * @param category | categoria de nueva lista
      * 
@@ -235,7 +235,7 @@ public class UserLists {
     
     
      /**
-     * <h1>Borrar una lista con fecha<h/1>
+     * Borrar una lista con fecha
      * 
      * @param category | categoria de la lista a borrar
      * 
@@ -248,7 +248,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Editar la categoria de una lista con fecha<h/1>
+     * Editar la categoria de una lista con fecha
      * 
      * @param category | categoria de la lista a editar
      * 
@@ -264,10 +264,11 @@ public class UserLists {
     }
     
     /**
-     * <h1>Agregar una tarea con fecha<h/1>
+     * Agregar una tarea con fecha
      * 
      * @param category | categoria de la lista en la que se quiere agregar la tarea
      * @param taskName | nombre de la tarea a agregar
+     * @param date | date
      * 
      * @throws ElementAlreadyExistException | si la tarea ya existe dentro de la lista
      */
@@ -279,7 +280,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Marcar como completada una tarea con fecha<h/1>
+     * Marcar como completada una tarea con fecha
      * 
      * @param category | categoria de la lista donde se encuentra la tarea
      * @param taskName | nombre de la tarea a marcar como completada
@@ -290,7 +291,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Eliminar una tarea con fecha<h/1>
+     * Eliminar una tarea con fecha
      * 
      * @param category | categoria de la lista en la que se encuentra la tarea
      * @param taskName | mombre de la tarea a eliminar
@@ -303,7 +304,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Editar el nombre de una tarea con fecha<h/1>
+     * Editar el nombre de una tarea con fecha
      * 
      * @param category | categoria de la lista en donde se encuentra la tarea 
      * @param taskName | nombre de la tarea a modificar
@@ -318,7 +319,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Cantidad de tareas de una lista con fecha<h/1>
+     * Cantidad de tareas de una lista con fecha
      * 
      * @param category | categoria de la lista de la cual se desea saber
      * cuantas tareas almacena
@@ -329,7 +330,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Guardar lista de listas de tareas con fecha<h/1>
+     * Guardar lista de listas de tareas con fecha
      * @return String | informacion de guardado
      */
     public String saveDateInFile(){
@@ -337,7 +338,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Guardar lista de listas de tareas con fecha<h/1>
+     * Guardar lista de listas de tareas con fecha
      * @return String | informacion de guardado
      * @throws IOException | si hubo algun error al tratar de leer el archivo
      */
@@ -348,7 +349,7 @@ public class UserLists {
     //--------------------------------------------------------------------------TRACK
     
     /**
-     * <h1>Agregar una lista de traqueo<h/1>
+     * Agregar una lista de traqueo
      * 
      * @param category | categoria de nueva lista
      * @throws CategoryListAlreadyExistException | si la lista ya existe 
@@ -361,7 +362,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Borrar una lista de traqueo<h/1>
+     * Borrar una lista de traqueo
      * 
      * @param category | categoria de la lista a borrar
      */
@@ -372,7 +373,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Editar la categoria de una lista con traqueo<h/1>
+     * Editar la categoria de una lista con traqueo
      * 
      * @param category | categoria de la lista a editar
      * 
@@ -388,10 +389,11 @@ public class UserLists {
     }
     
     /**
-     * <h1>Agregar una tarea de traqueo<h/1>
+     * Agregar una tarea de traqueo
      * 
      * @param category | categoria de la lista en la que se quiere agregar la tarea
      * @param taskName | nombre de la tarea a agregar
+     * @param duration | duration
      * 
      */
     public void addTaskToTrackList(String category, String taskName,String duration){
@@ -402,7 +404,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Cantidad de tareas de una lista de traqueo<h/1>
+     * Cantidad de tareas de una lista de traqueo
      * 
      * @param category | categoria de la lista de la cual se desea saber
      * cuantas tareas almacena
@@ -415,7 +417,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Guardar lista de listas de tareas de traqueo<h/1>
+     * Guardar lista de listas de tareas de traqueo
      * @return String | informacion de guardado
      */
     public String saveTrackInFile(){
@@ -423,7 +425,7 @@ public class UserLists {
     }
     
     /**
-     * <h1>Guardar lista de listas de tareas simples de traqueo<h/1>
+     * Guardar lista de listas de tareas simples de traqueo
      * @return String | informacion de guardado
      * @throws IOException | si hubo algun error al tratar de leer el archivo
      */

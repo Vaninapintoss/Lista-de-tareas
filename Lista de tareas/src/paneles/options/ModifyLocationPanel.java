@@ -11,7 +11,7 @@ import user.User;
 import user.UsersSystem;
 
 /**
- *
+ * ModifyLocationPanel
  * @author sofia
  */
 public class ModifyLocationPanel extends javax.swing.JPanel {
@@ -22,6 +22,12 @@ public class ModifyLocationPanel extends javax.swing.JPanel {
     private String city, state, country;
     private User user;
     private UsersSystem users;
+    
+    /**
+     * ModifyLocationPanel
+     * @param user | user
+     * @param users  | users
+     */
     public ModifyLocationPanel(User user, UsersSystem users) {
         this.user = user;
         this.users = users;

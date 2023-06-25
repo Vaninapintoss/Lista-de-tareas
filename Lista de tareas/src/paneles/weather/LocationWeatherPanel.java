@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 import weather.Weather;
 
 /**
- *
+ * LocationWeatherPanel
  * @author sofia
  */
 public class LocationWeatherPanel extends javax.swing.JPanel {
@@ -20,6 +20,11 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
      */
     
     private Weather weather;
+    
+    /**
+     * LocationWeatherPanel
+     * @param weather  | weather
+     */
     public LocationWeatherPanel(Weather weather) {
         this.weather = weather;
         DecimalFormat df = new DecimalFormat("#.0");
@@ -38,6 +43,9 @@ public class LocationWeatherPanel extends javax.swing.JPanel {
         
     }
     
+    /**
+     * updateIcon
+     */
     private void updateIcon()
     {
         String icon = "/imagenes/Clima/iconos/"+weather.getIcon()+".gif";

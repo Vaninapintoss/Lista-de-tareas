@@ -7,7 +7,7 @@ package list;
 import list.exceptions.ElementAlreadyExistException;
 
 /**
- * <h1>Interfaz IListActions</h1>
+ * Interfaz IListActions
  * 
  * Interfaz de acciones de listas 
  * 
@@ -18,7 +18,7 @@ import list.exceptions.ElementAlreadyExistException;
 public interface IListActions <Task>{
     
     /**
-     * <h1>Agregar una tarea</h1>
+     * Agregar una tarea
      * 
      * addTask(Task e) recibe una tarea y la agrega a la lista
      * 
@@ -33,7 +33,7 @@ public interface IListActions <Task>{
     boolean addTask(Task task) throws ElementAlreadyExistException;
     
     /**
-     * <h1>Mostrar tareas</h1>
+     * Mostrar tareas
      * 
      *  showTasks() muestra las tareas existentes dentro de la lista
      * 
@@ -44,7 +44,7 @@ public interface IListActions <Task>{
     String showTasks();
     
     /**
-     * <h1>Buscar tarea</h1>
+     * Buscar tarea
      * 
      * searchTask(String name) recibe el nombre de una tarea
      * y la busca dentro de la lista
@@ -58,7 +58,7 @@ public interface IListActions <Task>{
     Task searchTask(String name);
     
     /**
-     * <h1>Cantidad de tareas</h1>
+     * Cantidad de tareas
      * 
      * @return int | cantidad de tareas almacenadas en la coleccion
      * 

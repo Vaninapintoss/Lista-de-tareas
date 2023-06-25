@@ -5,15 +5,15 @@
 package userLists.exceptions;
 
 /**
- *
+ * CategoryListAlreadyExistException
  * @author Vanina Pintos
  */
 public class CategoryListAlreadyExistException extends Exception{
 
     /**
-     * <h1>Excepcion de categoria ya existente</h1>
+     * Excepcion de categoria ya existente
      * 
-     * @param message 
+     * @param message | message
      */
     public CategoryListAlreadyExistException(String message) {
         super("Error: " + message);

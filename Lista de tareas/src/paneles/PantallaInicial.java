@@ -18,7 +18,7 @@ import visualElements.VisualLoginSignupPage;
  */
 
 /**
- *
+ * PantallaInicial
  * @author sofia
  */
 public class PantallaInicial extends javax.swing.JFrame {
@@ -184,7 +184,7 @@ public class PantallaInicial extends javax.swing.JFrame {
 
     /**
      * abrirApp
-     * @param user 
+     * @param user | user
      */
     public static void abrirApp(User user)
     {
@@ -303,21 +303,46 @@ public class PantallaInicial extends javax.swing.JFrame {
         content.repaint();
     }
   
+    /**
+     * login
+     */
     public static LoginPanel login;
+    /**
+     * signup
+     */
     public static SignupPanel signup;
     //para saber cuando se activan los botones de login y signup
+    /**
+     * loginOn
+     */
     public static boolean loginOn;
+    /**
+     * signupOn
+     */
     public static boolean signupOn;
     //botones de signUp y logIn
+    /**
+     * VisualLoginSignupPage
+     */
     public static VisualLoginSignupPage visualButtons;
     
+    /**
+     * PantallaInicial
+     */
     public static PantallaInicial homeScreen;
+    
+    /**
+     * AppUserLists
+     */
     public static AppUserLists app;
     
-    //usuarios
+    /**
+     * sistemaUsuarios
+     */
     public static UsersSystem sistemaUsuarios;
     
     /**
+     * main
      * @param args the command line arguments
      */
     public static void main(String args[]) 

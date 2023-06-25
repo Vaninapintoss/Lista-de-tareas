@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 
 /**
- *<h1>Clase ViewDateList</h1>
+ *Clase ViewDateList
  * 
  * Almacena en un array list los datos de una lista date (nombre y fecha)
  * con orden por fecha para una mejor visualizacion
@@ -21,7 +21,7 @@ public class ViewDateList {
     private ArrayList <String> dateList;
 
     /**
-     * <h1>Unico constrcutor de la clase ViewDateList</h1>
+     * Unico constrcutor de la clase ViewDateList
      * 
      * Crea un array list vacio
      * 
@@ -32,13 +32,12 @@ public class ViewDateList {
     }   
     
     /**
-     * <h1>Ordenar alfabeticamente el array list</h1>
+     * Ordenar alfabeticamente el array list
      * 
      * orderAlphabetically(String string) recibe un string comprimido que 
      * contiene todos los datos de una lista simple, los separa y los ordena 
      * alfabeticamente. 
-     * 
-     * @note 
+     *  
      * espera recibir el to string de la clase list.DateList
      * 
      * @param string | string comprimido con los datos de la lista date
@@ -51,7 +50,7 @@ public class ViewDateList {
     }
     
     /**
-     * <h1>Separar datos comprimidos en un String</h1>
+     * Separar datos comprimidos en un String
      * 
      * separateStringData(String string) recibe un string con los datos comprimidos de 
      * la lista, los separa y los almacena dento del array list

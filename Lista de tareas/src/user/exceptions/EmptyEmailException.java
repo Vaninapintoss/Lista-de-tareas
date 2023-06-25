@@ -4,15 +4,15 @@
  */
 package user.exceptions;
 
-/**
- *
+/** 
+ * EmptyEmailException
  * @author Vanina Pintos
  */
 public class EmptyEmailException extends Exception{
 
     /**
-     * <h1>Excepcion de Email vacio</h1>
-     * @param message 
+     * Excepcion de Email vacio
+     * @param message | message
      */
     public EmptyEmailException(String message) {
         super(message);

@@ -9,7 +9,7 @@ import java.io.Serializable;
 import list.task.exceptions.EmptyNameTaskException;
 
 /**
- * <h1>Clase Task</h1>
+ * Clase Task
  * 
  * Clase abstracta padre de los tipos de tareas como SimpleTask, DateTask y TrackTask. 
  * Guarda la informacion del nombre de la tarea
@@ -23,14 +23,14 @@ public abstract class Task implements Serializable{
     String name;
 
     /**
-     * <h1>Constructor de la clase Task</h1>
+     * Constructor de la clase Task
      * 
      * Unico constructor de la clase Task
      * Debe recibir un nombre que debe ser validado antes de ser enviado
      * 
      * @param name - validar antes de pasar por parametro
      * 
-     * @see Task#validName() 
+     * @see Task#validName(String name) 
      * 
      * @author Vanina Pintos
      */
@@ -39,7 +39,7 @@ public abstract class Task implements Serializable{
     }
     
     /**
-     * <h1>Validar nombre del objeto</h1>
+     * Validar nombre del objeto 
      * 
      * validThisName() valida el nombre actual del objeto Task
      * (debe no estar vacia)
@@ -55,7 +55,7 @@ public abstract class Task implements Serializable{
     }
     
     /**
-     * <h1>Validar nombre</h1> 
+     * Validar nombre
      * 
      * validName(String name) valida si el String pasado por parametro 
      * es un nombre valido (no debe estar vacio)
@@ -81,7 +81,7 @@ public abstract class Task implements Serializable{
     }
     
     /**
-     * <h1>Obtener nombre</h1>
+     * Obtener nombre
      * 
      * @return String | nombre actual del objeto
      * 
@@ -92,7 +92,7 @@ public abstract class Task implements Serializable{
     } 
     
     /**
-     * <h1>Cambiar nombre</h1>
+     * Cambiar nombre
      * 
      * setName(String name) recibe por parametro el nuevo nombre y lo valida
      * antes de hacer la modificacion

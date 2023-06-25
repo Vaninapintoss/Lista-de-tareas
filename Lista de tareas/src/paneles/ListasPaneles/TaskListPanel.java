@@ -15,7 +15,7 @@ import userLists.UserLists;
 import userLists.exceptions.CategoryListAlreadyExistException;
 
 /**
- *
+ * TaskListPanel
  * @author sofia
  */
 public class TaskListPanel extends javax.swing.JPanel {
@@ -29,7 +29,7 @@ public class TaskListPanel extends javax.swing.JPanel {
     
     /**
      * TaskListPanel
-     * @param userLists 
+     * @param userLists | userLists
      */
     public TaskListPanel(UserLists userLists) {
         this.userLists = userLists;

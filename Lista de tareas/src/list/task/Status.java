@@ -8,7 +8,7 @@ package list.task;
 import java.io.Serializable;
 
 /**
- *<h1>Enum Status</h1>
+ *Enum Status
  * 
  * Clase para determinar el estado de una tarea.
  * Puede ser TODO o COMPLETED
@@ -16,6 +16,13 @@ import java.io.Serializable;
  * @author Vanina Pintos
  */
 public enum Status  implements Serializable{
+    /**
+     * TODO
+     */
     TODO,
+    
+    /**
+     * COMPLETED
+     */
     COMPLETED
 }

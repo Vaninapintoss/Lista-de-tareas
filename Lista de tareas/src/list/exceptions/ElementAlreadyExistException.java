@@ -5,15 +5,15 @@
 package list.exceptions;
 
 /**
- *
+ * ElementAlreadyExistException
  * @author Vanina Pintos
  */
 public class ElementAlreadyExistException extends Exception{
 
     /**
-     * <h1>Excepcion de elemento repetido</h1>
+     * Excepcion de elemento repetido
      * 
-     * @param message 
+     * @param message | message
      */
     public ElementAlreadyExistException(String message) {
         super("Error: " + message);

@@ -26,15 +26,21 @@ import userLists.UserLists;
 import userLists.exceptions.UnfinishedTasksException;
 
 /**
- *
+ * CalendarTaskPanel
  * @author sofia
  */
 public class CalendarTaskPanel extends javax.swing.JPanel {
 
     private UserLists userLists;
     private String category;
+
     /**
+     * CalendarTaskPanel
+     * 
      * Creates new form CalendarTaskPanel
+     * 
+     * @param userLists | userLists
+     * @param category |  category
      */
     public CalendarTaskPanel(UserLists userLists, String category) {
         

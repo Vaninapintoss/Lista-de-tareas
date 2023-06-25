@@ -6,27 +6,23 @@
 package list.task;
 
 import java.io.Serializable;
-import java.time.Duration;
-import java.time.LocalDateTime;
 
 import java.util.Objects;
 
 /**
- * <h1>Clase TrackTask</h1>
+ * Clase TrackTask
  * 
  * Guarda la informacion de una tarea de tipo track (nombre y duracion) 
  * Se extiende de la clase Task
+ * Sus atributos no pueden ser modificados
  * 
- * <b>Note:</b>
- * sus atributos no pueden ser modificados
- * 
- * @author Vanina Pintos & Sofia Brocardo
+ * @author Vanina Pintos y Sofia Brocardo
  */
 public class TrackTask extends Task implements Serializable{ 
     private String duration; 
 
     /**
-     * <h1>Constructor de la clase TrackTask</h1>
+     * Constructor de la clase TrackTask
      * 
      * Unico constructor de la clase DateTask
      * Debe recibir un nombre que debe ser validado antes de enviarse
@@ -35,7 +31,7 @@ public class TrackTask extends Task implements Serializable{
      * @param name - validar antes de pasar por parametro
      * @param duration - duracion 
      * 
-     * @see Task#validName() 
+     * @see Task#validName(String name) 
      * 
      * @author Vanina Pintos
      */
@@ -45,7 +41,7 @@ public class TrackTask extends Task implements Serializable{
     }
   
     /**
-     * <h1>Obtener tiempo de duracion</h1>
+     * Obtener tiempo de duracion
      * 
      * @return Duration | duracion de la tarea
      * 
@@ -58,7 +54,7 @@ public class TrackTask extends Task implements Serializable{
     /**
      * Verifica que el objeto sea igual (segun nombre)
      * 
-     * @param obj
+     * @param obj | obj
      * 
      * @return boolean | true si son iguales |false si no son iguales 
      * 

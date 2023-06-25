@@ -5,14 +5,14 @@
 package list.task.exceptions;
 
 /**
- *
+ * EmptyNameTaskException
  * @author Vanina Pintos
  */
 public class EmptyNameTaskException extends Exception{
 
     /**
-     * <h1>Excepcion nombre vacio</h1>
-     * @param message 
+     * Excepcion nombre vacio
+     * @param message | message
      */
     public EmptyNameTaskException(String message) {
         super("Error : " + message);

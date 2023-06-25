@@ -5,14 +5,14 @@
 package user.exceptions;
 
 /**
- *
+ * EmptyPasswordException
  * @author Vanina Pintos
  */
 public class EmptyPasswordException extends Exception{
 
     /**
-     * <h1>Excepcion de Contraseña Vacia</h1>
-     * @param message 
+     * Excepcion de Contraseña Vacia
+     * @param message | message
      */
     public EmptyPasswordException(String message) {
         super(message);
