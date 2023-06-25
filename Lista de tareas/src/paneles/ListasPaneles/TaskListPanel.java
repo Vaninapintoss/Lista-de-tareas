@@ -79,7 +79,7 @@ public class TaskListPanel extends javax.swing.JPanel {
         });
         add(buttonGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
 
-        titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/tituloListaTraqueo.png"))); // NOI18N
+        titleTaskList.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listas/tituloListaSimpleGeneral.png"))); // NOI18N
         add(titleTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
 
         infoNewList.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
