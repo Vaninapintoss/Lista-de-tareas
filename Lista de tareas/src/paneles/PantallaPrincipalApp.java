@@ -4,9 +4,12 @@
  */
 package paneles;
 
+import APIController.APIController;
+import fileController.FileController;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import location.Exceptions.EmptyLocationException;
 import org.json.JSONException;
 import paneles.ListasPaneles.TaskListCalendarPanel;
@@ -24,7 +27,7 @@ import weather.Weather;
  * @author sofia
  */
 public class PantallaPrincipalApp extends javax.swing.JPanel {
-    private final String APIKEY = "";
+    private String APIKEY;
     public static NoLocationWeatherPanel noLocationPanel;
     public static LocationWeatherPanel weatherPanel;
     public static User user;
@@ -35,9 +38,13 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
     public PantallaPrincipalApp(User user, UserLists userLists) {
         this.userLists = userLists;
         this.user = user;
+        APIKEY = FileController.readAPIKeyInFile();
+        
         initComponents();
-        text_errorFaltaApyKey.setVisible(false);
+        
+        noApyKeyPanel.setVisible(false);
         updateWeather();
+        
     }
     
     public void updateWeather()
@@ -86,11 +93,17 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
             
             weatherPanelnoLocation();
             
-            if(APIKEY.isEmpty())
-            {
-                //muestro pantalla para ingresar apikey
-                text_errorFaltaApyKey.setVisible(true);
-            }
+            
+        }
+        
+        if(APIKEY.isEmpty())
+        {
+            //muestro pantalla para ingresar apikey
+            noApyKeyPanel.setVisible(true);
+        }
+        else
+        {
+            noApyKeyPanel.setVisible(false);
         }
     }
     
@@ -128,14 +141,47 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        noApyKeyPanel = new javax.swing.JPanel();
+        text_errorFaltaApyKey = new javax.swing.JLabel();
+        text_apyKey = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        apyKeyInvalida = new javax.swing.JLabel();
         contentWeather = new javax.swing.JPanel();
         buttonTaskList = new javax.swing.JButton();
         buttonCalendarList = new javax.swing.JButton();
         buttonTrakingList = new javax.swing.JButton();
-        text_errorFaltaApyKey = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(195, 225, 203));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        noApyKeyPanel.setBackground(new java.awt.Color(195, 225, 203));
+        noApyKeyPanel.setOpaque(false);
+        noApyKeyPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        text_errorFaltaApyKey.setForeground(new java.awt.Color(255, 51, 51));
+        text_errorFaltaApyKey.setText("Falta ApyKey");
+        noApyKeyPanel.add(text_errorFaltaApyKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 0, 80, 30));
+
+        text_apyKey.setBackground(new java.awt.Color(227, 246, 246));
+        text_apyKey.setForeground(new java.awt.Color(204, 204, 204));
+        text_apyKey.setText("Ingresar ApiKey");
+        text_apyKey.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        noApyKeyPanel.add(text_apyKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 0, 160, 30));
+
+        jButton1.setBackground(new java.awt.Color(204, 255, 153));
+        jButton1.setForeground(new java.awt.Color(204, 204, 204));
+        jButton1.setText("Ingresar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        noApyKeyPanel.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, 30));
+
+        apyKeyInvalida.setForeground(new java.awt.Color(255, 51, 51));
+        noApyKeyPanel.add(apyKeyInvalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 0, 280, 30));
+
+        add(noApyKeyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 660, 70));
 
         contentWeather.setBackground(new java.awt.Color(255, 204, 204));
         contentWeather.setMaximumSize(new java.awt.Dimension(660, 170));
@@ -196,10 +242,6 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
             }
         });
         add(buttonTrakingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
-
-        text_errorFaltaApyKey.setForeground(new java.awt.Color(255, 51, 51));
-        text_errorFaltaApyKey.setText("Falta ApyKey");
-        add(text_errorFaltaApyKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 218, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCalendarListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalendarListActionPerformed
@@ -217,12 +259,46 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         app.replaceScreen(new TaskListTrackPanel(userLists));
     }//GEN-LAST:event_buttonTrakingListActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String prueba = "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid="+text_apyKey.getText();
+        
+        try
+        {
+            //intento hacer una llamada con esa api
+            APIController.getInfo(prueba);
+            
+            APIKEY = text_apyKey.getText();
+            
+            //guardo la apiKEY en un archivo
+            FileController.saveAPIKeyInFile(APIKEY);
+            updateWeather();
+            noApyKeyPanel.setVisible(false);           
+        }
+        catch(MalformedURLException ex)
+        {
+            
+        } 
+        catch (IOException ex) 
+        {
+            
+        }
+        catch(RuntimeException ex)
+        {
+            apyKeyInvalida.setText("API key invalida");
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apyKeyInvalida;
     private javax.swing.JButton buttonCalendarList;
     private javax.swing.JButton buttonTaskList;
     private javax.swing.JButton buttonTrakingList;
     private javax.swing.JPanel contentWeather;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JPanel noApyKeyPanel;
+    private javax.swing.JTextField text_apyKey;
     private javax.swing.JLabel text_errorFaltaApyKey;
     // End of variables declaration//GEN-END:variables
 }

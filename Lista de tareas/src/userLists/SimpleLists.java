@@ -5,6 +5,7 @@
 package userLists;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import list.SimpleList;
 import list.exceptions.EmptyCategoryListException;
@@ -30,6 +31,24 @@ public class SimpleLists implements IStorageActions<SimpleList>{
      */
     public SimpleLists() {
         hashMapOfSL = new HashMap<>();
+    }
+    
+    /**
+     * <h1>Obtener cantidad de listas</h1>
+     * @return int
+     */
+    public int howManyLists()
+    {
+        int number = 0;
+        
+        Iterator it = hashMapOfSL.entrySet().iterator();
+        while(it.hasNext())
+        {
+             it.next();
+             number++;
+        }    
+        
+        return number;
     }
     
     /**

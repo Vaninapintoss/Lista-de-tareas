@@ -11,7 +11,6 @@ import static fileController.FileController.saveDateListsInFile;
 import static fileController.FileController.saveSimpleListsInFile;
 import static fileController.FileController.saveTrackListsInFile;
 import java.io.IOException;
-import java.time.Duration;
 import list.DateList;
 import list.SimpleList;
 import list.TrackList;
@@ -198,7 +197,7 @@ public class UserLists {
      * @return int | cantidad de tareas existentes en la lista
      */
     public int howManyTasksSimpleList(String category){
-        return simpleLists.getListaSimple(category).howManyTasks();
+        return simpleLists.howManyLists();
     }
     
     /**
@@ -326,7 +325,7 @@ public class UserLists {
      * @return int | cantidad de tareas existentes en la lista
      */
     public int howManyTasksDateList(String category){
-        return dateLists.getDateList(category).howManyTasks();
+        return dateLists.howManyLists();
     }
     
     /**
@@ -409,8 +408,10 @@ public class UserLists {
      * cuantas tareas almacena
      * @return int | cantidad de tareas existentes en la lista
      */
-    public int howManyTasksTrackList(String category){
-        return trackLists.getTrackList(category).howManyTasks();
+    public int howManyTasksTrackList(String category)
+    {
+        
+        return trackLists.howManyLists();
     }
     
     /**

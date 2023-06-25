@@ -4,10 +4,11 @@
  */
 package fileController;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -18,8 +19,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.Collection;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import list.DateList;
 import list.SimpleList;
 import list.TrackList;
@@ -93,6 +92,91 @@ public class FileController
         }
 
         return saved;
+    }
+    
+     
+   public static String saveAPIKeyInFile(String apiKey)
+    {
+        String saved = "Se guardo correctamente";
+        FileOutputStream fileOutputStream = null;
+        DataOutputStream dataOutputStream = null;
+
+        try
+        {
+            fileOutputStream = new FileOutputStream("apiKey.dat");
+            dataOutputStream = new DataOutputStream(fileOutputStream);
+
+            dataOutputStream.writeUTF(apiKey);
+        }
+        catch(IOException ex)
+        {
+            saved = "ERROR EN EL ARCHIVO";
+        }
+        finally {
+            try
+            {
+                if (fileOutputStream != null)
+                    fileOutputStream.close();
+
+                if (dataOutputStream != null)
+                    dataOutputStream.close();
+    
+            }
+            catch (IOException exIO)
+            {
+                saved = exIO.getMessage()+" Problemas al cerrar el archivo";
+            }
+        }
+
+        return saved;
+    }
+   
+    public static String readAPIKeyInFile()
+    {
+        String key = "";
+        FileInputStream fileInputStream = null;
+        DataInputStream dataInputStream = null;
+        
+        try
+        {
+            File file = new File("apiKey.dat");//verifico que exista el archivo
+            if(!file.exists())
+            {
+                //si el archivo no existe lo creo
+                file.createNewFile();
+                key = "";
+            }
+            else
+            {
+                fileInputStream = new FileInputStream("apiKey.dat");
+                dataInputStream = new DataInputStream(fileInputStream);
+
+                key = dataInputStream.readUTF();
+            }
+            
+            
+        }
+        catch(IOException ex)
+        {
+            key = "";
+        }
+        finally {
+            try
+            {
+                if (fileInputStream != null)
+                    fileInputStream.close();
+
+                if (dataInputStream != null)
+                    dataInputStream.close();
+    
+            }
+            catch (IOException exIO)
+            {
+                key = "";
+            }
+        }
+
+        return key;
     }
     
    public static String saveSimpleListsInFile(String fileName, Map<String, SimpleList> map)

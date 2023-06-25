@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package paneles.options;
-
 import user.User;
+import userLists.UserLists;
 
 /**
  *
@@ -15,12 +15,12 @@ public class SeeUserPanel extends javax.swing.JPanel {
     /**
      * Creates new form SeeUser
      */
-    public SeeUserPanel(User user) {
+    public SeeUserPanel(User user, UserLists userLists) {
         initComponents();
-        updateUserPanel(user);
+        updateUserPanel(user,userLists);
     }
     
-    public void updateUserPanel(User user)
+    public void updateUserPanel(User user, UserLists userLists)
     {
         email_user.setText(user.getEmail());
         
@@ -28,6 +28,11 @@ public class SeeUserPanel extends javax.swing.JPanel {
             location_user.setText("el usuario no tiene una localizacion cargada");
         else
             location_user.setText(user.getLocation().getName());
+        
+        //actualizo la cantidad de listas
+        text_taskListN.setText(text_taskListN.getText()+ userLists.getSimpleLists().howManyLists());
+        text_dateListN.setText(text_dateListN.getText()+ userLists.getDateLists().howManyLists());
+        text_trackListN.setText(text_trackListN.getText()+ userLists.getTrackLists().howManyLists());
     }
 
     /**
@@ -41,7 +46,7 @@ public class SeeUserPanel extends javax.swing.JPanel {
 
         jLabel2 = new javax.swing.JLabel();
         text_email = new javax.swing.JLabel();
-        text_calendarListN = new javax.swing.JLabel();
+        text_dateListN = new javax.swing.JLabel();
         text_trackListN = new javax.swing.JLabel();
         text_taskListN = new javax.swing.JLabel();
         text_location = new javax.swing.JLabel();
@@ -61,10 +66,10 @@ public class SeeUserPanel extends javax.swing.JPanel {
         text_email.setText("Email: ");
         add(text_email, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, -1, -1));
 
-        text_calendarListN.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        text_calendarListN.setForeground(new java.awt.Color(195, 225, 203));
-        text_calendarListN.setText("Listas con fecha: ");
-        add(text_calendarListN, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, 30));
+        text_dateListN.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        text_dateListN.setForeground(new java.awt.Color(195, 225, 203));
+        text_dateListN.setText("Listas con fecha: ");
+        add(text_dateListN, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 320, -1, 30));
 
         text_trackListN.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         text_trackListN.setForeground(new java.awt.Color(195, 225, 203));
@@ -101,7 +106,7 @@ public class SeeUserPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel location_user;
-    private javax.swing.JLabel text_calendarListN;
+    private javax.swing.JLabel text_dateListN;
     private javax.swing.JLabel text_email;
     private javax.swing.JLabel text_location;
     private javax.swing.JLabel text_taskListN;

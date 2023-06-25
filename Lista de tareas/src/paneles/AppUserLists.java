@@ -371,7 +371,7 @@ public class AppUserLists extends javax.swing.JFrame {
     
     private void buttonSeeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeeUserActionPerformed
         //cambio la pantalla a ver usuario
-        seeUserPanel = new SeeUserPanel(user);
+        seeUserPanel = new SeeUserPanel(user,userLists);
         
         seeUserPanel.setSize(700, 450);
         seeUserPanel.setLocation(0, 0);

@@ -5,6 +5,7 @@
 package userLists;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import list.DateList;
 import list.exceptions.EmptyCategoryListException;
@@ -38,6 +39,24 @@ public class DateLists implements IStorageActions<DateList>{
      */
     public HashMap<String, DateList> getHashMap() {
         return hashMapOfDL;
+    }
+    
+    /**
+     * <h1>Obtener cantidad de listas</h1>
+     * @return int
+     */
+    public int howManyLists()
+    {
+        int number = 0;
+        
+        Iterator it = hashMapOfDL.entrySet().iterator();
+        while(it.hasNext())
+        {
+             it.next();
+             number++;
+        }    
+        
+        return number;
     }
 
     /**
