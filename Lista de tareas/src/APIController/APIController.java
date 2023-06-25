@@ -17,6 +17,13 @@ import java.util.Scanner;
  */
 public class APIController 
 {
+    /**
+     * Constructor default
+     */
+    public APIController()
+    {
+        
+    }
     
     /**
      * Obtener Informacion

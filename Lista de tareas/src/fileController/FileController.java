@@ -39,6 +39,14 @@ public class FileController
 {
 
     /**
+     * Constructor default
+     */
+    public FileController()
+    {
+        
+    }
+    
+    /**
      * Guardar Map en un archivo
      * Guarda el mapa en un archivo, cuyo nombre es pasado por parametro
      *
