@@ -19,6 +19,12 @@ public class ButtonImage
     private String rolloverIcon;
     
     //---------------------------------------------------------------------------------- METODOS
+    /**
+     * ButtonImage
+     * @param icon
+     * @param pressedIcon
+     * @param rolloverIcon 
+     */
     public ButtonImage(String icon, String pressedIcon, String rolloverIcon)
     {
         this.icon = icon;
@@ -26,16 +32,28 @@ public class ButtonImage
         this.rolloverIcon = rolloverIcon;
     }
     
+    /**
+     * getIcon
+     * @return 
+     */
     public String getIcon()
     {
         return icon;
     }
     
+    /**
+     * getPressedIcon
+     * @return 
+     */
     public String getPressedIcon()
     {
         return pressedIcon;
     }
     
+    /**
+     * getRolloverIcon
+     * @return 
+     */
     public String getRolloverIcon()
     {
         return rolloverIcon;

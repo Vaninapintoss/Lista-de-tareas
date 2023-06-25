@@ -96,7 +96,11 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonGoBack.setVisible(false);
     }
     
-    
+    /**
+     * contentScreen
+     * @param panel | panel
+     * @param panelContent | panel content
+     */
     public void contentScreen(Component panel, JPanel panelContent)
     {
         panelContent.removeAll();
@@ -326,22 +330,37 @@ public class AppUserLists extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * botonMinimizarActionPerformed
+     * @param evt | evt
+     */
     private void botonMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMinimizarActionPerformed
         this.setState(Frame.ICONIFIED);
     }//GEN-LAST:event_botonMinimizarActionPerformed
 
+    /**
+     * botonCerrarActionPerformed
+     * @param evt | evt
+     */
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
         
         PantallaInicial.closeApp();
         this.dispose();
     }//GEN-LAST:event_botonCerrarActionPerformed
 
+    /**
+     * closeApp
+     */
     public void closeApp()
     {
         homeScreen.goBackToLogin();
         this.dispose();    
     }
     
+    /**
+     * ButtonMenuActionPerformed
+     * @param evt | evt
+     */
     private void ButtonMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMenuActionPerformed
         //si el boton esta encendido se tiene que apagar
         if(menuOn)
@@ -356,6 +375,10 @@ public class AppUserLists extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ButtonMenuActionPerformed
 
+    /**
+     * public void replaceScreen(JPanel panel)
+     * @param panel 
+     */
     public void replaceScreen(JPanel panel)
     {
         panel.setSize(700, 450);
@@ -364,12 +387,19 @@ public class AppUserLists extends javax.swing.JFrame {
         contentScreen(panel,contentScreenApp); 
     }
     
+    /**
+     * showGoBackButton
+     */
     public void showGoBackButton()
     {
         buttonGoBack.setVisible(true);
         seeMenu(false);
     }
     
+    /**
+     * buttonSeeUserActionPerformed
+     * @param evt 
+     */
     private void buttonSeeUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeeUserActionPerformed
         //cambio la pantalla a ver usuario
         seeUserPanel = new SeeUserPanel(user,userLists);
@@ -385,6 +415,10 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonGoBack.setVisible(true);
     }//GEN-LAST:event_buttonSeeUserActionPerformed
 
+    /**
+     * buttonChangePasswordActionPerformed
+     * @param evt 
+     */
     private void buttonChangePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangePasswordActionPerformed
         //cambio la pantalla a modificar contraseña
         modifyPasswordPanel = new ModifyPasswordPanel(user, users);
@@ -400,6 +434,10 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonGoBack.setVisible(true);
     }//GEN-LAST:event_buttonChangePasswordActionPerformed
 
+    /**
+     * buttonChangeLocationActionPerformed
+     * @param evt 
+     */
     private void buttonChangeLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonChangeLocationActionPerformed
         //cambio la pantalla a modificar la localizacion
         modifyLocationPanel = new ModifyLocationPanel(user, users);
@@ -415,6 +453,10 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonGoBack.setVisible(true);
     }//GEN-LAST:event_buttonChangeLocationActionPerformed
 
+    /**
+     * buttonDeleteUserActionPerformed
+     * @param evt 
+     */
     private void buttonDeleteUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteUserActionPerformed
         //cambio la pantalla a eliminar usuario
         deleteUserPanel = new DeleteUserPanel(user, users);
@@ -430,6 +472,10 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonGoBack.setVisible(true);
     }//GEN-LAST:event_buttonDeleteUserActionPerformed
 
+    /**
+     * buttonInfoActionPerformed
+     * @param evt 
+     */
     private void buttonInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonInfoActionPerformed
         //cambio la pantalla a eliminar usuario
         infoAppPanel = new InfoTaskMasterProPanel();
@@ -445,6 +491,10 @@ public class AppUserLists extends javax.swing.JFrame {
         buttonGoBack.setVisible(true);
     }//GEN-LAST:event_buttonInfoActionPerformed
 
+    /**
+     * buttonGoBackActionPerformed
+     * @param evt 
+     */
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
         //actualizo el clima
         homescreenApp.updateWeather();
@@ -455,6 +505,10 @@ public class AppUserLists extends javax.swing.JFrame {
             buttonGoBack.setVisible(false);
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
+    /**
+     * seeMenu
+     * @param see 
+     */
     public void seeMenu(boolean see)
     {
         contentMenu.setVisible(see);

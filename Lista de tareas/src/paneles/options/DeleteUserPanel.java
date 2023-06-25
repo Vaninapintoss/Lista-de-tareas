@@ -27,6 +27,11 @@ public class DeleteUserPanel extends javax.swing.JPanel {
     private User user;
     private UsersSystem users;
     
+    /**
+     * DeleteUserPanel
+     * @param user
+     * @param users 
+     */
     public DeleteUserPanel(User user, UsersSystem users) {
         this.user = user;
         this.users = users;
@@ -169,6 +174,9 @@ public class DeleteUserPanel extends javax.swing.JPanel {
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * resetInfoText
+     */
     private void resetInfoText()
     {
         text_errorPassword.setText("");
@@ -177,7 +185,10 @@ public class DeleteUserPanel extends javax.swing.JPanel {
         text_succesful.setText("");
     }
     
-    
+    /**
+     * buttonDeleteActionPerformed
+     * @param evt 
+     */
     private void buttonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteActionPerformed
 
         resetInfoText();
@@ -218,7 +229,11 @@ public class DeleteUserPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buttonDeleteActionPerformed
 
-    
+    /**
+     * changeJButton
+     * @param boton
+     * @param imagenBoton 
+     */
     private void changeJButton(JButton boton, ButtonImage imagenBoton)
     {
         String icon = imagenBoton.getIcon();
@@ -231,6 +246,10 @@ public class DeleteUserPanel extends javax.swing.JPanel {
         boton.setRolloverIcon(new ImageIcon(getClass().getResource(rolloverIcon)));
     }
     
+    /**
+     * buttonAgreeActionPerformed
+     * @param evt 
+     */
     private void buttonAgreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgreeActionPerformed
         if(agree)
         {

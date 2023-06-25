@@ -256,6 +256,9 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         add(buttonGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     */
     private ActionListener timeAction = new ActionListener()
     {
         @Override
@@ -283,17 +286,28 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         }      
     };
     
+    /**
+     * updateTimer
+     */
     private void updateTimer()
     {
         String text = (hour<=9?"0":"")+hour+":"+(min<=9?"0":"")+min+":"+(sec<=9?"0":"")+sec;
         text_timer.setText(text);
     }
     
+    /**
+     * buttonDeleteListActionPerformed
+     * @param evt 
+     */
     private void buttonDeleteListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteListActionPerformed
         confirmDeletePanel.setVisible(true);
         text_newTask.setVisible(false);
     }//GEN-LAST:event_buttonDeleteListActionPerformed
 
+    /**
+     * buttonPlayActionPerformed
+     * @param evt 
+     */
     private void buttonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPlayActionPerformed
         text_error.setText("");//reinicio el texto de s
         
@@ -322,6 +336,10 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_buttonPlayActionPerformed
 
+    /**
+     * buttonStopActionPerformed
+     * @param evt 
+     */
     private void buttonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonStopActionPerformed
         // TODO add your handling code here:
         if(play)
@@ -359,6 +377,10 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buttonStopActionPerformed
 
+    /**
+     * buttonGoBackActionPerformed
+     * @param evt 
+     */
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
         //vuelve a la pantalla principal
         if(!play)
@@ -368,6 +390,10 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
+    /**
+     * text_newTaskKeyTyped
+     * @param evt 
+     */
     private void text_newTaskKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_newTaskKeyTyped
         char validate = evt.getKeyChar();
         char delete = 127;
@@ -384,10 +410,18 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_text_newTaskKeyTyped
 
+    /**
+     * text_newTaskActionPerformed
+     * @param evt 
+     */
     private void text_newTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_newTaskActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_text_newTaskActionPerformed
 
+    /**
+     * jButton1ActionPerformed
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         if(!play)
         {
@@ -398,6 +432,10 @@ public class TrackTaskPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * jButton2ActionPerformed
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         confirmDeletePanel.setVisible(false);
         text_newTask.setVisible(true);
@@ -405,6 +443,9 @@ public class TrackTaskPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     //agrego las listas guardadas en el archivo en la lista de botones
+    /**
+     * updateTrackList
+     */
     public void updateTrackList()
     {
         JButton text;

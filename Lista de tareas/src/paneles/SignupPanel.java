@@ -42,6 +42,9 @@ public class SignupPanel extends javax.swing.JPanel {
     public static VisualSeePassword seePasswordButton1;
     public static VisualSeePassword seePasswordButton2;
     
+    /**
+     * SignupPanel
+     */
     public SignupPanel() 
     {
         seePasswordButton1 = new VisualSeePassword();
@@ -213,6 +216,10 @@ public class SignupPanel extends javax.swing.JPanel {
         add(buttonSeePassword2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * ButtonSignupActionPerformed
+     * @param evt 
+     */
     private void ButtonSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonSignupActionPerformed
         //vacio los textos de error
         errorText_email.setText("");
@@ -298,11 +305,21 @@ public class SignupPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_ButtonSignupActionPerformed
 
+    /**
+     * text_emailActionPerformed
+     * @param evt 
+     */
     private void text_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_emailActionPerformed
         // TODO add your handling code here:
 
     }//GEN-LAST:event_text_emailActionPerformed
 
+    /**
+     * changeSeePassword
+     * @param passwordField
+     * @param seePassword
+     * @param button 
+     */
     private void changeSeePassword(JPasswordField passwordField, boolean seePassword, JButton button)
     {
         if(seePassword)
@@ -321,6 +338,10 @@ public class SignupPanel extends javax.swing.JPanel {
         }
     }
     
+    /**
+     * buttonSeePasswordActionPerformed
+     * @param evt 
+     */
     private void buttonSeePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeePasswordActionPerformed
         if(seePassword1)
         {
@@ -333,6 +354,10 @@ public class SignupPanel extends javax.swing.JPanel {
         changeSeePassword(text_password, seePassword1,buttonSeePassword);
     }//GEN-LAST:event_buttonSeePasswordActionPerformed
 
+    /**
+     * buttonSeePassword2ActionPerformed
+     * @param evt 
+     */
     private void buttonSeePassword2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSeePassword2ActionPerformed
         // TODO add your handling code here:
         if(seePassword2)
@@ -346,6 +371,11 @@ public class SignupPanel extends javax.swing.JPanel {
         changeSeePassword(text_passwordConfirmed, seePassword2,buttonSeePassword2);
     }//GEN-LAST:event_buttonSeePassword2ActionPerformed
 
+    /**
+     * changeJButton
+     * @param boton
+     * @param imagenBoton 
+     */
     private void changeJButton(JButton boton, ButtonImage imagenBoton)
     {
         String icon = imagenBoton.getIcon();

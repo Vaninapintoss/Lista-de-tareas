@@ -94,7 +94,13 @@ public class FileController
         return saved;
     }
     
-     
+   /**
+    * <h1>Guardar APIKey en un archivo</h1>
+    * 
+    * @param apiKey | api key a guardar
+    * 
+    * @return String | mensaje con informacion
+    */
    public static String saveAPIKeyInFile(String apiKey)
     {
         String saved = "Se guardo correctamente";
@@ -131,6 +137,11 @@ public class FileController
         return saved;
     }
    
+   /**
+    * <h1>Leer APIKey de un archivo</h1>
+    * 
+    * @return String | mensaje con informacion
+    */
     public static String readAPIKeyInFile()
     {
         String key = "";
@@ -179,6 +190,14 @@ public class FileController
         return key;
     }
     
+    /**
+     * <h1>Guardar listas simples en archivos</h1>
+     * 
+     * @param fileName | nombre del archivo
+     * @param map | coleccion que alamcena las listas
+     * 
+     * @return String | mensaje con informacion
+     */
    public static String saveSimpleListsInFile(String fileName, Map<String, SimpleList> map)
     {
         String saved = "Se guardo correctamente";
@@ -222,6 +241,14 @@ public class FileController
         return saved;
     }
    
+   /**
+     * <h1>Guardar listas con fecha en archivos</h1>
+     * 
+     * @param fileName | nombre del archivo
+     * @param map | coleccion que alamcena las listas
+     * 
+     * @return String | mensaje con informacion
+     */
    public static String saveDateListsInFile(String fileName, Map<String, DateList> map)
     {
         String saved = "Se guardo correctamente";
@@ -265,6 +292,14 @@ public class FileController
         return saved;
     }
    
+   /**
+     * <h1>Guardar listas de traqueo en archivos</h1>
+     * 
+     * @param fileName | nombre del archivo
+     * @param map | coleccion que alamcena las listas
+     * 
+     * @return String | mensaje con informacion
+     */
    public static String saveTrackListsInFile(String fileName, Map<String, TrackList> map)
     {
         String saved = "Se guardo correctamente";
@@ -483,6 +518,16 @@ public class FileController
         return readed;
     }
     
+    /**
+     * <h1>Leer listas simples del archivo</h1>
+     * 
+     * @param fileName | nombre del archivo
+     * @param map | mapa que recibe la informacion leida
+     * 
+     * @return String | mensaje con informacion
+     * 
+     * @throws IOException | si hubo algun error con el archivo
+     */
     public static String readSimpleListsFromFile(String fileName, Map<String,SimpleList> map) throws IOException
     {
         String readed = "Extraccion exitosa";
@@ -540,6 +585,16 @@ public class FileController
         return readed;
     }
     
+    /**
+     * <h1>Leer listas con fecha del archivo</h1>
+     * 
+     * @param fileName | nombre del archivo
+     * @param map | mapa que recibe la informacion leida
+     * 
+     * @return String | mensaje con informacion
+     * 
+     * @throws IOException | si hubo algun error con el archivo
+     */
     public static String readDateListsFromFile(String fileName, Map<String,DateList> map) throws IOException
     {
         String readed = "Extraccion exitosa";
@@ -597,6 +652,16 @@ public class FileController
         return readed;
     }
     
+    /**
+     * <h1>Leer listas de traqueo del archivo</h1>
+     * 
+     * @param fileName | nombre del archivo
+     * @param map | mapa que recibe la informacion leida
+     * 
+     * @return String | mensaje con informacion
+     * 
+     * @throws IOException | si hubo algun error con el archivo
+     */
     public static String readTrackListsFromFile(String fileName, Map<String,TrackList> map) throws IOException
     {
         String readed = "Extraccion exitosa";

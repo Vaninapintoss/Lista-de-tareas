@@ -17,6 +17,9 @@ public class VisualLoginSignupPage
     private ButtonImage loginOf;
     
     //---------------------------------------------------------------------------------- METODOS
+    /**
+     * VisualLoginSignupPage
+     */
     public VisualLoginSignupPage ()
     {
         signupOn = new ButtonImage("/imagenes/BotonesLogIn/BotonSignUp.png",
@@ -33,21 +36,37 @@ public class VisualLoginSignupPage
                            "/imagenes/BotonesLogIn/BotonLoginMouseOver.png");
     }
     
+    /**
+     * ButtonImage
+     * @return 
+     */
     public ButtonImage getSignupOn()
     {
         return signupOn;
     }
     
+    /**
+     * getSignupOf
+     * @return 
+     */
     public ButtonImage getSignupOf()
     {
         return signupOf;
     }
     
+    /**
+     * getLoginOn
+     * @return 
+     */
     public ButtonImage getLoginOn()
     {
         return loginOn;
     }
     
+    /**
+     * getLoginOf
+     * @return 
+     */
     public ButtonImage getLoginOf()
     {
         return loginOf;

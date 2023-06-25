@@ -25,6 +25,9 @@ public class LoginPanel extends javax.swing.JPanel {
     public static boolean seePassword;//booleando que determina si se va la contraseña
     public static VisualSeePassword seePasswordButton;
     
+    /**
+     * LoginPanel
+     */
     public LoginPanel() 
     {
         seePassword = false;
@@ -143,11 +146,19 @@ public class LoginPanel extends javax.swing.JPanel {
         add(butoonSeePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 160, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * text_emailActionPerformed
+     * @param evt 
+     */
     private void text_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_text_emailActionPerformed
         // TODO add your handling code here:
         
     }//GEN-LAST:event_text_emailActionPerformed
 
+    /**
+     * ButtonLoginActionPerformed
+     * @param evt 
+     */
     private void ButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonLoginActionPerformed
         boolean loginCorrect = true;
         // Se loguea un usuario
@@ -189,6 +200,10 @@ public class LoginPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_ButtonLoginActionPerformed
 
+    /**
+     * butoonSeePasswordActionPerformed
+     * @param evt 
+     */
     private void butoonSeePasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_butoonSeePasswordActionPerformed
         if(seePassword)
         {
@@ -208,7 +223,11 @@ public class LoginPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_butoonSeePasswordActionPerformed
 
-    
+    /**
+     * changeJButton
+     * @param boton
+     * @param imagenBoton 
+     */
     private void changeJButton(JButton boton, ButtonImage imagenBoton)
     {
         String icon = imagenBoton.getIcon();

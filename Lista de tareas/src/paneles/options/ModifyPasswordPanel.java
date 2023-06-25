@@ -20,6 +20,12 @@ public class ModifyPasswordPanel extends javax.swing.JPanel {
      */
     private User user;
     private UsersSystem users;
+    
+    /**
+     * ModifyPasswordPanel
+     * @param user
+     * @param users 
+     */
     public ModifyPasswordPanel(User user, UsersSystem users) {
         this.user = user;
         this.users = users;
@@ -143,6 +149,9 @@ public class ModifyPasswordPanel extends javax.swing.JPanel {
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * resetInfoText
+     */
     private void resetInfoText()
     {
         text_errorOldPassword.setText("");
@@ -152,6 +161,10 @@ public class ModifyPasswordPanel extends javax.swing.JPanel {
         text_succesful.setText("");
     }
     
+    /**
+     * buttonModifyActionPerformed
+     * @param evt 
+     */
     private void buttonModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifyActionPerformed
 
         boolean modify = true;

@@ -6,7 +6,7 @@ package location.Exceptions;
 
 /**
  *
- * @author Vanina Pintos
+ * @author Sofia Brocardo
  */
 public class EmptyLocationException extends Exception{
 

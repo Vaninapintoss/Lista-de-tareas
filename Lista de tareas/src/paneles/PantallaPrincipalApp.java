@@ -47,6 +47,9 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         
     }
     
+    /**
+     * updateWeather
+     */
     public void updateWeather()
     {
         
@@ -107,6 +110,9 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         }
     }
     
+    /**
+     * weatherPanelnoLocation
+     */
     private void weatherPanelnoLocation()
     {        
         //creo el panel
@@ -123,6 +129,10 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         
     }
 
+    /**
+     * contentWeather
+     * @param panel 
+     */
     public void contentWeather(Component panel)
     {
         contentWeather.removeAll();
@@ -244,21 +254,37 @@ public class PantallaPrincipalApp extends javax.swing.JPanel {
         add(buttonTrakingList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * buttonCalendarListActionPerformed
+     * @param evt 
+     */
     private void buttonCalendarListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCalendarListActionPerformed
         //reemplazo la pantalla principal con la lista de tareas
         app.replaceScreen(new TaskListCalendarPanel(userLists));
     }//GEN-LAST:event_buttonCalendarListActionPerformed
 
+    /**
+     * buttonTaskListActionPerformed
+     * @param evt 
+     */
     private void buttonTaskListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTaskListActionPerformed
         //reemplazo la pantalla principal con la lista de tareas con calendario
         app.replaceScreen(new TaskListPanel(userLists));
     }//GEN-LAST:event_buttonTaskListActionPerformed
 
+    /**
+     * buttonTrakingListActionPerformed
+     * @param evt 
+     */
     private void buttonTrakingListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTrakingListActionPerformed
         //reemplazo la pantalla principal con la lista de tareas con traqueo
         app.replaceScreen(new TaskListTrackPanel(userLists));
     }//GEN-LAST:event_buttonTrakingListActionPerformed
 
+    /**
+     * jButton1ActionPerformed
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String prueba = "https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid="+text_apyKey.getText();
         

@@ -218,17 +218,28 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         add(backgroundTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * buttonGoBackActionPerformed
+     * @param evt 
+     */
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
         //vuelve a la pantalla principal
         app.replaceScreen(app.homescreenApp);
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
+    /**
+     * buttonGoBack1ActionPerformed
+     * @param evt 
+     */
     private void buttonGoBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBack1ActionPerformed
         //vuelve a la pantalla principal
         app.replaceScreen(app.homescreenApp);
     }//GEN-LAST:event_buttonGoBack1ActionPerformed
 
     //agrego las listas guardadas en el archivo en la lista de botones
+    /**
+     * updateButtons
+     */
     public void updateButtons()
     {
         JButton button = null;
@@ -249,6 +260,11 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         panel.updateUI();//actualizar ver botones
     }
     
+    /**
+     * updateButtons
+     * @param listas
+     * @param button 
+     */
     private void addButtonToPanel(String listas, JButton button)
     {
         if(!listas.isEmpty())
@@ -265,6 +281,11 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         }
     }
     
+    /**
+     * createButton
+     * @param info
+     * @return 
+     */
      private JButton createButton(String info)
     {
         //crear boton
@@ -313,6 +334,10 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         return button;
     }
     
+     /**
+      * buttonCreateActionPerformed
+      * @param evt 
+      */
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
 
         text_error.setText("");//reinicio los mensajes de error
@@ -343,12 +368,20 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         text_newTask.setText("");//reseteo el campo de texto
     }//GEN-LAST:event_buttonCreateActionPerformed
 
+    /**
+     * buttonDeleteListActionPerformed
+     * @param evt 
+     */
     private void buttonDeleteListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteListActionPerformed
         confirmDeletePanel.setVisible(true);
         text_newTask.setVisible(false);
         
     }//GEN-LAST:event_buttonDeleteListActionPerformed
 
+    /**
+     * jButton1ActionPerformed
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
@@ -363,6 +396,10 @@ public class SimpleTaskPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * jButton2ActionPerformed
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         confirmDeletePanel.setVisible(false);
         text_newTask.setVisible(true);

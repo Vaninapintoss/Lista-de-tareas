@@ -120,11 +120,19 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
         add(buttonGoBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * buttonGoBackActionPerformed
+     * @param evt 
+     */
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
         //vuelve a la pantalla principal
         app.replaceScreen(app.homescreenApp);
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
+    /**
+     * buttonCreateActionPerformed
+     * @param evt 
+     */
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
          text_error.setText("");//reinicio los mensajes de error
         try
@@ -145,6 +153,9 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonCreateActionPerformed
 
     //agrego las listas guardadas en el archivo en la lista de botones
+    /**
+     * updateButtons
+     */
     private void updateButtons()
     {
         JButton button;
@@ -166,6 +177,11 @@ public class TaskListCalendarPanel extends javax.swing.JPanel {
         panel.updateUI();//actualizar ver botones
     }
     
+    /**
+     * createButton
+     * @param info
+     * @return 
+     */
     private JButton createButton(String info)
     {
         //crear boton

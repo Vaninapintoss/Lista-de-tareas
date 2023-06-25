@@ -153,6 +153,9 @@ public class ModifyLocationPanel extends javax.swing.JPanel {
         add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * resetInfoText
+     */
     private void resetInfoText()
     {
         text_errorCity.setText("");
@@ -162,6 +165,10 @@ public class ModifyLocationPanel extends javax.swing.JPanel {
         text_locationSuccesful.setText("");
     }
     
+    /**
+     * buttonModifyActionPerformed
+     * @param evt 
+     */
     private void buttonModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonModifyActionPerformed
         
         boolean modify = true;

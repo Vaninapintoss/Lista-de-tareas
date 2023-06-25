@@ -27,6 +27,10 @@ public class TaskListPanel extends javax.swing.JPanel {
     
     private UserLists userLists;
     
+    /**
+     * TaskListPanel
+     * @param userLists 
+     */
     public TaskListPanel(UserLists userLists) {
         this.userLists = userLists;
         initComponents();
@@ -126,12 +130,19 @@ public class TaskListPanel extends javax.swing.JPanel {
         add(backgroundTaskList, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * buttonGoBackActionPerformed
+     * @param evt 
+     */
     private void buttonGoBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBackActionPerformed
         //vuelve a la pantalla principal
         app.replaceScreen(app.homescreenApp);
     }//GEN-LAST:event_buttonGoBackActionPerformed
 
     //agrego las listas guardadas en el archivo en la lista de botones
+    /**
+     * updateButtons
+     */
     private void updateButtons()
     {
         JButton button;
@@ -153,6 +164,11 @@ public class TaskListPanel extends javax.swing.JPanel {
         panel.updateUI();//actualizar ver botones
     }
     
+    /**
+     * createButton
+     * @param info
+     * @return 
+     */
     private JButton createButton(String info)
     {
         //crear boton
@@ -184,6 +200,10 @@ public class TaskListPanel extends javax.swing.JPanel {
         return button;
     }
     
+    /**
+     * buttonCreateActionPerformed
+     * @param evt 
+     */
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
         
         text_error.setText("");//reinicio los mensajes de error
@@ -204,6 +224,10 @@ public class TaskListPanel extends javax.swing.JPanel {
         text_newList.setText("");//reseteo el campo de texto
     }//GEN-LAST:event_buttonCreateActionPerformed
 
+    /**
+     * text_newListKeyTyped
+     * @param evt 
+     */
     private void text_newListKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_newListKeyTyped
         char validate = evt.getKeyChar();
         char delete = 127;

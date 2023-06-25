@@ -20,6 +20,11 @@ public class SeeUserPanel extends javax.swing.JPanel {
         updateUserPanel(user,userLists);
     }
     
+    /**
+     * updateUserPanel
+     * @param user
+     * @param userLists 
+     */
     public void updateUserPanel(User user, UserLists userLists)
     {
         email_user.setText(user.getEmail());

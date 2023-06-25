@@ -182,7 +182,10 @@ public class PantallaInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    /**
+     * abrirApp
+     * @param user 
+     */
     public static void abrirApp(User user)
     {
         app = new AppUserLists(user, sistemaUsuarios);
@@ -190,17 +193,27 @@ public class PantallaInicial extends javax.swing.JFrame {
         homeScreen.setVisible(false);
     }
     
+    /**
+     * goBackToLogin
+     */
     public static void goBackToLogin()
     {
         
         homeScreen.setVisible(true);
     }
     
+    /**
+     * closeApp
+     */
     public static void closeApp()
     {
         homeScreen.dispose();
     }
     
+    /**
+     * buttonLoginActionPerformed
+     * @param evt 
+     */
     private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLoginActionPerformed
         
         if(signupOn)
@@ -219,6 +232,10 @@ public class PantallaInicial extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_buttonLoginActionPerformed
 
+    /**
+     * buttonSignupActionPerformed
+     * @param evt 
+     */
     private void buttonSignupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSignupActionPerformed
         // TODO add your handling code here:
         //si estamos en la pantalla de logIn se puede pasar a la de signup
@@ -239,14 +256,27 @@ public class PantallaInicial extends javax.swing.JFrame {
              
     }//GEN-LAST:event_buttonSignupActionPerformed
 
+    /**
+     * botonCerrarActionPerformed
+     * @param evt 
+     */
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
         this.dispose();
     }//GEN-LAST:event_botonCerrarActionPerformed
 
+    /**
+     * jButton1ActionPerformed
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.setState(Frame.ICONIFIED);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * changeJButton
+     * @param boton
+     * @param imagenBoton 
+     */
     private void changeJButton(JButton boton, ButtonImage imagenBoton)
     {
         String icon = imagenBoton.getIcon();
@@ -261,7 +291,10 @@ public class PantallaInicial extends javax.swing.JFrame {
     
     
     
-    
+    /**
+     * contentPantalla
+     * @param panel 
+     */
     private void contentPantalla(Component panel)
     {
         content.removeAll();
@@ -269,7 +302,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         content.revalidate();
         content.repaint();
     }
-    
+  
     public static LoginPanel login;
     public static SignupPanel signup;
     //para saber cuando se activan los botones de login y signup

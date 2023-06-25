@@ -279,6 +279,9 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     //agrego las listas guardadas en el archivo en la lista de botones
+    /**
+     * updateButtons
+     */
     public void updateButtons()
     {
         JButton button = null;
@@ -302,6 +305,11 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         panel.updateUI();//actualizar ver botones
     }
     
+    /**
+     * addButtonToPanel
+     * @param listas
+     * @param button 
+     */
     private void addButtonToPanel(String listas, JButton button)
     {
         if(!listas.isEmpty())
@@ -318,6 +326,11 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         }
     }
     
+    /**
+     * createButton
+     * @param info
+     * @return 
+     */
     private JButton createButton(String info)
     {
         //crear boton
@@ -393,7 +406,10 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
     }
     
     
-    
+    /**
+     * text_dayKeyTyped
+     * @param evt 
+     */
     private void text_dayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_dayKeyTyped
         //valida que la tecla ingresada por teclado sea solo numero
         char validate = evt.getKeyChar();
@@ -405,6 +421,10 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_text_dayKeyTyped
 
+    /**
+     * text_monthKeyTyped
+     * @param evt 
+     */
     private void text_monthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_monthKeyTyped
         //valida que la tecla ingresada por teclado sea solo numero
         char validate = evt.getKeyChar();
@@ -416,6 +436,10 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_text_monthKeyTyped
 
+    /**
+     * text_yearKeyTyped
+     * @param evt 
+     */
     private void text_yearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_yearKeyTyped
         //valida que la tecla ingresada por teclado sea solo numero
         char validate = evt.getKeyChar();
@@ -427,6 +451,10 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_text_yearKeyTyped
 
+    /**
+     * buttonCreateActionPerformed
+     * @param evt 
+     */
     private void buttonCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCreateActionPerformed
 
         
@@ -495,16 +523,28 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_buttonCreateActionPerformed
 
+    /**
+     * buttonGoBack1ActionPerformed
+     * @param evt 
+     */
     private void buttonGoBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGoBack1ActionPerformed
         //vuelve a la pantalla principal
         app.replaceScreen(app.homescreenApp);
     }//GEN-LAST:event_buttonGoBack1ActionPerformed
 
+    /**
+     * buttonDeleteListActionPerformed
+     * @param evt 
+     */
     private void buttonDeleteListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDeleteListActionPerformed
         confirmDeletePanel.setVisible(true);
         text_newTask.setVisible(false);
     }//GEN-LAST:event_buttonDeleteListActionPerformed
 
+    /**
+     * jButton1ActionPerformed
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try
         {
@@ -519,12 +559,20 @@ public class CalendarTaskPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    /**
+     * jButton2ActionPerformed
+     * @param evt 
+     */
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         confirmDeletePanel.setVisible(false);
         text_newTask.setVisible(true);
         text_error.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    /**
+     * text_newTaskKeyTyped
+     * @param evt 
+     */
     private void text_newTaskKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_text_newTaskKeyTyped
         char validate = evt.getKeyChar();
         char delete = 127;

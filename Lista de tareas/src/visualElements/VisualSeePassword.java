@@ -13,6 +13,9 @@ public class VisualSeePassword
     private ButtonImage seePassword;
     private ButtonImage dontSeePassword;
     
+    /**
+     * VisualSeePassword
+     */
     public VisualSeePassword()
     {
         dontSeePassword = new ButtonImage("/imagenes/BotonesLogIn/seePasswordButton.png",
@@ -24,11 +27,19 @@ public class VisualSeePassword
                                "/imagenes/BotonesLogIn/dontSeePasswordButtonMouseOver.png");
     }
     
+    /**
+     * getSeePassword
+     * @return 
+     */
     public ButtonImage getSeePassword()
     {
         return seePassword;
     }
     
+    /**
+     * getDontSeePassword
+     * @return 
+     */
     public ButtonImage getDontSeePassword()
     {
         return dontSeePassword;
