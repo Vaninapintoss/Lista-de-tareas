@@ -4,7 +4,10 @@ list
 list.exceptions
 list.task
 list.task.exceptions
+location
+location.Exceptions
 user
 user.exceptions
 userLists
 userLists.exceptions
+weather
