@@ -7,7 +7,6 @@ package location;
 import APIController.APIController;
 import java.io.IOException;
 import java.io.Serializable;
-import java.net.MalformedURLException;
 import location.Exceptions.InvalidLocationException;
 import org.json.JSONArray;
 import org.json.JSONObject;
